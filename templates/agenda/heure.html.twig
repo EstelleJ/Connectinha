@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sélectionnez une heure - Programmer un rendez-vous{% endblock %}
+
+{% block description %}
+	Définissez l'heure du rendez-vous, et démarrer votre accompagnement professionnel avec Asmaa El Fettouhi. À Nevers dans la Nièvre, en région Bourgogne, Mindcursus accompagne les jeunes dans leurs choix professionnels et d'études.
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/agenda.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="rdv">
+		<div class="container">
+			<h1>Programmer <span>un rendez-vous</span></h1>
+
+			<div class="bloc-choix">
+				<h2>À quelle heure êtes-vous disponible le {{ day }} {{ date }}?</h2>
+
+				{% if error %}
+					<div class="error">
+						{{ error }}
+					</div>
+				{% endif %}
+
+				{{ form_start(form) }}
+				<input type="hidden" name="service-id" value="{{ serviceId }}">
+				<input type="hidden" name="date" value="{{ date }}">
+
+				<label for="hour">Sélectionnez l'heure qui vous convient (la durée du rendez-vous est indiquée)</label>
+				<select id="hour" name="hour">
+					{% for hour in hours %}
+						<option value="{{ hour|trim() }}">{{ hour }}</option>
+					{% endfor %}
+				</select>
+
+				<div class="line">
+					{{ form_label(form.name) }}
+					{{ form_widget(form.name) }}
+				</div>
+
+				<div class="line">
+					{{ form_label(form.firstname) }}
+					{{ form_widget(form.firstname) }}
+				</div>
+
+				<div class="line">
+					{{ form_label(form.email) }}
+					{{ form_widget(form.email) }}
+				</div>
+
+				<div class="line">
+					{{ form_label(form.phoneNumber) }}
+					<p>Veuillez indiquer votre numéro de téléphone sans espaces.</p>
+					{{ form_widget(form.phoneNumber) }}
+				</div>
+
+				<div class="btns rdv">
+					<button class="btn" type="submit">Réserver le rendez-vous</button>
+				</div>
+				{{ form_end(form) }}
+
+			</div>
+
+		</div>
+	</section>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}

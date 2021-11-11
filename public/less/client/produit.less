@@ -1,0 +1,190 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+
+/* ---------------- INDICATION UX ---------------- */
+/* ----------------------------------------------- */
+
+.menu {
+	.produits {
+		&::after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 0.3rem;
+			background-color: @bg-darkblue;
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}
+
+/* ------------------ PRODUCTS ------------------- */
+/* ----------------------------------------------- */
+
+#banner {
+	height: 480px;
+	width: 100%;
+	background: url('../../images/produits/banner-shopping-vetements-chaussures-clothes.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+/* ------------------ CATEGORIES ------------------- */
+/* ------------------------------------------------- */
+
+#categories {
+	width: 20%;
+	padding: 50px 25px;
+
+	nav {
+		margin-top: 40px;
+		.element {
+			padding: 10px 0;
+			margin-bottom: 8px;
+			display: inline-block;
+		}
+	}
+
+}
+
+/* ------------------ PRODUCTS ------------------- */
+/* ----------------------------------------------- */
+
+#products {
+	width: 80%;
+
+	&.unique {
+		width: 100%;
+	}
+}
+
+.dflex {
+	justify-content: center;
+
+	.empty {
+		text-align: center;
+		font-size: 2rem;
+
+		span {
+			color: @tc-blue;
+			font-size: 2.5rem;
+		}
+	}
+
+	.product {
+		box-shadow: 0px 3px 5px rgba(23,23,23,0.2);
+		padding: 20px 25px;
+		width: 30%;
+		margin: 15px 10px;
+
+		.bloc-img {
+			width: 90%;
+			height: 220px;
+			margin: 0 auto 20px auto;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+
+		h2 {
+			text-transform: uppercase;
+			letter-spacing: 0.2ch;
+			font-size: 1.6rem;
+			margin-bottom: 15px;
+		}
+
+		.prix {
+			font-size: 1.8rem;
+			font-weight: bold;
+		}
+
+		.prixHT {
+			font-size: 1.2rem;
+		}
+
+		/* -------------- DETAILS PRODUITS ------------ */
+
+		&.unique {
+			width: 80%;
+			margin: auto;
+			padding: 3rem 3.5rem;
+			.dflex();
+			justify-content: space-between;
+
+			.bloc-img {
+				width: 48%;
+			}
+
+			.bloc-text {
+				width: 50%;
+
+				h2 {
+					font-size: 2.2rem;
+				}
+
+				.text {
+					margin-bottom: 2rem;
+				}
+
+				.prix {
+					font-size: 2.3rem;
+				}
+
+				.prixHT {
+					font-size: 1.6rem;
+				}
+
+				.btns {
+					justify-content: initial;
+
+					#addCart {
+						margin: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+.btns {
+	margin-top: 20px;
+	.dflex();
+
+	.details,
+	#addCart {
+		display: inline-block;
+		padding: 8px 16px;
+		border: none;
+		color: @tc-white;
+		margin: 0 5px;
+
+		i {
+			margin-right: 8px;
+		}
+
+		&:hover {
+			cursor: pointer;
+			transition: 0.3s background-color;
+		}
+	}
+
+	.details {
+		background-color: @bg-blue;
+
+		&:hover {
+			background-color: darken(@bg-blue, 10%);
+		}
+	}
+
+	#addCart {
+		background-color: @bg-action;
+
+		&:hover {
+			background-color: darken(@bg-action, 10%);
+		}
+	}
+}
+

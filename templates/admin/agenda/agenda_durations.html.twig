@@ -1,0 +1,64 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/diary.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1><span>Gérer les durées</span></h1>
+
+    <section class="bloc-actions dflex">
+        <div class="number">
+            <h2>
+				<span class="square">
+					<i class="fas fa-stopwatch-20"></i>
+				</span>
+                <span class="texte">
+					Vous avez {{ elements|length }} durées disponibles
+				</span>
+            </h2>
+        </div>
+        <div class="btns">
+            <a class="btn add" href="{{ path('admin_agenda_durations_add') }}">
+                <i class="fas fa-stopwatch-20"></i> Ajouter une durée
+            </a>
+        </div>
+    </section>
+
+    <section class="table">
+        <div class="header-table">
+            <div class="col duration">
+                <h2>Durée</h2>
+            </div>
+
+            <div class="col action-btns">
+                <h2>Action</h2>
+            </div>
+        </div>
+
+        {% for duration in durations %}
+            <div class="line">
+                <div class="col duration">
+                    <h3>{{ duration.title }}</h3>
+                </div>
+
+                <div class="col action-btns">
+                    <div class="btns">
+                        <a class="btn" href="{{ path('admin_agenda_durations_modify', {'id': duration.id }) }}"><i class="fas fa-edit"></i> Modifier</a>
+
+                        <form method="post" action="{{ path('admin_agenda_durations_delete', {'id': duration.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette durée ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ duration.id) }}">
+                            <button class="btn delete"><i class="fas fa-times"></i> Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    {% include 'includes/_pagination.html.twig' with {'link': 'admin_agenda_durations' } %}
+
+{% endblock %}

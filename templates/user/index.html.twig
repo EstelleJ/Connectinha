@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre espace client{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/client/user.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section id="banner">
+        <div class="container">
+            <h1>
+                Bonjour <span class="name">{{ user.firstName }} {{ user.name }}</span>,
+                <span class="uppercase">Bienvenue dans votre espace client</span>
+            </h1>
+        </div>
+    </section>
+
+    <section id="menu">
+        <nav>
+            <ul>
+                <li>
+                    <a href="">Vos commandes</a>
+                </li>
+            </ul>
+        </nav>
+    </section>
+
+    <section id="profile">
+        <div class="container">
+            <div class="bloc-user">
+                <h2>Vos informations personnelles</h2>
+
+                <h3>{{ user.firstName }} {{ user.name }}</h3>
+
+                <div class="btns">
+                    <p>{{ user.email }}</p>
+
+                    <a href="" class="btn">
+                        <i class="far fa-user"></i> Modifier votre profil
+                    </a>
+
+                    <a href="" class="btn delete">
+                        <i class="fas fa-trash"></i> Supprimer votre profil
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

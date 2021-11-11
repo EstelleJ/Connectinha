@@ -1,0 +1,66 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Distance de rendez-vous{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/table.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin/diary.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1><span>Gérer les distances de rendez-vous</span></h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-business-time"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ elements|length }} jours disponibles
+				</span>
+			</h2>
+		</div>
+		<div class="btns">
+			<a class="btn add" href="{{ path('admin_agenda_distance_add') }}">
+				<i class="fas fa-business-time"></i> Ajouter une distance
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="header-table">
+			<div class="col distance">
+				<h2>Distance</h2>
+			</div>
+
+			<div class="col action-btns">
+				<h2>Action</h2>
+			</div>
+		</div>
+
+		{% for distance in distances %}
+			<div class="line">
+				<div class="col distance">
+					<h3>{{ distance.title }}</h3>
+				</div>
+
+				<div class="col action-btns">
+					<div class="btns">
+						<a class="btn" href="{{ path('admin_agenda_distance_modify', {'id': distance.id }) }}"><i
+									class="fas fa-edit"></i> Modifier</a>
+
+						<form method="post" action="{{ path('admin_agenda_distance_delete', {'id': distance.id}) }}"
+						      onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce délais de rendez-vous ?');">
+							<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ distance.id) }}">
+							<button class="btn delete"><i class="fas fa-times"></i> Supprimer</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_agenda_distance' } %}
+
+{% endblock %}

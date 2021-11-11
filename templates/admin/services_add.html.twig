@@ -1,0 +1,92 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter - Services proposés{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/services.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Gérer vos services proposés</h1>
+
+	<div class="dflex add-services">
+
+		{{ form_start(form) }}
+		<h2>
+			<i class="fas fa-star"></i> Ajouter un service
+		</h2>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert success">
+				<p>{{ message }}</p>
+			</div>
+		{% endfor %}
+		<div class="large-bloc">
+			<div class="line">
+				{{ form_label(form.title) }}
+				{{ form_widget(form.title) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.text) }}
+				{{ form_widget(form.text) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.image) }}
+				{{ form_widget(form.image) }}
+
+				<div class="bloc-img">
+
+				</div>
+			</div>
+		</div>
+
+		<div class="small-bloc">
+			<div class="line price">
+				{{ form_label(form.price) }}
+				{{ form_widget(form.price) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.duration) }}
+				{{ form_widget(form.duration) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.distance) }}
+				{{ form_widget(form.distance) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.payment_method) }}
+				{{ form_widget(form.payment_method) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.tva) }}
+				{{ form_widget(form.tva) }}
+			</div>
+		</div>
+
+		<div class="submit-bloc">
+			{{ form_widget(form.submit, {'label': 'Ajouter', 'attr': {'class': 'btn action'}}) }}
+		</div>
+		{{ form_widget(form._token) }}
+
+		{{ form_end(form, {render_rest: false}) }}
+
+		<div class="services small">
+			<h2>
+				<i class="fas fa-star"></i> Vos services
+			</h2>
+
+			{% for service in services %}
+				<a href="{{ path('admin_services_modify', {'slug': service.slug, 'id': service.id }) }}"
+				   class="element category">
+					<span class="titre">{{ service.title }}</span>
+				</a>
+			{% endfor %}
+
+			<div class="btns dflex">
+				<a href="{{ path('admin_services', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-list-ul"></i> Voir tout les services
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

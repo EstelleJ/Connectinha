@@ -1,0 +1,268 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #213875;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+/* ---------------- INDICATION UX ---------------- */
+/* ----------------------------------------------- */
+.menu .produits::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #213875;
+  position: absolute;
+  bottom: 0;
+}
+/* ------------------ PRODUCTS ------------------- */
+/* ----------------------------------------------- */
+#banner {
+  height: 480px;
+  width: 100%;
+  background: url('../../images/produits/banner-shopping-vetements-chaussures-clothes.jpg') no-repeat center center;
+  background-size: cover;
+}
+/* ------------------ CATEGORIES ------------------- */
+/* ------------------------------------------------- */
+#categories {
+  width: 20%;
+  padding: 50px 25px;
+}
+#categories nav {
+  margin-top: 40px;
+}
+#categories nav .element {
+  padding: 10px 0;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+/* ------------------ PRODUCTS ------------------- */
+/* ----------------------------------------------- */
+#products {
+  width: 80%;
+}
+#products.unique {
+  width: 100%;
+}
+.dflex {
+  justify-content: center;
+}
+.dflex .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+.dflex .empty span {
+  color: #2086a5;
+  font-size: 2.5rem;
+}
+.dflex .product {
+  box-shadow: 0px 3px 5px rgba(23, 23, 23, 0.2);
+  padding: 20px 25px;
+  width: 30%;
+  margin: 15px 10px;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+.dflex .product .bloc-img {
+  width: 90%;
+  height: 220px;
+  margin: 0 auto 20px auto;
+}
+.dflex .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.dflex .product h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+.dflex .product .prix {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.dflex .product .prixHT {
+  font-size: 1.2rem;
+}
+.dflex .product.unique {
+  width: 80%;
+  margin: auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.dflex .product.unique .bloc-img {
+  width: 48%;
+}
+.dflex .product.unique .bloc-text {
+  width: 50%;
+}
+.dflex .product.unique .bloc-text h2 {
+  font-size: 2.2rem;
+}
+.dflex .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+.dflex .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+.dflex .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+.dflex .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+.dflex .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+.btns {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.btns .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+.btns .empty span {
+  color: #2086a5;
+  font-size: 2.5rem;
+}
+.btns .product {
+  box-shadow: 0px 3px 5px rgba(23, 23, 23, 0.2);
+  padding: 20px 25px;
+  width: 30%;
+  margin: 15px 10px;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+.btns .product .bloc-img {
+  width: 90%;
+  height: 220px;
+  margin: 0 auto 20px auto;
+}
+.btns .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.btns .product h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+}
+.btns .product .prix {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+.btns .product .prixHT {
+  font-size: 1.2rem;
+}
+.btns .product.unique {
+  width: 80%;
+  margin: auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.btns .product.unique .bloc-img {
+  width: 48%;
+}
+.btns .product.unique .bloc-text {
+  width: 50%;
+}
+.btns .product.unique .bloc-text h2 {
+  font-size: 2.2rem;
+}
+.btns .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+.btns .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+.btns .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+.btns .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+.btns .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+.btns .details,
+.btns #addCart {
+  display: inline-block;
+  padding: 8px 16px;
+  border: none;
+  color: #fff;
+  margin: 0 5px;
+}
+.btns .details i,
+.btns #addCart i {
+  margin-right: 8px;
+}
+.btns .details:hover,
+.btns #addCart:hover {
+  cursor: pointer;
+  transition: 0.3s background-color;
+}
+.btns .details {
+  background-color: #2086a5;
+}
+.btns .details:hover {
+  background-color: #18637a;
+}
+.btns #addCart {
+  background-color: #19a07e;
+}
+.btns #addCart:hover {
+  background-color: #12745b;
+}

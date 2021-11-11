@@ -1,0 +1,269 @@
+@import "../include/reset.less";
+@import "../include/variables.less";
+@import "../include/mixins.less";
+@import "../include/colonnes.less";
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.4rem;
+	color: @tc-grey;
+	position: relative;
+	min-height: 100vh;
+	padding-bottom: 24rem;
+}
+
+.container {
+	width: 90%;
+	margin: auto;
+}
+
+h1 {
+	font-size: 3rem;
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+section {
+	padding: 30px 0;
+}
+
+.btns {
+	.dflex();
+	justify-content: initial;
+
+	.btn {
+		display: inline-block;
+		padding: 10px 22px;
+		background-color: @bg-blue;
+		transition: 0.3s background-color;
+		border: none;
+		color: @tc-white;
+		margin: 1rem 0;
+
+		&:hover {
+			background-color: darken(@bg-blue, 10%);
+			transition: 0.3s background-color;
+			cursor: pointer;
+		}
+	}
+}
+
+input,
+select {
+	width: 100%;
+	padding: 0.8rem 1.6rem;
+}
+
+label {
+	text-align: left;
+}
+
+// -------------- PAGINATION --------------- //
+// ----------------------------------------- //
+
+#pagination {
+	nav {
+		ul {
+			.dflex();
+			justify-content: center;
+
+			li {
+				a {
+					padding: 5px 8px;
+
+					&.active {
+						background-color: @bg-blue;
+						color: @tc-white;
+
+						&:hover {
+							background-color: darken(@bg-blue, 10%);
+							transition: 0.3s background-color;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// -------------- HEADER --------------- //
+// ------------------------------------- //
+
+header {
+	background-color: @bg-lightgrey;
+	box-shadow: 0 0.5rem 1rem rgba(23, 23, 23, 0.2);
+
+	nav {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+
+		.logo {
+			width: 18rem;
+			height: 7rem;
+			background-color: rgb(175, 175, 175);
+		}
+
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.menu {
+			li {
+				position: relative;
+
+				a {
+					display: flex;
+					flex-wrap: wrap;
+					align-items: center;
+					height: 7rem;
+					padding: 0 2.5rem;
+					color: @tc-grey;
+
+					i {
+						margin-right: 0.6rem;
+					}
+				}
+
+				&::after {
+					content: "";
+					display: block;
+					width: 100%;
+					height: 0.3rem;
+					background-color: transparent;
+					position: absolute;
+					bottom: 0;
+				}
+
+				&:hover::after {
+					background-color: @bg-darkblue;
+				}
+			}
+
+		}
+	}
+}
+
+// -------------- FOOTER --------------- //
+// ------------------------------------- //
+
+
+footer {
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+
+	.footer-top {
+		background-color: @bg-lightgrey;
+		padding: 2.5rem 0;
+
+		nav {
+			display: flex;
+			flex-wrap: wrap;
+
+			.logo {
+				width: 18rem;
+				border: 0.1rem solid olive;
+				margin: 2rem 0;
+			}
+
+			ul {
+				margin: 0 5rem;
+
+				h3 {
+					margin-bottom: 2rem;
+					font-weight: 900;
+				}
+
+				li {
+					margin-bottom: 1.5rem;
+
+					a {
+						color: @tc-grey;
+
+						&:hover {
+							color: @tc-blue;
+						}
+
+						i {
+							&:hover {
+								color: @tc-white;
+							}
+						}
+					}
+				}
+			}
+
+			.menu {
+
+				i {
+					margin-right: 1.2rem;
+				}
+
+			}
+
+			.reseaux {
+				display: flex;
+				flex-wrap: wrap;
+
+				h3 {
+					width: 100%;
+				}
+
+				li {
+
+					a {
+						color: #fff;
+						display: flex;
+						flex-wrap: wrap;
+						align-items: center;
+						justify-content: center;
+						margin: 0 0.8rem;
+						width: 4rem;
+						height: 4rem;
+						border-radius: 4rem;
+						background-color: @bg-grey;
+
+						&:hover {
+							background-color: @bg-blue;
+							transition: 0.3s background-color;
+							color: @tc-white;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.footer-bottom {
+		background-color: @bg-mediumgrey;
+
+		nav {
+			width: 100%;
+
+			ul {
+				width: 100%;
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: center;
+				padding: 1.2rem 0;
+
+				li {
+					span {
+						margin: 0 0.8rem;
+					}
+
+					a {
+						color: @tc-darkblue;
+					}
+				}
+			}
+		}
+	}
+}
+

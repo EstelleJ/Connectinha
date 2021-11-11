@@ -1,0 +1,92 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/index.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/index-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Bienvenue dans votre espace</h1>
+
+	<div class="dflex">
+		<div class="bloc products">
+			<h2><i class="fas fa-shopping-bag"></i> Vos derniers produits ajoutés</h2>
+
+			{% for product in products %}
+				<a href="{{ path('admin_products_modify', {'slug': product.slug, 'id': product.id }) }}"
+				   class="element produit">
+					<span class="categorie">{{ product.productCategory }}</span>
+					<span class="titre">{{ product.name }}</span>
+					<span class="prix">{{ product.price }} €</span>
+					<span class="active btn-actif {% if product.active == '1' %}true{% else %}false{% endif %}">
+						{% if product.active == '1' %}
+							Actif
+						{% else %}
+							Inactif
+						{% endif %}
+					</span>
+
+					<button class="btn delete" data-id="{{ product.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</a>
+			{% endfor %}
+
+			<div class="dflex btns">
+				<a href="{{ path('admin_products', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-list-ul"></i> Liste
+				</a>
+				<a href="{{ path('admin_products_add') }}" class="btn">
+					<i class="fas fa-plus"></i> Ajouter
+				</a>
+			</div>
+		</div>
+
+		<div class="bloc commandes">
+			<h2><i class="fas fa-shopping-cart"></i> Les dernières commandes</h2>
+
+			<a href="" class="element commande">
+				<span class="numero">n°10254</span>
+				<span class="client">Mme Dupont Emilie</span>
+				<span class="prix">13,20€</span>
+
+				<button class="btn facture">
+					<i class="fas fa-euro-sign"></i> Facture
+				</button>
+			</a>
+
+			<a href="" class="element commande">
+				<span class="numero">n°10254</span>
+				<span class="client">Mme Dupont Emilie</span>
+				<span class="prix">13,20€</span>
+			</a>
+
+			<a href="" class="element commande">
+				<span class="numero">n°10254</span>
+				<span class="client">Mme Dupont Emilie</span>
+				<span class="prix">13,20€</span>
+			</a>
+
+			<div class="dflex btns">
+				<a href="" class="btn">
+					<i class="fas fa-list-ul"></i> Liste
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="bloc users">
+		<h2><i class="fas fa-users-cog"></i> Les utilisateurs</h2>
+
+		<div class="dflex btns">
+			<a href="" class="btn">
+				<i class="fas fa-list-ul"></i> Liste
+			</a>
+		</div>
+	</div>
+{% endblock %}

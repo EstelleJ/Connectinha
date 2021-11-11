@@ -1,0 +1,70 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter - Catégories des produits{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/categories.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Gérer vos catégories de produits</h1>
+
+	<div class="dflex add-categories">
+
+		{{ form_start(form) }}
+		<h2>
+			<i class="fas fa-layer-group"></i> Ajouter une catégorie de produits
+		</h2>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert success">
+				<p>{{ message }}</p>
+			</div>
+		{% endfor %}
+		<div class="large-bloc">
+			<div class="ligne">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name) }}
+			</div>
+			<div class="ligne">
+				{{ form_label(form.active) }}
+				{{ form_widget(form.active) }}
+			</div>
+		</div>
+
+		{% if subcategories|length > 0 %}
+			<div class="small-bloc">
+				<div class="ligne">
+					{{ form_label(form.subcategories) }}
+					{{ form_widget(form.subcategories) }}
+				</div>
+			</div>
+		{% endif %}
+
+		<div class="submit-bloc">
+			{{ form_widget(form.submit, {'label': 'Ajouter', 'attr': {'class': 'btn action'}}) }}
+		</div>
+		{{ form_widget(form._token) }}
+
+		{{ form_end(form, {render_rest: false}) }}
+
+		<div class="categories small">
+			<h2>
+				<i class="fas fa-layer-group"></i> Vos catégories
+			</h2>
+
+			{% for category in categories %}
+				<a href="{{ path('admin_category_modify', {'slug': category.slug, 'id': category.id }) }}"
+				   class="element category">
+					<span class="titre">{{ category.name }}</span>
+				</a>
+			{% endfor %}
+
+			<div class="btns dflex">
+				<a href="{{ path('admin_categories', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-list-ul"></i> Voir toutes les catégories
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

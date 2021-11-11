@@ -1,0 +1,105 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter - Produits{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/produit.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Gérer vos produits</h1>
+
+	<div class="dflex products">
+
+		{{ form_start(form) }}
+		<h2><i class="fas fa-shopping-bag"></i> Ajouter un produit</h2>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert success">
+				<p>{{ message }}</p>
+			</div>
+		{% endfor %}
+		<div class="large-bloc">
+			<div class="line">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name) }}
+			</div>
+
+			<div class="line">
+				{{ form_label(form.text) }}
+				{{ form_widget(form.text) }}
+			</div>
+
+			<div class="line">
+				{{ form_label(form.image) }}
+				{{ form_widget(form.image) }}
+			</div>
+
+			<div class="line">
+				{{ form_label(form.name_img) }}
+				<p>Indiquez le nom de l'image qui doit donnez des indications sur l'image.</p>
+				{{ form_widget(form.name_img) }}
+			</div>
+
+			<div class="line">
+				{{ form_label(form.alt_img) }}
+				<p>Indiquez une information de l'image pour les personnes qui n'ont pas la possibilité de voir l'image.</p>
+				{{ form_widget(form.alt_img) }}
+			</div>
+		</div>
+
+		<div class="small-bloc">
+			<div class="line price">
+				{{ form_label(form.price) }}
+				{{ form_widget(form.price) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.productCategory) }}
+				{{ form_widget(form.productCategory) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.subcategory) }}
+				{{ form_widget(form.subcategory) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.tva) }}
+				{{ form_widget(form.tva) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.active) }}
+				{{ form_widget(form.active) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.favourite) }}
+				{{ form_widget(form.favourite) }}
+			</div>
+		</div>
+
+
+		<div class="bloc">
+			{{ form_widget(form.submit, {'label': 'Ajouter', 'attr': {'class': 'btn action'}}) }}
+		</div>
+		{{ form_end(form) }}
+
+		<div class="produits">
+			<h2><i class="fas fa-shopping-bag"></i> Vos produits</h2>
+
+			{% for product in products %}
+				<a href="{{ path('admin_products_modify', {'slug': product.slug, 'id': product.id }) }}"
+				   class="element produit">
+					{% if product.productCategory|length > 0 %}
+						<span class="data categorie">{{ product.productCategory }}</span>
+					{% endif %}
+					<span class="titre">{{ product.name }}</span>
+					<span class="prix">{{ product.price }} €</span>
+				</a>
+			{% endfor %}
+
+			<div class="btns dflex">
+				<a href="{{ path('admin_products', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-list-ul"></i> Voir tous les produits
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

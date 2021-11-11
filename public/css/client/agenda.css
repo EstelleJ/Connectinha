@@ -1,0 +1,189 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #213875;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+/* ---------------- INDICATION UX ---------------- */
+/* ----------------------------------------------- */
+.menu .rdv::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0.3rem;
+  background-color: #213875;
+  position: absolute;
+  bottom: 0;
+}
+/* ----------------- RENDEZ-VOUS ----------------- */
+/* ----------------------------------------------- */
+#rdv {
+  position: relative;
+}
+#rdv h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 3rem;
+}
+#rdv h1 span {
+  color: #068639;
+}
+#rdv h2 {
+  font-size: 2.2rem;
+  font-family: "Montserrat", sans-serif;
+  position: relative;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+#rdv .bloc-services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#rdv .service {
+  margin: 15px;
+  padding: 2rem 3rem;
+  transition: 0.3s background-color;
+  display: block;
+  width: 45%;
+  color: #333;
+}
+#rdv .service span {
+  display: block;
+}
+#rdv .service .bloc-img {
+  width: 100%;
+  height: 220px;
+  display: block;
+  margin-bottom: 2rem;
+}
+#rdv .service .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#rdv .service .title {
+  font-size: 2.8rem;
+  color: #2086a5;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+#rdv .service .text {
+  line-height: 1.5;
+  text-align: center;
+}
+#rdv .service:hover {
+  background-color: #e7e9eb;
+  transition: 0.3s background-color;
+}
+#rdv .bloc-choix {
+  background-color: #fff;
+  width: 40%;
+  margin: auto;
+  box-shadow: 0 5px 8px rgba(23, 23, 23, 0.2);
+  padding: 35px 50px;
+}
+#rdv .bloc-choix h2 {
+  text-align: center;
+}
+#rdv .bloc-choix label {
+  display: block;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  text-align: left;
+}
+#rdv .bloc-choix .btns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#rdv .bloc-choix .bloc-btn.rdv {
+  margin-top: 30px;
+}
+#rdv .bloc-choix .bloc-btn.rdv .btn {
+  margin: auto;
+}
+#rdv .bloc-choix #horaire {
+  margin-bottom: 30px;
+}
+#rdv .bloc-choix .line {
+  margin-bottom: 18px;
+  width: 100%;
+}
+#rdv .bloc-choix .line label {
+  font-size: 1.5rem;
+  color: #068639;
+}
+#rdv .bloc-choix .line p {
+  font-size: 1.3rem;
+}
+#rdv .confirmation p {
+  margin-bottom: 12px;
+}
+#rdv .confirmation .merci {
+  font-size: 2rem;
+  color: #068639;
+}
+/* --------------- MEDIAQUERIES --------------- */
+/* -------------------------------------------- */
+@media screen and (max-width: 990px) {
+  #rdv .bloc-choix {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 767px) {
+  #rdv .bloc-choix {
+    padding: 20px 15px;
+  }
+  #rdv h2 {
+    font-size: 1.8rem;
+  }
+}
+@media screen and (max-width: 520px) {
+  #rdv {
+    margin-bottom: 150px;
+  }
+}

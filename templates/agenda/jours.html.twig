@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sélectionnez un jour - Programmer un rendez-vous{% endblock %}
+
+{% block description %}
+	Sélectionnez le jour auquel vous êtes disponible pour rencontrer par téléphone notre équipe de Mindcursus et démarrer rapidement votre accompagnement professionnel pour vous guider dans votre choix d'orientation. Disponible en Bourgogne et dans la Nièvre (58).
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/mc-calendar.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/client/agenda.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="rdv">
+		<div class="container">
+			<h1>Programmer <span>un rendez-vous</span></h1>
+
+			<div class="bloc-choix">
+				<h2>Quel jour êtes-vous disponible ?</h2>
+
+				<form action="{{ path('agenda_hours') }}" method="post">
+					<div class="bloc-rdv">
+						<input type="hidden" class="datepicker-disabled-dates" value="{{ disabled_dates }}">
+						<input type="hidden" class="datepicker-disabled-weekdays" value="{{ disabled_weekdays }}">
+						<input type="hidden" class="datepicker-max-date" value="{{ max_date }}">
+						<input type="hidden" name="service-id" value="{{ service_id }}">
+						<label for="datepicker">Sélectionnez le jour qui vous convient</label>
+						<input id="datepicker" class="datepicker" name="date" type="text" placeholder="jj/mm/aaaa" required>
+					</div>
+
+					<div class="btns">
+						<button type="submit" class="btn">Continuer</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+	</section>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/mc-calendar.min.js') }}" type="module"></script>
+	<script src="{{ asset('js/calendar.js') }}" type="module"></script>
+{% endblock %}
+

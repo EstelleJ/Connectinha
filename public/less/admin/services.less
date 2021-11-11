@@ -1,0 +1,119 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+
+/* ---------------- AFFICHAGE DES PRODUITS ---------------- */
+/* ------------------------------------------------------- */
+
+.table {
+
+	.element {
+		width: 100%;
+	}
+
+	.service {
+		width: 30%;
+		padding-right: 20px;
+	}
+
+	.price {
+		width: 10%;
+	}
+
+	.tva {
+		width: 10%;
+	}
+
+	.method {
+		width: 20%;
+	}
+
+	.active-btns {
+		width: 10%;
+		text-align: center;
+	}
+
+	.search,
+	.btns {
+		width: 20%;
+	}
+
+	.btns {
+		margin: 0;
+	}
+
+	.delete {
+		position: relative;
+	}
+}
+
+/* --------------------- ADD SERVICES  ------------------- */
+/* ------------------------------------------------------- */
+
+form {
+	position: relative;
+	width: 63%;
+	padding: 3rem 3.5rem;
+	background: @bg-white;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.large-bloc {
+		width: 55%;
+
+		.bloc-img {
+			width: 100px;
+			height: 120px;
+			margin-top: 15px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+	}
+
+	.small-bloc {
+		width: 40%;
+	}
+
+	#add-pictures {
+		position: absolute;
+		right: 3rem;
+		top: 3rem;
+	}
+
+	h3 {
+		font-weight: bold;
+		margin-bottom: 3rem;
+
+		span {
+			color: @tc-blue;
+		}
+	}
+
+	h4 {
+		margin-bottom: 1.5rem;
+		font-size: 1.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1ch;
+	}
+
+	p {
+		color: @tc-darkblue;
+		font-size: 1.3rem;
+	}
+}
+
+.add-services {
+	justify-content: space-between;
+}
+
+.services.small {
+	width: 35%;
+	background-color: @bg-white;
+	padding: 3rem 3.5rem;
+}
+

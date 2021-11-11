@@ -1,0 +1,81 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/client/produit.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section id="banner">
+
+    </section>
+
+    <div class="container dflex">
+        <section id="categories">
+            <h2>Catégories</h2>
+
+            <nav>
+                <ul>
+                    {% for category in categories %}
+                        <li>
+                            <a href="{{ path('products_by_category', {'categorySlug': category.slug, 'categoryId': category.id, 'page': '1' }) }}" class="element">{{ category.name }}</a>
+                        </li>
+                    {% endfor %}
+                    {% for subcategory in subcategories %}
+                        <li>
+                            <a href="{{ path('products_by_subcategory', {'subcategorySlug': subcategory.slug, 'subcategoryId': subcategory.id, 'page': '1' }) }}" class="element">{{ subcategory.name }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </nav>
+
+        </section>
+
+        <section id="products">
+
+            <h1>Nos produits</h1>
+
+            <div class="dflex">
+                {% if products|length > 0 %}
+                    {% for product in products %}
+
+                        <div class="product">
+                            <div class="bloc-img">
+                                <img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}" alt="{{ product.altImg }}" title="{{ product.nameImg }}">
+                            </div>
+
+                            <h2>{{ product.name }}</h2>
+                            <p class="prix">{{ product.price }} € TTC</p>
+                            <p class="prixHT">{{ product.price - (product.price * (product.tva.percentage / 100)) }} € HT</p>
+
+                            <div class="btns">
+                                <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id }) }}" class="details"><i class="far fa-eye"></i> Détails</a>
+                                <button id="addCart"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="empty">Pour le moment cette sélection est vide<br>
+                      <span>Revenez bientôt !</span>
+                    </p>
+                {% endif %}
+            </div>
+
+            {% if categoryId is defined %}
+                {% include 'includes/_pagination_category.html.twig' with {'link': link, 'categoryId': categoryId, 'categorySlug': categorySlug } %}
+            {% elseif subcategoryId is defined %}
+                {% include 'includes/_pagination_subcategory.html.twig' with {'link': link, 'subcategoryId': subcategoryId, 'subcategorySlug': subcategorySlug } %}
+            {% else %}
+                {% include 'includes/_pagination.html.twig' with {'link': link} %}
+            {% endif %}
+        </section>
+    </div>
+
+
+
+{% endblock %}

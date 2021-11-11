@@ -1,0 +1,11 @@
+<section id="pagination">
+	<nav>
+		<ul>
+			{% for page in arrayPagination  %}
+				<li>
+					<a {% if currentPage == page %}class="active"{% endif %} href="{{ path(link, {'page': page, 'categoryId': categoryId, 'categorySlug': categorySlug }) }}">{{ page }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	</nav>
+</section>

@@ -1,0 +1,560 @@
+@import "../include/reset.less";
+@import "../include/variables.less";
+@import "../include/mixins.less";
+@import "../include/colonnes.less";
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 1.4rem;
+	position: relative;
+}
+
+/* ------------------ GLOBAL ------------------- */
+/* --------------------------------------------- */
+
+.dflex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.logo {
+	width: 100%;
+	height: 6rem;
+	background-color: #fff;
+	margin-bottom: 1.5rem;
+}
+
+h1 {
+	font-size: 2.8rem;
+	text-align: center;
+	margin-bottom: 5rem;
+	position: relative;
+	width: 100%;
+}
+
+h2 {
+	color: @tc-darkblue;
+	text-transform: uppercase;
+	letter-spacing: 0.2ch;
+	margin-bottom: 3.5rem;
+	width: 100%;
+	font-size: 2.5rem;
+}
+
+h3 {
+	font-size: 1.8rem;
+	margin-bottom: 1.5rem;
+	width: 100%;
+}
+
+.contenu {
+	width: 84%;
+	min-height: 95vh;
+	background-color: @bg-lightgrey;
+	margin-left: 16%;
+}
+
+.container {
+	padding: 3rem 2rem;
+}
+
+.a-center {
+	text-align: center;
+	width: 100%;
+}
+
+.btn-actif {
+	padding: 0.5rem 1.5rem;
+	text-align: center;
+	border-radius: 0.8rem;
+	display: inline-block;
+	min-width: 80px;
+}
+
+.btn-actif.true {
+	background-color: lighten(@bg-actif, 10%);
+	color: @tc-actif;
+
+	&:hover {
+		background-color: @bg-actif;
+		transition: 0.2s;
+	}
+}
+
+.btn-actif.false {
+	background-color: lighten(@bg-inactif, 10%);
+	color: @tc-inactif;
+
+	&:hover {
+		background-color: @bg-inactif;
+		transition: 0.2s;
+	}
+}
+
+select[multiple] {
+	display: none;
+}
+
+.selecteds-container {
+	position: relative;
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	min-height: 3em;
+	padding: 0.5em 3.5em 0.5em 0.5em;
+	background-color: @bg-lightgrey;
+	pointer-events: none;
+
+	&:after {
+		content: '\f107';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 3em;
+		background-color: @bg-darkblue;
+		color: white;
+		font-family: "Font Awesome 5 Free";
+		font-weight: bold;
+		cursor: pointer;
+		pointer-events: all;
+	}
+
+	&.active {
+
+		&:after {
+			content: '\f106';
+		}
+	}
+
+	.selected {
+		position: relative;
+		display: flex;
+		align-items: center;
+		background-color: @bg-blue;
+		color: @tc-white;
+		padding: 0.2em 1.8em 0.2em 0.5em;
+		margin: 0.3em 0;
+		border-radius: 0.2em;
+		cursor: pointer;
+		pointer-events: all;
+
+		&:not(:last-of-type) {
+			margin-right: 0.5em;
+		}
+
+		&:after {
+			content: '\f00d';
+			position: absolute;
+			right: 0.5em;
+			font-family: "Font Awesome 5 Free";
+			font-weight: bold;
+		}
+	}
+}
+
+.options-container {
+	background-color: @bg-lightgrey;
+	border-top: 1px solid darken(@bg-lightgrey, 10%);
+	min-height: 2em;
+	max-height: 10em;
+	overflow-y: auto;
+
+	.option {
+		padding: 0.5em 1em;
+		cursor: pointer;
+
+		&:hover {
+			background-color: @bg-blue;
+			color: @tc-white;
+		}
+	}
+}
+
+.hidden {
+	display: none !important;
+}
+
+/* ----------------- PAGINATION ----------------- */
+/* ---------------------------------------------- */
+
+#pagination {
+	nav {
+		margin-top: 20px;
+
+		ul {
+			.dflex();
+			justify-content: center;
+
+			a {
+				padding: 3px 8px;
+				margin: 0 3px;
+
+				&:hover {
+					background-color: @bg-blue;
+					color: @tc-white;
+					transition: 0.3s background-color;
+				}
+
+			}
+			.active {
+				background-color: @bg-blue;
+				color: @tc-white;
+			}
+		}
+	}
+}
+
+/* ------------------ HEADER ------------------ */
+/* -------------------------------------------- */
+
+header {
+	position: fixed;
+	width: 16%;
+	height: 100vh;
+	background: rgb(24, 113, 138);
+	background: linear-gradient(172deg, rgb(9, 95, 119) 0%, rgb(7, 61, 82) 100%);;
+	color: @tc-lightgrey;
+
+	li:hover {
+		background-color: #1c8294;
+		transition: 0.3s background-color;
+		box-shadow: 0 0.3rem 0.5rem rgba(23, 23, 23, 0.2);
+	}
+
+	a {
+		color: @tc-lightgrey;
+		padding: 1.2rem 1.8rem;
+		display: block;
+		margin-bottom: 1rem;
+		position: relative;
+		margin-left: 2rem;
+		font-size: 1.6rem;
+
+		i {
+			margin-right: 1.2rem;
+			position: absolute;
+			left: -1.2rem;
+		}
+	}
+}
+
+/* --------------- BLOC ACTIONS -------------- */
+/* ------------------------------------------- */
+
+.bloc-actions {
+	margin-bottom: 2rem;
+	align-items: center;
+	justify-content: space-between;
+
+	.number {
+		width: 30%;
+		background-color: @bg-white;
+		box-shadow: 0 0.2rem 1.2rem rgba(20, 20, 20, 0.2);
+
+		h2 {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			margin: 0;
+			font-size: 1.8rem;
+
+			.square {
+				width: 8rem;
+				height: 8rem;
+				background-color: @bg-orange;
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				justify-content: center;
+
+				i {
+					color: @tc-white;
+					font-size: 3.5rem;
+				}
+			}
+
+			.texte {
+				display: block;
+				width: 80%;
+			}
+		}
+	}
+
+	.btns {
+		width: 68%;
+		max-height: 4.5rem;
+		margin: 0;
+		justify-content: initial;
+	}
+}
+
+
+/* -------------- TABLE -------------- */
+/* ----------------------------------- */
+
+.table {
+	.head {
+		background-color: darken(@bg-lightgrey, 15%);
+		padding: 1rem 2.2rem;
+		align-items: center;
+
+		h3 {
+			margin: 0;
+			text-transform: uppercase;
+			font-size: 1.2rem;
+			font-weight: bold;
+			letter-spacing: 0.1ch;
+		}
+
+	}
+
+	.data {
+		font-size: 1.6rem;
+	}
+}
+
+
+/* -------------- FORM ---------------- */
+/* ------------------------------------ */
+
+.line {
+	width: 100%;
+	margin-bottom: 2rem;
+}
+
+label {
+	width: 100%;
+	display: block;
+	margin-bottom: 1rem;
+}
+
+input,
+textarea {
+	padding: 1.2rem 2.2rem;
+	background-color: @bg-lightgrey;
+	border: none;
+	width: 100%;
+	display: block;
+}
+
+input {
+	height: 42px;
+}
+
+.line.price,
+.line.taux {
+	position: relative;
+}
+
+.line.price::after {
+	content: "\f153";
+	font-family: "Font Awesome 5 Free";
+	font-weight: bold;
+	font-size: 1.8rem;
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	width: 4.2rem;
+	height: 4.2rem;
+	background-color: darken(@bg-lightgrey, 10%);
+	color: @tc-darkblue;
+}
+
+.line.taux::after {
+	content: "\f295";
+	font-family: "Font Awesome 5 Free";
+	font-weight: bold;
+	font-size: 1.8rem;
+	display: flex;
+	flex-wrap: wrap;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	width: 4.2rem;
+	height: 4.2rem;
+	background-color: darken(@bg-lightgrey, 10%);
+	color: @tc-darkblue;
+}
+
+select {
+	padding: 10px 15px;
+	border: none;
+	background-color: @bg-lightgrey;
+	width: 100%;
+	min-height: 42px;
+}
+
+textarea {
+	min-height: 12rem;
+}
+
+.element {
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 1.5rem 2.2rem;
+	color: @tc-grey;
+	background-color: lighten(@bg-lightgrey, 5%);
+	margin-bottom: 1rem;
+
+	&:hover {
+		background-color: darken(@bg-lightgrey, 5%);
+		transition: 0.3s background-color;
+	}
+}
+
+/* -------------- FLASH ----------------- */
+/* -------------------------------------- */
+
+.alert {
+	width: 100%;
+	padding: 1rem 2.2rem;
+	margin-bottom: 4rem;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	color: @tc-grey;
+	text-transform: uppercase;
+	font-size: 1.4rem;
+	letter-spacing: 0.2ch;
+	border-radius: 0.8rem;
+}
+
+.success {
+	position: relative;
+	.success-gradient()
+}
+
+.success::before {
+	content: "\f00c";
+	display: block;
+	font-family: "Font Awesome 5 Free";
+	font-weight: bold;
+	margin-right: 1rem;
+	color: @tc-green;
+	font-size: 1.7rem;
+}
+
+.error {
+	background-color: @alert-error;
+}
+
+/* -------------- BOUTONS --------------- */
+/* -------------------------------------- */
+
+button {
+	border: none;
+	cursor: pointer;
+}
+
+.btns {
+	justify-content: inherit;
+	margin-top: 3rem;
+	.dflex();
+}
+
+.btn {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 0.8rem 2rem;
+	border-radius: 0.8rem;
+	box-shadow: 0 0.2rem 0.5rem rgba(23, 23, 23, 0.3);
+	background-color: @bg-blue;
+	color: @tc-white;
+	margin: 1rem 0.8rem;
+	font-size: 1.5rem;
+
+	i {
+		margin-right: 1.2rem;
+		font-size: 1.5rem;
+	}
+
+	&:hover {
+		background-color: darken(@bg-blue, 10%);
+		transition: 0.3s background-color;
+	}
+
+	.add {
+		background-color: @bg-add;
+	}
+
+}
+
+.action {
+	background-color: @bg-action;
+
+	&:hover {
+		background-color: darken(@bg-action, 10%);
+	}
+}
+
+.delete,
+.facture {
+	border: none;
+	border-radius: 0.5rem;
+	color: @tc-white;
+	position: absolute;
+
+	i {
+		margin-right: 0.8rem;
+	}
+
+	&:hover {
+		cursor: pointer;
+		transition: 0.3s background-color;
+	}
+}
+
+.delete {
+	background-color: @bg-red;
+
+	&:hover {
+		background-color: darken(@bg-red, 10%);
+	}
+}
+
+.facture {
+	background-color: @bg-purple;
+
+	&:hover {
+		background-color: darken(@bg-purple, 10%);
+	}
+}
+
+/* ----------------- FOOTER ----------------- */
+/* ------------------------------------------ */
+
+footer {
+	width: 100%;
+	height: 5vh;
+	background-color: rgb(6, 25, 34);
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	p {
+		color: @tc-lightgrey;
+		text-align: center;
+
+		a {
+			color: @tc-lightgrey;
+		}
+	}
+}

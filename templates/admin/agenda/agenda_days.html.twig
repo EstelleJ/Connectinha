@@ -1,0 +1,82 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/diary.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1><span>Gérer les jours</span></h1>
+
+    <section class="bloc-actions dflex">
+        <div class="number">
+            <h2>
+				<span class="square">
+					<i class="fas fa-sun"></i>
+				</span>
+        <span class="texte">
+					Vous avez {{ elements|length }} jours disponibles
+				</span>
+            </h2>
+        </div>
+        <div class="btns">
+            <a class="btn add" href="{{ path('admin_agenda_days_add') }}">
+                <i class="fas fa-sun"></i> Ajouter un jour
+            </a>
+        </div>
+    </section>
+
+    <section class="table">
+        <div class="header-table">
+            <div class="col days">
+                <h2>Jour</h2>
+            </div>
+
+            <div class="col hours">
+                <h2>Créneaux horaires</h2>
+            </div>
+
+            <div class="col action-btns">
+                <h2>Action</h2>
+            </div>
+        </div>
+
+        {% for day in days %}
+            <div class="line">
+                <div class="col days">
+                    <h3>
+                        {{ day.name }}
+                    </h3>
+                </div>
+
+                <div class="col hours">
+
+                    <h3>
+                        {% for slot in day.hours %}
+                            <span>
+                                <i class="fas fa-stopwatch-20"></i> {{ slot.hour|format_datetime(locale='fr',pattern="HH:mm") }} - {{ slot.duration }} ;
+                            </span>
+                        {% endfor %}
+                    </h3>
+
+                </div>
+
+                <div class="col action-btns">
+                    <div class="btns">
+                        <a class="btn" href="{{ path('admin_agenda_days_modify', {'id': day.id }) }}"><i class="fas fa-edit"></i> Modifier</a>
+
+                        <form method="post" action="{{ path('admin_agenda_days_delete', {'id': day.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce jour ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ day.id) }}">
+                            <button class="btn delete"><i class="fas fa-times"></i> Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    {% include 'includes/_pagination.html.twig' with {'link': 'admin_agenda_hours' } %}
+
+{% endblock %}

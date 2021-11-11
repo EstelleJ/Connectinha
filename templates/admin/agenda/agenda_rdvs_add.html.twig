@@ -1,0 +1,81 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/table.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin/diary.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1><span>Ajouter</span></h1>
+
+	<section class="form">
+		{{ form_start(form) }}
+
+		<div class="bloc-left">
+			<h2>Ajouter un rendez-vous</h2>
+
+			<div class="form-bloc">
+				{{ form_label(form.prestation) }}
+				{{ form_widget(form.prestation) }}
+			</div>
+
+			<div class="form-bloc">
+				{{ form_label(form.date) }}
+				{{ form_widget(form.date) }}
+			</div>
+
+			<div class="form-bloc">
+				{{ form_label(form.duree) }}
+				{{ form_widget(form.duree) }}
+			</div>
+
+			<div class="form-bloc">
+				{{ form_label(form.jour) }}
+				{{ form_widget(form.jour) }}
+			</div>
+
+			<div class="form-bloc">
+				{{ form_label(form.horaires) }}
+				{{ form_widget(form.horaires) }}
+			</div>
+
+		</div>
+
+		<div class="bloc-right">
+			<h2>Informations client</h2>
+
+			<div class="form-bloc">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name) }}
+			</div>
+
+			<div class="form-bloc">
+				{{ form_label(form.firstname) }}
+				{{ form_widget(form.firstname) }}
+			</div>
+
+			<div class="form-bloc">
+				{{ form_label(form.email) }}
+				{{ form_widget(form.email) }}
+			</div>
+
+			<div class="form-bloc">
+				{{ form_label(form.phoneNumber) }}
+				{{ form_widget(form.phoneNumber) }}
+			</div>
+		</div>
+
+		<div class="btns center">
+			<a class="btn" href="{{ path('admin_agenda_rdv', {'page': '1'}) }}">
+				<i class="fas fa-angle-left"></i> Retour
+			</a>
+			<button type="submit" class="btn add">
+				<i class="fas fa-check"></i> Valider
+			</button>
+		</div>
+
+		{{ form_end(form) }}
+	</section>
+{% endblock %}

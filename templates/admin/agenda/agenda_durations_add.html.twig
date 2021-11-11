@@ -1,0 +1,56 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/table.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin/diary.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1><span>Ajouter</span></h1>
+
+	<section class="form">
+		{{ form_start(form) }}
+
+		<div class="bloc-left">
+			<h2>Ajouter une durée</h2>
+
+			<div class="form-bloc">
+				{{ form_label(form.title) }}
+				{{ form_widget(form.title) }}
+			</div>
+
+			<div class="form-bloc">
+				{{ form_label(form.duration) }}
+				{{ form_widget(form.duration) }}
+			</div>
+
+		</div>
+
+		<div class="bloc-right">
+			<h2>Durées de rendez-vous</h2>
+			<div class="elements">
+				{% for duration in durations %}
+					<a href="{{ path('admin_agenda_durations_modify', {'id': duration.id }) }}" class="element">
+						<span class="icon">
+								<i class="far fa-clone"></i>
+						</span>
+						{{ duration.title }}
+					</a>
+				{% endfor %}
+			</div>
+		</div>
+
+		<div class="btns center">
+			<a class="btn" href="{{ path('admin_agenda_durations', {'page': '1'}) }}">
+				<i class="fas fa-angle-left"></i> Retour
+			</a>
+			<button type="submit" class="btn add">
+				<i class="fas fa-check"></i> Valider
+			</button>
+		</div>
+
+		{{ form_end(form) }}
+	</section>
+{% endblock %}

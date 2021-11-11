@@ -1,0 +1,63 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Les méthodes de paiement{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/payments.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/deletes/payments-methods.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer les méthodes de paiement</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-shopping-bag"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ elements|length }} méthodes disponibles
+				</span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_payment_methods_add') }}" class="btn">
+				<i class="fas fa-plus"></i> Ajouter une méthode de paiement
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="name">
+				Nom de la méthode
+			</h3>
+
+			<div class="search">
+				Rechercher
+			</div>
+		</div>
+		{% for method in methods %}
+			<a href="{{ path('admin_products_modify', {'slug': method.slug, 'id': method.id }) }}" class="element method">
+
+				<span class="data name">{{ method.name }}</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="btn delete" data-id="{{ method.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_payment_methods' } %}
+{% endblock %}
+

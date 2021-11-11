@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %} - Bienvenue sur votre administration</title>
+	{# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,900&display=swap" rel="stylesheet">
+	{% block stylesheets %}
+		{# {{ encore_entry_link_tags('app') }} #}
+	{% endblock %}
+	<link rel="stylesheet" href="{{ asset('css/admin/admin.css') }}">
+	{% block javascripts %}
+		{# {{ encore_entry_script_tags('app') }} #}
+	{% endblock %}
+	<script type="module" src="{{ asset('js/global.js') }}"></script>
+	<script src="https://kit.fontawesome.com/e10814a45c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<div class="dflex">
+	<header>
+		<div class="container">
+			<div class="logo">
+				<a href="{{ path('admin') }}">
+
+				</a>
+			</div>
+
+			<nav>
+				<ul>
+					<li>
+						<a href="{{ path('admin_content') }}">
+							<i class="fas fa-spell-check"></i> Contenu du site
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_categories', {'page': '1'}) }}">
+							<i class="fas fa-layer-group"></i> Catégories
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_products', {'page': '1'}) }}">
+							<i class="fas fa-shopping-bag"></i> Produits
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_services', {'page': '1'}) }}">
+							<i class="fas fa-star"></i> Services
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_orders', {'page': '1'}) }}">
+							<i class="fas fa-shopping-cart"></i> Commandes
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_tva', {'page': '1'}) }}">
+							<i class="fas fa-euro-sign"></i> TVA
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_ship', {'page': '1'}) }}">
+							<i class="fas fa-dolly"></i> Frais de port
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_discount', {'page': '1'}) }}">
+							<i class="fas fa-percentage"></i> Bons de réduction
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_customers', {'page': '1'}) }}">
+							<i class="fas fa-users"></i> Clients
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_payment_methods', {'page': '1'}) }}">
+							<i class="fas fa-credit-card"></i> Moyens de paiement
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_newsletter') }}">
+							<i class="fas fa-envelope-open"></i> Newsletter
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_appointment') }}">
+							<i class="fas fa-calendar-check"></i> Rendez-vous
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_users', {'page': '1'}) }}">
+							<i class="fas fa-users-cog"></i> Utilisateurs
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_design') }}">
+							<i class="fas fa-paint-brush"></i> Thèmes
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_rights') }}">
+							<i class="fas fa-ban"></i> Gestion des droits
+						</a>
+					</li>
+					<li>
+						<a href="{{ path('admin_modules') }}">
+							<i class="fab fa-whmcs"></i> Gestion des modules
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="contenu">
+		<div class="container">
+			{% block body %}{% endblock %}
+		</div>
+	</div>
+</div>
+
+<footer>
+	<p>Réalisé par <a href="">EILEA</a> - {{ "now"|date('Y') }}</p>
+</footer>
+</body>
+</html>

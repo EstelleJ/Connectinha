@@ -1,0 +1,64 @@
+@import "variables.less";
+
+.ellipsis() {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.success-gradient {
+	background: rgb(212, 233, 213);
+	background: linear-gradient(90deg, rgba(212, 233, 213, 1) 0%, rgba(238, 251, 241, 1) 100%);
+}
+
+.dflex {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.full-center {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+}
+
+.delete-overlay {
+	background-color: rgba(180, 60, 60, 0.74);
+
+	i {
+		color: @tc-white;
+		font-size: 3rem;
+	}
+}
+
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+
+.mixin-categorie {
+	margin-right: 2.2rem;
+	color: @tc-darkblue;
+	font-weight: bold;
+	font-size: 1.4rem;
+	width: 15%;
+	display: block;
+}
+
+.mixin-titre {
+	display: block;
+	text-transform: uppercase;
+	letter-spacing: 0.1ch;
+	margin-right: 2rem;
+	width: 50%;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.mixin-prix {
+	display: block;
+	font-size: 2.2rem;
+	width: 20%;
+}
+
+

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block description %}
+	Inscrivez-vous et découvrez votre espace personnel, où vous retrouverez le suivi et le détails de vos commandes sur ......
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/form.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/client/inscription.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="inscription">
+		<div class="container">
+			<div class="bloc-form">
+				<h1>Register</h1>
+				{{ form_start(registrationForm) }}
+
+				<div class="bloc">
+					<h2>Informations personnelles</h2>
+
+					<div class="line">
+						{{ form_label(registrationForm.name) }}
+						{{ form_widget(registrationForm.name) }}
+					</div>
+
+					<div class="line">
+						{{ form_label(registrationForm.firstName) }}
+						{{ form_widget(registrationForm.firstName) }}
+					</div>
+				</div>
+
+				<div class="bloc">
+					<h2>Informations de connexion</h2>
+
+					<div class="line">
+						{{ form_label(registrationForm.email) }}
+						{{ form_widget(registrationForm.email) }}
+					</div>
+
+					<div class="line">
+						{{ form_row(registrationForm.plainPassword) }}
+					</div>
+
+					<div class="line">
+						{{ form_row(registrationForm.agreeTerms) }}
+					</div>
+				</div>
+
+
+				<div class="btns">
+					<button type="submit" class="btn">
+						<i class="fas fa-user"></i> Register
+					</button>
+				</div>
+
+				{{ form_end(registrationForm) }}
+			</div>
+
+		</div>
+	</section>
+
+{% endblock %}

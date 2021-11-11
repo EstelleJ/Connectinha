@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Programmer un rendez-vous{% endblock %}
+
+{% block description %}
+    Commencez votre accompagnement Mindcursus en prenant rendez-vous directement depuis notre site internet mindcursus.fr. Obtenez un rendez-vous rapide avec Asmaa El Fettouhi pour vous orienter dans votre projet professionnel.
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/client/agenda.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section id="rdv">
+        <div class="container">
+            <h1>Programmer <span>un rendez-vous</span></h1>
+
+            <div>
+                <h2>Sélectionnez la prestation pour laquelle vous souhaitez prendre rendez-vous</h2>
+
+                <div class="bloc-services">
+                    {% for service in services %}
+                        <a title="Sélectionnez la prestation {{ service.title }}" href="{{ path('agenda_days', {'serviceId': service.id }) }}" class="service">
+                            <span class="bloc-img">
+                                <img src="{{ asset('services/'~ service.image ~'')|imagine_filter('servicesThumbnails') }}">
+                            </span>
+
+                            <span class="title">{{ service.title }}</span>
+
+                            <span class="text">
+                                {{ service.text }}
+                            </span>
+                        </a>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

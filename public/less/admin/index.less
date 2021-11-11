@@ -1,0 +1,95 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+.dflex {
+	justify-content: space-between;
+}
+
+.bloc {
+	padding: 1.5rem 2rem;
+	background-color: @bg-white;
+	box-shadow: 0 5px 10px rgba(23, 23, 23, 0.2);
+	margin: 1.2rem 0;
+}
+
+.products {
+	width: 58%;
+
+	.produit {
+
+		.categorie {
+			margin-right: 2.2rem;
+			color: @tc-darkblue;
+			font-weight: bold;
+			font-size: 1.4rem;
+			width: 15%;
+			display: block;
+		}
+
+		.titre {
+			display: block;
+			text-transform: uppercase;
+			letter-spacing: 0.1ch;
+			margin-right: 2rem;
+			width: 40%;
+			.ellipsis();
+		}
+
+		.prix {
+			display: block;
+			font-size: 2.2rem;
+			width: 12%;
+		}
+
+		.active {
+			width: 8%;
+			display: block;
+
+		}
+
+		.delete {
+			right: 1.5rem;
+			top: 1.2rem;
+		}
+
+
+	}
+}
+
+.commandes {
+	width: 40%;
+
+	.commande {
+		span {
+			display: block;
+		}
+
+		.numero {
+			width: 12%;
+			font-weight: bold;
+			font-size: 1.4rem;
+		}
+
+		.client {
+			width: 45%;
+			text-transform: uppercase;
+			letter-spacing: 0.1ch;
+			.ellipsis();
+		}
+
+		.prix {
+			width: 18%;
+			font-size: 2.2rem;
+		}
+
+		.facture {
+			right: 1.5rem;
+			top: 1.2rem;
+		}
+	}
+}
+
+.users {
+	width: 45%;
+}
+

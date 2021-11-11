@@ -1,0 +1,134 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Rendez-vous{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/diary.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici gérez vos rendez-vous et votre agenda</h1>
+
+	<section id="agenda">
+		<div class="days bloc">
+			<h2>Les jours disponibles</h2>
+
+				{% for day in days %}
+				<div class="element">
+					{{ day.name }}
+				</div>
+				{% endfor %}
+
+			<div class="btns">
+				<a href="{{ path('admin_agenda_days', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-calendar-day"></i> Gérer les jours
+				</a>
+			</div>
+		</div>
+
+		<div class="rdv bloc">
+			<h2>Vos prochains rendez-vous</h2>
+
+			{% for rdv in rdvs %}
+				<div class="element">
+					{{ rdv.date|format_datetime('full', 'short', locale='fr') }}
+				</div>
+			{% endfor %}
+
+			<div class="btns">
+				<a href="{{ path('admin_agenda_rdv', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-calendar-day"></i> Voir vos rendez-vous
+				</a>
+			</div>
+		</div>
+
+		<div class="d-flex">
+			<div class="left">
+				<div class="hours bloc">
+					<h2>Vos horaires de disponibilité</h2>
+
+					{% for hour in hours %}
+						<div class="element">
+							{{ hour.hour|format_datetime('none', 'short', locale='fr') }}
+						</div>
+					{% endfor %}
+
+					{% if hours|length > 7 %}
+						<p>...</p>
+					{% endif %}
+
+					<div class="btns">
+						<a href="{{ path('admin_agenda_hours', {'page': '1'}) }}" class="btn">
+							<i class="fas fa-calendar-day"></i> Gérer vos horaires
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="right">
+				<div class="duration bloc">
+					<h2>Vos durées de rendez-vous</h2>
+
+					{% for duration in durations %}
+						<div class="element">
+							{{ duration.title }}
+						</div>
+					{% endfor %}
+
+					{% if durations|length > 3 %}
+						<p>...</p>
+					{% endif %}
+					<div class="btns">
+						<a href="{{ path('admin_agenda_durations', {'page': '1'}) }}" class="btn">
+							<i class="fas fa-calendar-day"></i> Gérer vos durées
+						</a>
+					</div>
+				</div>
+
+				<div class="unavailable bloc">
+					<h2>Les jours indisponibles</h2>
+
+					{% for unavailable in unavailables %}
+						<div class="element">
+							{{ unavailable.date|format_datetime('full', 'short', locale='fr') }}
+						</div>
+					{% endfor %}
+
+					{% if unavailables|length > 3 %}
+						<p>...</p>
+					{% endif %}
+
+					<div class="btns">
+						<a href="{{ path('admin_agenda_unavailable', {'page': '1'}) }}" class="btn">
+							<i class="fas fa-calendar-day"></i> Gérer vos indisponibilités
+						</a>
+					</div>
+				</div>
+
+				<div class="distance bloc">
+					<h2>Distance de prise de rendez-vous</h2>
+
+					{% for distance in distances %}
+						<div class="element">
+							{{ distance.title }}
+						</div>
+					{% endfor %}
+
+					{% if distances|length > 3 %}
+						<p>...</p>
+					{% endif %}
+
+					<div class="btns">
+						<a href="{{ path('admin_agenda_distance', {'page': '1'}) }}" class="btn">
+							<i class="fas fa-calendar-day"></i> Gérer vos distance de prise de rendez-vous
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+	</section>
+{% endblock %}

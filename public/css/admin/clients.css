@@ -1,0 +1,55 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+.table .name {
+  width: 15%;
+}
+.table .firstname {
+  width: 20%;
+}
+.table .email {
+  width: 25%;
+}
+.table .active {
+  width: 15%;
+}
+.table .search {
+  width: 25%;
+}
+.table .search,
+.table .btns {
+  width: 25%;
+}
+.table .btns {
+  margin: 0;
+}
+.table .delete {
+  position: relative;
+}
+/* ---------------- ADD CATEGORIES ------------------ */
+/* -------------------------------------------------- */
+.add-categories {
+  justify-content: space-between;
+}
+form {
+  width: 63%;
+  padding: 3rem 3.5rem;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+form .large-bloc {
+  width: 55%;
+}
+form .small-bloc {
+  width: 40%;
+}
+form .submit-bloc {
+  width: 100%;
+}
+.categories.small {
+  width: 35%;
+  background-color: #fff;
+  padding: 3rem 3.5rem;
+}

@@ -1,0 +1,82 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+.table {
+	.taxes {
+		width: 35%;
+	}
+
+	.taux {
+		width: 25%;
+	}
+
+	.active {
+		width: 15%;
+	}
+
+	.search {
+		width: 25%;
+	}
+
+	.search,
+	.btns {
+		width: 25%;
+	}
+
+	.btns {
+		margin: 0;
+
+	}
+
+	.delete {
+		position: relative;
+	}
+
+}
+
+/* ---------------- ADD TVAS ------------------ */
+/* -------------------------------------------------- */
+
+.add-tvas {
+	justify-content: space-between;
+}
+
+form {
+	width: 63%;
+	padding: 3rem 3.5rem;
+	background-color: @bg-white;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.large-bloc {
+		width: 55%;
+	}
+
+	.small-bloc {
+		width: 40%;
+	}
+
+	.submit-bloc {
+		width: 100%;
+	}
+}
+
+.tvas.small {
+	width: 35%;
+	background-color: @bg-white;
+	padding: 3rem 3.5rem;
+
+		.categorie {
+			.mixin-categorie();
+		}
+
+		.titre {
+			.mixin-titre();
+		}
+
+		.prix {
+			.mixin-prix();
+		}
+
+}

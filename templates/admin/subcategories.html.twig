@@ -1,0 +1,82 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Sous-catégories des produits{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/categories.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/deletes/subcategory-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer les sous-catégories de vos produits</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+        <span class="square">
+            <i class="fas fa-clone"></i>
+        </span>
+				<span class="texte">
+            Vous avez {{ subcategories|length }} sous-catégories disponibles
+        </span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_subcategory_add') }}" class="btn">
+				<i class="fas fa-plus"></i> Ajouter une sous-catégorie
+			</a>
+			<a href="{{ path('admin_categories', {'page': '1'}) }}" class="btn">
+				<i class="fas fa-layer-group"></i> Voir les catégories
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="categories">
+				Nom de la sous-catégorie
+			</h3>
+			<h3 class="subcategories">
+				Catégories
+			</h3>
+			<h3 class="active">
+				Active ?
+			</h3>
+			<div class="search">
+				Rechercher
+			</div>
+		</div>
+		{% for subcategory in subcategories %}
+			<a href="{{ path('admin_subcategory_modify', {'slug': subcategory.slug, 'id': subcategory.id }) }}"
+			   class="element subcategory">
+				<span class="data categories">{{ subcategory.name }}</span>
+				<span class="data subcategories">
+					{{ subcategory.productCategories|join(', ') }}
+				</span>
+				<span class="active">
+					<span class="btn-actif {% if subcategory.active == '1' %}true{% else %}false{% endif %}">
+						{% if subcategory.active == '1' %}
+							Actif
+						{% else %}
+							Inactif
+						{% endif %}
+					</span>
+				</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="btn delete" data-id="{{ subcategory.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_subcategories' } %}
+{% endblock %}

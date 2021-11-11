@@ -1,0 +1,124 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Modifier - {{ product.name }} - Produits{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/produit.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Gérer vos produits</h1>
+
+	<div class="dflex products">
+
+		{{ form_start(form) }}
+		<h2><i class="fas fa-shopping-bag"></i> Modifier un produit</h2>
+
+		<div id="add-pictures">
+			<a href="{{ path('admin_products_add_pictures', {'productSlug': product.slug, 'productId': product.id }) }}"
+			   class="btn action">
+				<i class="fas fa-images"></i> Gestion des images
+			</a>
+		</div>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert success">
+				<p>{{ message }}</p>
+			</div>
+		{% endfor %}
+		<div class="large-bloc">
+			<div class="line">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name) }}
+			</div>
+
+			<div class="line">
+				{{ form_label(form.text) }}
+				{{ form_widget(form.text) }}
+			</div>
+
+			<div class="line">
+				{{ form_label(form.image) }}
+				{{ form_widget(form.image) }}
+
+				<div class="bloc-img">
+					{% if product.image|length > 0 %}
+						<img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}">
+					{% endif %}
+				</div>
+			</div>
+
+			<div class="line">
+				{{ form_label(form.name_img) }}
+				<p>Indiquez le nom de l'image qui doit donnez des indications sur l'image.</p>
+				{{ form_widget(form.name_img) }}
+			</div>
+
+			<div class="line">
+				{{ form_label(form.alt_img) }}
+				<p>Indiquez une information de l'image pour les personnes qui n'ont pas la possibilité de voir l'image.</p>
+				{{ form_widget(form.alt_img) }}
+			</div>
+		</div>
+
+		<div class="small-bloc">
+			<div class="line price">
+				{{ form_label(form.price) }}
+				{{ form_widget(form.price) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.productCategory) }}
+				{{ form_widget(form.productCategory) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.subcategory) }}
+				{{ form_widget(form.subcategory) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.tva) }}
+				{{ form_widget(form.tva) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.active) }}
+				{{ form_widget(form.active) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.favourite) }}
+				{{ form_widget(form.favourite) }}
+			</div>
+		</div>
+
+
+		<div class="bloc">
+			{{ form_widget(form.submit, {'attr': {'class': 'btn action'}}) }}
+		</div>
+		{{ form_end(form) }}
+
+		<div class="produits">
+			<h2><i class="fas fa-shopping-bag"></i> Vos produits</h2>
+
+			{% for product in products %}
+				<a href="{{ path('admin_products_modify', {'slug': product.slug, 'id': product.id }) }}"
+				   class="element produit">
+
+						<span class="data categorie">
+							{% if product.productCategory|length > 0 %}
+							{{ product.productCategory }}
+							{% else %}
+								Pas de catégorie
+							{% endif %}
+						</span>
+
+					<span class="titre">{{ product.name }}</span>
+					<span class="prix">{{ product.price }} €</span>
+				</a>
+			{% endfor %}
+
+			<div class="btns dflex">
+				<a href="{{ path('admin_products', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-list-ul"></i> Voir tous les produits
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

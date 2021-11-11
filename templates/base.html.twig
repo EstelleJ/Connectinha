@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>{% block title %}{% endblock %} - Modèle de boutique</title>
+	{# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,900&display=swap" rel="stylesheet">
+	{% block stylesheets %}
+		{# {{ encore_entry_link_tags('app') }} #}
+	{% endblock %}
+	<link rel="stylesheet" href="{{ asset('css/front/styles.css') }}">
+	{% block javascripts %}
+		{# {{ encore_entry_script_tags('app') }} #}
+	{% endblock %}
+	<script src="https://kit.fontawesome.com/e10814a45c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header>
+	<div class="container">
+		<nav>
+			<ul>
+				<li class="logo">
+					<a href="{{ path('index') }}" title="Logo"></a>
+				</li>
+			</ul>
+			<ul class="menu">
+				<li class="accueil">
+					<a href="{{ path('index') }}" title="Accueil">Accueil</a>
+				</li>
+				<li class="produits">
+					<a href="{{ path('products', {'page': '1'}) }}" title="Produits">Produits</a>
+				</li>
+				<li class="rdv">
+					<a href="{{ path('agenda') }}" title="Prestations">Prestations</a>
+				</li>
+				<li class="contact">
+					<a href="" title="Contact">Contact</a>
+				</li>
+				{% if app.user %}
+				<li class="profile">
+					<a href="{{ path('profile') }}" title="Profil">
+						<i class="fas fa-user"></i> Votre espace
+					</a>
+				</li>
+				<li class="disconnect">
+					<a href="{{ path('app_logout') }}" title="Déconnexion">
+						<i class="fas fa-power-off"></i> Déconnexion
+					</a>
+				</li>
+				{% else %}
+					<li class="registration">
+						<a href="{{ path('app_register') }}" title="Inscription">
+							<i class="fas fa-check"></i> Inscription
+						</a>
+					</li>
+					<li class="connexion">
+						<a href="{{ path('app_login') }}" title="Connexion">
+							<i class="fas fa-user"></i> Connexion
+						</a>
+					</li>
+				{% endif %}
+				<li class="panier">
+					<a href="" title="Panier">
+						<i class="fas fa-shopping-cart"></i>Panier
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>
+
+{% block body %}{% endblock %}
+
+<footer>
+	<div class="footer-top">
+		<div class="container">
+			<nav>
+				<ul class="logo">
+					<li>
+						<a href=""></a>
+					</li>
+				</ul>
+				<ul class="menu">
+					<h3>Aller plus loin</h3>
+					<li>
+						<a href="" title="Conditions Générales de Vente">
+							<i class="fas fa-angle-right"></i>CGV
+						</a>
+					</li>
+					<li>
+						<a href="" title="Contactez-nous">
+							<i class="fas fa-angle-right"></i>Contactez-nous
+						</a>
+					</li>
+				</ul>
+				<ul class="reseaux">
+					<h3>Retrouvez-nous sur les réseaux</h3>
+					<li>
+						<a href="" title="Rejoignez-nous sur Facebook">
+							<i class="fab fa-facebook-f"></i>
+						</a>
+					</li>
+					<li>
+						<a href="" title="Rejoignez-nous sur Twitter">
+							<i class="fab fa-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="" title="Rejoignez-nous sur Instagram">
+							<i class="fab fa-instagram"></i>
+						</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="container">
+			<nav>
+				<ul>
+					<li>
+						<a href="" title="Mentions Légales">Mentions Légales</a>
+					</li>
+					<li>
+						<span>-</span> Réalisé par <a href="" title="EILEA - Agence de communications print et digitale">EILEA</a>
+						- {{ "now"|date('Y') }}
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</footer>
+</body>
+</html>

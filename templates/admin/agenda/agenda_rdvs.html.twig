@@ -1,0 +1,90 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/diary.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1><span>Gérer les jours</span></h1>
+
+    <section class="bloc-actions dflex">
+        <div class="number">
+            <h2>
+				<span class="square">
+					<i class="fas fa-user-check"></i>
+				</span>
+        <span class="texte">
+					Vous avez {{ elements|length }} rendez-vous réservés
+				</span>
+            </h2>
+        </div>
+        <div class="btns">
+            <a class="btn add" href="{{ path('admin_agenda_rdv_add') }}">
+                <i class="fas fa-user-check"></i> Ajouter un rendez-vous
+            </a>
+        </div>
+    </section>
+
+    <section class="table">
+        <div class="header-table">
+            <div class="col days">
+                <h2>Jour et horaire</h2>
+            </div>
+
+            <div class="col customer">
+                <h2>Client</h2>
+            </div>
+
+            <div class="col email">
+                <h2>Email</h2>
+            </div>
+
+            <div class="col phoneNumber">
+                <h2>Numéro de téléphone</h2>
+            </div>
+
+            <div class="col action-btns">
+                <h2>Action</h2>
+            </div>
+        </div>
+
+        {% for rdv in rdvs %}
+            <div class="line">
+                <div class="col days">
+                    <h3>
+                        {{ rdv.date|format_datetime(locale='fr',pattern="HH:mm") }}
+                    </h3>
+                </div>
+
+                <div class="col customer">
+                    <h3>{{ rdv.firstname }} {{ rdv.name }}</h3>
+                </div>
+
+                <div class="col email">
+                    <h3>{{ rdv.email }}</h3>
+                </div>
+
+                <div class="col phoneNumber">
+                    <h3>{{ rdv.phoneNumber }}</h3>
+                </div>
+
+                <div class="col action-btns">
+                    <div class="btns">
+                        <a class="btn" href="{{ path('admin_agenda_rdvs_modify', {'id': rdv.id }) }}"><i class="fas fa-edit"></i> Modifier</a>
+
+                        <form method="post" action="{{ path('admin_agenda_days_delete', {'id': rdv.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rendez-vous ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ rdv.id) }}">
+                            <button class="btn delete"><i class="fas fa-times"></i> Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    {% include 'includes/_pagination.html.twig' with {'link': 'admin_agenda_rdv' } %}
+
+{% endblock %}

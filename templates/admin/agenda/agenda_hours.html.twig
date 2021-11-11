@@ -1,0 +1,67 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/diary.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1><span>Gérer les horaires</span></h1>
+
+    <section class="bloc-actions dflex">
+        <div class="number">
+            <h2>
+				<span class="square">
+					<i class="far fa-clock"></i>
+				</span>
+                <span class="texte">
+					Vous avez {{ elements|length }} horaires disponibles
+				</span>
+            </h2>
+        </div>
+        <div class="btns">
+            <a class="btn add" href="{{ path('admin_agenda_hours_add') }}">
+                <i class="far fa-clock"></i> Ajouter un horaire
+            </a>
+        </div>
+    </section>
+
+    <section class="table">
+        <div class="header-table">
+            <div class="col unavailable">
+                <h2>Horaire - Durée associée</h2>
+            </div>
+
+            <div class="col action-btns">
+                <h2>Action</h2>
+            </div>
+        </div>
+
+        {% for hour in hours %}
+            <div class="line">
+                <div class="col unavailable">
+                    <h3>
+                        {{ hour.hour|format_datetime(locale='fr',pattern="HH:mm") }} -
+                        {{ hour.duration }}
+                    </h3>
+                </div>
+
+                <div class="col action-btns">
+                    <div class="btns">
+                        <a class="btn" href="{{ path('admin_agenda_hours_modify', {'id': hour.id }) }}"><i class="fas fa-edit"></i> Modifier</a>
+
+                        <form method="post" action="{{ path('admin_agenda_hours_delete', {'id': hour.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet horaire ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ hour.id) }}">
+                            <button class="btn delete"><i class="fas fa-times"></i> Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    {% include 'includes/_pagination.html.twig' with {'link': 'admin_agenda_hours' } %}
+
+{% endblock %}

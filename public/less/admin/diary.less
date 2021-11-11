@@ -1,0 +1,115 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+#agenda {
+	width: 100%;
+	.dflex();
+	justify-content: space-between;
+
+
+	.d-flex {
+		justify-content: space-between;
+		.dflex();
+		width: 100%;
+
+		.left {
+			width: 30%;
+		}
+
+		.right {
+			width: 68%;
+			.dflex();
+			justify-content: space-between;
+		}
+
+	}
+
+	.bloc {
+		padding: 30px 35px;
+		background-color: @bg-white;
+		box-shadow: 0px 3px 8px rgba(23,23,23,0.3);
+		margin: 10px 0;
+
+		p {
+			width: 100%;
+			text-align: center;
+			font-size: 1.8rem;
+		}
+
+		&.days {
+			width: 30%;
+		}
+
+		&.rdv {
+			width: 68%;
+		}
+
+		&.duration,
+		&.unavailable {
+			width: 48%;
+		}
+
+		&.distance {
+			width: 100%;
+		}
+	}
+
+	.btns {
+		width: 100%;
+		.dflex();
+		justify-content: center;
+
+		.btn {
+			display: inline-block;
+			margin: 10px auto;
+		}
+	}
+
+}
+
+.element {
+	width: 100%;
+
+	i {
+		margin-right: 10px;
+		color: @tc-blue;
+	}
+}
+
+
+/* --------------- MEDIAQUERIES --------------- */
+/* -------------------------------------------- */
+
+@media screen and (max-width: 1540px) {
+
+}
+
+@media screen and (max-width: 1149px) {
+
+}
+
+@media screen and (max-width: 990px) {
+
+
+}
+
+@media screen and (max-width: 767px) {
+
+}
+
+@media screen and (max-width: 630px) {
+
+
+}
+
+@media screen and (max-width: 520px) {
+
+
+}
+
+@media screen and (max-width: 380px) {
+
+
+
+}
+

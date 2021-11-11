@@ -1,0 +1,64 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+.bloc-form {
+	padding: 4rem 5rem;
+	box-shadow: 0 0.3rem 0.8rem rgba(23,23,23,0.2);
+	width: 40%;
+	margin: auto;
+
+	.line {
+		margin-bottom: 1.5rem;
+	}
+
+	label {
+		width: 100%;
+		display: block;
+		margin-bottom: 0.5rem;
+		font-size: 1.6rem;
+	}
+
+	.bloc {
+		margin-bottom: 1.5rem;
+
+		h2 {
+			font-size: 1.8rem;
+			font-weight: bold;
+			margin-bottom: 1.5rem;
+		}
+	}
+}
+
+input,
+textarea,
+select {
+	padding: 0.8rem 2rem;
+	background-color: @bg-lightgrey;
+	border: none;
+	width: 100%;
+}
+
+.btns {
+	.dflex();
+	justify-content: center;
+
+	button {
+		display: inline-block;
+		padding: 0.8rem 2.2rem;
+		background-color: @bg-action;
+		color: @tc-white;
+		border: none;
+
+		&:hover {
+			cursor: pointer;
+			background-color: darken(@bg-action, 10%);
+			transition: 0.3s background-color;
+		}
+
+		i {
+			margin-right: 0.8rem;
+		}
+	}
+}
+
+

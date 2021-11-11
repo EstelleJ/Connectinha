@@ -1,0 +1,194 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+.products {
+	justify-content: space-between;
+	height: 78vh;
+	overflow-y: scroll;
+}
+
+/* ---------------- AFFICHAGE DES PRODUITS ---------------- */
+/* ------------------------------------------------------- */
+
+.table {
+
+	.categorie {
+		width: 20%;
+	}
+
+	.name {
+		width: 25%;
+		padding-right: 20px;
+	}
+
+	.price {
+		width: 8%;
+	}
+
+	.tva {
+		width: 12%;
+	}
+
+	.active {
+		width: 10%;
+		text-align: center;
+	}
+
+	.search,
+	.btns {
+		width: 25%;
+	}
+
+	.btns {
+		margin: 0;
+	}
+
+	.delete {
+		position: relative;
+	}
+}
+
+/* ---------------- ADD DES PRODUITS ---------------- */
+/* ------------------------------------------------------- */
+
+form {
+	position: relative;
+	width: 63%;
+	padding: 3rem 3.5rem;
+	background: @bg-white;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+
+	.large-bloc {
+		width: 55%;
+
+		.bloc-img {
+			width: 100px;
+			height: 120px;
+			margin-top: 15px;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+	}
+
+	.small-bloc {
+		width: 40%;
+	}
+
+	#add-pictures {
+		position: absolute;
+		right: 3rem;
+		top: 3rem;
+	}
+
+	h3 {
+		font-weight: bold;
+		margin-bottom: 3rem;
+
+		span {
+			color: @tc-blue;
+		}
+	}
+
+	h4 {
+		margin-bottom: 1.5rem;
+		font-size: 1.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.1ch;
+	}
+
+	p {
+		color: @tc-darkblue;
+		font-size: 1.3rem;
+	}
+}
+
+.produits {
+	width: 35%;
+	padding: 3rem 3.5rem;
+	background-color: @bg-white;
+
+	.produit {
+
+		.categorie {
+			.mixin-categorie();
+		}
+
+		.titre {
+			.mixin-titre();
+		}
+
+		.prix {
+			.mixin-prix();
+		}
+
+		.delete {
+			right: 1.5rem;
+			top: 1.2rem;
+		}
+
+	}
+
+	&.small {
+		.prix {
+			width: 20%;
+		}
+	}
+
+	.bloc-miniatures {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		height: 530px;
+		overflow-y: scroll;
+
+		.miniature {
+			display: inline-block;
+			width: 30%;
+			height: 160px;
+			margin: 9px 5px;
+			position: relative;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+				position: relative;
+
+				&:hover {
+					border: 2px solid grey;
+				}
+			}
+
+			.btn.delete {
+				position: absolute;
+				.full-center();
+				width: 100%;
+				height: 100%;
+				background-color: transparent;
+				z-index: 3;
+				margin: 0;
+				border-radius: 0;
+				box-shadow: none;
+
+				i {
+					color: transparent;
+				}
+
+				&:hover {
+					.delete-overlay();
+
+				}
+			}
+		}
+	}
+
+
+
+}
+

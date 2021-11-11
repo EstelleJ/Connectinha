@@ -1,0 +1,64 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/admin/table.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/admin/agenda.css') }}">
+{% endblock %}
+
+{% block body %}
+    <h1><span>Gérer les dates indisponibles</span></h1>
+
+    <section class="bloc-actions dflex">
+        <div class="number">
+            <h2>
+				<span class="square">
+					<i class="far fa-calendar-times"></i>
+				</span>
+                <span class="texte">
+					Vous avez {{ elements|length }} dates indisponibles
+				</span>
+            </h2>
+        </div>
+        <div class="btns">
+            <a class="btn add" href="{{ path('admin_agenda_unavailable_add') }}">
+                <i class="far fa-calendar-times"></i> Ajouter une date
+            </a>
+        </div>
+    </section>
+
+    <section class="table">
+        <div class="header-table">
+            <div class="col unavailable">
+                <h2>Date</h2>
+            </div>
+
+            <div class="col action-btns">
+                <h2>Action</h2>
+            </div>
+        </div>
+
+        {% for unavailable in unavailables %}
+            <div class="line">
+                <div class="col unavailable">
+                    <h3>{{ unavailable.date|format_datetime(locale='fr',pattern="dd MMMM") }}</h3>
+                </div>
+
+                <div class="col action-btns">
+                    <div class="btns">
+                        <a class="btn" href="{{ path('admin_agenda_unavailable_modify', {'id': unavailable.id }) }}"><i class="fas fa-edit"></i> Modifier</a>
+
+                        <form method="post" action="{{ path('admin_agenda_unavailable_delete', {'id': unavailable.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette date ?');">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ unavailable.id) }}">
+                            <button class="btn delete"><i class="fas fa-times"></i> Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+
+    {% include 'includes/_pagination.html.twig' with {'link': 'admin_agenda_unavailable' } %}
+
+{% endblock %}

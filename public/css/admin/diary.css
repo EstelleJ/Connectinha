@@ -1,0 +1,113 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #213875;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+#agenda {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#agenda .d-flex {
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+#agenda .d-flex .left {
+  width: 30%;
+}
+#agenda .d-flex .right {
+  width: 68%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#agenda .bloc {
+  padding: 30px 35px;
+  background-color: #fff;
+  box-shadow: 0px 3px 8px rgba(23, 23, 23, 0.3);
+  margin: 10px 0;
+}
+#agenda .bloc p {
+  width: 100%;
+  text-align: center;
+  font-size: 1.8rem;
+}
+#agenda .bloc.days {
+  width: 30%;
+}
+#agenda .bloc.rdv {
+  width: 68%;
+}
+#agenda .bloc.duration,
+#agenda .bloc.unavailable {
+  width: 48%;
+}
+#agenda .bloc.distance {
+  width: 100%;
+}
+#agenda .btns {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#agenda .btns .btn {
+  display: inline-block;
+  margin: 10px auto;
+}
+.element {
+  width: 100%;
+}
+.element i {
+  margin-right: 10px;
+  color: #2086a5;
+}
+/* --------------- MEDIAQUERIES --------------- */
+/* -------------------------------------------- */

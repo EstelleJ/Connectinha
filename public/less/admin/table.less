@@ -1,0 +1,326 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+.bandeau {
+	.bloc-btn {
+		.btns {
+			margin: 20px 0;
+		}
+	}
+}
+
+.bloc-left {
+	width: 60%;
+}
+
+.bloc-right {
+	width: 38%;
+}
+
+.btns {
+	width: 100%;
+
+	&.center {
+		justify-content: initial;
+	}
+}
+
+.table {
+	background-color: @bg-white;
+	border-radius: 10px;
+	box-shadow: 0px 3px 5px rgba(23,23,23,0.2);
+	overflow: hidden;
+
+	.header-table {
+		.dflex();
+		justify-content: space-between;
+		background-color: @bg-blue;
+		padding: 10px 15px;
+
+		h2 {
+			color: @tc-white !important;
+			margin: 0;
+			font-size: 1.3rem;
+		}
+	}
+
+	.col {
+		padding: 0 15px;
+
+		* {
+			overflow: hidden;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+		}
+
+		h3 {
+			margin: 0;
+		}
+
+		&.hours {
+
+			* {
+				overflow: initial;
+				text-overflow: initial;
+				white-space: normal;
+			}
+
+			span {
+				margin-right: 8px;
+			}
+		}
+	}
+
+	.name {
+		width: 12%;
+	}
+
+	.firstname {
+		width: 15%;
+	}
+
+	.pseudo {
+		width: 18%;
+	}
+
+	.email {
+		width: 25%;
+	}
+
+	.titre {
+		width: 70%;
+	}
+
+	.post_titre {
+		width: 30%;
+	}
+
+	.page {
+		width:  20%;
+	}
+
+	.action-btns {
+		width: 30%;
+	}
+
+	/* ------ Session ------- */
+
+	.date {
+		width: 20%;
+	}
+
+	.mentor, .etudiant {
+		width: 25%;
+	}
+
+	/* ------- Indisponibilités ------- */
+
+	.unavailable {
+		width: 70%;
+	}
+
+	/* --------- Créneaux horaires --------- */
+
+	.days {
+		width: 20%;
+	}
+
+	.hours {
+		width: 50%;
+	}
+
+	/* ----------- Horaires ------------- */
+
+	.duration {
+		width: 70%;
+	}
+
+	.line {
+		padding: 3px 15px;
+		.dflex();
+		align-items: center;
+		margin-bottom: 0rem;
+
+		.btns {
+			margin: 0 5px;
+
+		}
+
+	}
+
+	/* --------------- Distance ---------------- */
+	.distance {
+		width: 70%;
+	}
+
+	/* --------------- Services --------------- */
+
+	.service {
+		width: 30%;
+	}
+
+	.price {
+		width: 15%;
+	}
+
+	.tva {
+		width: 15%;
+	}
+
+	.method {
+		width: 10%;
+	}
+
+}
+
+.form {
+	background-color: @bg-white;
+	padding: 40px 70px;
+
+	.align-left {
+
+		.btns {
+			margin: initial;
+		}
+	}
+
+	form {
+		.dflex();
+		justify-content: space-between;
+
+		.form-bloc {
+			margin-bottom: 25px;
+
+			p {
+				font-size: 1.2rem;
+				margin-top: 5px;
+			}
+
+			label {
+				display: block;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+
+			input, textarea {
+				display: block;
+				width: 100%;
+				padding: 8px 20px;
+			}
+
+			textarea {
+				width: 100%;
+				height: 150px;
+			}
+
+			select {
+				width: 100%;
+				padding: 10px;
+			}
+		}
+
+		.form-agree {
+			width: 100%;
+		}
+
+	}
+
+
+}
+
+/* --------------- MEDIAQUERIES --------------- */
+/* -------------------------------------------- */
+
+@media screen and (max-width: 1540px) {
+	.table {
+		.line {
+			.btns {
+				display: flex;
+				flex-wrap: wrap;
+				align-content: center;
+				justify-content: center;
+				width: 100%;
+				margin: 8px 0;
+			}
+
+			form {
+				width: 100%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1149px) {
+
+}
+
+@media screen and (max-width: 990px) {
+	.table {
+		.name,
+		.firstname,
+		.pseudo,
+		.email,
+		.date,
+		.post_titre,
+		.date,
+		.page,
+		.duration,
+		.unavailable,
+		.distance,
+		.action-btns {
+			width: 100%;
+		}
+
+		h3 {
+			margin-bottom: 10px;
+		}
+
+		.header-table {
+
+			h2 {
+				margin-bottom: 6px;
+			}
+		}
+	}
+
+	.form {
+		padding: 30px 50px;
+	}
+
+}
+
+@media screen and (max-width: 767px) {
+	.form {
+		form {
+			.user,
+			.programme,
+			.connexion,
+			.retour,
+			.categories,
+			.plus{
+				width: 100%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 630px) {
+	.form {
+		padding: 18px 25px;
+	}
+
+}
+
+@media screen and (max-width: 520px) {
+
+
+}
+
+@media screen and (max-width: 380px) {
+	.form {
+		padding: 18px 12px;
+	}
+
+
+}
+

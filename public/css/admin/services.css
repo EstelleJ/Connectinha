@@ -1,0 +1,138 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #213875;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+/* ---------------- AFFICHAGE DES PRODUITS ---------------- */
+/* ------------------------------------------------------- */
+.table .element {
+  width: 100%;
+}
+.table .service {
+  width: 30%;
+  padding-right: 20px;
+}
+.table .price {
+  width: 10%;
+}
+.table .tva {
+  width: 10%;
+}
+.table .method {
+  width: 20%;
+}
+.table .active-btns {
+  width: 10%;
+  text-align: center;
+}
+.table .search,
+.table .btns {
+  width: 20%;
+}
+.table .btns {
+  margin: 0;
+}
+.table .delete {
+  position: relative;
+}
+/* --------------------- ADD SERVICES  ------------------- */
+/* ------------------------------------------------------- */
+form {
+  position: relative;
+  width: 63%;
+  padding: 3rem 3.5rem;
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+form .large-bloc {
+  width: 55%;
+}
+form .large-bloc .bloc-img {
+  width: 100px;
+  height: 120px;
+  margin-top: 15px;
+}
+form .large-bloc .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+form .small-bloc {
+  width: 40%;
+}
+form #add-pictures {
+  position: absolute;
+  right: 3rem;
+  top: 3rem;
+}
+form h3 {
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+form h3 span {
+  color: #2086a5;
+}
+form h4 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+}
+form p {
+  color: #213875;
+  font-size: 1.3rem;
+}
+.add-services {
+  justify-content: space-between;
+}
+.services.small {
+  width: 35%;
+  background-color: #fff;
+  padding: 3rem 3.5rem;
+}

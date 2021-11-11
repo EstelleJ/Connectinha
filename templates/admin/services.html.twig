@@ -1,0 +1,90 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Les services proposés{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/services.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/deletes/services-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer les services que vous proposés</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-star"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ elements|length }} services disponibles
+				</span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_services_add') }}" class="btn">
+				<i class="fas fa-plus"></i> Ajouter un service
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="service">
+				Nom du service - Durée
+			</h3>
+			<h3 class="price">
+				Prix
+			</h3>
+			<h3 class="tva">
+				TVA appliquée
+			</h3>
+			<h3 class="method">
+				Méthode de paiement
+			</h3>
+			<h3 class="active-btns">
+				Actif ?
+			</h3>
+			<div class="search">
+				Rechercher
+			</div>
+		</div>
+		{% for service in services %}
+			<a href="{{ path('admin_services_modify', {'slug': service.slug, 'id': service.id }) }}" class="element services">
+
+				<span class="data service">{{ service.title }} - {{ service.duration }}</span>
+				<span class="data price">{{ service.price }} €</span>
+				<span class="data tva">{{ service.tva }}</span>
+
+				<span class="method">
+					{% for method in service.paymentMethod %}{{ method.name }},{% endfor %}
+				</span>
+
+				<span class="active-btns">
+					<span class="btn-actif {% if service.active == '1' %}true{% else %}false{% endif %}">
+						{% if service.active == '1' %}
+							Actif
+						{% else %}
+							Inactif
+						{% endif %}
+					</span>
+				</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="btn delete" data-id="{{ service.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_services' } %}
+{% endblock %}
+

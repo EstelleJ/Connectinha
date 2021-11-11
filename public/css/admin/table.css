@@ -1,0 +1,276 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #213875;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+.bandeau .bloc-btn .btns {
+  margin: 20px 0;
+}
+.bloc-left {
+  width: 60%;
+}
+.bloc-right {
+  width: 38%;
+}
+.btns {
+  width: 100%;
+}
+.btns.center {
+  justify-content: initial;
+}
+.table {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 3px 5px rgba(23, 23, 23, 0.2);
+  overflow: hidden;
+  /* ------ Session ------- */
+  /* ------- Indisponibilités ------- */
+  /* --------- Créneaux horaires --------- */
+  /* ----------- Horaires ------------- */
+  /* --------------- Distance ---------------- */
+  /* --------------- Services --------------- */
+}
+.table .header-table {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #2086a5;
+  padding: 10px 15px;
+}
+.table .header-table h2 {
+  color: #fff !important;
+  margin: 0;
+  font-size: 1.3rem;
+}
+.table .col {
+  padding: 0 15px;
+}
+.table .col * {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.table .col h3 {
+  margin: 0;
+}
+.table .col.hours * {
+  overflow: initial;
+  text-overflow: initial;
+  white-space: normal;
+}
+.table .col.hours span {
+  margin-right: 8px;
+}
+.table .name {
+  width: 12%;
+}
+.table .firstname {
+  width: 15%;
+}
+.table .pseudo {
+  width: 18%;
+}
+.table .email {
+  width: 25%;
+}
+.table .titre {
+  width: 70%;
+}
+.table .post_titre {
+  width: 30%;
+}
+.table .page {
+  width: 20%;
+}
+.table .action-btns {
+  width: 30%;
+}
+.table .date {
+  width: 20%;
+}
+.table .mentor,
+.table .etudiant {
+  width: 25%;
+}
+.table .unavailable {
+  width: 70%;
+}
+.table .days {
+  width: 20%;
+}
+.table .hours {
+  width: 50%;
+}
+.table .duration {
+  width: 70%;
+}
+.table .line {
+  padding: 3px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 0rem;
+}
+.table .line .btns {
+  margin: 0 5px;
+}
+.table .distance {
+  width: 70%;
+}
+.table .service {
+  width: 30%;
+}
+.table .price {
+  width: 15%;
+}
+.table .tva {
+  width: 15%;
+}
+.table .method {
+  width: 10%;
+}
+.form {
+  background-color: #fff;
+  padding: 40px 70px;
+}
+.form .align-left .btns {
+  margin: initial;
+}
+.form form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.form form .form-bloc {
+  margin-bottom: 25px;
+}
+.form form .form-bloc p {
+  font-size: 1.2rem;
+  margin-top: 5px;
+}
+.form form .form-bloc label {
+  display: block;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.form form .form-bloc input,
+.form form .form-bloc textarea {
+  display: block;
+  width: 100%;
+  padding: 8px 20px;
+}
+.form form .form-bloc textarea {
+  width: 100%;
+  height: 150px;
+}
+.form form .form-bloc select {
+  width: 100%;
+  padding: 10px;
+}
+.form form .form-agree {
+  width: 100%;
+}
+/* --------------- MEDIAQUERIES --------------- */
+/* -------------------------------------------- */
+@media screen and (max-width: 1540px) {
+  .table .line .btns {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    margin: 8px 0;
+  }
+  .table .line form {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 990px) {
+  .table .name,
+  .table .firstname,
+  .table .pseudo,
+  .table .email,
+  .table .date,
+  .table .post_titre,
+  .table .date,
+  .table .page,
+  .table .duration,
+  .table .unavailable,
+  .table .distance,
+  .table .action-btns {
+    width: 100%;
+  }
+  .table h3 {
+    margin-bottom: 10px;
+  }
+  .table .header-table h2 {
+    margin-bottom: 6px;
+  }
+  .form {
+    padding: 30px 50px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form form .user,
+  .form form .programme,
+  .form form .connexion,
+  .form form .retour,
+  .form form .categories,
+  .form form .plus {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 630px) {
+  .form {
+    padding: 18px 25px;
+  }
+}
+@media screen and (max-width: 380px) {
+  .form {
+    padding: 18px 12px;
+  }
+}

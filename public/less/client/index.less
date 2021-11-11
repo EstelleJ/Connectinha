@@ -1,0 +1,19 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+/* ---------------- INDICATION UX ---------------- */
+/* ----------------------------------------------- */
+
+.menu {
+	.accueil {
+		&::after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 0.3rem;
+			background-color: @bg-darkblue;
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}

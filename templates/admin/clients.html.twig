@@ -1,0 +1,87 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Vos clients{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/clients.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/deletes/customers-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer les clients inscrits</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-users"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ customers|length }} clients inscrits
+				</span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_orders', {'page': '1'}) }}" class="btn">
+				<i class="fas fa-shopping-bag"></i> Voir les commandes
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="name">
+				Nom
+			</h3>
+			<h3 class="firstname">
+				Prénom
+			</h3>
+			<h3 class="email">
+				Email
+			</h3>
+			<h3 class="active">
+				Active ?
+			</h3>
+			<div class="search">
+				Rechercher
+			</div>
+		</div>
+		{% for customer in customers %}
+			<a href="{{ path('admin_customer_modify', {'id': customer.id }) }}"
+			   class="element customer">
+				<span class="data name">
+					{{ customer.user.name }}
+				</span>
+				<span class="data firstname">
+					{{ customer.user.firstName }}
+				</span>
+				<span class="data email">
+					{{ customer.user.email }}
+				</span>
+				<span class="active">
+					<span class="btn-actif {% if customer.user.active == '1' %}true{% else %}false{% endif %}">
+						{% if customer.user.active == '1' %}
+							Actif
+						{% else %}
+							Inactif
+						{% endif %}
+					</span>
+				</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="btn delete" data-id="{{ customer.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_customers' } %}
+{% endblock %}

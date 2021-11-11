@@ -1,0 +1,104 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter des images - {{ product.name }} - Produits{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/produit.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/deletes/products-img-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Gérer vos images de produits</h1>
+
+	<div class="dflex products">
+
+		{{ form_start(form) }}
+		<h2><i class="fas fa-images"></i> Ajouter des images</h2>
+
+		<div id="add-pictures">
+			<a href="{{ path('admin_products_modify', {'slug': product.slug, 'id': product.id }) }}" class="btn action">
+				<i class="fas fa-angle-left"></i> Retour au produit
+			</a>
+		</div>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert success">
+				<p>{{ message }}</p>
+			</div>
+		{% endfor %}
+		<div class="large-bloc">
+			<div class="ligne">
+				<h3>Nom du produit : <span>{{ product.name }}</span></h3>
+			</div>
+
+			<h4>Pour votre référencement</h4>
+
+			<div class="ligne">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name) }}
+				<p>Le nom de votre fichier doit décrire votre image succintement.<br>
+					Par exemple : chaussure-marron-homme
+				</p>
+			</div>
+
+			<div class="ligne">
+				{{ form_label(form.title) }}
+				{{ form_widget(form.title) }}
+				<p>Le titre de votre image donne des indications sur son contenu.
+					<br>Il permet d'apporter des précisions à votre utilisateur.
+				</p>
+			</div>
+
+			<div class="ligne">
+				{{ form_label(form.alt) }}
+				{{ form_widget(form.alt) }}
+				<p>Le texte alternatif permet en cas de non chargement de votre image d'afficher une description.
+					Il permet aussi aux personnes ne pouvant voir les images d'avoir accès au même contenu.
+					Par exemple s'il y'a du texte sur l'image, indiquez-le ici.
+				</p>
+
+			</div>
+		</div>
+
+		<div class="small-bloc">
+			<h4>Pour vos utilisateurs</h4>
+
+			<div class="ligne">
+				{{ form_label(form.text) }}
+				{{ form_widget(form.text) }}
+				<p>
+					Le texte de légende est facultatif.
+				</p>
+			</div>
+
+			<div class="ligne">
+				{{ form_label(form.image) }}
+				{{ form_widget(form.image) }}
+			</div>
+		</div>
+
+
+		<div class="bloc">
+			{{ form_widget(form.submit, {'label': 'Ajouter', 'attr': {'class': 'btn action'}}) }}
+		</div>
+		{{ form_end(form) }}
+
+		<div class="produits">
+			<h2><i class="fas fa-images"></i> Les images actuelles</h2>
+
+			<div class="bloc-miniatures">
+				{% for productImage in product.productImages %}
+					<div class="miniature">
+						<div class="btn delete" data-id="{{ productImage.id }}">
+							<i class="far fa-trash-alt"></i>
+						</div>
+						<img src="{{ asset('products/'~ productImage.image ~'')|imagine_filter('productImagesThumbnails') }}">
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

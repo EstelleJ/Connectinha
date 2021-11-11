@@ -1,0 +1,122 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #213875;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+.dflex {
+  justify-content: space-between;
+}
+.bloc {
+  padding: 1.5rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(23, 23, 23, 0.2);
+  margin: 1.2rem 0;
+}
+.products {
+  width: 58%;
+}
+.products .produit .categorie {
+  margin-right: 2.2rem;
+  color: #213875;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.products .produit .titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 40%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.products .produit .prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 12%;
+}
+.products .produit .active {
+  width: 8%;
+  display: block;
+}
+.products .produit .delete {
+  right: 1.5rem;
+  top: 1.2rem;
+}
+.commandes {
+  width: 40%;
+}
+.commandes .commande span {
+  display: block;
+}
+.commandes .commande .numero {
+  width: 12%;
+  font-weight: bold;
+  font-size: 1.4rem;
+}
+.commandes .commande .client {
+  width: 45%;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.commandes .commande .prix {
+  width: 18%;
+  font-size: 2.2rem;
+}
+.commandes .commande .facture {
+  right: 1.5rem;
+  top: 1.2rem;
+}
+.users {
+  width: 45%;
+}

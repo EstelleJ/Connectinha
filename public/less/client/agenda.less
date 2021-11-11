@@ -1,0 +1,195 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+
+/* ---------------- INDICATION UX ---------------- */
+/* ----------------------------------------------- */
+
+.menu {
+	.rdv {
+		&::after {
+			content: "";
+			display: block;
+			width: 100%;
+			height: 0.3rem;
+			background-color: @bg-darkblue;
+			position: absolute;
+			bottom: 0;
+		}
+	}
+}
+
+/* ----------------- RENDEZ-VOUS ----------------- */
+/* ----------------------------------------------- */
+
+
+#rdv {
+	position: relative;
+
+	h1 {
+		text-align: center;
+		margin-bottom: 30px;
+		font-size: 3rem;
+
+		span {
+			color: @tc-green;
+		}
+	}
+
+	h2 {
+		font-size: 2.2rem;
+		font-family: "Montserrat", sans-serif;
+		position: relative;
+		margin-bottom: 3rem;
+		text-align: center;
+	}
+
+	.bloc-services {
+		.dflex();
+		justify-content: center;
+	}
+
+	.service {
+		margin: 15px;
+		padding: 2rem 3rem;
+		transition: 0.3s background-color;
+		display: block;
+		width: 45%;
+		color: @tc-grey;
+
+		span {
+			display: block;
+		}
+
+		.bloc-img {
+			width: 100%;
+			height: 220px;
+			display: block;
+			margin-bottom: 2rem;
+
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: contain;
+			}
+		}
+
+		.title {
+			font-size: 2.8rem;
+			color: @tc-blue;
+			margin-bottom: 1.5rem;
+			text-align: center;
+		}
+
+		.text {
+			line-height: 1.5;
+			text-align: center;
+
+		}
+
+		&:hover {
+			background-color: @bg-lightgrey;
+			transition: 0.3s background-color;
+		}
+	}
+
+	.bloc-choix {
+		background-color: @bg-white;
+		width: 40%;
+		margin: auto;
+		box-shadow: 0 5px 8px rgba(23,23,23,0.2);
+		padding: 35px 50px;
+
+		h2 {
+			text-align: center;
+		}
+
+		label {
+			display: block;
+			margin-bottom: 1rem;
+			font-size: 1.6rem;
+			text-align: left;
+		}
+
+		.btns {
+			.dflex();
+			justify-content: center;
+		}
+
+		.bloc-btn.rdv {
+			margin-top: 30px;
+
+			.btn {
+				margin: auto;
+			}
+		}
+
+		#horaire {
+			margin-bottom: 30px;
+		}
+
+		.line {
+			margin-bottom: 18px;
+			width: 100%;
+
+			label {
+				font-size: 1.5rem;
+				color: @tc-green;
+			}
+
+			p {
+				font-size: 1.3rem;
+			}
+		}
+
+	}
+
+	.confirmation {
+		p {
+			margin-bottom: 12px;
+		}
+
+		.merci {
+			font-size: 2rem;
+			color: @tc-green;
+		}
+	}
+
+}
+
+/* --------------- MEDIAQUERIES --------------- */
+/* -------------------------------------------- */
+
+@media screen and (max-width: 1600px) {
+
+}
+
+@media screen and (max-width: 1149px) {
+
+}
+
+@media screen and (max-width: 990px) {
+	#rdv {
+		.bloc-choix {
+			width: 90%;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	#rdv{
+		.bloc-choix {
+			padding: 20px 15px;
+		}
+
+		h2 {
+			font-size: 1.8rem;
+		}
+	}
+}
+
+@media screen and (max-width: 520px) {
+	#rdv {
+		margin-bottom: 150px;
+	}
+}
+

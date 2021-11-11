@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produits{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/client/produit.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section id="banner">
+
+    </section>
+
+    <section id="products unique">
+        <div class="container">
+            <h1>Nos produits</h1>
+
+            <div class="dflex">
+
+                <div class="product unique">
+                    <div class="bloc-img">
+
+                      <img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}">
+                    </div>
+
+                    <div class="bloc-text">
+                        <h2>{{ product.name }}</h2>
+                        <p class="text">{{ product.text }}</p>
+                        <p class="prix">{{ product.price }} € TTC</p>
+                        <p class="prixHT">{{ product.price - (product.price * (product.tva.percentage / 100)) }} € HT</p>
+
+                        <div class="btns">
+                            <button id="addCart"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+{% endblock %}
