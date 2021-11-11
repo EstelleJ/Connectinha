@@ -10,9 +10,15 @@
 /* -------- TEXT COLORS ------- */
 /* -------- ALERT COLORS ------- */
 /* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
 .success-gradient {
   background: #d4e9d5;
   background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
 }
 .dflex {
   display: flex;
@@ -35,7 +41,7 @@
 /* --------------------------------------------------- */
 .mixin-categorie {
   margin-right: 2.2rem;
-  color: #213875;
+  color: #042b40;
   font-weight: bold;
   font-size: 1.4rem;
   width: 15%;
@@ -292,7 +298,9 @@ body {
   color: #333;
   position: relative;
   min-height: 100vh;
-  padding-bottom: 24rem;
+  padding-bottom: 35rem;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
 }
 .container {
   width: 90%;
@@ -310,20 +318,25 @@ section {
   display: flex;
   flex-wrap: wrap;
   justify-content: initial;
+  width: 100%;
 }
 .btns .btn {
   display: inline-block;
-  padding: 10px 22px;
-  background-color: #2086a5;
+  padding: 1.2rem 5rem;
   transition: 0.3s background-color;
   border: none;
-  color: #fff;
   margin: 1rem 0;
+  font-size: 1.8rem;
 }
 .btns .btn:hover {
-  background-color: #18637a;
-  transition: 0.3s background-color;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.5);
+  transition: 0.3s box-shadow;
   cursor: pointer;
+}
+.btns .btn.round {
+  border-radius: 5rem;
+  min-width: 40rem;
+  text-align: center;
 }
 input,
 select {
@@ -332,6 +345,69 @@ select {
 }
 label {
   text-align: left;
+}
+a,
+button {
+  font-family: "Playfair Display", serif;
+}
+a i,
+button i {
+  margin-right: 1rem;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+button {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+  border: none;
+  font-size: 1.8rem;
+}
+button i {
+  color: #fff;
+}
+p {
+  line-height: 1.5;
+  font-size: 2rem;
+}
+.tc-white {
+  color: #fff;
+}
+.tc-purple {
+  color: #af5ce2;
+}
+.tc-blue {
+  color: #4498b4;
+}
+.bg-white {
+  background-color: #fff;
+}
+.bg-blue {
+  background-color: #41687f;
+}
+.bg-grey {
+  background-color: #f7f7f7;
+}
+.italic {
+  font-family: "Montserrat", sans-serif;
+  font-style: italic;
+}
+.semibold {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 500;
+}
+.bold {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+.amatic {
+  font-family: "Amatic SC", cursive;
+}
+.playfair {
+  font-family: "Playfair Display", serif;
+}
+.rougeScript {
+  font-family: "Rouge Script", cursive;
 }
 #pagination nav ul {
   display: flex;
@@ -342,16 +418,19 @@ label {
   padding: 5px 8px;
 }
 #pagination nav ul li a.active {
-  background-color: #2086a5;
+  background-color: #41687f;
   color: #fff;
 }
 #pagination nav ul li a.active:hover {
-  background-color: #18637a;
+  background-color: #304c5d;
   transition: 0.3s background-color;
 }
 header {
-  background-color: #e7e9eb;
-  box-shadow: 0 0.5rem 1rem rgba(23, 23, 23, 0.2);
+  padding-top: 1.3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 header nav {
   display: flex;
@@ -360,13 +439,19 @@ header nav {
   align-items: center;
 }
 header nav .logo {
-  width: 18rem;
-  height: 7rem;
-  background-color: #afafaf;
+  width: 30rem;
+  height: 11rem;
+}
+header nav .logo img {
+  width: 100%;
+  height: 10rem;
+  object-fit: contain;
 }
 header nav ul {
   display: flex;
   flex-wrap: wrap;
+  margin: auto;
+  align-items: center;
 }
 header nav .menu li {
   position: relative;
@@ -377,56 +462,86 @@ header nav .menu li a {
   align-items: center;
   height: 7rem;
   padding: 0 2.5rem;
-  color: #333;
+  color: #654774;
+  font-family: "Playfair Display", serif;
+  text-transform: uppercase;
+  font-size: 2rem;
+  letter-spacing: 0.1ch;
 }
 header nav .menu li a i {
   margin-right: 0.6rem;
 }
 header nav .menu li::after {
-  content: "";
+  content: "\f186";
+  font-weight: bold;
+  font-family: "Font Awesome 5 Free";
   display: block;
-  width: 100%;
-  height: 0.3rem;
-  background-color: transparent;
+  font-size: 1.2rem;
+  width: 3rem;
+  height: 0.2rem;
+  color: transparent;
   position: absolute;
   bottom: 0;
+  left: calc(50% - 1.5rem);
 }
 header nav .menu li:hover::after {
-  background-color: #213875;
+  color: #042b40;
 }
 footer {
   position: absolute;
   width: 100%;
   bottom: 0;
+  background: url('../../images/fond-footer-cascade-bleu-violet.jpg') no-repeat center center;
+  background-size: cover;
+  color: #fff;
 }
 footer .footer-top {
-  background-color: #e7e9eb;
-  padding: 2.5rem 0;
+  padding: 7rem 5rem;
+  font-size: 1.6rem;
 }
 footer .footer-top nav {
   display: flex;
   flex-wrap: wrap;
 }
 footer .footer-top nav .logo {
-  width: 18rem;
-  border: 0.1rem solid olive;
-  margin: 2rem 0;
+  width: 25rem;
+  margin-right: 8rem;
+  font-size: 4rem;
+  text-align: center;
+  line-height: 0.8;
+  position: relative;
+}
+footer .footer-top nav .logo::after {
+  content: "";
+  display: block;
+  width: 0.3rem;
+  height: 15rem;
+  background-color: #fff;
+  right: -6rem;
+  top: -2rem;
+  position: absolute;
+}
+footer .footer-top nav .logo span {
+  display: block;
+}
+footer .footer-top nav .logo .rougeScript {
+  font-size: 6.5rem;
 }
 footer .footer-top nav ul {
   margin: 0 5rem;
 }
 footer .footer-top nav ul h3 {
   margin-bottom: 2rem;
-  font-weight: 900;
+  font-size: 2.3rem;
 }
 footer .footer-top nav ul li {
   margin-bottom: 1.5rem;
 }
 footer .footer-top nav ul li a {
-  color: #333;
+  color: #fff;
 }
 footer .footer-top nav ul li a:hover {
-  color: #2086a5;
+  color: #41687f;
 }
 footer .footer-top nav ul li a i:hover {
   color: #fff;
@@ -448,18 +563,19 @@ footer .footer-top nav .reseaux li a {
   align-items: center;
   justify-content: center;
   margin: 0 0.8rem;
-  width: 4rem;
-  height: 4rem;
-  border-radius: 4rem;
-  background-color: #333;
+}
+footer .footer-top nav .reseaux li a i {
+  color: #fff;
+  font-size: 2.2rem;
 }
 footer .footer-top nav .reseaux li a:hover {
-  background-color: #2086a5;
   transition: 0.3s background-color;
   color: #fff;
 }
 footer .footer-bottom {
-  background-color: #bcc0c4;
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+  color: #fff;
 }
 footer .footer-bottom nav {
   width: 100%;
@@ -475,5 +591,6 @@ footer .footer-bottom nav ul li span {
   margin: 0 0.8rem;
 }
 footer .footer-bottom nav ul li a {
-  color: #213875;
+  color: #fff;
+  margin: 0 1rem;
 }

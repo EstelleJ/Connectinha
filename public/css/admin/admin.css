@@ -10,9 +10,15 @@
 /* -------- TEXT COLORS ------- */
 /* -------- ALERT COLORS ------- */
 /* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
 .success-gradient {
   background: #d4e9d5;
   background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
 }
 .dflex {
   display: flex;
@@ -35,7 +41,7 @@
 /* --------------------------------------------------- */
 .mixin-categorie {
   margin-right: 2.2rem;
-  color: #213875;
+  color: #042b40;
   font-weight: bold;
   font-size: 1.4rem;
   width: 15%;
@@ -311,7 +317,7 @@ h1 {
   width: 100%;
 }
 h2 {
-  color: #213875;
+  color: #042b40;
   text-transform: uppercase;
   letter-spacing: 0.2ch;
   margin-bottom: 3.5rem;
@@ -382,7 +388,7 @@ select[multiple] {
   justify-content: center;
   align-items: center;
   width: 3em;
-  background-color: #213875;
+  background-color: #042b40;
   color: white;
   font-family: "Font Awesome 5 Free";
   font-weight: bold;
@@ -396,7 +402,7 @@ select[multiple] {
   position: relative;
   display: flex;
   align-items: center;
-  background-color: #2086a5;
+  background-color: #41687f;
   color: #fff;
   padding: 0.2em 1.8em 0.2em 0.5em;
   margin: 0.3em 0;
@@ -426,7 +432,7 @@ select[multiple] {
   cursor: pointer;
 }
 .options-container .option:hover {
-  background-color: #2086a5;
+  background-color: #41687f;
   color: #fff;
 }
 .hidden {
@@ -447,12 +453,12 @@ select[multiple] {
   margin: 0 3px;
 }
 #pagination nav ul a:hover {
-  background-color: #2086a5;
+  background-color: #41687f;
   color: #fff;
   transition: 0.3s background-color;
 }
 #pagination nav ul .active {
-  background-color: #2086a5;
+  background-color: #41687f;
   color: #fff;
 }
 /* ------------------ HEADER ------------------ */
@@ -585,7 +591,7 @@ input {
   width: 4.2rem;
   height: 4.2rem;
   background-color: #cbd0d4;
-  color: #213875;
+  color: #042b40;
 }
 .line.taux::after {
   content: "\f295";
@@ -602,7 +608,7 @@ input {
   width: 4.2rem;
   height: 4.2rem;
   background-color: #cbd0d4;
-  color: #213875;
+  color: #042b40;
 }
 select {
   padding: 10px 15px;
@@ -679,7 +685,7 @@ button {
   padding: 0.8rem 2rem;
   border-radius: 0.8rem;
   box-shadow: 0 0.2rem 0.5rem rgba(23, 23, 23, 0.3);
-  background-color: #2086a5;
+  background-color: #41687f;
   color: #fff;
   margin: 1rem 0.8rem;
   font-size: 1.5rem;
@@ -689,7 +695,7 @@ button {
   font-size: 1.5rem;
 }
 .btn:hover {
-  background-color: #18637a;
+  background-color: #304c5d;
   transition: 0.3s background-color;
 }
 .btn .add {
@@ -724,10 +730,10 @@ button {
   background-color: #9f0808;
 }
 .facture {
-  background-color: #5d31af;
+  background-color: #82629a;
 }
 .facture:hover {
-  background-color: #482687;
+  background-color: #684e7b;
 }
 /* ----------------- FOOTER ----------------- */
 /* ------------------------------------------ */

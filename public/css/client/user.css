@@ -1,9 +1,15 @@
 /* -------- TEXT COLORS ------- */
 /* -------- ALERT COLORS ------- */
 /* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
 .success-gradient {
   background: #d4e9d5;
   background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
 }
 .dflex {
   display: flex;
@@ -26,7 +32,7 @@
 /* --------------------------------------------------- */
 .mixin-categorie {
   margin-right: 2.2rem;
-  color: #213875;
+  color: #042b40;
   font-weight: bold;
   font-size: 1.4rem;
   width: 15%;
@@ -49,7 +55,7 @@
 }
 #banner {
   height: 15rem;
-  background-color: #2086a5;
+  background-color: #41687f;
 }
 #banner h1 {
   font-weight: bold;
@@ -58,7 +64,7 @@
   text-shadow: 0 2px 5px rgba(23, 23, 23, 0.4);
 }
 #banner h1 .name {
-  color: #a4dced;
+  color: #b4cbd8;
 }
 #banner h1 .uppercase {
   text-transform: uppercase;
@@ -78,6 +84,6 @@
   padding: 8px 15px;
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  color: #2086a5;
+  color: #41687f;
   font-weight: bold;
 }

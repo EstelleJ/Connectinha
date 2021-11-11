@@ -2,13 +2,14 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<title>{% block title %}{% endblock %} - Modèle de boutique</title>
+	<meta name="description" content="{% block description %}{% endblock %}">
+	<title>{% block title %}{% endblock %} - Connectinha - Elodie Ortiz Magnétiseuse</title>
 	{# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;1,900&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Montserrat:ital,wght@0,400;0,500;0,700;1,400&family=Playfair+Display:wght@400;700&family=Rouge+Script&display=swap" rel="stylesheet">
 	{% block stylesheets %}
 		{# {{ encore_entry_link_tags('app') }} #}
 	{% endblock %}
@@ -22,41 +23,37 @@
 <header>
 	<div class="container">
 		<nav>
-			<ul>
-				<li class="logo">
-					<a href="{{ path('index') }}" title="Logo"></a>
-				</li>
-			</ul>
+
 			<ul class="menu">
 				<li class="accueil">
 					<a href="{{ path('index') }}" title="Accueil">Accueil</a>
 				</li>
 				<li class="produits">
-					<a href="{{ path('products', {'page': '1'}) }}" title="Produits">Produits</a>
+					<a href="" title="Mes services">Mes services</a>
 				</li>
 				<li class="rdv">
-					<a href="{{ path('agenda') }}" title="Prestations">Prestations</a>
+					<a href="{{ path('agenda') }}" title="Réserver une séance">Réserver une séance</a>
 				</li>
-				<li class="contact">
-					<a href="" title="Contact">Contact</a>
+
+				<li class="logo">
+					<a href="{{ path('index') }}" title="Logo">
+						<img src="{{ asset('images/logo-elodie-ortiz-connectinha-magnetisme.png') }}" alt="Logo Elodie Ortiz Magnétisme">
+					</a>
 				</li>
+
+				<li class="produits">
+					<a href="{{ path('products', {'page': '1'}) }}" title="Produits">
+						<i class="fas fa-store"></i>Boutique
+					</a>
+				</li>
+
 				{% if app.user %}
 				<li class="profile">
 					<a href="{{ path('profile') }}" title="Profil">
 						<i class="fas fa-user"></i> Votre espace
 					</a>
 				</li>
-				<li class="disconnect">
-					<a href="{{ path('app_logout') }}" title="Déconnexion">
-						<i class="fas fa-power-off"></i> Déconnexion
-					</a>
-				</li>
 				{% else %}
-					<li class="registration">
-						<a href="{{ path('app_register') }}" title="Inscription">
-							<i class="fas fa-check"></i> Inscription
-						</a>
-					</li>
 					<li class="connexion">
 						<a href="{{ path('app_login') }}" title="Connexion">
 							<i class="fas fa-user"></i> Connexion
@@ -65,7 +62,7 @@
 				{% endif %}
 				<li class="panier">
 					<a href="" title="Panier">
-						<i class="fas fa-shopping-cart"></i>Panier
+						<i class="fas fa-shopping-cart"></i> Panier
 					</a>
 				</li>
 			</ul>
@@ -81,39 +78,49 @@
 			<nav>
 				<ul class="logo">
 					<li>
-						<a href=""></a>
+						<a href="{{ path('index') }}">
+							<strong>
+								<span class="rougeScript">
+									Elodie Ortiz
+								</span>
+								<span class="amatic">
+									Magnétisme
+								</span>
+							</strong>
+						</a>
 					</li>
 				</ul>
 				<ul class="menu">
-					<h3>Aller plus loin</h3>
+					<h3 class="bold">Contactez-moi</h3>
 					<li>
-						<a href="" title="Conditions Générales de Vente">
-							<i class="fas fa-angle-right"></i>CGV
-						</a>
+							<i class="fas fa-mobile-alt"></i> 06 05 04 03 02
 					</li>
 					<li>
-						<a href="" title="Contactez-nous">
-							<i class="fas fa-angle-right"></i>Contactez-nous
+						<a href="" title="Envoyez un mail">
+							<i class="fas fa-envelope"></i> Envoyez un mail
 						</a>
 					</li>
 				</ul>
 				<ul class="reseaux">
-					<h3>Retrouvez-nous sur les réseaux</h3>
+					<h3 class="bold">Rejoignez-moi sur les réseaux</h3>
 					<li>
-						<a href="" title="Rejoignez-nous sur Facebook">
-							<i class="fab fa-facebook-f"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" title="Rejoignez-nous sur Twitter">
-							<i class="fab fa-twitter"></i>
-						</a>
-					</li>
-					<li>
-						<a href="" title="Rejoignez-nous sur Instagram">
+						<a href="" title="Rejoignez-moi sur Instagram">
 							<i class="fab fa-instagram"></i>
 						</a>
 					</li>
+
+					<li>
+						<a href="" title="Rejoignez-moi sur Youtube">
+							<i class="fab fa-youtube"></i>
+						</a>
+					</li>
+
+					<li>
+						<a href="" title="Rejoignez-moi sur Facebook">
+							<i class="fab fa-facebook"></i>
+						</a>
+					</li>
+
 				</ul>
 			</nav>
 		</div>
@@ -124,6 +131,11 @@
 				<ul>
 					<li>
 						<a href="" title="Mentions Légales">Mentions Légales</a>
+					</li>
+					<li>
+						<a href="" title="Conditions Générales de Vente">
+							CGV
+						</a>
 					</li>
 					<li>
 						<span>-</span> Réalisé par <a href="" title="EILEA - Agence de communications print et digitale">EILEA</a>

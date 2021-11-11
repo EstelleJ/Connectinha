@@ -11,7 +11,143 @@
 {% endblock %}
 
 {% block body %}
-	<section>
-		<h1>Test Site Elodie</h1>
+	<section id="home">
+		<div class="content">
+			<h1>
+				<span class="rougeScript">
+					Elodie Ortiz
+				</span>
+				<span class="amatic uppercase">Magnétisme</span>
+			</h1>
+
+			<div class="btns">
+				<a href="" class="btn round bg-white tc-purple">
+					Réserver une séance
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<section id="favourite">
+		<h2 class="amatic uppercase tc-blue">Les coups de coeur</h2>
+
+		<div class="bloc-favourites">
+			<div class="favourite">
+				<div class="bloc-img">
+					<img src="" alt="">
+				</div>
+
+				<h3 class="amatic">Lorem ipsum dolor</h3>
+				<h4>9,20 €</h4>
+
+				<button>
+					<i class="fas fa-cart-arrow-down"></i> Ajouter au panier
+				</button>
+			</div>
+
+			<div class="favourite">
+				<div class="bloc-img">
+					<img src="" alt="">
+				</div>
+
+				<h3 class="amatic">Lorem ipsum dolor</h3>
+				<h4>9,20 €</h4>
+
+				<button>
+					<i class="fas fa-cart-arrow-down"></i> Ajouter au panier
+				</button>
+			</div>
+
+			<div class="favourite">
+				<div class="bloc-img">
+					<img src="" alt="">
+				</div>
+
+				<h3 class="amatic">Lorem ipsum dolor</h3>
+				<h4>9,20 €</h4>
+
+				<button>
+					<i class="fas fa-cart-arrow-down"></i> Ajouter au panier
+				</button>
+			</div>
+		</div>
+
+		<div class="btns">
+			<a href="" class="btn round bg-blue tc-white">Découvrir plus</a>
+		</div>
+	</section>
+
+	<section id="presentation">
+		<div class="bloc-background">
+			<div class="picture">
+				<img src="" alt="">
+			</div>
+		</div>
+
+		<div class="bloc-text">
+			<h2 class="amatic tc-blue uppercase">Présentation</h2>
+
+			<div class="content">
+				<p>
+					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+					dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+				</p>
+
+				<h3 class="amatic tc-purple uppercase">Qu'est-ce que le magnétisme ?</h3>
+
+				<p>
+					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
+					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
+					dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+				</p>
+
+				<div class="bloc-btn btns">
+					<a href="" class="btn round bg-blue tc-white">Mes services</a>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section id="services">
+		<div class="bloc bg-grey">
+			<img src="{{ asset('images/illustrations/mediumnite-illustration-elodie-ortiz-connectinha.png') }}" alt="Illustration représentant la médiumnité avec le visage d'une femme avec une lune, des étoiles et des feuilles">
+		</div>
+		<div class="bloc magnetisme">
+			<h2>Le<br> magnétisme</h2>
+		</div>
+		<div class="bloc bg-grey">
+			<img src="{{ asset('images/illustrations/cartomancie-illustration-elodie-ortiz-connectinha.png') }}" alt="Illustration représentant la cartomancie avec une main avec des étoiles et des cartes">
+		</div>
+		<div class="bloc cartomancie">
+			<h2>La<br> cartomancie</h2>
+		</div>
+		<div class="bloc bg-grey">
+			<img src="{{ asset('images/illustrations/magnetisme-illustration-elodie-ortiz-connectinha.png') }}" alt="Illustration représentant le magnétisme avec deux mains avec des étoiles et une lune au centre">
+		</div>
+		<div class="bloc mediumnite">
+			<h2>La<br> médiumnité</h2>
+		</div>
+	</section>
+
+	<section id="question">
+
+
+		<div class="content">
+
+			<h2 class="amatic tc-blue">Une question ?</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+			</p>
+
+			<div class="btns">
+				<a href="" class="btn bg-blue round tc-white">
+					Contactez-moi
+				</a>
+			</div>
+		</div>
+
 	</section>
 {% endblock %}
