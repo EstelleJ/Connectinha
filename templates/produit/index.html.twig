@@ -1,81 +1,159 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produits{% endblock %}
+{% block title %}Boutique - Votre bien-être tout simplement{% endblock %}
 
 {% block description %}
 
 {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/client/produit.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/client/produit.css') }}">
 {% endblock %}
 
 {% block body %}
-    <section id="banner">
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Boutique</span>
+			<span class="amatic tc-white uppercase">Votre bien-être tout simplement</span>
+		</h1>
+	</section>
 
-    </section>
+	<section id="slider">
+		<div class="container">
 
-    <div class="container dflex">
-        <section id="categories">
-            <h2>Catégories</h2>
+			<div class="slider">
+				<img src="{{ asset('images/produits/visuel-elodie-ortiz-bougie.jpg') }}"
+				     alt="Bougie ronde sur un support en bois au dessus d'une baignoire">
+			</div>
+			<div class="column">
+				<div class="handmade">
+					<div class="bloc-img">
+						<img src="{{ asset('images/produits/bougies-fait-main-fabrication-francaise-elodie-ortiz.jpg') }}"
+						     alt="Bougie posée dans une main, avec l'inscription handmade">
+					</div>
+					<div class="bloc-text">
+						<h2>
+                <span class="amatic">
+                  Bougies<br>
+                  100%
+                </span>
+							<span class="rougeScript">
+                  Faits-mains
+                </span>
+						</h2>
+					</div>
+				</div>
 
-            <nav>
-                <ul>
-                    {% for category in categories %}
-                        <li>
-                            <a href="{{ path('products_by_category', {'categorySlug': category.slug, 'categoryId': category.id, 'page': '1' }) }}" class="element">{{ category.name }}</a>
-                        </li>
-                    {% endfor %}
-                    {% for subcategory in subcategories %}
-                        <li>
-                            <a href="{{ path('products_by_subcategory', {'subcategorySlug': subcategory.slug, 'subcategoryId': subcategory.id, 'page': '1' }) }}" class="element">{{ subcategory.name }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </nav>
+				<div class="shipping">
+					<div class="bloc-text">
+						<h2>
+                <span class="amatic">
+                  Livraison<br>
+                  à domicile
+                </span>
+							<span class="rougeScript">
+                  en France
+                </span>
+						</h2>
+					</div>
+					<div class="bloc-img">
+						<img src="{{ asset('images/produits/livraison-a-domicile-elodie-ortiz-connectinha.jpg') }}"
+						     alt="Femme devant un ordinateur portable et sourit">
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-        </section>
+	<section id="favourite">
+		<h2 class="amatic uppercase tc-blue">Les coups de coeur</h2>
 
-        <section id="products">
+		<div class="bloc-favourites">
 
-            <h1>Nos produits</h1>
+			{% for favourite in favourites %}
+				<a href="{{ path('product_details', {'slug': favourite.slug, 'id': favourite.id }) }}" class="favourite">
+					<span class="bloc-img">
+						<img src="{{ asset('products/'~ favourite.image ~'')|imagine_filter('productImagesThumbnails') }}"
+						     alt="{{ favourite.altImg }}" title="{{ favourite.nameImg }}">
+					</span>
 
-            <div class="dflex">
-                {% if products|length > 0 %}
-                    {% for product in products %}
+					<span class="title-h3 amatic">{{ favourite.name }}</span>
+					<span class="title-h4">{{ favourite.price }} €</span>
 
-                        <div class="product">
-                            <div class="bloc-img">
-                                <img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}" alt="{{ product.altImg }}" title="{{ product.nameImg }}">
-                            </div>
+					<button>
+						<i class="fas fa-cart-arrow-down"></i> Ajouter au panier
+					</button>
+				</a>
+			{% endfor %}
+		</div>
+	</section>
 
-                            <h2>{{ product.name }}</h2>
-                            <p class="prix">{{ product.price }} € TTC</p>
-                            <p class="prixHT">{{ product.price - (product.price * (product.tva.percentage / 100)) }} € HT</p>
+	<section id="plus">
+		<div class="container">
+			<div class="madeInFrance bloc">
+				<h2>
+					<span class="amatic tc-white">100%</span>
+					<span class="rougeScript tc-white">Fabriqués en France</span>
+				</h2>
+			</div>
+			<div class="parfume bloc">
+				<h2>
+					<span class="amatic tc-white">Des parfums</span>
+					<span class="rougeScript tc-white">de calme et sérénité</span>
+				</h2>
+			</div>
+		</div>
+	</section>
 
-                            <div class="btns">
-                                <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id }) }}" class="details"><i class="far fa-eye"></i> Détails</a>
-                                <button id="addCart"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
-                            </div>
-                        </div>
-                    {% endfor %}
-                {% else %}
-                    <p class="empty">Pour le moment cette sélection est vide<br>
-                      <span>Revenez bientôt !</span>
-                    </p>
-                {% endif %}
-            </div>
+	<section id="products">
+		<h2>Pour tous les goûts</h2>
+		<div class="dflex">
+			{% if products|length > 0 %}
+				{% for product in products %}
 
-            {% if categoryId is defined %}
-                {% include 'includes/_pagination_category.html.twig' with {'link': link, 'categoryId': categoryId, 'categorySlug': categorySlug } %}
-            {% elseif subcategoryId is defined %}
-                {% include 'includes/_pagination_subcategory.html.twig' with {'link': link, 'subcategoryId': subcategoryId, 'subcategorySlug': subcategorySlug } %}
-            {% else %}
-                {% include 'includes/_pagination.html.twig' with {'link': link} %}
-            {% endif %}
-        </section>
-    </div>
+					<a href="{{ path('product_details', {'slug': product.slug, 'id': product.id }) }}" class="product">
+						<span class="bloc-img">
+							<img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}"
+							     alt="{{ product.altImg }}" title="{{ product.nameImg }}">
+						</span>
 
+						<span class="bloc-text">
+							<span class="title">{{ product.name }}</span>
+							<span class="prix">{{ product.price }} €</span>
+						</span>
 
+						<span class="btns">
+							<button id="addCart"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+						</span>
+					</a>
+				{% endfor %}
+			{% else %}
+				<p class="empty">Pour le moment cette sélection est vide<br>
+					<span>Revenez bientôt !</span>
+				</p>
+			{% endif %}
+		</div>
+
+		{% if categoryId is defined %}
+			{% include 'includes/_pagination_category.html.twig' with {'link': link, 'categoryId': categoryId, 'categorySlug': categorySlug } %}
+		{% elseif subcategoryId is defined %}
+			{% include 'includes/_pagination_subcategory.html.twig' with {'link': link, 'subcategoryId': subcategoryId, 'subcategorySlug': subcategorySlug } %}
+		{% else %}
+			{% include 'includes/_pagination.html.twig' with {'link': link} %}
+		{% endif %}
+	</section>
+
+	<section id="creations">
+		<div class="bloc-img">
+			<img src="{{ asset('images/produits/livraison-a-domicile-elodie-ortiz-connectinha.jpg') }}">
+		</div>
+
+		<div class="bloc-text">
+			<h2 class="amatic tc-blue">À propos des créations</h2>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		</div>
+	</section>
 
 {% endblock %}

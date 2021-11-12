@@ -106,237 +106,243 @@ class Product {
      */
     private $favourite;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=MantraProducts::class, inversedBy="product", fetch="EAGER")
+     */
+    private $mantraProducts;
+
 	#[Pure] public function __toString(): string {
-         		return $this->getName();
-         	}
+                        		return $this->getName();
+                        	}
 
 	#[Pure] public function __construct() {
-         		$this->variations = new ArrayCollection();
-         		$this->productImages = new ArrayCollection();
-         		$this->created_at = new \DateTimeImmutable('now');
-         		$this->subcategory = new ArrayCollection();
-         		$this->payment_method = new ArrayCollection();
-         	}
+                        		$this->variations = new ArrayCollection();
+                        		$this->productImages = new ArrayCollection();
+                        		$this->created_at = new \DateTimeImmutable('now');
+                        		$this->subcategory = new ArrayCollection();
+                        		$this->payment_method = new ArrayCollection();
+                          $this->mantraProducts = new ArrayCollection();
+                        	}
 
 	public function getId(): ?int {
-         		return $this->id;
-         	}
+                        		return $this->id;
+                        	}
 
 	public function getName(): ?string {
-         		return $this->name;
-         	}
+                        		return $this->name;
+                        	}
 
 	public function setName(string $name): self {
-         		$this->name = $name;
-         
-         		return $this;
-         	}
+                        		$this->name = $name;
+                        
+                        		return $this;
+                        	}
 
 	public function getText(): ?string {
-         		return $this->text;
-         	}
+                        		return $this->text;
+                        	}
 
 	public function setText(string $text): self {
-         		$this->text = $text;
-         
-         		return $this;
-         	}
+                        		$this->text = $text;
+                        
+                        		return $this;
+                        	}
 
 	/**
 	 * @return Collection|ProductVariation[]
 	 */
 	public function getVariations(): Collection {
-         		return $this->variations;
-         	}
+                        		return $this->variations;
+                        	}
 
 	public function addVariation(ProductVariation $variation): self {
-         		if (!$this->variations->contains($variation)) {
-         			$this->variations[] = $variation;
-         			$variation->setProduct($this);
-         		}
-         
-         		return $this;
-         	}
+                        		if (!$this->variations->contains($variation)) {
+                        			$this->variations[] = $variation;
+                        			$variation->setProduct($this);
+                        		}
+                        
+                        		return $this;
+                        	}
 
 	public function removeVariation(ProductVariation $variation): self {
-         		if ($this->variations->removeElement($variation)) {
-         			// set the owning side to null (unless already changed)
-         			if ($variation->getProduct() === $this) {
-         				$variation->setProduct(null);
-         			}
-         		}
-         
-         		return $this;
-         	}
+                        		if ($this->variations->removeElement($variation)) {
+                        			// set the owning side to null (unless already changed)
+                        			if ($variation->getProduct() === $this) {
+                        				$variation->setProduct(null);
+                        			}
+                        		}
+                        
+                        		return $this;
+                        	}
 
 	public function getSlug(): ?string {
-         		return $this->slug;
-         	}
+                        		return $this->slug;
+                        	}
 
 	public function setSlug(string $slug): self {
-         		$this->slug = $slug;
-         
-         		return $this;
-         	}
+                        		$this->slug = $slug;
+                        
+                        		return $this;
+                        	}
 
 	public function getProductCategory(): ?ProductCategory {
-         		return $this->productCategory;
-         	}
+                        		return $this->productCategory;
+                        	}
 
 	public function setProductCategory(?ProductCategory $productCategory): self {
-         		$this->productCategory = $productCategory;
-         
-         		return $this;
-         	}
+                        		$this->productCategory = $productCategory;
+                        
+                        		return $this;
+                        	}
 
 	public function getTva(): ?Tva {
-         		return $this->tva;
-         	}
+                        		return $this->tva;
+                        	}
 
 	public function setTva(?Tva $tva): self {
-         		$this->tva = $tva;
-         
-         		return $this;
-         	}
+                        		$this->tva = $tva;
+                        
+                        		return $this;
+                        	}
 
 	public function getActive(): ?bool {
-         		return $this->active;
-         	}
+                        		return $this->active;
+                        	}
 
 	public function setActive(bool $active): self {
-         		$this->active = $active;
-         
-         		return $this;
-         	}
+                        		$this->active = $active;
+                        
+                        		return $this;
+                        	}
 
 	/**
 	 * @return Collection|ProductImage[]
 	 */
 	public function getProductImages(): Collection {
-         		return $this->productImages;
-         	}
+                        		return $this->productImages;
+                        	}
 
 	public function addProductImage(ProductImage $productImage): self {
-         		if (!$this->productImages->contains($productImage)) {
-         			$this->productImages[] = $productImage;
-         			$productImage->setProducts($this);
-         		}
-         
-         		return $this;
-         	}
+                        		if (!$this->productImages->contains($productImage)) {
+                        			$this->productImages[] = $productImage;
+                        			$productImage->setProducts($this);
+                        		}
+                        
+                        		return $this;
+                        	}
 
 	public function removeProductImage(ProductImage $productImage): self {
-         		if ($this->productImages->removeElement($productImage)) {
-         			// set the owning side to null (unless already changed)
-         			if ($productImage->getProducts() === $this) {
-         				$productImage->setProducts(null);
-         			}
-         		}
-         
-         		return $this;
-         	}
+                        		if ($this->productImages->removeElement($productImage)) {
+                        			// set the owning side to null (unless already changed)
+                        			if ($productImage->getProducts() === $this) {
+                        				$productImage->setProducts(null);
+                        			}
+                        		}
+                        
+                        		return $this;
+                        	}
 
 	public function getCreatedAt(): ?\DateTimeImmutable {
-         		return $this->created_at;
-         	}
+                        		return $this->created_at;
+                        	}
 
 	public function setCreatedAt(): self {
-         		$this->created_at = new \DateTimeImmutable('now');
-         
-         		return $this;
-         	}
+                        		$this->created_at = new \DateTimeImmutable('now');
+                        
+                        		return $this;
+                        	}
 
 	public function getUpdatedAt(): ?\DateTimeInterface {
-         		return $this->updated_at;
-         	}
+                        		return $this->updated_at;
+                        	}
 
 	public function setUpdatedAt(\DateTimeInterface $updated_at): self {
-         		$this->updated_at = $updated_at;
-         
-         		return $this;
-         	}
+                        		$this->updated_at = $updated_at;
+                        
+                        		return $this;
+                        	}
 
 	/**
 	 * @return Collection|ProductSubcategory[]
 	 */
 	public function getSubcategory(): Collection {
-         		return $this->subcategory;
-         	}
+                        		return $this->subcategory;
+                        	}
 
 	public function addSubcategory(ProductSubcategory $subcategory): self {
-         		if (!$this->subcategory->contains($subcategory)) {
-         			$this->subcategory[] = $subcategory;
-         		}
-         
-         		return $this;
-         	}
+                        		if (!$this->subcategory->contains($subcategory)) {
+                        			$this->subcategory[] = $subcategory;
+                        		}
+                        
+                        		return $this;
+                        	}
 
 	public function removeSubcategory(ProductSubcategory $subcategory): self {
-         		$this->subcategory->removeElement($subcategory);
-         
-         		return $this;
-         	}
+                        		$this->subcategory->removeElement($subcategory);
+                        
+                        		return $this;
+                        	}
 
 	public function getImage(): ?string {
-         		return $this->image;
-         	}
+                        		return $this->image;
+                        	}
 
 	public function setImage(string $image): self {
-         		$this->image = $image;
-         
-         		return $this;
-         	}
+                        		$this->image = $image;
+                        
+                        		return $this;
+                        	}
 
 	public function getNameImg(): ?string {
-         		return $this->name_img;
-         	}
+                        		return $this->name_img;
+                        	}
 
 	public function setNameImg(string $name_img): self {
-         		$this->name_img = $name_img;
-         
-         		return $this;
-         	}
+                        		$this->name_img = $name_img;
+                        
+                        		return $this;
+                        	}
 
 	public function getAltImg(): ?string {
-         		return $this->alt_img;
-         	}
+                        		return $this->alt_img;
+                        	}
 
 	public function setAltImg(string $alt_img): self {
-         		$this->alt_img = $alt_img;
-         
-         		return $this;
-         	}
+                        		$this->alt_img = $alt_img;
+                        
+                        		return $this;
+                        	}
 
 	public function getPrice(): ?float {
-         		return $this->price;
-         	}
+                        		return $this->price;
+                        	}
 
 	public function setPrice(float $price): self {
-         		$this->price = $price;
-         
-         		return $this;
-         	}
+                        		$this->price = $price;
+                        
+                        		return $this;
+                        	}
 
 	/**
 	 * @return Collection|PaymentMethod[]
 	 */
 	public function getPaymentMethod(): Collection {
-         		return $this->payment_method;
-         	}
+                        		return $this->payment_method;
+                        	}
 
 	public function addPaymentMethod(PaymentMethod $paymentMethod): self {
-         		if (!$this->payment_method->contains($paymentMethod)) {
-         			$this->payment_method[] = $paymentMethod;
-         		}
-         
-         		return $this;
-         	}
+                        		if (!$this->payment_method->contains($paymentMethod)) {
+                        			$this->payment_method[] = $paymentMethod;
+                        		}
+                        
+                        		return $this;
+                        	}
 
 	public function removePaymentMethod(PaymentMethod $paymentMethod): self {
-         		$this->payment_method->removeElement($paymentMethod);
-         
-         		return $this;
-         	}
+                        		$this->payment_method->removeElement($paymentMethod);
+                        
+                        		return $this;
+                        	}
 
     public function getFavourite(): ?bool
     {
@@ -346,6 +352,33 @@ class Product {
     public function setFavourite(bool $favourite): self
     {
         $this->favourite = $favourite;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MantraProducts[]
+     */
+    public function getMantraProducts(): Collection
+    {
+        return $this->mantraProducts;
+    }
+
+    public function addMantraProduct(MantraProducts $mantraProduct): self
+    {
+        if (!$this->mantraProducts->contains($mantraProduct)) {
+            $this->mantraProducts[] = $mantraProduct;
+            $mantraProduct->addProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMantraProduct(MantraProducts $mantraProduct): self
+    {
+        if ($this->mantraProducts->removeElement($mantraProduct)) {
+            $mantraProduct->removeProduct($this);
+        }
 
         return $this;
     }

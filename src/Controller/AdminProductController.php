@@ -21,6 +21,7 @@ class AdminProductController extends AbstractController {
 		$products = $this->getDoctrine()->getRepository(Product::class)->findBy([], ['id' => 'DESC'], 3);
 
 		$product = new Product();
+		$error = '';
 
 		$form = $this->createForm(ProductFormType::class, $product);
 
@@ -63,6 +64,9 @@ class AdminProductController extends AbstractController {
 				// Set du nom du fichier dans le champ "image"
 				$product->setImage($newFilename);
 			}
+			else {
+				$error = "Veuillez ajouter une photo pour votre produit";
+			}
 
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($product);
@@ -78,6 +82,7 @@ class AdminProductController extends AbstractController {
 		return $this->render('admin/produits_add.html.twig', [
 				'form'     => $form->createView(),
 				'products' => $products,
+				'error'    => $error,
 		]);
 	}
 

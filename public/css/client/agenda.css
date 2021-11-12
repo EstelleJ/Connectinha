@@ -11,6 +11,10 @@
   background: #042b40;
   background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
 }
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
 .dflex {
   display: flex;
   flex-wrap: wrap;
@@ -53,21 +57,76 @@
   font-size: 2.2rem;
   width: 20%;
 }
+#banner {
+  height: 55rem;
+  width: 100%;
+  background: url('../../images/produits/bandeau-page-ville-nuit-etoilee-bleu-violet-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#banner h1 {
+  font-size: 6rem;
+  margin-top: -5rem;
+}
+#banner h1 span {
+  display: block;
+}
+#banner h1 .rougeScript {
+  font-size: 8rem;
+}
+#banner h1 .amatic {
+  margin-top: -1rem;
+}
 /* ---------------- INDICATION UX ---------------- */
 /* ----------------------------------------------- */
 .menu .rdv::after {
   content: "";
   display: block;
-  width: 100%;
-  height: 0.3rem;
+  width: 3rem;
+  height: 0.2rem;
   background-color: #042b40;
   position: absolute;
   bottom: 0;
+  left: calc(50% - 1.5rem);
 }
 /* ----------------- RENDEZ-VOUS ----------------- */
 /* ----------------------------------------------- */
 #rdv {
   position: relative;
+  margin-top: -10rem;
+  margin-bottom: 3rem;
+  z-index: 3;
+}
+#rdv::after,
+#rdv::before {
+  content: "";
+  display: inline-block;
+  height: 50rem;
+  position: absolute;
+  z-index: -1;
+  top: 0rem;
+}
+#rdv::after {
+  content: "";
+  display: block;
+  width: 30rem;
+  height: 50rem;
+  background: url('../../images/illustrations/une-question-illustration-herbe-gauche.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+#rdv::before {
+  content: "";
+  display: inline-block;
+  width: 30rem;
+  height: 50rem;
+  background: url('../../images/illustrations/une-question-illustration-herbe-droite.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 0;
 }
 #rdv h1 {
   text-align: center;
@@ -78,11 +137,15 @@
   color: #068639;
 }
 #rdv h2 {
-  font-size: 2.2rem;
-  font-family: "Montserrat", sans-serif;
+  font-size: 8rem;
   position: relative;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
   text-align: center;
+}
+#rdv h3 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 3rem;
 }
 #rdv .bloc-services {
   display: flex;
@@ -96,12 +159,15 @@
   display: block;
   width: 45%;
   color: #333;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 #rdv .service span {
   display: block;
 }
 #rdv .service .bloc-img {
-  width: 100%;
+  width: 45%;
   height: 220px;
   display: block;
   margin-bottom: 2rem;
@@ -111,11 +177,26 @@
   height: 100%;
   object-fit: contain;
 }
+#rdv .service .bloc-text {
+  width: 52%;
+}
 #rdv .service .title {
   font-size: 2.8rem;
   color: #41687f;
   margin-bottom: 1.5rem;
   text-align: center;
+}
+#rdv .service .duration {
+  color: #af5ce2;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+#rdv .service .price {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 #rdv .service .text {
   line-height: 1.5;
@@ -152,7 +233,7 @@
 #rdv .bloc-choix .bloc-btn.rdv .btn {
   margin: auto;
 }
-#rdv .bloc-choix #horaire {
+#rdv .bloc-choix #hour {
   margin-bottom: 30px;
 }
 #rdv .bloc-choix .line {
@@ -161,7 +242,6 @@
 }
 #rdv .bloc-choix .line label {
   font-size: 1.5rem;
-  color: #068639;
 }
 #rdv .bloc-choix .line p {
   font-size: 1.3rem;
@@ -170,8 +250,8 @@
   margin-bottom: 12px;
 }
 #rdv .confirmation .merci {
-  font-size: 2rem;
-  color: #068639;
+  font-size: 5rem;
+  color: #af5ce2;
 }
 /* --------------- MEDIAQUERIES --------------- */
 /* -------------------------------------------- */

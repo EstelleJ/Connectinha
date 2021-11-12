@@ -1,6 +1,10 @@
 @import "../include/variables.less";
 @import "../include/mixins.less";
 
+body {
+	padding-bottom: 0 !important;
+}
+
 /* ---------------- INDICATION UX ---------------- */
 /* ----------------------------------------------- */
 
@@ -9,11 +13,12 @@
 		&::after {
 			content: "";
 			display: block;
-			width: 100%;
-			height: 0.3rem;
-			background-color: @bg-darkblue;
+			width: 3rem;
+			height: 0.2rem;
+			background-color: @bg-dark-blue-connectinha;
 			position: absolute;
 			bottom: 0;
+			left: calc(50% - 1.5rem);
 		}
 	}
 }
@@ -21,5 +26,48 @@
 #login {
 	.dflex();
 	align-items: center;
-	min-height: 66vh;
+	min-height: 80vh;
+	background: url('../../images/index/bandeau-accueil-elodie-ortiz-montagnes-forets-bleu-violet.jpg') no-repeat center center;
+	background-size: cover;
+
+	.bloc-form {
+		background-color: @bg-white;
+		width: 70%;
+
+		h1 {
+			width: 100%;
+			margin-bottom: 2rem;
+		}
+
+		.dflex();
+		justify-content: center;
+
+		form {
+			.dflex();
+			justify-content: space-between;
+			width: 100%;
+		}
+
+		.bloc {
+			width: 48%;
+		}
+
+		.btns {
+			justify-content: center;
+		}
+	}
+}
+
+.bloc-register {
+	a {
+		color: @tc-light-purple-connectinha;
+		transition: 0.3s color;
+		font-size: 2rem;
+		margin-bottom: 1rem;
+
+		&:hover {
+			color: darken(@tc-light-purple-connectinha, 15%);
+			transition: 0.3s color;
+		}
+	}
 }

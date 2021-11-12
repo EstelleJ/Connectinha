@@ -11,6 +11,10 @@
   background: #042b40;
   background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
 }
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
 .dflex {
   display: flex;
   flex-wrap: wrap;
@@ -53,46 +57,1030 @@
   font-size: 2.2rem;
   width: 20%;
 }
+#banner {
+  height: 55rem;
+  width: 100%;
+  background: url('../../images/produits/bandeau-page-ville-nuit-etoilee-bleu-violet-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#banner .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+#banner .empty span {
+  color: #41687f;
+  font-size: 2.5rem;
+}
+#banner .product {
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+#banner .product span {
+  display: block;
+}
+#banner .product .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#banner .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#banner .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+#banner .product .title {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+#banner .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#banner .product .prix {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#banner .product .prixHT {
+  font-size: 1.2rem;
+}
+#banner .product.unique {
+  width: 80%;
+  margin: -12rem auto 10rem auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: none;
+}
+#banner .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+#banner .product.unique .bloc-img {
+  width: 40%;
+  height: 55rem;
+}
+#banner .product.unique .bloc-text {
+  width: 50%;
+  text-align: center;
+}
+#banner .product.unique .bloc-text h2 {
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#banner .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+#banner .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+#banner .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+#banner .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+#banner .product.unique .bloc-text .select select option {
+  color: #af5ce2;
+}
+#banner .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+#banner .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+#banner .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+#banner .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+#banner .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+#banner .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#banner .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#banner .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#banner .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#banner .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+#banner .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+#banner .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+#banner h1 {
+  font-size: 6rem;
+  margin-top: -5rem;
+}
+#banner h1 span {
+  display: block;
+}
+#banner h1 .rougeScript {
+  font-size: 8rem;
+}
+#banner h1 .amatic {
+  margin-top: -1rem;
+}
+#favourite {
+  position: relative;
+}
+#favourite::after,
+#favourite::before {
+  content: "";
+  display: inline-block;
+  height: 50rem;
+  position: absolute;
+  z-index: -1;
+  top: 5rem;
+}
+#favourite::after {
+  content: "";
+  display: block;
+  width: 20rem;
+  height: 50rem;
+  background: url('../../images/illustrations/les-coups-de-coeur-illustration-herbe-gauche.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+#favourite::before {
+  content: "";
+  display: inline-block;
+  width: 40rem;
+  height: 50rem;
+  background: url('../../images/illustrations/les-coups-de-coeur-illustration-herbe-droite.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 0;
+}
+#favourite h2 {
+  font-size: 8rem;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+#favourite .bloc-favourites {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#favourite .bloc-favourites .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+#favourite .bloc-favourites .empty span {
+  color: #41687f;
+  font-size: 2.5rem;
+}
+#favourite .bloc-favourites .product {
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+#favourite .bloc-favourites .product span {
+  display: block;
+}
+#favourite .bloc-favourites .product .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#favourite .bloc-favourites .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#favourite .bloc-favourites .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+#favourite .bloc-favourites .product .title {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+#favourite .bloc-favourites .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#favourite .bloc-favourites .product .prix {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#favourite .bloc-favourites .product .prixHT {
+  font-size: 1.2rem;
+}
+#favourite .bloc-favourites .product.unique {
+  width: 80%;
+  margin: -12rem auto 10rem auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: none;
+}
+#favourite .bloc-favourites .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-img {
+  width: 40%;
+  height: 55rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text {
+  width: 50%;
+  text-align: center;
+}
+#favourite .bloc-favourites .product.unique .bloc-text h2 {
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .select select option {
+  color: #af5ce2;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+#favourite .bloc-favourites .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+#favourite .bloc-favourites .favourite {
+  width: 28%;
+  margin: 1rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+}
+#favourite .bloc-favourites .favourite span {
+  display: block;
+}
+#favourite .bloc-favourites .favourite .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#favourite .bloc-favourites .favourite .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#favourite .bloc-favourites .favourite .title-h3 {
+  font-size: 3.5rem;
+  padding-left: 1rem;
+}
+#favourite .bloc-favourites .favourite .title-h4 {
+  font-size: 2rem;
+  padding-left: 1rem;
+}
+#favourite .bloc-favourites .favourite button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#favourite .btns {
+  justify-content: center;
+  margin-top: 6rem;
+}
+body {
+  padding-bottom: 26rem !important;
+}
 /* ---------------- INDICATION UX ---------------- */
 /* ----------------------------------------------- */
 .menu .produits::after {
   content: "";
   display: block;
-  width: 100%;
-  height: 0.3rem;
+  width: 3rem;
+  height: 0.2rem;
   background-color: #042b40;
   position: absolute;
   bottom: 0;
+  left: calc(50% - 1.5rem);
 }
-/* ------------------ PRODUCTS ------------------- */
+/* ------------------ SLIDER ------------------- */
 /* ----------------------------------------------- */
-#banner {
-  height: 480px;
+#slider .container {
+  margin: -6rem auto 5rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-between;
+}
+#slider .container .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+#slider .container .empty span {
+  color: #41687f;
+  font-size: 2.5rem;
+}
+#slider .container .product {
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+#slider .container .product span {
+  display: block;
+}
+#slider .container .product .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#slider .container .product .bloc-img img {
   width: 100%;
-  background: url('../../images/produits/banner-shopping-vetements-chaussures-clothes.jpg') no-repeat center center;
-  background-size: cover;
+  height: 100%;
+  object-fit: cover;
 }
-/* ------------------ CATEGORIES ------------------- */
-/* ------------------------------------------------- */
-#categories {
-  width: 20%;
-  padding: 50px 25px;
+#slider .container .product .bloc-text {
+  padding: 1rem 1.5rem;
 }
-#categories nav {
-  margin-top: 40px;
+#slider .container .product .title {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
 }
-#categories nav .element {
-  padding: 10px 0;
-  margin-bottom: 8px;
-  display: inline-block;
+#slider .container .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#slider .container .product .prix {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#slider .container .product .prixHT {
+  font-size: 1.2rem;
+}
+#slider .container .product.unique {
+  width: 80%;
+  margin: -12rem auto 10rem auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: none;
+}
+#slider .container .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+#slider .container .product.unique .bloc-img {
+  width: 40%;
+  height: 55rem;
+}
+#slider .container .product.unique .bloc-text {
+  width: 50%;
+  text-align: center;
+}
+#slider .container .product.unique .bloc-text h2 {
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#slider .container .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+#slider .container .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+#slider .container .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+#slider .container .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+#slider .container .product.unique .bloc-text .select select option {
+  color: #af5ce2;
+}
+#slider .container .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+#slider .container .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+#slider .container .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+#slider .container .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+#slider .container .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+#slider .container .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#slider .container .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#slider .container .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#slider .container .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#slider .container .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+#slider .container .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+#slider .container .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+#slider .container .slider {
+  width: 60%;
+  height: 64rem;
+  position: relative;
+}
+#slider .container .slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#slider .container .column {
+  width: 39%;
+}
+#slider .container .column .handmade,
+#slider .container .column .shipping {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#slider .container .column .handmade .empty,
+#slider .container .column .shipping .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+#slider .container .column .handmade .empty span,
+#slider .container .column .shipping .empty span {
+  color: #41687f;
+  font-size: 2.5rem;
+}
+#slider .container .column .handmade .product,
+#slider .container .column .shipping .product {
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+#slider .container .column .handmade .product span,
+#slider .container .column .shipping .product span {
+  display: block;
+}
+#slider .container .column .handmade .product .bloc-img,
+#slider .container .column .shipping .product .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#slider .container .column .handmade .product .bloc-img img,
+#slider .container .column .shipping .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#slider .container .column .handmade .product .bloc-text,
+#slider .container .column .shipping .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+#slider .container .column .handmade .product .title,
+#slider .container .column .shipping .product .title {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+#slider .container .column .handmade .product button,
+#slider .container .column .shipping .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#slider .container .column .handmade .product .prix,
+#slider .container .column .shipping .product .prix {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#slider .container .column .handmade .product .prixHT,
+#slider .container .column .shipping .product .prixHT {
+  font-size: 1.2rem;
+}
+#slider .container .column .handmade .product.unique,
+#slider .container .column .shipping .product.unique {
+  width: 80%;
+  margin: -12rem auto 10rem auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: none;
+}
+#slider .container .column .handmade .product.unique .return,
+#slider .container .column .shipping .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+#slider .container .column .handmade .product.unique .bloc-img,
+#slider .container .column .shipping .product.unique .bloc-img {
+  width: 40%;
+  height: 55rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text,
+#slider .container .column .shipping .product.unique .bloc-text {
+  width: 50%;
+  text-align: center;
+}
+#slider .container .column .handmade .product.unique .bloc-text h2,
+#slider .container .column .shipping .product.unique .bloc-text h2 {
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text h2 .tc-grey,
+#slider .container .column .shipping .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text .select,
+#slider .container .column .shipping .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text .select h3,
+#slider .container .column .shipping .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+#slider .container .column .handmade .product.unique .bloc-text .select select,
+#slider .container .column .shipping .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text .select select option,
+#slider .container .column .shipping .product.unique .bloc-text .select select option {
+  color: #af5ce2;
+}
+#slider .container .column .handmade .product.unique .bloc-text .text,
+#slider .container .column .shipping .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text .prix,
+#slider .container .column .shipping .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text .prixHT,
+#slider .container .column .shipping .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text .btns,
+#slider .container .column .shipping .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+#slider .container .column .handmade .product.unique .bloc-text .btns #addCart,
+#slider .container .column .shipping .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+#slider .container .column .handmade .product.unique .bloc-text .bloc-btn,
+#slider .container .column .shipping .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#slider .container .column .handmade .product.unique .bloc-text .bloc-btn h3,
+#slider .container .column .shipping .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text .bloc-btn .quantity,
+#slider .container .column .shipping .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#slider .container .column .handmade .product.unique .bloc-text .bloc-btn .quantity button,
+#slider .container .column .shipping .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text .bloc-btn .quantity button:hover,
+#slider .container .column .shipping .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+#slider .container .column .handmade .product.unique .bloc-text .bloc-btn .quantity #number,
+#slider .container .column .shipping .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+#slider .container .column .handmade .product.unique .bloc-text .bloc-btn .btns,
+#slider .container .column .shipping .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+#slider .container .column .handmade {
+  margin-bottom: 2rem;
+  height: 25rem;
+}
+#slider .container .column .handmade .bloc-img {
+  height: 25rem;
+}
+#slider .container .column .shipping {
+  height: 37rem;
+}
+#slider .container .column .shipping .bloc-img {
+  height: 37rem;
+}
+#slider .container .column .bloc-text {
+  width: 45%;
+  background-color: #396288;
+  padding: 2rem 1.5rem;
+  color: #fff;
+  font-size: 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#slider .container .column .bloc-text .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+#slider .container .column .bloc-text .empty span {
+  color: #41687f;
+  font-size: 2.5rem;
+}
+#slider .container .column .bloc-text .product {
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+#slider .container .column .bloc-text .product span {
+  display: block;
+}
+#slider .container .column .bloc-text .product .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#slider .container .column .bloc-text .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#slider .container .column .bloc-text .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+#slider .container .column .bloc-text .product .title {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+#slider .container .column .bloc-text .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#slider .container .column .bloc-text .product .prix {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#slider .container .column .bloc-text .product .prixHT {
+  font-size: 1.2rem;
+}
+#slider .container .column .bloc-text .product.unique {
+  width: 80%;
+  margin: -12rem auto 10rem auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: none;
+}
+#slider .container .column .bloc-text .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-img {
+  width: 40%;
+  height: 55rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text {
+  width: 50%;
+  text-align: center;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text h2 {
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .select select option {
+  color: #af5ce2;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+#slider .container .column .bloc-text span {
+  display: block;
+  line-height: 1;
+  text-align: center;
+}
+#slider .container .column .bloc-text .amatic {
+  font-size: 6rem;
+}
+#slider .container .column .bloc-img {
+  width: 55%;
+}
+#slider .container .column .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 /* ------------------ PRODUCTS ------------------- */
 /* ----------------------------------------------- */
 #products {
   width: 80%;
+  margin: 5rem auto;
 }
 #products.unique {
   width: 100%;
+}
+#products h2 {
+  font-size: 8rem;
+  text-align: center;
+  margin-bottom: 5rem;
+  font-family: "Amatic SC", cursive;
+  color: #4498b4;
 }
 .dflex {
   justify-content: center;
@@ -106,30 +1094,43 @@
   font-size: 2.5rem;
 }
 .dflex .product {
-  box-shadow: 0px 3px 5px rgba(23, 23, 23, 0.2);
-  padding: 20px 25px;
-  width: 30%;
-  margin: 15px 10px;
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+.dflex .product span {
+  display: block;
+}
 .dflex .product .bloc-img {
-  width: 90%;
-  height: 220px;
-  margin: 0 auto 20px auto;
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
 }
 .dflex .product .bloc-img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
-.dflex .product h2 {
+.dflex .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+.dflex .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 1.6rem;
+  font-size: 4rem;
   margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+.dflex .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
 }
 .dflex .product .prix {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 .dflex .product .prixHT {
@@ -137,20 +1138,47 @@
 }
 .dflex .product.unique {
   width: 80%;
-  margin: auto;
+  margin: -12rem auto 10rem auto;
   padding: 3rem 3.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  box-shadow: none;
+}
+.dflex .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
 }
 .dflex .product.unique .bloc-img {
-  width: 48%;
+  width: 40%;
+  height: 55rem;
 }
 .dflex .product.unique .bloc-text {
   width: 50%;
+  text-align: center;
 }
 .dflex .product.unique .bloc-text h2 {
-  font-size: 2.2rem;
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.dflex .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+.dflex .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+.dflex .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+.dflex .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+.dflex .product.unique .bloc-text .select select option {
+  color: #af5ce2;
 }
 .dflex .product.unique .bloc-text .text {
   margin-bottom: 2rem;
@@ -165,6 +1193,54 @@
   justify-content: initial;
 }
 .dflex .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+.dflex .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.dflex .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.dflex .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.dflex .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.dflex .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+.dflex .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+.dflex .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   margin: 0;
 }
 .btns {
@@ -182,30 +1258,43 @@
   font-size: 2.5rem;
 }
 .btns .product {
-  box-shadow: 0px 3px 5px rgba(23, 23, 23, 0.2);
-  padding: 20px 25px;
-  width: 30%;
-  margin: 15px 10px;
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+.btns .product span {
+  display: block;
+}
 .btns .product .bloc-img {
-  width: 90%;
-  height: 220px;
-  margin: 0 auto 20px auto;
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
 }
 .btns .product .bloc-img img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
-.btns .product h2 {
+.btns .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+.btns .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 1.6rem;
+  font-size: 4rem;
   margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+.btns .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
 }
 .btns .product .prix {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 .btns .product .prixHT {
@@ -213,20 +1302,47 @@
 }
 .btns .product.unique {
   width: 80%;
-  margin: auto;
+  margin: -12rem auto 10rem auto;
   padding: 3rem 3.5rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  box-shadow: none;
+}
+.btns .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
 }
 .btns .product.unique .bloc-img {
-  width: 48%;
+  width: 40%;
+  height: 55rem;
 }
 .btns .product.unique .bloc-text {
   width: 50%;
+  text-align: center;
 }
 .btns .product.unique .bloc-text h2 {
-  font-size: 2.2rem;
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.btns .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+.btns .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+.btns .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+.btns .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+.btns .product.unique .bloc-text .select select option {
+  color: #af5ce2;
 }
 .btns .product.unique .bloc-text .text {
   margin-bottom: 2rem;
@@ -243,13 +1359,60 @@
 .btns .product.unique .bloc-text .btns #addCart {
   margin: 0;
 }
+.btns .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.btns .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+.btns .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.btns .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.btns .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+.btns .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+.btns .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
 .btns .details,
 .btns #addCart {
   display: inline-block;
   padding: 8px 16px;
   border: none;
   color: #fff;
-  margin: 0 5px;
 }
 .btns .details i,
 .btns #addCart i {
@@ -271,4 +1434,549 @@
 }
 .btns #addCart:hover {
   background-color: #12745b;
+}
+/* -------------------- PLUS --------------------- */
+/* ----------------------------------------------- */
+#plus {
+  margin: 6rem 0;
+}
+#plus .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-between;
+}
+#plus .container .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+#plus .container .empty span {
+  color: #41687f;
+  font-size: 2.5rem;
+}
+#plus .container .product {
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+#plus .container .product span {
+  display: block;
+}
+#plus .container .product .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#plus .container .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#plus .container .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+#plus .container .product .title {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+#plus .container .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#plus .container .product .prix {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#plus .container .product .prixHT {
+  font-size: 1.2rem;
+}
+#plus .container .product.unique {
+  width: 80%;
+  margin: -12rem auto 10rem auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: none;
+}
+#plus .container .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+#plus .container .product.unique .bloc-img {
+  width: 40%;
+  height: 55rem;
+}
+#plus .container .product.unique .bloc-text {
+  width: 50%;
+  text-align: center;
+}
+#plus .container .product.unique .bloc-text h2 {
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#plus .container .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+#plus .container .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+#plus .container .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+#plus .container .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+#plus .container .product.unique .bloc-text .select select option {
+  color: #af5ce2;
+}
+#plus .container .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+#plus .container .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+#plus .container .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+#plus .container .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+#plus .container .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+#plus .container .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#plus .container .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#plus .container .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#plus .container .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#plus .container .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+#plus .container .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+#plus .container .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+#plus .bloc {
+  width: 48%;
+  height: 40rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 6rem;
+}
+#plus .bloc .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+#plus .bloc .empty span {
+  color: #41687f;
+  font-size: 2.5rem;
+}
+#plus .bloc .product {
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+#plus .bloc .product span {
+  display: block;
+}
+#plus .bloc .product .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#plus .bloc .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#plus .bloc .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+#plus .bloc .product .title {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+#plus .bloc .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#plus .bloc .product .prix {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#plus .bloc .product .prixHT {
+  font-size: 1.2rem;
+}
+#plus .bloc .product.unique {
+  width: 80%;
+  margin: -12rem auto 10rem auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: none;
+}
+#plus .bloc .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+#plus .bloc .product.unique .bloc-img {
+  width: 40%;
+  height: 55rem;
+}
+#plus .bloc .product.unique .bloc-text {
+  width: 50%;
+  text-align: center;
+}
+#plus .bloc .product.unique .bloc-text h2 {
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#plus .bloc .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+#plus .bloc .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+#plus .bloc .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+#plus .bloc .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+#plus .bloc .product.unique .bloc-text .select select option {
+  color: #af5ce2;
+}
+#plus .bloc .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+#plus .bloc .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+#plus .bloc .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+#plus .bloc .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+#plus .bloc .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+#plus .bloc .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#plus .bloc .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#plus .bloc .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#plus .bloc .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#plus .bloc .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+#plus .bloc .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+#plus .bloc .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+#plus .bloc.madeInFrance {
+  background: url('../../images/produits/100-pourcent-fabrication-francaise-fait-main-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+}
+#plus .bloc.parfume {
+  background: url('../../images/produits/des-parfums-de-calme-serenite-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+}
+#plus .bloc h2 {
+  font-size: 10rem;
+  text-align: center;
+  line-height: 0.8;
+}
+#plus .bloc h2 span {
+  display: block;
+}
+#plus .bloc h2 .amatic {
+  font-size: 15rem;
+}
+/* -------------------- CREATIONS --------------------- */
+/* ---------------------------------------------------- */
+#creations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  margin: 6rem 0 0 0;
+  padding: 0;
+}
+#creations .empty {
+  text-align: center;
+  font-size: 2rem;
+}
+#creations .empty span {
+  color: #41687f;
+  font-size: 2.5rem;
+}
+#creations .product {
+  width: 25%;
+  margin: 2rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+  color: #333;
+  /* -------------- DETAILS PRODUITS ------------ */
+}
+#creations .product span {
+  display: block;
+}
+#creations .product .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#creations .product .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#creations .product .bloc-text {
+  padding: 1rem 1.5rem;
+}
+#creations .product .title {
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+  font-size: 4rem;
+  margin-bottom: 15px;
+  font-family: "Amatic SC", cursive;
+}
+#creations .product button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#creations .product .prix {
+  font-size: 2rem;
+  font-weight: bold;
+}
+#creations .product .prixHT {
+  font-size: 1.2rem;
+}
+#creations .product.unique {
+  width: 80%;
+  margin: -12rem auto 10rem auto;
+  padding: 3rem 3.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  box-shadow: none;
+}
+#creations .product.unique .return {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+#creations .product.unique .bloc-img {
+  width: 40%;
+  height: 55rem;
+}
+#creations .product.unique .bloc-text {
+  width: 50%;
+  text-align: center;
+}
+#creations .product.unique .bloc-text h2 {
+  font-size: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+#creations .product.unique .bloc-text h2 .tc-grey {
+  margin-left: 3rem;
+}
+#creations .product.unique .bloc-text .select {
+  margin-top: 3rem;
+}
+#creations .product.unique .bloc-text .select h3 {
+  text-align: center;
+}
+#creations .product.unique .bloc-text .select select {
+  margin-top: 2rem;
+  padding: 1rem;
+}
+#creations .product.unique .bloc-text .select select option {
+  color: #af5ce2;
+}
+#creations .product.unique .bloc-text .text {
+  margin-bottom: 2rem;
+}
+#creations .product.unique .bloc-text .prix {
+  font-size: 2.3rem;
+}
+#creations .product.unique .bloc-text .prixHT {
+  font-size: 1.6rem;
+}
+#creations .product.unique .bloc-text .btns {
+  justify-content: initial;
+}
+#creations .product.unique .bloc-text .btns #addCart {
+  margin: 0;
+}
+#creations .product.unique .bloc-text .bloc-btn {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+#creations .product.unique .bloc-text .bloc-btn h3 {
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+#creations .product.unique .bloc-text .bloc-btn .quantity {
+  width: 35%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#creations .product.unique .bloc-text .bloc-btn .quantity button {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  background-color: #396288;
+  transition: 0.3s background-color;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+#creations .product.unique .bloc-text .bloc-btn .quantity button:hover {
+  background-color: #223b52;
+  transition: 0.3s background-color;
+}
+#creations .product.unique .bloc-text .bloc-btn .quantity #number {
+  width: calc(100% - 8rem);
+  padding: 0 0.5rem;
+  height: 40px;
+}
+#creations .product.unique .bloc-text .bloc-btn .btns {
+  width: 60%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+}
+#creations .bloc-img {
+  width: 30%;
+  height: 65rem;
+}
+#creations .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+#creations .bloc-text {
+  width: 70%;
+  padding: 0 15rem;
+}
+#creations .bloc-text h2 {
+  font-size: 8rem;
+  text-align: center;
+  margin-bottom: 6rem;
+}
+#creations .bloc-text p {
+  text-align: center;
 }

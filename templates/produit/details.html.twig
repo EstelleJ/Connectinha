@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Produits{% endblock %}
+{% block title %}{{ product.name }} - Boutique - Votre bien-être tout simplement{% endblock %}
 
 {% block description %}
 
@@ -12,30 +12,53 @@
 
 {% block body %}
     <section id="banner">
-
+        <h1>
+            <span class="rougeScript tc-white">Boutique</span>
+            <span class="amatic tc-white uppercase">Votre bien-être tout simplement</span>
+        </h1>
     </section>
 
     <section id="products unique">
         <div class="container">
-            <h1>Nos produits</h1>
-
             <div class="dflex">
 
-                <div class="product unique">
-                    <div class="bloc-img">
 
+                <div class="product unique">
+                    <div class="return">
+                        <a href="{{ path('products', {'page': '1'}) }}" class="tc-blue bold">
+                            <i class="fas fa-angle-left"></i> Retour à la boutique
+                        </a>
+                    </div>
+                    <div class="bloc-img">
                       <img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}">
                     </div>
 
                     <div class="bloc-text">
-                        <h2>{{ product.name }}</h2>
+                        <h2 class="amatic tc-blue">{{ product.name }}  <span class="amatic tc-grey">{{ product.price }} €</span></h2>
                         <p class="text">{{ product.text }}</p>
-                        <p class="prix">{{ product.price }} € TTC</p>
-                        <p class="prixHT">{{ product.price - (product.price * (product.tva.percentage / 100)) }} € HT</p>
 
-                        <div class="btns">
-                            <button id="addCart"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                        <div class="select">
+                            <h3 class="bold">Sélectionnez la phrase que vous souhaitez:</h3>
+                            <select>
+                                {% for mantra in product.mantraProducts %}
+                                    <option>{{ mantra.mantra }}</option>
+                                {% endfor %}
+                            </select>
                         </div>
+
+                        <div class="bloc-btn">
+                            <h3 class="bold">Quantité</h3>
+                            <div class="quantity">
+                                <button id="less">-</button>
+                                <input id="number" type="number" min="1" max="12" placeholder="1">
+                                <button id="more">+</button>
+                            </div>
+
+                            <div class="btns">
+                                <button id="addCart"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>

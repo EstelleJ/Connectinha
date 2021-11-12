@@ -9,13 +9,14 @@
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/client/form.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/client/inscription.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/client/connexion.css') }}">
 {% endblock %}
 
 {% block body %}
-	<section id="inscription">
+	<section id="login">
 		<div class="container">
 			<div class="bloc-form">
-				<h1>Register</h1>
+				<h1>Inscription</h1>
 				{{ form_start(registrationForm) }}
 
 				<div class="bloc">

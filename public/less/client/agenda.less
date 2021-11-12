@@ -1,5 +1,6 @@
 @import "../include/variables.less";
 @import "../include/mixins.less";
+@import "../include/banner.less";
 
 /* ---------------- INDICATION UX ---------------- */
 /* ----------------------------------------------- */
@@ -9,11 +10,12 @@
 		&::after {
 			content: "";
 			display: block;
-			width: 100%;
-			height: 0.3rem;
-			background-color: @bg-darkblue;
+			width: 3rem;
+			height: 0.2rem;
+			background-color: @bg-dark-blue-connectinha;
 			position: absolute;
 			bottom: 0;
+			left: calc(50% - 1.5rem);
 		}
 	}
 }
@@ -24,6 +26,40 @@
 
 #rdv {
 	position: relative;
+	margin-top: -10rem;
+	margin-bottom: 3rem;
+	z-index: 3;
+
+	&::after,
+	&::before {
+		content: "";
+		display: inline-block;
+		height: 50rem;
+		position: absolute;
+		z-index: -1;
+		top: 0rem;
+	}
+
+	&::after {
+		content: "";
+		display: block;
+		width: 30rem;
+		height: 50rem;
+		background: url('../../images/illustrations/une-question-illustration-herbe-gauche.png') no-repeat;
+		background-size: contain;
+		position: absolute;
+	}
+
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 30rem;
+		height: 50rem;
+		background: url('../../images/illustrations/une-question-illustration-herbe-droite.png') no-repeat;
+		background-size: contain;
+		position: absolute;
+		right: 0;
+	}
 
 	h1 {
 		text-align: center;
@@ -36,11 +72,16 @@
 	}
 
 	h2 {
-		font-size: 2.2rem;
-		font-family: "Montserrat", sans-serif;
+		font-size: 8rem;
 		position: relative;
-		margin-bottom: 3rem;
+		margin-bottom: 1rem;
 		text-align: center;
+	}
+
+	h3 {
+		font-size: 2.5rem;
+		text-align: center;
+		margin-bottom: 3rem;
 	}
 
 	.bloc-services {
@@ -55,13 +96,15 @@
 		display: block;
 		width: 45%;
 		color: @tc-grey;
+		.dflex();
+		justify-content: space-between;
 
 		span {
 			display: block;
 		}
 
 		.bloc-img {
-			width: 100%;
+			width: 45%;
 			height: 220px;
 			display: block;
 			margin-bottom: 2rem;
@@ -73,11 +116,29 @@
 			}
 		}
 
+		.bloc-text {
+			width: 52%;
+		}
+
 		.title {
 			font-size: 2.8rem;
 			color: @tc-blue;
 			margin-bottom: 1.5rem;
 			text-align: center;
+		}
+
+		.duration {
+			color: @tc-light-purple-connectinha;
+			font-size: 1.5rem;
+			margin-bottom: 1rem;
+			text-align: center;
+			font-weight: bold;
+		}
+
+		.price {
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 1rem;
 		}
 
 		.text {
@@ -123,7 +184,7 @@
 			}
 		}
 
-		#horaire {
+		#hour {
 			margin-bottom: 30px;
 		}
 
@@ -133,7 +194,6 @@
 
 			label {
 				font-size: 1.5rem;
-				color: @tc-green;
 			}
 
 			p {
@@ -149,8 +209,8 @@
 		}
 
 		.merci {
-			font-size: 2rem;
-			color: @tc-green;
+			font-size: 5rem;
+			color: @tc-light-purple-connectinha;
 		}
 	}
 

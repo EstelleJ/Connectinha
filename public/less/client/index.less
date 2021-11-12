@@ -1,5 +1,6 @@
 @import "../include/variables.less";
 @import "../include/mixins.less";
+@import "../include/favourites.less";
 
 /* ---------------- INDICATION UX ---------------- */
 /* ----------------------------------------------- */
@@ -50,90 +51,6 @@
 		justify-content: center;
 	}
 }
-
-#favourite {
-	position: relative;
-
-	&::after,
-	&::before {
-		content: "";
-		display: inline-block;
-		height: 50rem;
-		position: absolute;
-		z-index: -1;
-		top: 5rem;
-	}
-
-	&::after {
-		content: "";
-		display: block;
-		width: 20rem;
-		height: 50rem;
-		background: url('../../images/illustrations/les-coups-de-coeur-illustration-herbe-gauche.png') no-repeat;
-		background-size: contain;
-		position: absolute;
-	}
-
-	&::before {
-		content: "";
-		display: inline-block;
-		width: 40rem;
-		height: 50rem;
-		background: url('../../images/illustrations/les-coups-de-coeur-illustration-herbe-droite.png') no-repeat;
-		background-size: contain;
-		position: absolute;
-		right: 0;
-	}
-
-	h2 {
-		font-size: 8rem;
-		text-align: center;
-		margin-bottom: 5rem;
-	}
-
-	.bloc-favourites {
-
-		width: 70%;
-		margin: auto;
-		.dflex();
-		justify-content: center;
-
-		.favourite {
-			width: 28%;
-			margin: 1rem 2.2rem;
-			box-shadow: 0px 5px 5px rgba(23,23,23,0.3);
-
-			.bloc-img {
-				height: 30rem;
-				background-color: orange;
-				margin-bottom: 0.8rem;
-			}
-
-			h3 {
-				font-size: 3.5rem;
-				padding-left: 1rem;
-			}
-
-			h4 {
-				font-size: 2rem;
-				padding-left: 1rem;
-			}
-
-			button {
-				color: @tc-white;
-				margin-top: 1.5rem;
-				width: 100%;
-				padding: 1rem 2rem;
-			}
-		}
-	}
-
-	.btns {
-		justify-content: center;
-		margin-top: 6rem;
-	}
-}
-
 
 #presentation {
 	position: relative;

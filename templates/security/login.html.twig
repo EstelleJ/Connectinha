@@ -31,11 +31,11 @@
 					<div class="line">
 						<label for="inputEmail">Email</label>
 						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control"
-						       autocomplete="email" required autofocus>
+						       autocomplete="email" placeholder="Tapez votre Email" required autofocus>
 					</div>
 					<div class="line">
-						<label for="inputPassword">Password</label>
-						<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password"
+						<label for="inputPassword">Mot de passe</label>
+						<input type="password" name="password" id="inputPassword" placeholder="Tapez votre Mot de passe" class="form-control" autocomplete="current-password"
 						       required>
 					</div>
 
@@ -54,6 +54,10 @@
 							</label>
 					</div>
 					#}
+					<div class="bloc-register">
+						<a href="{{ path('app_register') }}">Vous n'avez pas encore de compte ? Inscrivez-vous</a>
+					</div>
+
 					<div class="btns">
 						<button class="btn" type="submit">
 							<i class="fas fa-user"></i> Connexion

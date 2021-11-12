@@ -11,12 +11,19 @@
 {% endblock %}
 
 {% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Les prestations</span>
+			<span class="amatic tc-white uppercase">Réserver une séance</span>
+		</h1>
+	</section>
+
 	<section id="rdv">
 		<div class="container">
-			<h1>Programmer <span>un rendez-vous</span></h1>
+			<h2 class="amatic tc-blue">Programmer un rendez-vous</h2>
 
 			<div class="bloc-choix">
-				<h2>À quelle heure êtes-vous disponible le {{ day }} {{ date }}?</h2>
+				<h3>À quelle heure êtes-vous disponible le {{ day }} {{ date }}?</h3>
 
 				{% if error %}
 					<div class="error">
@@ -57,7 +64,7 @@
 				</div>
 
 				<div class="btns rdv">
-					<button class="btn" type="submit">Réserver le rendez-vous</button>
+					<button class="btn tc-white" type="submit">Réserver le rendez-vous</button>
 				</div>
 				{{ form_end(form) }}
 

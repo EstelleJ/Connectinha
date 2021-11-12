@@ -19,6 +19,12 @@
 				<p>{{ message }}</p>
 			</div>
 		{% endfor %}
+
+		{% if error %}
+			<div class="alert error">
+				<p>{{ error }}</p>
+			</div>
+		{% endif %}
 		<div class="large-bloc">
 			<div class="line">
 				{{ form_label(form.name) }}
@@ -60,6 +66,10 @@
 			<div class="line">
 				{{ form_label(form.subcategory) }}
 				{{ form_widget(form.subcategory) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.mantraProducts) }}
+				{{ form_widget(form.mantraProducts) }}
 			</div>
 			<div class="line">
 				{{ form_label(form.tva) }}

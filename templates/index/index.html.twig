@@ -21,7 +21,7 @@
 			</h1>
 
 			<div class="btns">
-				<a href="" class="btn round bg-white tc-purple">
+				<a href="{{ path('agenda') }}" class="btn round bg-white tc-purple">
 					Réserver une séance
 				</a>
 			</div>
@@ -32,48 +32,25 @@
 		<h2 class="amatic uppercase tc-blue">Les coups de coeur</h2>
 
 		<div class="bloc-favourites">
-			<div class="favourite">
-				<div class="bloc-img">
-					<img src="" alt="">
-				</div>
+			{% for favourite in favourites %}
+				<a href="{{ path('product_details', {'slug': favourite.slug, 'id': favourite.id }) }}" class="favourite">
+					<span class="bloc-img">
+						<img src="{{ asset('products/'~ favourite.image ~'')|imagine_filter('productImagesThumbnails') }}"
+						     alt="{{ favourite.altImg }}" title="{{ favourite.nameImg }}">
+					</span>
 
-				<h3 class="amatic">Lorem ipsum dolor</h3>
-				<h4>9,20 €</h4>
+					<span class="title-h3 amatic">{{ favourite.name }}</span>
+					<span class="title-h4">{{ favourite.price }} €</span>
 
-				<button>
-					<i class="fas fa-cart-arrow-down"></i> Ajouter au panier
-				</button>
-			</div>
-
-			<div class="favourite">
-				<div class="bloc-img">
-					<img src="" alt="">
-				</div>
-
-				<h3 class="amatic">Lorem ipsum dolor</h3>
-				<h4>9,20 €</h4>
-
-				<button>
-					<i class="fas fa-cart-arrow-down"></i> Ajouter au panier
-				</button>
-			</div>
-
-			<div class="favourite">
-				<div class="bloc-img">
-					<img src="" alt="">
-				</div>
-
-				<h3 class="amatic">Lorem ipsum dolor</h3>
-				<h4>9,20 €</h4>
-
-				<button>
-					<i class="fas fa-cart-arrow-down"></i> Ajouter au panier
-				</button>
-			</div>
+					<button>
+						<i class="fas fa-cart-arrow-down"></i> Ajouter au panier
+					</button>
+				</a>
+			{% endfor %}
 		</div>
 
 		<div class="btns">
-			<a href="" class="btn round bg-blue tc-white">Découvrir plus</a>
+			<a href="{{ path('products', {'page': '1'}) }}" class="btn round bg-blue tc-white">Découvrir plus</a>
 		</div>
 	</section>
 

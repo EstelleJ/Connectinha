@@ -58,6 +58,11 @@ class ProductFormType extends AbstractType {
 						'label'    => 'Sous-catégorie',
 						'multiple' => true,
 				])
+				->add('mantraProducts', null, [
+						'label'    => 'Mantras',
+						'multiple' => true,
+						'required' => false
+				])
 				->add('tva', null, [
 						'label' => 'TVA',
 				])

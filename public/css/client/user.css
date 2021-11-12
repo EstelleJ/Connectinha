@@ -11,6 +11,10 @@
   background: #042b40;
   background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
 }
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
 .dflex {
   display: flex;
   flex-wrap: wrap;
@@ -54,7 +58,30 @@
   width: 20%;
 }
 #banner {
-  height: 15rem;
+  height: 55rem;
+  width: 100%;
+  background: url('../../images/produits/bandeau-page-ville-nuit-etoilee-bleu-violet-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#banner h1 {
+  font-size: 6rem;
+  margin-top: -5rem;
+}
+#banner h1 span {
+  display: block;
+}
+#banner h1 .rougeScript {
+  font-size: 8rem;
+}
+#banner h1 .amatic {
+  margin-top: -1rem;
+}
+#banner {
+  height: 35rem;
   background-color: #41687f;
 }
 #banner h1 {
@@ -86,4 +113,11 @@
   letter-spacing: 0.2ch;
   color: #41687f;
   font-weight: bold;
+}
+#profile h1 {
+  font-size: 8rem;
+  line-height: 1;
+}
+#profile h1 span {
+  display: block;
 }

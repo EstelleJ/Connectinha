@@ -11,6 +11,10 @@
   background: #042b40;
   background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
 }
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
 .dflex {
   display: flex;
   flex-wrap: wrap;
@@ -94,7 +98,6 @@
 }
 .products .produit .delete {
   right: 1.5rem;
-  top: 1.2rem;
 }
 .commandes {
   width: 40%;
@@ -121,7 +124,6 @@
 }
 .commandes .commande .facture {
   right: 1.5rem;
-  top: 1.2rem;
 }
 .users {
   width: 45%;

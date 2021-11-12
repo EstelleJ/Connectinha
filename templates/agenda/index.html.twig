@@ -11,12 +11,19 @@
 {% endblock %}
 
 {% block body %}
+    <section id="banner">
+        <h1>
+            <span class="rougeScript tc-white">Les prestations</span>
+            <span class="amatic tc-white uppercase">Réserver une séance</span>
+        </h1>
+    </section>
+
     <section id="rdv">
         <div class="container">
-            <h1>Programmer <span>un rendez-vous</span></h1>
+            <h2 class="amatic tc-blue">Réservez un rendez-vous</h2>
 
             <div>
-                <h2>Sélectionnez la prestation pour laquelle vous souhaitez prendre rendez-vous</h2>
+                <h3>Sélectionnez la prestation pour laquelle vous souhaitez prendre rendez-vous</h3>
 
                 <div class="bloc-services">
                     {% for service in services %}
@@ -24,12 +31,19 @@
                             <span class="bloc-img">
                                 <img src="{{ asset('services/'~ service.image ~'')|imagine_filter('servicesThumbnails') }}">
                             </span>
-
-                            <span class="title">{{ service.title }}</span>
-
-                            <span class="text">
-                                {{ service.text }}
+                            <span class="bloc-text">
+                                <span class="title">{{ service.title }}</span>
+                                <span class="duration">
+                                    Durée de la séance : {{ service.duration }}
+                                </span>
+                                <span class="price">
+                                    Prix : {{ service.price }} €
+                                </span>
+                                <span class="text">
+                                    {{ service.text }}
+                                </span>
                             </span>
+
                         </a>
                     {% endfor %}
                 </div>

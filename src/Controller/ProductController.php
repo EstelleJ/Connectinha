@@ -33,6 +33,11 @@ class ProductController extends AbstractController {
 		$categories = $this->getDoctrine()->getRepository(ProductCategory::class)->findBy([], ['name' => 'ASC']);
 		$subcategories = $this->getDoctrine()->getRepository(ProductSubcategory::class)->findBy([], ['name' => 'ASC']);
 
+		$favourites = $this->getDoctrine()->getRepository(Product::class)->findBy([
+																																									'active' => 1,
+																																								'favourite' => 1
+		                                                                          ], ['id' => 'DESC'], 3);
+
 		$link = 'products';
 		$urlParameter = '';
 
@@ -44,7 +49,8 @@ class ProductController extends AbstractController {
 				'categories'      => $categories,
 				'subcategories'   => $subcategories,
 				'link' => $link,
-				'urlParameter' => $urlParameter
+				'urlParameter' => $urlParameter,
+				'favourites' => $favourites
 		]);
 	}
 

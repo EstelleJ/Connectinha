@@ -1,0 +1,126 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #042b40;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+#favourite {
+  position: relative;
+}
+#favourite::after,
+#favourite::before {
+  content: "";
+  display: inline-block;
+  height: 50rem;
+  position: absolute;
+  z-index: -1;
+  top: 5rem;
+}
+#favourite::after {
+  content: "";
+  display: block;
+  width: 20rem;
+  height: 50rem;
+  background: url('../../images/illustrations/les-coups-de-coeur-illustration-herbe-gauche.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+#favourite::before {
+  content: "";
+  display: inline-block;
+  width: 40rem;
+  height: 50rem;
+  background: url('../../images/illustrations/les-coups-de-coeur-illustration-herbe-droite.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 0;
+}
+#favourite h2 {
+  font-size: 8rem;
+  text-align: center;
+  margin-bottom: 5rem;
+}
+#favourite .bloc-favourites {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#favourite .bloc-favourites .favourite {
+  width: 28%;
+  margin: 1rem 2.2rem;
+  box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
+}
+#favourite .bloc-favourites .favourite .bloc-img {
+  height: 30rem;
+  background-color: orange;
+  margin-bottom: 0.8rem;
+}
+#favourite .bloc-favourites .favourite h3 {
+  font-size: 3.5rem;
+  padding-left: 1rem;
+}
+#favourite .bloc-favourites .favourite h4 {
+  font-size: 2rem;
+  padding-left: 1rem;
+}
+#favourite .bloc-favourites .favourite button {
+  color: #fff;
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 1rem 2rem;
+}
+#favourite .btns {
+  justify-content: center;
+  margin-top: 6rem;
+}

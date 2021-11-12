@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Customer;
+use App\Entity\MantraProducts;
 use App\Entity\PaymentMethod;
 use App\Entity\Product;
 use App\Entity\ProductCategory;
@@ -167,6 +168,25 @@ class AjaxController extends AbstractController {
 		$service = $this->getDoctrine()->getRepository(Services::class)->find($service_id);
 
 		$entityManager->remove($service);
+		$entityManager->flush();
+
+		return new JsonResponse('ok');
+
+	}
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/delete/mantra', name: 'ajax_delete_mantra')]
+	public function deleteMantra(Request $request): Response {
+
+		$mantra_id = $request->request->get('ajax-mantra-id');
+		$entityManager = $this->getDoctrine()->getManager();
+
+		$mantra = $this->getDoctrine()->getRepository(MantraProducts::class)->find($mantra_id);
+
+		$entityManager->remove($mantra);
 		$entityManager->flush();
 
 		return new JsonResponse('ok');

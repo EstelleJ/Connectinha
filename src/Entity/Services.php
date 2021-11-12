@@ -6,6 +6,7 @@ use App\Repository\ServicesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JetBrains\PhpStorm\Pure;
 
 /**
  * @ORM\Entity(repositoryClass=ServicesRepository::class)
@@ -45,7 +46,7 @@ class Services {
 	private $duration;
 
 	/**
-	 * @ORM\OneToMany(targetEntity=Rendezvous::class, mappedBy="service")
+	 * @ORM\OneToMany(targetEntity=Rendezvous::class, mappedBy="service", cascade={"persist", "remove"})
 	 */
 	private $rendezvouses;
 
@@ -83,6 +84,11 @@ class Services {
 		$this->rendezvouses = new ArrayCollection();
 		$this->payment_method = new ArrayCollection();
 	}
+
+	#[Pure] public function __toString(): string {
+		return $this->getTitle();
+	}
+
 
 	public function getId(): ?int {
 		return $this->id;

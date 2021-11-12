@@ -1,6 +1,11 @@
 @import "../include/variables.less";
 @import "../include/mixins.less";
+@import "../include/banner.less";
+@import "../include/favourites.less";
 
+body {
+	padding-bottom: 26rem !important;
+}
 
 /* ---------------- INDICATION UX ---------------- */
 /* ----------------------------------------------- */
@@ -10,52 +15,116 @@
 		&::after {
 			content: "";
 			display: block;
-			width: 100%;
-			height: 0.3rem;
-			background-color: @bg-darkblue;
+			width: 3rem;
+			height: 0.2rem;
+			background-color: @bg-dark-blue-connectinha;
 			position: absolute;
 			bottom: 0;
+			left: calc(50% - 1.5rem);
 		}
 	}
 }
 
-/* ------------------ PRODUCTS ------------------- */
+/* ------------------ SLIDER ------------------- */
 /* ----------------------------------------------- */
 
-#banner {
-	height: 480px;
-	width: 100%;
-	background: url('../../images/produits/banner-shopping-vetements-chaussures-clothes.jpg') no-repeat center center;
-	background-size: cover;
-}
+#slider {
+	.container {
+		margin: -6rem auto 5rem auto;
+		.dflex();
+		justify-content: space-between;
 
-/* ------------------ CATEGORIES ------------------- */
-/* ------------------------------------------------- */
+		.slider {
+			width: 60%;
+			height: 64rem;
+			position: relative;
 
-#categories {
-	width: 20%;
-	padding: 50px 25px;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
 
-	nav {
-		margin-top: 40px;
-		.element {
-			padding: 10px 0;
-			margin-bottom: 8px;
-			display: inline-block;
+		.column {
+			width: 39%;
+
+			.handmade,
+			.shipping {
+				.dflex();
+			}
+
+			.handmade {
+				margin-bottom: 2rem;
+				height: 25rem;
+
+				.bloc-img {
+					height: 25rem;
+				}
+			}
+
+			.shipping {
+				height: 37rem;
+
+				.bloc-img {
+					height: 37rem;
+				}
+			}
+
+			.bloc-text {
+				width: 45%;
+				background-color: @bg-medium-blue-connectinha;
+				padding: 2rem 1.5rem;
+				color: @tc-white;
+				font-size: 3.5rem;
+				.dflex();
+				align-items: center;
+				justify-content: center;
+
+				span {
+					display: block;
+					line-height: 1;
+					text-align: center;
+				}
+
+				.amatic {
+					font-size: 6rem;
+				}
+			}
+
+			.bloc-img {
+				width: 55%;
+
+				img {
+					width: 100%;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
 		}
 	}
-
 }
+
 
 /* ------------------ PRODUCTS ------------------- */
 /* ----------------------------------------------- */
 
 #products {
 	width: 80%;
+	margin: 5rem auto;
 
 	&.unique {
 		width: 100%;
 	}
+
+	h2 {
+		font-size: 8rem;
+		text-align: center;
+		margin-bottom: 5rem;
+		font-family: "Amatic SC", cursive;
+		color: @tc-blue-connectinha;
+	}
+
 }
 
 .dflex {
@@ -72,32 +141,49 @@
 	}
 
 	.product {
-		box-shadow: 0px 3px 5px rgba(23,23,23,0.2);
-		padding: 20px 25px;
-		width: 30%;
-		margin: 15px 10px;
+		width: 25%;
+		margin: 2rem 2.2rem;
+		box-shadow: 0px 5px 5px rgba(23,23,23,0.3);
+		color: @tc-grey;
+
+		span {
+			display: block;
+		}
 
 		.bloc-img {
-			width: 90%;
-			height: 220px;
-			margin: 0 auto 20px auto;
+			height: 30rem;
+			background-color: orange;
+			margin-bottom: 0.8rem;
 
 			img {
 				width: 100%;
 				height: 100%;
-				object-fit: contain;
+				object-fit: cover;
 			}
 		}
 
-		h2 {
+		.bloc-text {
+			padding: 1rem 1.5rem;
+		}
+
+		.title {
 			text-transform: uppercase;
 			letter-spacing: 0.2ch;
-			font-size: 1.6rem;
+			font-size: 4rem;
 			margin-bottom: 15px;
+			font-family: "Amatic SC", cursive;
+		}
+
+
+		button {
+			color: @tc-white;
+			margin-top: 1.5rem;
+			width: 100%;
+			padding: 1rem 2rem;
 		}
 
 		.prix {
-			font-size: 1.8rem;
+			font-size: 2rem;
 			font-weight: bold;
 		}
 
@@ -109,20 +195,51 @@
 
 		&.unique {
 			width: 80%;
-			margin: auto;
+			margin: -12rem auto 10rem auto;
 			padding: 3rem 3.5rem;
 			.dflex();
 			justify-content: space-between;
+			box-shadow: none;
+
+			.return {
+				width: 100%;
+				margin-bottom: 2.5rem;
+			}
 
 			.bloc-img {
-				width: 48%;
+				width: 40%;
+				height: 55rem;
 			}
 
 			.bloc-text {
 				width: 50%;
+				text-align: center;
 
 				h2 {
-					font-size: 2.2rem;
+					font-size: 8rem;
+					.dflex();
+					justify-content: center;
+					margin-bottom: 2rem;
+
+					.tc-grey {
+						margin-left: 3rem;
+					}
+				}
+
+				.select {
+					margin-top: 3rem;
+					h3 {
+						text-align: center;
+					}
+
+					select {
+						margin-top: 2rem;
+						padding: 1rem;
+
+						option {
+							color: @tc-light-purple-connectinha;
+						}
+					}
 				}
 
 				.text {
@@ -144,6 +261,57 @@
 						margin: 0;
 					}
 				}
+
+				.bloc-btn {
+					margin-top: 5rem;
+					.dflex();
+					align-items: center;
+					justify-content: space-between;
+
+					h3 {
+						width: 100%;
+						margin-bottom: 1.5rem;
+					}
+
+					.quantity {
+						width: 35%;
+						.dflex();
+						align-items: center;
+
+						button {
+							width: 4rem;
+							height: 4rem;
+							background: transparent;
+							background-color: @bg-medium-blue-connectinha;
+							transition: 0.3s background-color;
+							.dflex();
+							align-items: center;
+							justify-content: center;
+							padding: 0;
+							margin: 0;
+							font-weight: bold;
+							font-size: 2rem;
+
+							&:hover {
+								background-color: darken(@bg-medium-blue-connectinha, 15%);
+								transition: 0.3s background-color;
+							}
+						}
+
+						#number {
+							width: calc(100% - 8rem);
+							padding: 0 0.5rem;
+							height: 40px;
+						}
+					}
+
+					.btns {
+						width: 60%;
+						.dflex();
+						align-items: center;
+						margin: 0;
+					}
+				}
 			}
 		}
 	}
@@ -159,7 +327,6 @@
 		padding: 8px 16px;
 		border: none;
 		color: @tc-white;
-		margin: 0 5px;
 
 		i {
 			margin-right: 8px;
@@ -188,3 +355,83 @@
 	}
 }
 
+/* -------------------- PLUS --------------------- */
+/* ----------------------------------------------- */
+
+#plus {
+	margin: 6rem 0;
+
+	.container {
+		.dflex();
+		justify-content: space-between;
+	}
+
+	.bloc {
+		width: 48%;
+		height: 40rem;
+		.dflex();
+		align-items: center;
+		justify-content: center;
+		padding: 4rem 6rem;
+
+		&.madeInFrance {
+			background: url('../../images/produits/100-pourcent-fabrication-francaise-fait-main-elodie-ortiz-connectinha.jpg') no-repeat center center;
+			background-size: cover;
+		}
+
+		&.parfume {
+			background: url('../../images/produits/des-parfums-de-calme-serenite-elodie-ortiz-connectinha.jpg') no-repeat center center;
+			background-size: cover;
+		}
+
+		h2 {
+			font-size: 10rem;
+			text-align: center;
+			line-height: 0.8;
+
+			span {
+				display: block;
+			}
+
+			.amatic {
+				font-size: 15rem;
+			}
+		}
+	}
+}
+
+/* -------------------- CREATIONS --------------------- */
+/* ---------------------------------------------------- */
+
+#creations {
+	.dflex();
+	justify-content: space-between;
+	align-items: center;
+	margin: 6rem 0 0 0;
+	padding: 0;
+
+	.bloc-img {
+		width: 30%;
+		height: 65rem;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.bloc-text {
+		width: 70%;
+		padding: 0 15rem;
+
+		h2 {
+			font-size: 8rem;
+			text-align: center;
+			margin-bottom: 6rem;
+		}
+		p {
+			text-align: center;
+		}
+	}
+}

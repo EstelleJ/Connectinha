@@ -31,15 +31,23 @@
 
 			{% for rdv in rdvs %}
 				<div class="element">
-					{{ rdv.date|format_datetime('full', 'short', locale='fr') }}
+					<span class="service">
+						{{ rdv.service }}
+					</span>
+					{{ rdv.date|format_datetime('full', 'none', locale='fr') }}
+					à {{ rdv.hours }}
+
+					<span class="customer">
+						<i class="fas fa-user"></i> {{ rdv.firstname }} {{ rdv.name }}
+					</span>
 				</div>
 			{% endfor %}
 
-			<div class="btns">
-				<a href="{{ path('admin_agenda_rdv', {'page': '1'}) }}" class="btn">
-					<i class="fas fa-calendar-day"></i> Voir vos rendez-vous
-				</a>
-			</div>
+{#			<div class="btns">#}
+{#				<a href="{{ path('admin_agenda_rdv', {'page': '1'}) }}" class="btn">#}
+{#					<i class="fas fa-calendar-day"></i> Voir vos rendez-vous#}
+{#				</a>#}
+{#			</div>#}
 		</div>
 
 		<div class="d-flex">

@@ -1,0 +1,58 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter - Mantras{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/produit.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Gérer vos mantras</h1>
+
+	<div class="dflex products">
+
+		{{ form_start(form) }}
+		<h2><i class="fas fa-shopping-bag"></i> Ajouter un mantra</h2>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert success">
+				<p>{{ message }}</p>
+			</div>
+		{% endfor %}
+
+		{% if error %}
+			<div class="alert error">
+				<p>{{ error }}</p>
+			</div>
+		{% endif %}
+		<div class="mantra large-bloc">
+			<div class="line">
+				{{ form_label(form.mantra) }}
+				{{ form_widget(form.mantra) }}
+			</div>
+
+		</div>
+
+		<div class="bloc">
+			{{ form_widget(form.submit, {'label': 'Ajouter', 'attr': {'class': 'btn action'}}) }}
+		</div>
+		{{ form_end(form) }}
+
+		<div class="produits">
+			<h2><i class="fas fa-shopping-bag"></i> Vos mantras</h2>
+
+			{% for mantra in mantras %}
+				<a href="{{ path('admin_mantra_modify', {'id': mantra.id }) }}"
+				   class="element produit">
+					<span class="titre">{{ mantra.mantra }}</span>
+				</a>
+			{% endfor %}
+
+			<div class="btns dflex">
+				<a href="{{ path('admin_mantra', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-list-ul"></i> Voir tous les mantras
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

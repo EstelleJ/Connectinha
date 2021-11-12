@@ -13,25 +13,19 @@
 {% block body %}
     <section id="banner">
         <div class="container">
-            <h1>
-                Bonjour <span class="name">{{ user.firstName }} {{ user.name }}</span>,
-                <span class="uppercase">Bienvenue dans votre espace client</span>
-            </h1>
-        </div>
-    </section>
 
-    <section id="menu">
-        <nav>
-            <ul>
-                <li>
-                    <a href="">Vos commandes</a>
-                </li>
-            </ul>
-        </nav>
+        </div>
     </section>
 
     <section id="profile">
         <div class="container">
+            <h1>
+                <span class="rougeScript tc-blue">
+                    Bonjour {{ user.firstName }} {{ user.name }},
+                </span>
+                <span class="amatic uppercase">Bienvenue dans votre espace client</span>
+            </h1>
+
             <div class="bloc-user">
                 <h2>Vos informations personnelles</h2>
 
