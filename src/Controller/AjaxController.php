@@ -10,6 +10,7 @@ use App\Entity\ProductCategory;
 use App\Entity\ProductImage;
 use App\Entity\ProductSubcategory;
 use App\Entity\Services;
+use App\Entity\ServicesContent;
 use App\Entity\Tva;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -187,6 +188,25 @@ class AjaxController extends AbstractController {
 		$mantra = $this->getDoctrine()->getRepository(MantraProducts::class)->find($mantra_id);
 
 		$entityManager->remove($mantra);
+		$entityManager->flush();
+
+		return new JsonResponse('ok');
+
+	}
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/delete/content', name: 'ajax_delete_content')]
+	public function deleteContent(Request $request): Response {
+
+		$content_id = $request->request->get('ajax-content-id');
+		$entityManager = $this->getDoctrine()->getManager();
+
+		$content = $this->getDoctrine()->getRepository(ServicesContent::class)->find($content_id);
+
+		$entityManager->remove($content);
 		$entityManager->flush();
 
 		return new JsonResponse('ok');

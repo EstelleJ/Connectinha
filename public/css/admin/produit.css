@@ -80,6 +80,9 @@
 .table .tva {
   width: 12%;
 }
+.table .content-title {
+  width: 70%;
+}
 .table .active {
   width: 10%;
   text-align: center;

@@ -1,0 +1,169 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+}
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #042b40;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+#banner {
+  height: 55rem;
+  width: 100%;
+  background: url('../../images/produits/bandeau-page-ville-nuit-etoilee-bleu-violet-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#banner h1 {
+  font-size: 6rem;
+  margin-top: -5rem;
+}
+#banner h1 span {
+  display: block;
+}
+#banner h1 .rougeScript {
+  font-size: 8rem;
+}
+#banner h1 .amatic {
+  margin-top: -1rem;
+}
+/* ---------------- INDICATION UX ---------------- */
+/* ----------------------------------------------- */
+.menu .services::after {
+  content: "";
+  display: block;
+  width: 3rem;
+  height: 0.2rem;
+  background-color: #042b40;
+  position: absolute;
+  bottom: 0;
+  left: calc(50% - 1.5rem);
+}
+#rdv {
+  margin-top: -15rem;
+}
+#rdv h2 {
+  font-size: 8rem;
+  text-align: center;
+}
+#rdv .service {
+  width: 80%;
+  margin: 3rem auto;
+  background-color: #fff;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#rdv .service .bloc-img {
+  width: 35%;
+  height: 25rem;
+}
+#rdv .service .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#rdv .service .bloc-text {
+  width: 62%;
+}
+#rdv .service .bloc-text h3 {
+  font-size: 3rem;
+  color: #af5ce2;
+  margin-bottom: 2rem;
+}
+#rdv .service .bloc-text .duration,
+#rdv .service .bloc-text .price {
+  font-weight: bold;
+}
+#rdv .service .contents {
+  margin-top: 2rem;
+  border-top: 1px solid #888;
+  padding: 2rem 0;
+  width: 100%;
+}
+#rdv .service .contents .content {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#rdv .service .contents .content h3 {
+  width: 100%;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#rdv .service .contents .content .bloc-img {
+  width: 15%;
+  height: 18rem;
+}
+#rdv .service .contents .content .bloc-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+#rdv .service .contents .content .bloc-text {
+  width: 75%;
+}
+#rdv .service .contents .content .bloc-text .btns {
+  margin-top: 1rem;
+}
+#rdv .service .contents .content .bloc-text .btn {
+  background-color: #396288;
+  color: #fff;
+  margin: 0 0.6rem;
+}

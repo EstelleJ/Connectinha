@@ -1,0 +1,80 @@
+﻿{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter - Services proposés{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/services.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Gérer vos contenu</h1>
+
+	<div class="dflex add-services">
+
+		{{ form_start(form) }}
+		<h2>
+			<i class="fas fa-star"></i> Ajouter du contenu
+		</h2>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert success">
+				<p>{{ message }}</p>
+			</div>
+		{% endfor %}
+		<div class="large-bloc">
+			<div class="line">
+				{{ form_label(form.title) }}
+				{{ form_widget(form.title) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.text) }}
+				{{ form_widget(form.text) }}
+			</div>
+			<div class="line">
+				{{ form_label(form.link) }}
+				{{ form_widget(form.link) }}
+			</div>
+		</div>
+
+		<div class="small-bloc">
+			<div class="line">
+				{{ form_label(form.image) }}
+				{{ form_widget(form.image) }}
+
+				<div class="bloc-img">
+
+				</div>
+			</div>
+			<div class="line">
+				{{ form_label(form.pdf) }}
+				{{ form_widget(form.pdf) }}
+			</div>
+		</div>
+
+		<div class="submit-bloc">
+			{{ form_widget(form.submit, {'label': 'Ajouter', 'attr': {'class': 'btn action'}}) }}
+		</div>
+		{{ form_widget(form._token) }}
+
+		{{ form_end(form, {render_rest: false}) }}
+
+		<div class="services small">
+			<h2>
+				<i class="fas fa-star"></i> Vos contenus
+			</h2>
+
+			{% for content in contents %}
+				<a href="{{ path('admin_services_content_modify', {'slug': service.slug, 'id': service.id, 'contentId': content.id }) }}"
+				   class="element category">
+					<span class="titre">{{ content.title }}</span>
+				</a>
+			{% endfor %}
+
+			<div class="btns dflex">
+				<a href="{{ path('admin_services_content', {'slug': service.slug, 'id': service.id, 'page': '1'}) }}" class="btn">
+					<i class="fas fa-list-ul"></i> Voir tout les services
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

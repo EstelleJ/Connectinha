@@ -80,9 +80,15 @@ class Services {
 	 */
 	private $updatedAt;
 
+	/**
+	 * @ORM\OneToMany(targetEntity=ServicesContent::class, mappedBy="services", fetch="EAGER")
+	 */
+	private $content;
+
 	public function __construct() {
 		$this->rendezvouses = new ArrayCollection();
 		$this->payment_method = new ArrayCollection();
+		$this->content = new ArrayCollection();
 	}
 
 	#[Pure] public function __toString(): string {
@@ -238,6 +244,33 @@ class Services {
 
 	public function setUpdatedAt(\DateTime $updatedAt): self {
 		$this->updatedAt = $updatedAt;
+
+		return $this;
+	}
+
+	/**
+	 * @return Collection|ServicesContent[]
+	 */
+	public function getContent(): Collection {
+		return $this->content;
+	}
+
+	public function addContent(ServicesContent $content): self {
+		if (!$this->content->contains($content)) {
+			$this->content[] = $content;
+			$content->setServices($this);
+		}
+
+		return $this;
+	}
+
+	public function removeContent(ServicesContent $content): self {
+		if ($this->content->removeElement($content)) {
+			// set the owning side to null (unless already changed)
+			if ($content->getServices() === $this) {
+				$content->setServices(null);
+			}
+		}
 
 		return $this;
 	}

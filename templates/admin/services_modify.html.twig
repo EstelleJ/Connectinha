@@ -16,6 +16,13 @@
 			<i class="fas fa-star"></i> Modifier un service
 		</h2>
 
+		<div id="add-pictures">
+			<a href="{{ path('admin_services_content', {'slug': service.slug, 'id': service.id, 'page': '1' }) }}"
+			   class="btn action">
+				<i class="fas fa-images"></i> Gestion du contenu
+			</a>
+		</div>
+
 		{% for message in app.flashes('success') %}
 			<div class="alert success">
 				<p>{{ message }}</p>

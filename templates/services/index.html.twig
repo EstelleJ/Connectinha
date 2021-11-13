@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mes services{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/services.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Mes services</span>
+			<span class="amatic tc-white uppercase">Vous trouverez votre bonheur</span>
+		</h1>
+	</section>
+
+	<section id="rdv">
+		<div class="container">
+			<h2 class="amatic tc-blue">Je vous propose</h2>
+
+			{% for service in services %}
+			<div class="service">
+          <div class="bloc-img">
+              <img
+                  src="{{ asset('services/'~ service.image ~'')|imagine_filter('servicesThumbnails') }}">
+          </div>
+					<div class="bloc-text">
+              <h3 class="title">{{ service.title }}</h3>
+              <p class="duration">
+                  Durée de la séance : {{ service.duration }}
+              </p>
+              <p class="price">
+                  Prix : {{ service.price }} €
+              </p>
+              <p class="text">
+                  {{ service.text }}
+              </p>
+          </div>
+
+				{% if service.content|length > 0 %}
+					<div class="contents">
+						{% for content in service.content %}
+							<div class="content">
+								<h3>{{ content.title }}</h3>
+								<div class="bloc-img">
+									<img
+											src="{{ asset('services/'~ content.image ~'')|imagine_filter('servicesThumbnails') }}">
+								</div>
+								<div class="bloc-text">
+									<p>
+										{{ content.text }}
+									</p>
+									<div class="btns">
+										<a class="btn" href="{{ content.link }}" target="_blank">Lien à découvrir</a>
+										<a class="btn" href="" target="_blank" download="{{ asset('services/'~ content.pdf ~'') }}">PDF à découvrir</a>
+									</div>
+
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endif %}
+			</div>
+			{% endfor %}
+
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Contenu de vos services{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/produit.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/deletes/content-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer le contenu de vos services</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-layer-group"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ elements|length }} contenu disponibles
+				</span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_services_content_add', {'slug': service.slug, 'id': service.id}) }}" class="btn">
+				<i class="fas fa-plus"></i> Ajouter du contenu
+			</a>
+			<a href="{{ path('admin_services', {'page': '1'}) }}" class="btn">
+				<i class="fas fa-clone"></i> Voir les services
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="content-title">
+				Titre
+			</h3>
+			<div class="search">
+				Rechercher
+			</div>
+		</div>
+		{% for content in contents %}
+			<a href="{{ path('admin_services_content_modify', {'contentId': content.id, 'slug': service.slug, 'id': service.id }) }}"
+			   class="element produit">
+				<span class="data content-title">{{ content.title }}</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="btn delete" data-id="{{ content.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+{#	{% include 'includes/_pagination.html.twig' with {'link': 'admin_services_content' } %}#}
+{% endblock %}
