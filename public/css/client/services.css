@@ -136,7 +136,8 @@
   width: 100%;
 }
 #rdv .service .contents .content {
-  margin-bottom: 1rem;
+  margin: 2rem auto;
+  width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -144,7 +145,6 @@
 #rdv .service .contents .content h3 {
   width: 100%;
   font-size: 2.5rem;
-  text-align: center;
   margin-bottom: 2rem;
 }
 #rdv .service .contents .content .bloc-img {
@@ -159,8 +159,11 @@
 #rdv .service .contents .content .bloc-text {
   width: 75%;
 }
+#rdv .service .contents .content .bloc-text p {
+  font-size: 1.6rem;
+}
 #rdv .service .contents .content .bloc-text .btns {
-  margin-top: 1rem;
+  margin-top: 3rem;
 }
 #rdv .service .contents .content .bloc-text .btn {
   background-color: #396288;

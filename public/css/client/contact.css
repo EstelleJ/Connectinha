@@ -1,0 +1,229 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+}
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #042b40;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+#banner {
+  height: 55rem;
+  width: 100%;
+  background: url('../../images/produits/bandeau-page-ville-nuit-etoilee-bleu-violet-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#banner h1 {
+  font-size: 6rem;
+  margin-top: -5rem;
+}
+#banner h1 span {
+  display: block;
+}
+#banner h1 .rougeScript {
+  font-size: 8rem;
+}
+#banner h1 .amatic {
+  margin-top: -1rem;
+}
+#informations {
+  width: 30%;
+  margin-top: -13rem;
+}
+#informations .bloc-img {
+  width: 70%;
+  height: 60rem;
+  background: url('../../images/contact/contact-fond-nuage-ciel-bleu-violet-elodie-ortiz.jpg') no-repeat center center;
+  background-size: cover;
+  position: relative;
+}
+#informations .bloc-img .info {
+  padding: 4rem 7rem;
+  background-color: #fff;
+  box-shadow: 0 5px 8px rgba(23, 23, 23, 0.3);
+  position: absolute;
+  top: 10rem;
+  right: -50%;
+  z-index: 6;
+}
+#informations .bloc-img .info h2 {
+  font-size: 5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+#informations .bloc-img .info h2 span {
+  display: block;
+}
+#informations .bloc-img .info h2 span.rougeScript {
+  font-size: 8rem;
+}
+#informations .bloc-img .info h2 span.amatic {
+  margin-top: -3rem;
+}
+#informations .bloc-img .info p {
+  margin-bottom: 1rem;
+}
+#informations .bloc-img .info p,
+#informations .bloc-img .info a {
+  font-size: 2.3rem;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  color: #333;
+}
+#informations .bloc-img .info p i,
+#informations .bloc-img .info a i {
+  color: #82629a;
+  margin-right: 1rem;
+}
+#informations .bloc-img .info .social {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #82629a;
+  text-align: center;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+}
+#informations .bloc-img .info .socials {
+  justify-content: center;
+}
+#informations .bloc-img .info .socials a {
+  display: block;
+  margin: 0 1rem;
+}
+#informations .bloc-img .info .socials i {
+  font-size: 3.5rem;
+}
+#contact {
+  z-index: 5;
+  margin-top: -13rem;
+  position: relative;
+  width: 70%;
+}
+#contact::after,
+#contact::before {
+  content: "";
+  display: inline-block;
+  height: 50rem;
+  position: absolute;
+  z-index: -1;
+  top: 5rem;
+}
+#contact::after {
+  content: "";
+  display: block;
+  width: 30rem;
+  height: 50rem;
+  background: url('../../images/illustrations/contact-illustration-feuille-lune-gauche-elodie-ortiz.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+#contact::before {
+  content: "";
+  display: inline-block;
+  width: 20rem;
+  height: 50rem;
+  background: url('../../images/illustrations/contact-illustration-feuille-lune-droite-elodie-ortiz.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 0;
+}
+#contact h2 {
+  font-size: 8rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+#contact .bloc-form {
+  width: 70%;
+  margin: auto;
+}
+#contact .bloc-form .line {
+  margin-bottom: 2rem;
+}
+#contact .bloc-form .line label {
+  margin-bottom: 1rem;
+  display: block;
+  font-size: 1.8rem;
+}
+#contact .bloc-form .line input,
+#contact .bloc-form .line textarea {
+  padding: 1.2rem 2rem;
+}
+#contact .bloc-form .line textarea {
+  width: 100%;
+  height: 15rem;
+}
+#contact .bloc-form .names {
+  justify-content: space-between;
+}
+#contact .bloc-form .names .line {
+  width: 48%;
+}
+#contact .bloc-form .mobiles {
+  justify-content: space-between;
+}
+#contact .bloc-form .mobiles .mobile {
+  width: 38%;
+}
+#contact .bloc-form .mobiles .mail {
+  width: 58%;
+}
+#contact .bloc-form .btns {
+  justify-content: center;
+}
+#contact .bloc-form .btns button {
+  width: 40%;
+}

@@ -45,12 +45,13 @@
 					<div class="contents">
 						{% for content in service.content %}
 							<div class="content">
-								<h3>{{ content.title }}</h3>
+
 								<div class="bloc-img">
 									<img
 											src="{{ asset('services/'~ content.image ~'')|imagine_filter('servicesThumbnails') }}">
 								</div>
 								<div class="bloc-text">
+									<h3>{{ content.title }}</h3>
 									<p>
 										{{ content.text }}
 									</p>

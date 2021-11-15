@@ -1,0 +1,177 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+@import "../include/banner.less";
+
+#informations {
+	width: 30%;
+	margin-top: -13rem;
+
+	.bloc-img {
+		width: 70%;
+		height: 60rem;
+		background: url('../../images/contact/contact-fond-nuage-ciel-bleu-violet-elodie-ortiz.jpg') no-repeat center center;
+		background-size: cover;
+		position: relative;
+
+		.info {
+			padding: 4rem 7rem;
+			background-color: @bg-white;
+			box-shadow: 0 5px 8px rgba(23,23,23,0.3);
+			position: absolute;
+			top: 10rem;
+			right: -50%;
+			z-index: 6;
+
+			h2 {
+				font-size: 5rem;
+				text-align: center;
+				margin-bottom: 4rem;
+
+				span {
+					display: block;
+
+					&.rougeScript {
+						font-size: 8rem;
+					}
+
+					&.amatic {
+						margin-top: -3rem;
+					}
+				}
+			}
+
+			p {
+				margin-bottom: 1rem;
+			}
+
+			p, a{
+				font-size: 2.3rem;
+				text-align: center;
+				font-family: "Montserrat", sans-serif;
+				color: @tc-grey;
+
+				i {
+					color: @tc-purple;
+					margin-right: 1rem;
+				}
+			}
+
+			.social {
+				font-size: 1.5rem;
+				font-weight: bold;
+				color: @tc-purple;
+				text-align: center;
+				margin-bottom: 1rem;
+				margin-top: 3rem;
+			}
+
+			.socials {
+				justify-content: center;
+
+				a {
+					display: block;
+					margin: 0 1rem;
+				}
+
+				i {
+					font-size: 3.5rem;
+				}
+			}
+		}
+	}
+}
+
+#contact {
+	z-index: 5;
+	margin-top: -13rem;
+	position: relative;
+	width: 70%;
+
+	&::after,
+	&::before {
+		content: "";
+		display: inline-block;
+		height: 50rem;
+		position: absolute;
+		z-index: -1;
+		top: 5rem;
+	}
+
+	&::after {
+		content: "";
+		display: block;
+		width: 30rem;
+		height: 50rem;
+		background: url('../../images/illustrations/contact-illustration-feuille-lune-gauche-elodie-ortiz.png') no-repeat;
+		background-size: contain;
+		position: absolute;
+	}
+
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 20rem;
+		height: 50rem;
+		background: url('../../images/illustrations/contact-illustration-feuille-lune-droite-elodie-ortiz.png') no-repeat;
+		background-size: contain;
+		position: absolute;
+		right: 0;
+	}
+
+	h2 {
+		font-size: 8rem;
+		text-align: center;
+		margin-bottom: 3rem;
+	}
+
+	.bloc-form {
+		width: 70%;
+		margin: auto;
+
+		.line {
+			margin-bottom: 2rem;
+
+			label {
+				margin-bottom: 1rem;
+				display: block;
+				font-size: 1.8rem;
+			}
+
+			input,
+			textarea {
+				padding: 1.2rem 2rem;
+			}
+
+			textarea {
+				width: 100%;
+				height: 15rem;
+			}
+		}
+
+		.names {
+			justify-content: space-between;
+			.line {
+				width: 48%;
+			}
+		}
+
+		.mobiles {
+			justify-content: space-between;
+			.mobile {
+				width: 38%;
+			}
+			.mail {
+				width: 58%;
+			}
+		}
+
+		.btns {
+			justify-content: center;
+
+			button {
+				width: 40%;
+			}
+		}
+	}
+}
+

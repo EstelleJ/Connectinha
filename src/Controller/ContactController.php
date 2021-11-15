@@ -19,24 +19,48 @@ class ContactController extends AbstractController {
 
 		$form = $this->createFormBuilder()
 				->add('name', TextType::class, [
-						'label' => 'Votre nom *'
+						'label' => 'Votre nom *',
+						'attr' => [
+								'placeholder' => 'Nom'
+						]
+
 				])
 				->add('firstname', TextType::class, [
-						'label' => 'Votre prénom *'
+						'label' => 'Votre prénom *',
+						'attr' => [
+								'placeholder' => 'Prénom'
+						]
+
 				])
 				->add('email', EmailType::class, [
-						'label' => 'Votre email *'
+						'label' => 'Votre email *',
+						'attr' => [
+								'placeholder' => 'Email'
+						]
+
 				])
 				->add('phone', TelType::class, [
 						'label' => 'Votre numéro de téléphone',
-						'required' => false
+						'required' => false,
+						'attr' => [
+								'placeholder' => 'Téléphone'
+						]
+
 				])
 				->add('subject', TextType::class, [
 						'label' => 'Le sujet de votre message *',
-						'required' => false
+						'required' => false,
+						'attr' => [
+								'placeholder' => 'Sujet'
+						]
+
 				])
 				->add('text', TextareaType::class, [
-						'label' => 'Votre message *'
+						'label' => 'Votre message *',
+						'attr' => [
+								'placeholder' => 'Message'
+						]
+
 				])
 				->getForm();
 
@@ -46,10 +70,10 @@ class ContactController extends AbstractController {
 
 		if ($form->isSubmitted() && $form->isValid()) {
 			// Envoi d'un mail d'inscription via MailJet
-			$mailTo = 'contact@mindcursus.fr';
+			$mailTo = 'contact@connectinha.fr';
 			$subject = "Vous avez reçu un message";
 			$templateId = 3312132;
-			$firstName = "Formulaire de contact Mindcursus";
+			$firstName = "Formulaire de contact Connectinha";
 			$name = $form->get('name')->getData();
 			$user_firstName = $form->get('firstname')->getData();
 			$sendBy = $form->get('email')->getData();

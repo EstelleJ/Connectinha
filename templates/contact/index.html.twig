@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block description %}
+  Une question ? Un message ? Contactez-nous pour plus d'informations. L'équipe de Mindcursus se tient à disposition pour vous.
+{% endblock %}
+
+{% block stylesheets %}
+  <link rel="stylesheet" href="{{ asset('css/client/contact.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section id="banner">
+      <h1>
+        <span class="rougeScript tc-white">Contact</span>
+        <span class="amatic tc-white uppercase">Vous avez une question ?</span>
+      </h1>
+    </section>
+
+    <div class="dflex">
+      <section id="informations">
+        <div class="bloc-img">
+          <div class="info">
+            <h2>
+              <span class="rougeScript tc-blue">Elodie Ortiz</span>
+              <span class="amatic">Magnétisme</span>
+            </h2>
+
+            <p>
+              <i class="fas fa-mobile-alt"></i> 06 83 14 92 77
+            </p>
+            <a href="mailto:contact@connectinha.fr">
+              <i class="fas fa-envelope"></i> contact@connectinha.fr
+            </a>
+
+            <p class="social">Retrouvez-moi sur les réseaux</p>
+            <div class="socials dflex">
+              <a href="" title="Retrouvez-moi sur Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="" title="Retrouvez-moi sur Youtube">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="" title="Retrouvez-moi sur Facebook">
+                <i class="fab fa-facebook"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="container">
+          <h2 class="amatic tc-blue">Laissez-moi un message</h2>
+
+          <div class="bloc-form">
+            {{ form_start(form) }}
+            <div class="bloc-user">
+
+              {% if error %}
+                <div class="error">
+                  <p>{{ error }}</p>
+                </div>
+              {% endif %}
+
+              <div class="dflex names">
+                <div class="line">
+                  {{ form_label(form.name) }}
+                  {{ form_widget(form.name) }}
+                </div>
+
+                <div class="line">
+                  {{ form_label(form.firstname) }}
+                  {{ form_widget(form.firstname) }}
+                </div>
+              </div>
+
+              <div class="dflex mobiles">
+                <div class="line mobile">
+                  {{ form_label(form.phone) }}
+                  {{ form_widget(form.phone) }}
+                </div>
+
+                <div class="line mail">
+                  {{ form_label(form.email) }}
+                  {{ form_widget(form.email) }}
+                </div>
+              </div>
+
+            </div>
+
+            <div class="bloc-message">
+              <div class="line">
+                {{ form_label(form.subject) }}
+                {{ form_widget(form.subject) }}
+              </div>
+
+              <div class="line">
+                {{ form_label(form.text) }}
+                {{ form_widget(form.text) }}
+              </div>
+            </div>
+
+
+            <div class="btns">
+              <input type="hidden" id="recaptchaResponse" name="recaptcha-response">
+
+              <button type="submit" class="btn tc-white">
+                <i class="fas fa-paper-plane"></i> Envoyer
+              </button>
+            </div>
+            {{ form_end(form) }}
+          </div>
+        </div>
+      </section>
+    </div>
+
+
+{% endblock %}
+
+{% block javascripts %}
+  <script src="https://www.google.com/recaptcha/api.js?render=6LdIchAdAAAAALVeDEZuG73-GuXTcuf7c3HrKKZu"></script>
+
+  <script>
+      grecaptcha.ready(function() {
+        grecaptcha.execute('6LdIchAdAAAAALVeDEZuG73-GuXTcuf7c3HrKKZu', {action: 'submit'}).then(function(token) {
+          document.getElementById("recaptchaResponse").value = token
+        });
+      });
+  </script>
+{% endblock %}
