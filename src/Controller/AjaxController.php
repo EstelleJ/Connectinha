@@ -20,6 +20,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AjaxController extends AbstractController {
 
+
+
+	// ------------------- DELETES --------------------- //
+	// ------------------------------------------------- //
+
 	/**
 	 * @param Request $request
 	 * @return Response
@@ -212,5 +217,23 @@ class AjaxController extends AbstractController {
 		return new JsonResponse('ok');
 
 	}
+
+	// // ------------------- ADD CART --------------------- //
+	// // -------------------------------------------------- //
+	//
+	// /**
+	//  * @param Request $request
+	//  * @return Response
+	//  */
+	// #[Route('/ajax/add-cart/', name: 'ajax_add_cart')]
+	// public function addCart(Request $request): Response {
+	//
+	// 	$product_id = $request->request->get('ajax-product-id');
+	//
+	// 	$product = $this->getDoctrine()->getRepository(Product::class)->find($product_id);
+	//
+	// 	return new JsonResponse('ok');
+	//
+	// }
 
 }

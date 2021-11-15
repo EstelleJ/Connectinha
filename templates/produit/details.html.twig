@@ -55,7 +55,9 @@
                             </div>
 
                             <div class="btns">
-                                <button id="addCart"><i class="fas fa-shopping-cart"></i> Ajouter au panier</button>
+                                <button id="addCart" data-id="{{ product.id }}" data-mantra="mantra">
+                                    <i class="fas fa-shopping-cart"></i> Ajouter au panier
+                                </button>
                             </div>
                         </div>
 
@@ -68,4 +70,9 @@
         </div>
     </section>
 
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{{ asset('js/shop-add-cart.js') }}" type="module"></script>
 {% endblock %}
