@@ -6,6 +6,7 @@ use App\Entity\Customer;
 use App\Entity\Days;
 use App\Entity\Distance;
 use App\Entity\Duration;
+use App\Entity\HomeContent;
 use App\Entity\Hours;
 use App\Entity\Orders;
 use App\Entity\PaymentMethod;
@@ -16,8 +17,12 @@ use App\Entity\Product;
 use App\Entity\ProductSubcategory;
 use App\Entity\Tva;
 use App\Entity\Unavailable;
+use App\Form\HomeContentType;
+use App\Form\ProductFormType;
 use App\Service\PaginationService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -37,9 +42,50 @@ class AdminController extends AbstractController {
 
 	// Gestion du contenu du site : textes, img... //
 	#[Route('/admin/contenu/', name: 'admin_content')]
-	public function contenu(): Response {
+	public function contenu(Request $request): Response {
+
+		$content = $this->getDoctrine()->getRepository(HomeContent::class)->find(1);
+
+		$form = $this->createForm(HomeContentType::class, $content);
+
+		$form->handleRequest($request);
+		if ($form->isSubmitted() && $form->isValid()) {
+
+			$entityManager = $this->getDoctrine()->getManager();
+			$entityManager->persist($content);
+			$entityManager->flush();
+
+			$this->addFlash("success", 'Le contenu a été modifié avec succès');
+
+			// return $this->redirectToRoute('task_success');
+		}
+
 		return $this->render('admin/contenu.html.twig', [
-				'controller_name' => 'AdminController',
+				'form'     => $form->createView(),
+		]);
+	}
+
+
+	#[Route('/admin/contenu/ajouter/', name: 'admin_content_add')]
+	public function contenu_add(Request $request): Response {
+
+		$content = new HomeContent();
+
+		$form = $this->createForm(HomeContentType::class, $content);
+
+		$form->handleRequest($request);
+		if ($form->isSubmitted() && $form->isValid()) {
+
+			$entityManager = $this->getDoctrine()->getManager();
+			$entityManager->persist($content);
+			$entityManager->flush();
+
+			$this->addFlash("success", 'Le contenu a été modifié avec succès');
+			// return $this->redirectToRoute('task_success');
+		}
+
+		return $this->render('admin/contenu.html.twig', [
+				'form'     => $form->createView(),
 		]);
 	}
 

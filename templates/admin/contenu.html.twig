@@ -2,14 +2,78 @@
 
 {% block title %}Contenu du site{% endblock %}
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/produit.css') }}">
+{% endblock %}
+
 {% block body %}
-	<h2 class="a-center">Ici vous pouvez gérer les contenus de votre site</h2>
+	<h1>Gérer votre contenu de la page d'accueil</h1>
 
-	<div class="products">
-		<h3>La page boutique</h3>
+	<div class="dflex contents">
+			{% for message in app.flashes('success') %}
+				<div class="alert success">
+					<p>{{ message }}</p>
+				</div>
+			{% endfor %}
+
+			{{ form_start(form) }}
+				<div class="bloc-left">
+					<h2>Contenu de la page d'accueil</h2>
+					<div class="line">
+						{{ form_label(form.presentation_title) }}
+						{{ form_widget(form.presentation_title) }}
+					</div>
+
+					<div class="line">
+						{{ form_label(form.presentation_text_1) }}
+						{{ form_widget(form.presentation_text_1) }}
+					</div>
+
+					<div class="line">
+						{{ form_label(form.presentation_subtitle) }}
+						{{ form_widget(form.presentation_subtitle) }}
+					</div>
+
+					<div class="line">
+						{{ form_label(form.presentation_text_2) }}
+						{{ form_widget(form.presentation_text_2) }}
+					</div>
+
+					<div class="line">
+						{{ form_label(form.questions_title) }}
+						{{ form_widget(form.questions_title) }}
+					</div>
+
+					<div class="line">
+						{{ form_label(form.questions_text) }}
+						{{ form_widget(form.questions_text) }}
+					</div>
+				</div>
+
+				<div class="bloc-right">
+					<h2>Réseaux sociaux</h2>
+
+					<div class="line">
+						{{ form_label(form.facebook) }}
+						{{ form_widget(form.facebook) }}
+					</div>
+
+					<div class="line">
+						{{ form_label(form.instagram) }}
+						{{ form_widget(form.instagram) }}
+					</div>
+
+					<div class="line">
+						{{ form_label(form.youtube) }}
+						{{ form_widget(form.youtube) }}
+					</div>
+				</div>
+
+				<div class="bloc">
+					{{ form_widget(form.submit, {'label': 'Modifier', 'attr': {'class': 'btn action'}}) }}
+				</div>
+
+			{{ form_end(form) }}
 	</div>
 
-	<div class="users">
-
-	</div>
 {% endblock %}

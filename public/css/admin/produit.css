@@ -57,6 +57,16 @@
   font-size: 2.2rem;
   width: 20%;
 }
+.contents {
+  width: 100%;
+}
+.contents form {
+  width: 100%;
+}
+.contents form .bloc-left,
+.contents form .bloc-right {
+  width: 48%;
+}
 .products {
   justify-content: space-between;
   height: 78vh;
