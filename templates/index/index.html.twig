@@ -62,21 +62,19 @@
 		</div>
 
 		<div class="bloc-text">
-			<h2 class="amatic tc-blue uppercase">Présentation</h2>
+			<h2 class="amatic tc-blue uppercase">
+				{{ content.presentationTitle }}
+			</h2>
 
 			<div class="content">
 				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-					dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+					{{ content.presentationText1 }}
 				</p>
 
-				<h3 class="amatic tc-purple uppercase">Qu'est-ce que le magnétisme ?</h3>
+				<h3 class="amatic tc-purple uppercase">{{ content.presentationSubtitle }}</h3>
 
 				<p>
-					Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-					totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-					dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit.
+					{{ content.presentationText2 }}
 				</p>
 
 				<div class="bloc-btn btns">
@@ -113,10 +111,9 @@
 
 		<div class="content">
 
-			<h2 class="amatic tc-blue">Une question ?</h2>
+			<h2 class="amatic tc-blue">{{ content.questionsTitle }}</h2>
 			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+				{{ content.questionsText }}
 			</p>
 
 			<div class="btns">
