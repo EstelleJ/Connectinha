@@ -227,3 +227,49 @@
 #contact .bloc-form .btns button {
   width: 40%;
 }
+#confirmation {
+  z-index: 5;
+  margin-top: -13rem;
+  position: relative;
+}
+#confirmation::after,
+#confirmation::before {
+  content: "";
+  display: inline-block;
+  height: 50rem;
+  position: absolute;
+  z-index: -1;
+  top: 5rem;
+}
+#confirmation::after {
+  content: "";
+  display: block;
+  width: 30rem;
+  height: 50rem;
+  background: url('../../images/illustrations/contact-illustration-feuille-lune-gauche-elodie-ortiz.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+}
+#confirmation::before {
+  content: "";
+  display: inline-block;
+  width: 20rem;
+  height: 50rem;
+  background: url('../../images/illustrations/contact-illustration-feuille-lune-droite-elodie-ortiz.png') no-repeat;
+  background-size: contain;
+  position: absolute;
+  right: 0;
+}
+#confirmation .bloc-form {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  min-height: 50vh;
+}
+#confirmation .bloc-form h2 {
+  font-size: 8rem;
+}
+#confirmation .bloc-form a {
+  margin-top: 3rem;
+  font-size: 4rem;
+}

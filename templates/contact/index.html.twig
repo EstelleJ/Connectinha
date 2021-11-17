@@ -120,11 +120,11 @@
 {% endblock %}
 
 {% block javascripts %}
-  <script src="https://www.google.com/recaptcha/api.js?render=6LdIchAdAAAAALVeDEZuG73-GuXTcuf7c3HrKKZu"></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lc9ej0dAAAAAGKY44lJkidp8Mr6oVGoA0TwE6Yg"></script>
 
   <script>
       grecaptcha.ready(function() {
-        grecaptcha.execute('6LdIchAdAAAAALVeDEZuG73-GuXTcuf7c3HrKKZu', {action: 'submit'}).then(function(token) {
+        grecaptcha.execute('6Lc9ej0dAAAAAGKY44lJkidp8Mr6oVGoA0TwE6Yg', {action: 'submit'}).then(function(token) {
           document.getElementById("recaptchaResponse").value = token
         });
       });
