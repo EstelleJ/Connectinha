@@ -24,4 +24,13 @@ class IndexController extends AbstractController {
 				'content' => $content
 		]);
 	}
+
+	public function reseaux(): Response {
+
+		$content = $this->getDoctrine()->getRepository(HomeContent::class)->find(1);
+
+		return $this->render('includes/_socials.html.twig', [
+				'content' => $content
+		]);
+	}
 }
