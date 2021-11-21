@@ -1,27 +1,30 @@
-import {BetterMultiSelect} from './Classes/BetterMultiSelect.js';
-import CartRow from './Classes/CartRow.js';
-
 // ============================================================================
 // Variables
 // ============================================================================
-const multiSelects = document.querySelectorAll('select[multiple]');
+const cartTable = document.getElementById('cart-table');
+
+let cartProducts = [];
 
 
 // ============================================================================
 // Functions
 // ============================================================================
-
+function addCartRow(product) {
+	let row = document.createElement('cart-row');
+	row.dataset.product = JSON.stringify(product);
+	cartTable.appendChild(row);
+}
 
 // ============================================================================
 // Code to execute
 // ============================================================================
-for (const multiSelect of multiSelects) {
-	new BetterMultiSelect(multiSelect);
+if (!!localStorage.getItem('products')) {
+	cartProducts = JSON.parse(localStorage.getItem('products'));
 }
 
-// Define web components
-window.customElements.define('cart-row', CartRow);
-
+for (const product of cartProducts) {
+	addCartRow(product);
+}
 
 // ============================================================================
 // Event listeners

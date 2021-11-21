@@ -3,113 +3,64 @@
 {% block title %}Panier{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/client/cart.css') }}">
-{% endblock %}
-
-{% block body %}
-    <section id="banner">
-        <h1>
-            <span class="rougeScript tc-white">Panier</span>
-            <span class="amatic tc-white uppercase">Voici votre panier et son contenu</span>
-        </h1>
-    </section>
-
-    <section id="cart">
-        <div class="container">
-            <h2 class="amatic tc-blue">Qu'avez-vous dans votre panier ?</h2>
-
-            <div class="dflex bloc-cart">
-                <div class="cart">
-                    <div class="titles">
-                        <h3 class="element name">Nom du produit</h3>
-                        <h3 class="element unityPrice">Prix unitaire</h3>
-                        <h3 class="element quantity">Quantité</h3>
-                        <h3 class="element totalPrice">Prix total</h3>
-                    </div>
-
-                    <div class="tables">
-
-                        <div class="line">
-                            <div class="element name">
-                                <h4>Le nom du produit</h4>
-                            </div>
-                            <div class="element unityPrice">
-                                <h4>20 €</h4>
-                            </div>
-                            <div class="element quantity">
-                                <button>-</button>
-                                <input type="number">
-                                <button>+</button>
-                            </div>
-                            <div class="element totalPrice">
-                                <h4>20 €</h4>
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="element name">
-                                <h4>Le nom du produit</h4>
-                            </div>
-                            <div class="element unityPrice">
-                                <h4>20 €</h4>
-                            </div>
-                            <div class="element quantity">
-                                <button>-</button>
-                                <input type="number">
-                                <button>+</button>
-                            </div>
-                            <div class="element totalPrice">
-                                <h4>20 €</h4>
-                            </div>
-                        </div>
-                        <div class="line">
-                            <div class="element name">
-                                <h4>Le nom du produit</h4>
-                            </div>
-                            <div class="element unityPrice">
-                                <h4>20 €</h4>
-                            </div>
-                            <div class="element quantity">
-                                <button>-</button>
-                                <input type="number">
-                                <button>+</button>
-                            </div>
-                            <div class="element totalPrice">
-                                <h4>20 €</h4>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="confirm">
-                    <div class="line">
-                        <h3><i class="fas fa-shipping-fast"></i> Frais de port</h3>
-                        <p>7,40 €</p>
-                    </div>
-
-                    <div class="line">
-                        <h3><i class="fas fa-percentage"></i> Bons de réductions</h3>
-                        <p>Pas de bons de réduction</p>
-                    </div>
-
-
-                    <div class="total">
-                        <h3><i class="fas fa-euro-sign"></i> Total de la commande</h3>
-                        <p class="ttc">245 € TTC</p>
-{#                        <p class="ht">220 € HT</p>#}
-                    </div>
-
-                    <a href="" class="btn">
-                        <i class="fas fa-shopping-cart"></i> Confirmer
-                    </a>
-                </div>
-            </div>
-
-
-        </div>
-    </section>
+	<link rel="stylesheet" href="{{ asset('css/client/cart.css') }}">
 {% endblock %}
 
 {% block javascripts %}
-    <script src="{{ asset('js/shop-get-cart.js') }}" type="module"></script>
+	<script src="{{ asset('js/cart/cart.js') }}" type="module"></script>
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Panier</span>
+			<span class="amatic tc-white uppercase">Voici votre panier et son contenu</span>
+		</h1>
+	</section>
+
+	<section id="cart">
+		<div class="container">
+			<h2 class="amatic tc-blue">Qu'avez-vous dans votre panier ?</h2>
+
+			<div class="dflex bloc-cart">
+				<div class="cart">
+					<div class="titles">
+						<h3 class="element name">Nom du produit</h3>
+						<h3 class="element unityPrice">Prix unitaire</h3>
+						<h3 class="element quantity">Quantité</h3>
+						<h3 class="element totalPrice">Prix total</h3>
+					</div>
+
+					<div id="cart-table" class="tables">
+						{# Populated by cart.js #}
+					</div>
+				</div>
+
+				<div class="confirm">
+					<div class="line">
+						<h3><i class="fas fa-shipping-fast"></i> Frais de port</h3>
+						<p>7,40 €</p>
+					</div>
+
+					<div class="line">
+						<h3><i class="fas fa-percentage"></i> Bons de réductions</h3>
+						<p>Pas de bons de réduction</p>
+					</div>
+
+
+					<div class="total">
+						<h3><i class="fas fa-euro-sign"></i> Total de la commande</h3>
+						<p class="ttc">245 € TTC</p>
+						{# <p class="ht">220 € HT</p> #}
+					</div>
+
+					<a href="" class="btn">
+						<i class="fas fa-shopping-cart"></i> Confirmer
+					</a>
+				</div>
+			</div>
+
+
+		</div>
+	</section>
 {% endblock %}
