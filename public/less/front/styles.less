@@ -347,7 +347,7 @@ footer {
 						color: @tc-white;
 
 						&:hover {
-							color: @tc-blue;
+							color: lighten(@tc-blue-connectinha, 10%);
 						}
 
 						i {
@@ -385,15 +385,17 @@ footer {
 						justify-content: center;
 						margin: 0 0.8rem;
 
+						&:hover {
+							transition: 0.3s background-color;
+							color: @tc-blue-connectinha !important;
+						}
+
 						i {
 							color: @tc-white;
 							font-size: 3rem;
 						}
 
-						&:hover {
-							transition: 0.3s background-color;
-							color: @tc-white;
-						}
+
 					}
 				}
 			}
@@ -421,7 +423,13 @@ footer {
 
 					a {
 						color: @tc-white;
+						transition: 0.3s color;
 						margin: 0 1rem;
+
+						&:hover {
+							color: @tc-blue-connectinha !important;
+							transition: 0.3s color;
+						}
 					}
 				}
 			}

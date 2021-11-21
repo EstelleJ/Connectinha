@@ -569,7 +569,7 @@ footer .footer-top nav ul li a {
   color: #fff;
 }
 footer .footer-top nav ul li a:hover {
-  color: #41687f;
+  color: #66adc5;
 }
 footer .footer-top nav ul li a i:hover {
   color: #fff;
@@ -592,13 +592,13 @@ footer .footer-top nav .reseaux li a {
   justify-content: center;
   margin: 0 0.8rem;
 }
+footer .footer-top nav .reseaux li a:hover {
+  transition: 0.3s background-color;
+  color: #4498b4 !important;
+}
 footer .footer-top nav .reseaux li a i {
   color: #fff;
   font-size: 3rem;
-}
-footer .footer-top nav .reseaux li a:hover {
-  transition: 0.3s background-color;
-  color: #fff;
 }
 footer .footer-bottom {
   background: #042b40;
@@ -620,5 +620,10 @@ footer .footer-bottom nav ul li span {
 }
 footer .footer-bottom nav ul li a {
   color: #fff;
+  transition: 0.3s color;
   margin: 0 1rem;
+}
+footer .footer-bottom nav ul li a:hover {
+  color: #4498b4 !important;
+  transition: 0.3s color;
 }

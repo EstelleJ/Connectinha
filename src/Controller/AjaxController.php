@@ -218,22 +218,22 @@ class AjaxController extends AbstractController {
 
 	}
 
-	// // ------------------- ADD CART --------------------- //
-	// // -------------------------------------------------- //
-	//
-	// /**
-	//  * @param Request $request
-	//  * @return Response
-	//  */
-	// #[Route('/ajax/add-cart/', name: 'ajax_add_cart')]
-	// public function addCart(Request $request): Response {
-	//
-	// 	$product_id = $request->request->get('ajax-product-id');
-	//
-	// 	$product = $this->getDoctrine()->getRepository(Product::class)->find($product_id);
-	//
-	// 	return new JsonResponse('ok');
-	//
-	// }
+	// ------------------- GET CART --------------------- //
+	// -------------------------------------------------- //
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/get-cart/', name: 'ajax_get_cart')]
+	public function getCart(Request $request): Response {
+
+		$products = json_decode($request->request->get('cart'));
+
+		dump($products);
+
+		return new JsonResponse($products);
+
+	}
 
 }

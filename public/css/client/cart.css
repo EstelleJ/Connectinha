@@ -1,0 +1,207 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+}
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #042b40;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+#banner {
+  height: 55rem;
+  width: 100%;
+  background: url('../../images/produits/bandeau-page-ville-nuit-etoilee-bleu-violet-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#banner h1 {
+  font-size: 6rem;
+  margin-top: -5rem;
+}
+#banner h1 span {
+  display: block;
+}
+#banner h1 .rougeScript {
+  font-size: 8rem;
+}
+#banner h1 .amatic {
+  margin-top: -1rem;
+}
+#cart {
+  width: 80%;
+  margin: -10rem auto 3rem auto;
+  /* ----------------- CONFIRM ------------------- */
+}
+#cart h2 {
+  font-size: 5rem;
+  text-align: center;
+}
+#cart .bloc-cart {
+  margin-top: 3rem;
+}
+#cart .cart {
+  width: 70%;
+  padding: 0 2rem;
+}
+#cart .titles {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  border-bottom: 2px solid #cecece;
+}
+#cart .titles h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+}
+#cart .tables .line {
+  border-bottom: 1px solid #cecece;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 2rem 0;
+}
+#cart .element {
+  padding: 1rem 2rem;
+}
+#cart .name {
+  width: 40%;
+}
+#cart .quantity {
+  width: 18%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#cart .quantity button {
+  width: 3rem;
+  height: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  background-color: #d1d1d1;
+  transition: 0.3s background-color;
+}
+#cart .quantity button:hover {
+  background-color: #ababab;
+  transition: 0.3s background-color;
+}
+#cart .quantity input {
+  width: calc(100% - 6rem);
+  border: none;
+  background-color: #f7f7f7;
+}
+#cart .unityPrice,
+#cart .totalPrice {
+  width: 20%;
+}
+#cart .confirm {
+  width: 30%;
+  background-color: #042b40;
+  padding: 3rem 4rem;
+  color: #fff;
+}
+#cart .confirm h3 {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+}
+#cart .confirm p {
+  font-size: 1.4rem;
+}
+#cart .confirm .line {
+  margin-bottom: 2rem;
+}
+#cart .confirm .line h3 {
+  margin-bottom: 0.5rem;
+}
+#cart .confirm .line h3 i {
+  margin-right: 1rem;
+}
+#cart .confirm .total {
+  border-top: 1px solid #fff;
+  padding: 3rem 0 1rem 0;
+  margin-top: 3rem;
+}
+#cart .confirm .total h3 {
+  margin-bottom: 0.5rem;
+}
+#cart .confirm .total h3 i {
+  margin-right: 1rem;
+}
+#cart .confirm .total .ttc {
+  font-size: 3rem;
+}
+#cart .confirm .total .ht {
+  font-size: 1.8rem;
+}
+#cart .confirm .btn {
+  background-color: #0a6ba0;
+  transition: 0.3s background-color;
+  display: inline-block;
+  padding: 1rem 2rem;
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 1.7rem;
+  margin-top: 1rem;
+}
+#cart .confirm .btn:hover {
+  background-color: #0d8cd0;
+  transition: 0.3s background-color;
+}

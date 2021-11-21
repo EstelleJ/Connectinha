@@ -66,13 +66,6 @@ async function addCart() {
 
 }
 
-async function getCartItems() {
-
-	let arrayProducts = [localStorage.getItem('productId')];
-
-	console.log(arrayProducts);
-}
-
 
 // ============================================================================
 // Event listeners

@@ -8,9 +8,20 @@ import {ajax} from './tools/functions.js';
 // Functions
 // ============================================================================
 
-let arrayProducts = [];
+let arrayProducts = localStorage.getItem('products');
 
-let getItems = localStorage.getItem('productId');
+let formData = new FormData();
 
-console.log(getItems);
+let cartProducts = arrayProducts;
+
+// console.log('===========');
+// console.log(cartProducts);
+// console.log('===========');
+
+formData.append('cart', cartProducts);
+
+
+const response = await ajax('POST', '/ajax/get-cart/', formData);
+
+console.log(JSON.parse(response));
 
