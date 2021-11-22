@@ -5,9 +5,12 @@ import {ajax} from './tools/functions.js';
 // ============================================================================
 
 class CartProduct {
-	constructor(id, mantra) {
+	constructor(id, mantra, quantity, price, weight) {
 		this.id     = id;
 		this.mantra = mantra;
+		this.quantity = quantity;
+		this.price = price;
+		this.weight = weight;
 	}
 }
 
@@ -26,15 +29,16 @@ async function addCart() {
 
 	let productId = this.dataset.id;
 	let mantra    = this.dataset.mantra;
-
-	alert(productId);
+	let quantity = this.dataset.quantity;
+	let price = this.dataset.price;
+	let weight = this.dataset.weight;
 
 	let formData = new FormData();
 	formData.append('ajax-product-id', productId);
 
 	let arrayProducts = [];
 
-	arrayProducts.push(new CartProduct(productId, mantra));
+	arrayProducts.push(new CartProduct(productId, mantra, quantity, price, weight));
 
 	console.log(arrayProducts);
 
@@ -45,7 +49,7 @@ async function addCart() {
 	console.log('===========================');
 	if (!!localStorageItems) {
 		let cart = JSON.parse(localStorageItems);
-		cart.push(new CartProduct(productId, mantra));
+		cart.push(new CartProduct(productId, mantra, quantity, price, weight));
 		localStorage.setItem('products', JSON.stringify(cart));
 	}
 	else {
