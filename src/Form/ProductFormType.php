@@ -79,6 +79,9 @@ class ProductFormType extends AbstractType {
 								'Non' => false
 						]
 				])
+				->add('weight', IntegerType::class, [
+						'label' => 'Poids en grammes'
+				])
 				->add('submit', SubmitType::class, [
 						'label' => 'Sauvegarder',
 				]);

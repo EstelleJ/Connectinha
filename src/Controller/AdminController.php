@@ -6,6 +6,7 @@ use App\Entity\Customer;
 use App\Entity\Days;
 use App\Entity\Distance;
 use App\Entity\Duration;
+use App\Entity\FreeShipping;
 use App\Entity\HomeContent;
 use App\Entity\Hours;
 use App\Entity\Orders;
@@ -15,6 +16,7 @@ use App\Entity\Services;
 use App\Entity\ProductCategory;
 use App\Entity\Product;
 use App\Entity\ProductSubcategory;
+use App\Entity\ShippingCost;
 use App\Entity\Tva;
 use App\Entity\Unavailable;
 use App\Form\HomeContentType;
@@ -61,7 +63,7 @@ class AdminController extends AbstractController {
 		}
 
 		return $this->render('admin/contenu.html.twig', [
-				'form'     => $form->createView(),
+				'form' => $form->createView(),
 		]);
 	}
 
@@ -85,7 +87,7 @@ class AdminController extends AbstractController {
 		}
 
 		return $this->render('admin/contenu.html.twig', [
-				'form'     => $form->createView(),
+				'form' => $form->createView(),
 		]);
 	}
 
@@ -212,10 +214,32 @@ class AdminController extends AbstractController {
 
 
 	// Gestion des frais de ports //
-	#[Route('/admin/frais-de-ports/', name: 'admin_ship')]
-	public function ports(): Response {
-		return $this->render('admin/ports.html.twig', [
-				'controller_name' => 'AdminController',
+	#[Route('/admin/frais-de-ports-{page}/', name: 'admin_shipping')]
+	public function ports($page, PaginationService $paginationService): Response {
+
+		$nbElements = 7;
+
+		if ($page == '1') {
+			$offset = 0;
+		}
+		else {
+			$offset = (($page - 1) * $nbElements);
+		}
+
+		$elements = $this->getDoctrine()->getRepository(ShippingCost::class)->findAll();
+
+		$arrayPagination = $paginationService->pagination($elements, $nbElements);
+
+		$shippings = $this->getDoctrine()->getRepository(ShippingCost::class)->findBy([], ['min' => 'ASC'], $nbElements, $offset);
+
+		$freeShipping = $this->getDoctrine()->getRepository(FreeShipping::class)->find(1);
+
+		return $this->render('admin/shipping.html.twig', [
+				'shippings'       => $shippings,
+				'arrayPagination' => $arrayPagination,
+				'currentPage'     => $page,
+				'elements'        => $elements,
+				'freeShipping'    => $freeShipping,
 		]);
 	}
 

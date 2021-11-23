@@ -11,6 +11,7 @@ use App\Entity\ProductImage;
 use App\Entity\ProductSubcategory;
 use App\Entity\Services;
 use App\Entity\ServicesContent;
+use App\Entity\ShippingCost;
 use App\Entity\Tva;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -210,6 +211,25 @@ class AjaxController extends AbstractController {
 		$entityManager = $this->getDoctrine()->getManager();
 
 		$content = $this->getDoctrine()->getRepository(ServicesContent::class)->find($content_id);
+
+		$entityManager->remove($content);
+		$entityManager->flush();
+
+		return new JsonResponse('ok');
+
+	}
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/delete/shipping', name: 'ajax_delete_shipping')]
+	public function deleteShipping(Request $request): Response {
+
+		$content_id = $request->request->get('ajax-shipping-id');
+		$entityManager = $this->getDoctrine()->getManager();
+
+		$content = $this->getDoctrine()->getRepository(ShippingCost::class)->find($content_id);
 
 		$entityManager->remove($content);
 		$entityManager->flush();

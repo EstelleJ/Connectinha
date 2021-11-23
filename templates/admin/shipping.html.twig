@@ -1,0 +1,81 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Les frais de port{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/shipping.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/deletes/shipping-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer les frais de port</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-shipping-fast"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ elements|length }} tranches de frais de ports disponibles
+				</span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_shipping_add') }}" class="btn">
+				<i class="fas fa-plus"></i> Ajouter une tranche
+			</a>
+		</div>
+	</section>
+
+	<section class="offer">
+
+		<div class="btns dflex">
+			<h3>Frais de port offert à partir de : {{ freeShipping.price }} €
+				<a href="{{ path('admin_shipping_free_modify') }}" class="btn">
+					<i class="fas fa-edit"></i> Modifier
+				</a>
+			</h3>
+
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="min">
+				Min.
+			</h3>
+			<h3 class="max">
+				Max.
+			</h3>
+			<h3 class="price">
+				Prix
+			</h3>
+			<div class="search">
+			</div>
+		</div>
+		{% for shipping in shippings %}
+			<a href="{{ path('admin_shipping_modify', {'id': shipping.id }) }}" class="element shippings">
+
+				<span class="data min">{{ shipping.min }}g</span>
+				<span class="data max">{{ shipping.max }}g</span>
+				<span class="data price">{{ shipping.price }} €</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="btn delete" data-id="{{ shipping.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_shipping' } %}
+{% endblock %}
+
