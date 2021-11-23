@@ -40,7 +40,7 @@ async function addCart() {
 
 		let found = false;
 		for (const item of cart) {
-			if (item.id === currentProduct.id) {
+			if (item.id === currentProduct.id && item.mantra === currentProduct.mantra) {
 				item.quantity += currentProduct.quantity;
 				found = true;
 				break;
