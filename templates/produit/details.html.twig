@@ -39,7 +39,7 @@
 
                         <div class="select">
                             <h3 class="bold">Sélectionnez le mantra que vous souhaitez :</h3>
-                            <select>
+                            <select id="mantraSelect">
                                 {% for mantra in product.mantraProducts %}
                                     <option>{{ mantra.mantra }}</option>
                                 {% endfor %}
@@ -50,7 +50,7 @@
                             <h3 class="bold">Quantité</h3>
                             <div class="quantity">
                                 <button id="less">-</button>
-                                <input id="number" type="number" min="1" max="12" placeholder="1">
+                                <input id="number" type="number" min="1" max="12" placeholder="1" value="1">
                                 <button id="more">+</button>
                             </div>
 

@@ -23,33 +23,55 @@ const addCartButton = document.getElementById("addCart");
 // ============================================================================
 // Functions
 // ============================================================================
+
+
+
 async function addCart() {
 
 	const element = this;
 
+	let mantraSelected = document.getElementById('mantraSelect').value;
+	let quantitySelected = document.getElementById('number').value;
+
+	console.log(mantraSelected);
+	console.log(quantitySelected);
+
 	let productId = this.dataset.id;
-	let mantra    = this.dataset.mantra;
-	let quantity = this.dataset.quantity;
 	let price = this.dataset.price;
 	let weight = this.dataset.weight;
 
-	let formData = new FormData();
-	formData.append('ajax-product-id', productId);
+	// let formData = new FormData();
+	// formData.append('ajax-product-id', productId);
 
 	let arrayProducts = [];
 
-	arrayProducts.push(new CartProduct(productId, mantra, quantity, price, weight));
+	let currentProduct = new CartProduct(productId, mantraSelected, quantitySelected, price, weight);
 
-	console.log(arrayProducts);
+	// arrayProducts.push(new CartProduct(productId, mantraSelected, quantitySelected, price, weight));
+	//
+	// console.log(arrayProducts);
 
 	let localStorageItems = localStorage.getItem('products');
 
 	console.log('storage cart:');
 	console.log(localStorageItems);
 	console.log('===========================');
+
 	if (!!localStorageItems) {
 		let cart = JSON.parse(localStorageItems);
-		cart.push(new CartProduct(productId, mantra, quantity, price, weight));
+
+		console.log('===== produit actuel =====');
+		console.log(currentProduct);
+		console.log('==========================');
+
+		if(JSON.parse(localStorageItems).includes(currentProduct)){
+			alert('oui');
+		}
+		else {
+			alert('non');
+		}
+
+		cart.push(new CartProduct(productId, mantraSelected, quantitySelected, price, weight));
 		localStorage.setItem('products', JSON.stringify(cart));
 	}
 	else {
