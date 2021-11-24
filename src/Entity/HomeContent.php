@@ -62,6 +62,26 @@ class HomeContent
      */
     private $instagram;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $presentation_text_3;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $presentation_text_4;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $presentation_text_5;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $citation_text;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -171,6 +191,54 @@ class HomeContent
     public function setInstagram(?string $instagram): self
     {
         $this->instagram = $instagram;
+
+        return $this;
+    }
+
+    public function getPresentationText3(): ?string
+    {
+        return $this->presentation_text_3;
+    }
+
+    public function setPresentationText3(string $presentation_text_3): self
+    {
+        $this->presentation_text_3 = $presentation_text_3;
+
+        return $this;
+    }
+
+    public function getPresentationText4(): ?string
+    {
+        return $this->presentation_text_4;
+    }
+
+    public function setPresentationText4(string $presentation_text_4): self
+    {
+        $this->presentation_text_4 = $presentation_text_4;
+
+        return $this;
+    }
+
+    public function getPresentationText5(): ?string
+    {
+        return $this->presentation_text_5;
+    }
+
+    public function setPresentationText5(string $presentation_text_5): self
+    {
+        $this->presentation_text_5 = $presentation_text_5;
+
+        return $this;
+    }
+
+    public function getCitationText(): ?string
+    {
+        return $this->citation_text;
+    }
+
+    public function setCitationText(string $citation_text): self
+    {
+        $this->citation_text = $citation_text;
 
         return $this;
     }

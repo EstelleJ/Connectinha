@@ -21,12 +21,24 @@ class HomeContentType extends AbstractType
             ->add('presentation_text_1', TextareaType::class, [
             		'label' => 'Texte du bloc présentation'
             ])
+		        ->add('presentation_text_3', TextareaType::class, [
+				        'label' => 'Texte du bloc présentation'
+		        ])
+		        ->add('presentation_text_4', TextareaType::class, [
+				        'label' => 'Texte du bloc présentation'
+		        ])
+		        ->add('presentation_text_5', TextareaType::class, [
+				        'label' => 'Texte du bloc présentation'
+		        ])
             ->add('presentation_subtitle', TextType::class, [
-            		'label' => 'Titre présentation du magnétisme'
+            		'label' => 'Titre du bloc soins'
             ])
             ->add('presentation_text_2', TextareaType::class, [
-            		'label' => 'Texte du bloc présentation du magnétisme'
+            		'label' => 'Texte du bloc soins'
             ])
+		        ->add('citation_text', TextareaType::class, [
+				        'label' => 'Texte de citation'
+		        ])
             ->add('questions_title', TextType::class, [
             		'label' => 'Titre du bloc contact'
             ])
