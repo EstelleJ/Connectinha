@@ -80,6 +80,7 @@
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #banner .product span {
@@ -104,6 +105,10 @@
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+#banner .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 #banner .product button {
   color: #fff;
@@ -294,6 +299,7 @@
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #favourite .bloc-favourites .product span {
@@ -318,6 +324,10 @@
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+#favourite .bloc-favourites .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 #favourite .bloc-favourites .product button {
   color: #fff;
@@ -444,6 +454,7 @@
   margin: 1rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
 }
 #favourite .bloc-favourites .favourite span {
   display: block;
@@ -465,6 +476,10 @@
 #favourite .bloc-favourites .favourite .title-h4 {
   font-size: 2rem;
   padding-left: 1rem;
+}
+#favourite .bloc-favourites .favourite .btns {
+  position: absolute;
+  bottom: 0;
 }
 #favourite .bloc-favourites .favourite button {
   color: #fff;
@@ -513,6 +528,7 @@ body {
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #slider .container .product span {
@@ -537,6 +553,10 @@ body {
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+#slider .container .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 #slider .container .product button {
   color: #fff;
@@ -693,6 +713,7 @@ body {
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #slider .container .column .handmade .product span,
@@ -722,6 +743,11 @@ body {
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+#slider .container .column .handmade .product .btns,
+#slider .container .column .shipping .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 #slider .container .column .handmade .product button,
 #slider .container .column .shipping .product button {
@@ -905,6 +931,7 @@ body {
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #slider .container .column .bloc-text .product span {
@@ -929,6 +956,10 @@ body {
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+#slider .container .column .bloc-text .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 #slider .container .column .bloc-text .product button {
   color: #fff;
@@ -1098,6 +1129,7 @@ body {
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 .dflex .product span {
@@ -1122,6 +1154,10 @@ body {
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+.dflex .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 .dflex .product button {
   color: #fff;
@@ -1262,6 +1298,7 @@ body {
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 .btns .product span {
@@ -1286,6 +1323,10 @@ body {
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+.btns .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 .btns .product button {
   color: #fff;
@@ -1459,6 +1500,7 @@ body {
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #plus .container .product span {
@@ -1483,6 +1525,10 @@ body {
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+#plus .container .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 #plus .container .product button {
   color: #fff;
@@ -1626,6 +1672,7 @@ body {
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #plus .bloc .product span {
@@ -1650,6 +1697,10 @@ body {
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+#plus .bloc .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 #plus .bloc .product button {
   color: #fff;
@@ -1814,6 +1865,7 @@ body {
   margin: 2rem 2.2rem;
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
+  position: relative;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #creations .product span {
@@ -1838,6 +1890,10 @@ body {
   font-size: 4rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+}
+#creations .product .btns {
+  position: absolute;
+  bottom: 0;
 }
 #creations .product button {
   color: #fff;
