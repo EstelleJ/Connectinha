@@ -229,6 +229,11 @@
 #presentation .bloc-text .btn {
   margin: 4rem auto;
 }
+#presentation .bloc-text .quote {
+  color: #4498b4;
+  margin-top: 1rem;
+  font-size: 2rem;
+}
 #services {
   margin: 8rem 0;
   display: flex;
