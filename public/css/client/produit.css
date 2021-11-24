@@ -81,7 +81,7 @@
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #banner .product span {
@@ -301,7 +301,7 @@
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #favourite .bloc-favourites .product span {
@@ -457,7 +457,7 @@
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
 }
 #favourite .bloc-favourites .favourite span {
   display: block;
@@ -532,7 +532,7 @@ body {
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #slider .container .product span {
@@ -718,7 +718,7 @@ body {
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #slider .container .column .handmade .product span,
@@ -937,7 +937,7 @@ body {
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #slider .container .column .bloc-text .product span {
@@ -1136,7 +1136,7 @@ body {
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 .dflex .product span {
@@ -1306,7 +1306,7 @@ body {
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 .btns .product span {
@@ -1509,7 +1509,7 @@ body {
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #plus .container .product span {
@@ -1682,7 +1682,7 @@ body {
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #plus .bloc .product span {
@@ -1876,7 +1876,7 @@ body {
   box-shadow: 0px 5px 5px rgba(23, 23, 23, 0.3);
   color: #333;
   position: relative;
-  padding-bottom: 4rem;
+  padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
 #creations .product span {
