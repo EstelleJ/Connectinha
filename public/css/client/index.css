@@ -122,8 +122,9 @@
   object-fit: cover;
 }
 #favourite .bloc-favourites .favourite .title-h3 {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   padding-left: 1rem;
+  margin-bottom: 1rem;
 }
 #favourite .bloc-favourites .favourite .title-h4 {
   font-size: 2rem;

@@ -103,9 +103,10 @@
 #banner .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 #banner .product .btns {
   position: absolute;
@@ -323,9 +324,10 @@
 #favourite .bloc-favourites .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 #favourite .bloc-favourites .product .btns {
   position: absolute;
@@ -473,8 +475,9 @@
   object-fit: cover;
 }
 #favourite .bloc-favourites .favourite .title-h3 {
-  font-size: 3.5rem;
+  font-size: 3.2rem;
   padding-left: 1rem;
+  margin-bottom: 1rem;
 }
 #favourite .bloc-favourites .favourite .title-h4 {
   font-size: 2rem;
@@ -554,9 +557,10 @@ body {
 #slider .container .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 #slider .container .product .btns {
   position: absolute;
@@ -745,9 +749,10 @@ body {
 #slider .container .column .shipping .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 #slider .container .column .handmade .product .btns,
 #slider .container .column .shipping .product .btns {
@@ -959,9 +964,10 @@ body {
 #slider .container .column .bloc-text .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 #slider .container .column .bloc-text .product .btns {
   position: absolute;
@@ -1158,9 +1164,10 @@ body {
 .dflex .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 .dflex .product .btns {
   position: absolute;
@@ -1328,9 +1335,10 @@ body {
 .btns .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 .btns .product .btns {
   position: absolute;
@@ -1531,9 +1539,10 @@ body {
 #plus .container .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 #plus .container .product .btns {
   position: absolute;
@@ -1704,9 +1713,10 @@ body {
 #plus .bloc .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 #plus .bloc .product .btns {
   position: absolute;
@@ -1898,9 +1908,10 @@ body {
 #creations .product .title {
   text-transform: uppercase;
   letter-spacing: 0.2ch;
-  font-size: 4rem;
+  font-size: 3.2rem;
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
+  line-height: 1;
 }
 #creations .product .btns {
   position: absolute;
