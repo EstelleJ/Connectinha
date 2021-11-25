@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\HomeContent;
 use App\Service\MailJetService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -116,11 +117,12 @@ class ContactController extends AbstractController {
 		}
 
 
-
+		$socials = $this->getDoctrine()->getRepository(HomeContent::class)->find(1);
 
 		return $this->render('contact/index.html.twig', [
 				'form' => $form->createView(),
-				'error' => $error
+				'error' => $error,
+				'socials' => $socials
 		]);
 	}
 
