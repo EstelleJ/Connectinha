@@ -37,6 +37,7 @@
                         <h2 class="amatic tc-blue">{{ product.name }}  <span class="amatic tc-grey">{{ product.price }} €</span></h2>
                         <p class="text">{{ product.text }}</p>
 
+                        {% if product.mantraProducts|length > 0 %}
                         <div class="select">
                             <h3 class="bold">Sélectionnez le mantra que vous souhaitez :</h3>
                             <select id="mantraSelect">
@@ -45,6 +46,7 @@
                                 {% endfor %}
                             </select>
                         </div>
+                        {% endif %}
 
                         <div class="bloc-btn">
                             <h3 class="bold">Quantité</h3>

@@ -180,6 +180,7 @@
 }
 #banner .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 #banner .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -194,6 +195,7 @@
 #banner .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 #banner .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;
@@ -401,6 +403,7 @@
 }
 #favourite .bloc-favourites .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 #favourite .bloc-favourites .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -415,6 +418,7 @@
 #favourite .bloc-favourites .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 #favourite .bloc-favourites .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;
@@ -634,6 +638,7 @@ body {
 }
 #slider .container .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 #slider .container .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -648,6 +653,7 @@ body {
 #slider .container .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 #slider .container .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;
@@ -844,6 +850,7 @@ body {
 #slider .container .column .handmade .product.unique .bloc-text .btns,
 #slider .container .column .shipping .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 #slider .container .column .handmade .product.unique .bloc-text .btns #addCart,
 #slider .container .column .shipping .product.unique .bloc-text .btns #addCart {
@@ -861,6 +868,7 @@ body {
 #slider .container .column .shipping .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 #slider .container .column .handmade .product.unique .bloc-text .bloc-btn .quantity,
 #slider .container .column .shipping .product.unique .bloc-text .bloc-btn .quantity {
@@ -1041,6 +1049,7 @@ body {
 }
 #slider .container .column .bloc-text .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 #slider .container .column .bloc-text .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -1055,6 +1064,7 @@ body {
 #slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 #slider .container .column .bloc-text .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;
@@ -1241,6 +1251,7 @@ body {
 }
 .dflex .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 .dflex .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -1255,6 +1266,7 @@ body {
 .dflex .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 .dflex .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;
@@ -1412,6 +1424,7 @@ body {
 }
 .btns .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 .btns .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -1426,6 +1439,7 @@ body {
 .btns .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 .btns .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;
@@ -1616,6 +1630,7 @@ body {
 }
 #plus .container .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 #plus .container .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -1630,6 +1645,7 @@ body {
 #plus .container .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 #plus .container .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;
@@ -1790,6 +1806,7 @@ body {
 }
 #plus .bloc .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 #plus .bloc .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -1804,6 +1821,7 @@ body {
 #plus .bloc .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 #plus .bloc .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;
@@ -1985,6 +2003,7 @@ body {
 }
 #creations .product.unique .bloc-text .btns {
   justify-content: initial;
+  position: relative;
 }
 #creations .product.unique .bloc-text .btns #addCart {
   margin: 0;
@@ -1999,6 +2018,7 @@ body {
 #creations .product.unique .bloc-text .bloc-btn h3 {
   width: 100%;
   margin-bottom: 1.5rem;
+  text-align: initial;
 }
 #creations .product.unique .bloc-text .bloc-btn .quantity {
   width: 35%;

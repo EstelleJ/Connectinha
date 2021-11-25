@@ -22,7 +22,18 @@ const addCartButton = document.getElementById("addCart");
 // ============================================================================
 async function addCart() {
 
-	let mantraSelected   = document.getElementById('mantraSelect').value;
+
+	let mantraSelectTag = document.getElementById('mantraSelect');
+	console.log(mantraSelectTag);
+	let mantraSelected = null;
+
+	if(mantraSelectTag !== null){
+		console.log('hello');
+		mantraSelected = mantraSelectTag.value;
+	}
+
+	console.log(mantraSelected);
+
 	let quantitySelected = document.getElementById('number').value;
 
 	let productId = this.dataset.id;
