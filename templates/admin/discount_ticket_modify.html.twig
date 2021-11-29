@@ -1,0 +1,81 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Ajouter - Bons de réduction{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/produit.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/admin/discount.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Gérer vos bons de réduction</h1>
+
+	<div class="dflex products">
+
+		{{ form_start(form) }}
+		<h2><i class="fas fa-shopping-bag"></i> Ajouter un bon de réduction</h2>
+
+		{% for message in app.flashes('success') %}
+			<div class="alert success">
+				<p>{{ message }}</p>
+			</div>
+		{% endfor %}
+
+		{% if error %}
+			<div class="alert error">
+				<p>{{ error }}</p>
+			</div>
+		{% endif %}
+		<div class="large-bloc">
+			<div class="line">
+				{{ form_label(form.code) }}
+				{{ form_widget(form.code) }}
+			</div>
+
+		</div>
+
+		<div class="small-bloc">
+
+			<div class="line price">
+				{{ form_label(form.amount) }}
+				{{ form_widget(form.amount) }}
+			</div>
+
+			<div class="line percent">
+				{{ form_label(form.percent) }}
+				{{ form_widget(form.percent) }}
+			</div>
+
+			<p>Attention : Merci d'indiquer uniquement un montant OU un pourcentage et non pas les deux</p>
+		</div>
+
+
+		<div class="bloc">
+			{{ form_widget(form.submit, {'label': 'Ajouter', 'attr': {'class': 'btn action'}}) }}
+		</div>
+		{{ form_end(form) }}
+
+		<div class="produits">
+			<h2><i class="fas fa-shopping-bag"></i> Vos bons de réduction</h2>
+
+			{% for ticket in tickets %}
+				<a href="{{ path('admin_discount_ticket_modify', {'id': ticket.id }) }}"
+				   class="element produit">
+					<span class="data code">{{ ticket.code }}</span>
+					{% if ticket.amount|length > 0 %}
+						<span class="titre">{{ ticket.amount }} €</span>
+					{% endif %}
+					{% if ticket.percent|length > 0 %}
+						<span class="titre">{{ ticket.percent }} %</span>
+					{% endif %}
+				</a>
+			{% endfor %}
+
+			<div class="btns dflex">
+				<a href="{{ path('admin_discount_ticket', {'page': '1'}) }}" class="btn">
+					<i class="fas fa-list-ul"></i> Voir tous les bons de réductions
+				</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}

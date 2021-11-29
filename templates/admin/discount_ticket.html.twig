@@ -1,0 +1,73 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Bons de réduction{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/discount.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/deletes/discount-ticket-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer vos bons de réductions</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-ticket-alt"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ elements|length }} bons de réductions disponibles
+				</span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_discount_ticket_add') }}" class="btn">
+				<i class="fas fa-plus"></i> Ajouter un bon de réduction
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="code">
+				Code promotionnel
+			</h3>
+			<h3 class="amount">
+				Montant
+			</h3>
+			<h3 class="percent">
+				Pourcentage
+			</h3>
+			<div class="search">
+				Rechercher
+			</div>
+		</div>
+		{% for ticket in tickets %}
+			<a href="{{ path('admin_discount_ticket_modify', {'id': ticket.id }) }}"
+			   class="element tickets">
+				<span class="data code">{{ ticket.code }}</span>
+				<span class="data amount">
+					{{ ticket.amount }} €
+				</span>
+				<span class="data percent">
+					{{ ticket.percent }} %
+				</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="btn delete" data-id="{{ ticket.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_discount_ticket' } %}
+{% endblock %}

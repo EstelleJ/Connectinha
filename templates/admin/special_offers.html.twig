@@ -1,0 +1,74 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Promotions{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/offers.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script type="module" src="{{ asset('js/category-admin.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer les promotions que vous appliquez sur vos produits</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-percentage"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ elements|length }} promotions disponibles
+				</span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_category_add') }}" class="btn">
+				<i class="fas fa-plus"></i> Ajouter une promotion
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="title">
+				Nom de la promotion
+			</h3>
+			<h3 class="percent">
+				Pourcentage
+			</h3>
+			<h3 class="products">
+				Produits concernés
+			</h3>
+			<div class="search">
+				Rechercher
+			</div>
+		</div>
+		{% for offer in offers %}
+			<a href="{{ path('admin_category_modify', {'id': offer.id }) }}" class="element offer">
+				<span class="data title">{{ offer.title }}</span>
+				<span class="data percent">
+					{{ offer.offer }} %
+				</span>
+				<span class="products">
+					{% for product in offer.products %}
+						{{ product.name }},
+					{% endfor %}
+				</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+					<button class="btn delete" data-id="{{ offer.id }}">
+						<i class="fas fa-trash"></i> Supprimer
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_special_offers' } %}
+{% endblock %}

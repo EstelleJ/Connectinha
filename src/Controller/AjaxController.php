@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Customer;
+use App\Entity\DiscountTicket;
 use App\Entity\MantraProducts;
 use App\Entity\PaymentMethod;
 use App\Entity\Product;
@@ -230,6 +231,44 @@ class AjaxController extends AbstractController {
 		$entityManager = $this->getDoctrine()->getManager();
 
 		$content = $this->getDoctrine()->getRepository(ShippingCost::class)->find($content_id);
+
+		$entityManager->remove($content);
+		$entityManager->flush();
+
+		return new JsonResponse('ok');
+
+	}
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/delete/discount', name: 'ajax_delete_discount')]
+	public function deleteDiscountTicket(Request $request): Response {
+
+		$discount_id = $request->request->get('ajax-discount-id');
+		$entityManager = $this->getDoctrine()->getManager();
+
+		$content = $this->getDoctrine()->getRepository(DiscountTicket::class)->find($discount_id);
+
+		$entityManager->remove($content);
+		$entityManager->flush();
+
+		return new JsonResponse('ok');
+
+	}
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/delete/offer', name: 'ajax_delete_offer')]
+	public function deleteOffer(Request $request): Response {
+
+		$offer_id = $request->request->get('ajax-offer-id');
+		$entityManager = $this->getDoctrine()->getManager();
+
+		$content = $this->getDoctrine()->getRepository(DiscountTicket::class)->find($offer_id);
 
 		$entityManager->remove($content);
 		$entityManager->flush();

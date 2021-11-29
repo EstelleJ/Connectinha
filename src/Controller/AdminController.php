@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Entity\Days;
+use App\Entity\DiscountTicket;
 use App\Entity\Distance;
 use App\Entity\Duration;
 use App\Entity\FreeShipping;
@@ -17,6 +18,7 @@ use App\Entity\ProductCategory;
 use App\Entity\Product;
 use App\Entity\ProductSubcategory;
 use App\Entity\ShippingCost;
+use App\Entity\SpecialOffer;
 use App\Entity\Tva;
 use App\Entity\Unavailable;
 use App\Form\HomeContentType;
@@ -244,11 +246,57 @@ class AdminController extends AbstractController {
 	}
 
 
+	// Gestion des promotions //
+	#[Route('/admin/promotions-{page}/', name: 'admin_special_offers')]
+	public function specialOffers($page, PaginationService $paginationService): Response {
+
+		$nbElements = 7;
+
+		if ($page == '1') {
+			$offset = 0;
+		}
+		else {
+			$offset = (($page - 1) * $nbElements);
+		}
+
+		$elements = $this->getDoctrine()->getRepository(SpecialOffer::class)->findAll();
+
+		$arrayPagination = $paginationService->pagination($elements, $nbElements);
+
+		$offers = $this->getDoctrine()->getRepository(SpecialOffer::class)->findBy([], ['id' => 'DESC'], $nbElements, $offset);
+
+		return $this->render('admin/special_offers.html.twig', [
+				'offers'          => $offers,
+				'arrayPagination' => $arrayPagination,
+				'currentPage'     => $page,
+				'elements'        => $elements,
+		]);
+	}
+
 	// Gestion des bons de réductions //
-	#[Route('/admin/bons-de-reductions/', name: 'admin_discount')]
-	public function reductions(): Response {
-		return $this->render('admin/reductions.html.twig', [
-				'controller_name' => 'AdminController',
+	#[Route('/admin/bons-de-reductions-{page}/', name: 'admin_discount_ticket')]
+	public function discountTicket($page, PaginationService $paginationService): Response {
+
+		$nbElements = 7;
+
+		if ($page == '1') {
+			$offset = 0;
+		}
+		else {
+			$offset = (($page - 1) * $nbElements);
+		}
+
+		$elements = $this->getDoctrine()->getRepository(DiscountTicket::class)->findAll();
+
+		$arrayPagination = $paginationService->pagination($elements, $nbElements);
+
+		$tickets = $this->getDoctrine()->getRepository(DiscountTicket::class)->findBy([], ['id' => 'DESC'], $nbElements, $offset);
+
+		return $this->render('admin/discount_ticket.html.twig', [
+				'tickets'         => $tickets,
+				'arrayPagination' => $arrayPagination,
+				'currentPage'     => $page,
+				'elements'        => $elements,
 		]);
 	}
 
