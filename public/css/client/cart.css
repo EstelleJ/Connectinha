@@ -95,6 +95,31 @@
 #cart .cart {
   width: 70%;
   padding: 0 2rem;
+  /* --------------- CART ROW ----------------- */
+  /* ------------------------------------------ */
+}
+#cart .cart .cart-row {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin: 1rem 0;
+}
+#cart .cart .cart-row .item-delete {
+  position: absolute;
+  right: 0;
+  top: 0.2rem;
+  background: transparent;
+}
+#cart .cart .cart-row .item-delete i {
+  color: #cf0b0b;
+}
+#cart .cart .cart-row input {
+  width: 90%;
+  border: 1px solid deeppink;
+}
+#cart .cart .cart-row .totalPrice {
+  width: 16%;
 }
 #cart .titles {
   display: flex;
@@ -147,7 +172,7 @@
   border: none;
   background-color: #f7f7f7;
 }
-#cart .unityPrice,
+#cart .unitPrice,
 #cart .totalPrice {
   width: 20%;
 }

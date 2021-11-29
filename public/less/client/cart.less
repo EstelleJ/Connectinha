@@ -18,6 +18,36 @@
 	.cart {
 		width: 70%;
 		padding: 0 2rem;
+
+		/* --------------- CART ROW ----------------- */
+		/* ------------------------------------------ */
+
+		.cart-row {
+			width: 100%;
+			.dflex();
+			position: relative;
+			margin: 1rem 0;
+
+			.item-delete {
+				position: absolute;
+				right: 0;
+				top: 0.2rem;
+				background: transparent;
+				i {
+					color: @tc-red;
+				}
+			}
+
+			input {
+				width: 90%;
+				border: 1px solid deeppink;
+			}
+
+			.totalPrice {
+				width: 16%;
+			}
+		}
+
 	}
 
 	.titles {
@@ -78,7 +108,7 @@
 		}
 	}
 
-	.unityPrice,
+	.unitPrice,
 	.totalPrice {
 		width: 20%;
 
