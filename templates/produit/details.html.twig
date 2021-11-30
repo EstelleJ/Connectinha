@@ -34,7 +34,17 @@
                     </div>
 
                     <div class="bloc-text">
-                        <h2 class="amatic tc-blue">{{ product.name }}  <span class="amatic tc-grey">{{ product.price }} €</span></h2>
+                        <h2 class="amatic tc-blue">{{ product.name }}
+                            <span class="amatic tc-grey {% if product.specialOffer|length > 0 %}underline{% endif %}">{{ product.price }} € </span>
+                            {% if product.specialOffer|length > 0 %}
+                                <span class="amatic tc-grey title-offer">{{ product.price - (product.price * (product.specialOffer.offer / 100)) }} €</span>
+                            {% endif %}
+                        </h2>
+
+                        {% if product.specialOffer|length > 0 %}
+                            <p class="offer">{{ product.specialOffer }} - {{ product.specialOffer.offer }} %</p>
+                        {% endif %}
+
                         <p class="text">{{ product.text }}</p>
 
                         {% if product.mantraProducts|length > 0 %}

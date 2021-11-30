@@ -84,6 +84,15 @@
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+#banner .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #banner .product span {
   display: block;
 }
@@ -107,6 +116,16 @@
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+#banner .product .title-h4 {
+  font-size: 2rem;
+}
+#banner .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#banner .product .title-offer {
+  font-size: 2rem;
 }
 #banner .product .btns {
   position: absolute;
@@ -150,11 +169,19 @@
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 #banner .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+#banner .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+#banner .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 #banner .product.unique .bloc-text .select {
   margin-top: 3rem;
@@ -307,6 +334,15 @@
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+#favourite .bloc-favourites .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #favourite .bloc-favourites .product span {
   display: block;
 }
@@ -330,6 +366,16 @@
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+#favourite .bloc-favourites .product .title-h4 {
+  font-size: 2rem;
+}
+#favourite .bloc-favourites .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#favourite .bloc-favourites .product .title-offer {
+  font-size: 2rem;
 }
 #favourite .bloc-favourites .product .btns {
   position: absolute;
@@ -373,11 +419,19 @@
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 #favourite .bloc-favourites .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+#favourite .bloc-favourites .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 #favourite .bloc-favourites .product.unique .bloc-text .select {
   margin-top: 3rem;
@@ -465,6 +519,15 @@
   position: relative;
   padding-bottom: 6rem;
 }
+#favourite .bloc-favourites .favourite .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #favourite .bloc-favourites .favourite span {
   display: block;
 }
@@ -484,6 +547,14 @@
   margin-bottom: 1rem;
 }
 #favourite .bloc-favourites .favourite .title-h4 {
+  font-size: 2rem;
+  padding-left: 1rem;
+}
+#favourite .bloc-favourites .favourite .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#favourite .bloc-favourites .favourite .title-offer {
   font-size: 2rem;
   padding-left: 1rem;
 }
@@ -542,6 +613,15 @@ body {
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+#slider .container .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #slider .container .product span {
   display: block;
 }
@@ -565,6 +645,16 @@ body {
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+#slider .container .product .title-h4 {
+  font-size: 2rem;
+}
+#slider .container .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#slider .container .product .title-offer {
+  font-size: 2rem;
 }
 #slider .container .product .btns {
   position: absolute;
@@ -608,11 +698,19 @@ body {
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 #slider .container .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+#slider .container .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+#slider .container .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 #slider .container .product.unique .bloc-text .select {
   margin-top: 3rem;
@@ -731,6 +829,16 @@ body {
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+#slider .container .column .handmade .product .offer,
+#slider .container .column .shipping .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #slider .container .column .handmade .product span,
 #slider .container .column .shipping .product span {
   display: block;
@@ -759,6 +867,19 @@ body {
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+#slider .container .column .handmade .product .title-h4,
+#slider .container .column .shipping .product .title-h4 {
+  font-size: 2rem;
+}
+#slider .container .column .handmade .product .title-h4.underline,
+#slider .container .column .shipping .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#slider .container .column .handmade .product .title-offer,
+#slider .container .column .shipping .product .title-offer {
+  font-size: 2rem;
 }
 #slider .container .column .handmade .product .btns,
 #slider .container .column .shipping .product .btns {
@@ -811,12 +932,22 @@ body {
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 #slider .container .column .handmade .product.unique .bloc-text h2 .tc-grey,
 #slider .container .column .shipping .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text h2 .title-offer,
+#slider .container .column .shipping .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+#slider .container .column .handmade .product.unique .bloc-text h2 .underline,
+#slider .container .column .shipping .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 #slider .container .column .handmade .product.unique .bloc-text .select,
 #slider .container .column .shipping .product.unique .bloc-text .select {
@@ -953,6 +1084,15 @@ body {
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+#slider .container .column .bloc-text .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #slider .container .column .bloc-text .product span {
   display: block;
 }
@@ -976,6 +1116,16 @@ body {
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+#slider .container .column .bloc-text .product .title-h4 {
+  font-size: 2rem;
+}
+#slider .container .column .bloc-text .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#slider .container .column .bloc-text .product .title-offer {
+  font-size: 2rem;
 }
 #slider .container .column .bloc-text .product .btns {
   position: absolute;
@@ -1019,11 +1169,19 @@ body {
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 #slider .container .column .bloc-text .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+#slider .container .column .bloc-text .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 #slider .container .column .bloc-text .product.unique .bloc-text .select {
   margin-top: 3rem;
@@ -1155,6 +1313,15 @@ body {
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+.dflex .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 .dflex .product span {
   display: block;
 }
@@ -1178,6 +1345,16 @@ body {
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+.dflex .product .title-h4 {
+  font-size: 2rem;
+}
+.dflex .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+.dflex .product .title-offer {
+  font-size: 2rem;
 }
 .dflex .product .btns {
   position: absolute;
@@ -1221,11 +1398,19 @@ body {
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 .dflex .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+.dflex .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+.dflex .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 .dflex .product.unique .bloc-text .select {
   margin-top: 3rem;
@@ -1328,6 +1513,15 @@ body {
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+.btns .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 .btns .product span {
   display: block;
 }
@@ -1351,6 +1545,16 @@ body {
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+.btns .product .title-h4 {
+  font-size: 2rem;
+}
+.btns .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+.btns .product .title-offer {
+  font-size: 2rem;
 }
 .btns .product .btns {
   position: absolute;
@@ -1394,11 +1598,19 @@ body {
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 .btns .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+.btns .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+.btns .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 .btns .product.unique .bloc-text .select {
   margin-top: 3rem;
@@ -1534,6 +1746,15 @@ body {
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+#plus .container .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #plus .container .product span {
   display: block;
 }
@@ -1557,6 +1778,16 @@ body {
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+#plus .container .product .title-h4 {
+  font-size: 2rem;
+}
+#plus .container .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#plus .container .product .title-offer {
+  font-size: 2rem;
 }
 #plus .container .product .btns {
   position: absolute;
@@ -1600,11 +1831,19 @@ body {
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 #plus .container .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+#plus .container .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+#plus .container .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 #plus .container .product.unique .bloc-text .select {
   margin-top: 3rem;
@@ -1710,6 +1949,15 @@ body {
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+#plus .bloc .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #plus .bloc .product span {
   display: block;
 }
@@ -1733,6 +1981,16 @@ body {
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+#plus .bloc .product .title-h4 {
+  font-size: 2rem;
+}
+#plus .bloc .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#plus .bloc .product .title-offer {
+  font-size: 2rem;
 }
 #plus .bloc .product .btns {
   position: absolute;
@@ -1776,11 +2034,19 @@ body {
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 #plus .bloc .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+#plus .bloc .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+#plus .bloc .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 #plus .bloc .product.unique .bloc-text .select {
   margin-top: 3rem;
@@ -1907,6 +2173,15 @@ body {
   padding-bottom: 6rem;
   /* -------------- DETAILS PRODUITS ------------ */
 }
+#creations .product .offer {
+  position: absolute;
+  z-index: 3;
+  top: 1rem;
+  right: -1rem;
+  padding: 0.5rem 1.2rem;
+  background-color: #042b40;
+  color: #fff;
+}
 #creations .product span {
   display: block;
 }
@@ -1930,6 +2205,16 @@ body {
   margin-bottom: 15px;
   font-family: "Amatic SC", cursive;
   line-height: 1;
+}
+#creations .product .title-h4 {
+  font-size: 2rem;
+}
+#creations .product .title-h4.underline {
+  font-size: 1.5rem;
+  text-decoration: line-through;
+}
+#creations .product .title-offer {
+  font-size: 2rem;
 }
 #creations .product .btns {
   position: absolute;
@@ -1973,11 +2258,19 @@ body {
   font-size: 8rem;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
   margin-bottom: 2rem;
 }
 #creations .product.unique .bloc-text h2 .tc-grey {
   margin-left: 3rem;
+}
+#creations .product.unique .bloc-text h2 .title-offer {
+  font-size: 8rem;
+}
+#creations .product.unique .bloc-text h2 .underline {
+  font-size: 3rem;
+  text-decoration: line-through;
 }
 #creations .product.unique .bloc-text .select {
   margin-top: 3rem;

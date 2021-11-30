@@ -72,13 +72,21 @@
 
 			{% for favourite in favourites %}
 				<a href="{{ path('product_details', {'slug': favourite.slug, 'id': favourite.id }) }}" class="favourite">
+					{% if favourite.specialOffer|length > 0 %}
+						<span class="offer">
+							- {{ favourite.specialOffer.offer }} %
+						</span>
+					{% endif %}
 					<span class="bloc-img">
 						<img src="{{ asset('products/'~ favourite.image ~'')|imagine_filter('productImagesThumbnails') }}"
 						     alt="{{ favourite.altImg }}" title="{{ favourite.nameImg }}">
 					</span>
 
 					<span class="title-h3 amatic">{{ favourite.name }}</span>
-					<span class="title-h4">{{ favourite.price }} €</span>
+					<span class="title-h4 {% if favourite.specialOffer|length > 0 %}underline{% endif %}">{{ favourite.price }} €</span>
+					{% if favourite.specialOffer|length > 0 %}
+						<span class="title-offer">{{ favourite.price - (favourite.price * (favourite.specialOffer.offer / 100)) }} €</span>
+					{% endif %}
 
 					<span class="btns">
 						<button>
@@ -115,6 +123,12 @@
 				{% for product in products %}
 
 					<a href="{{ path('product_details', {'slug': product.slug, 'id': product.id }) }}" class="product">
+						{% if product.specialOffer|length > 0 %}
+							<span class="offer">
+							- {{ product.specialOffer.offer }} %
+						</span>
+						{% endif %}
+
 						<span class="bloc-img">
 							<img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}"
 							     alt="{{ product.altImg }}" title="{{ product.nameImg }}">
@@ -122,7 +136,10 @@
 
 						<span class="bloc-text">
 							<span class="title">{{ product.name }}</span>
-							<span class="prix">{{ product.price }} €</span>
+							<span class="title-h4 {% if product.specialOffer|length > 0 %}underline{% endif %}">{{ product.price }} €</span>
+							{% if product.specialOffer|length > 0 %}
+								<span class="title-offer">{{ product.price - (product.price * (product.specialOffer.offer / 100)) }} €</span>
+							{% endif %}
 						</span>
 
 						<span class="btns">

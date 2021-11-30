@@ -1,0 +1,87 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Commandes{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/orders.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Ici vous pouvez gérer vos commandes passées</h1>
+
+	<section class="bloc-actions dflex">
+		<div class="number">
+			<h2>
+				<span class="square">
+					<i class="fas fa-shopping-cart"></i>
+				</span>
+				<span class="texte">
+					Vous avez {{ elements|length }} commandes passées
+				</span>
+			</h2>
+		</div>
+		<div class="btns dflex">
+			<a href="{{ path('admin_products', {'page': '1'}) }}" class="btn">
+				<i class="fas fa-shopping-bag"></i> Voir les produits
+			</a>
+		</div>
+	</section>
+
+	<section class="table">
+		<div class="head dflex">
+			<h3 class="number">
+				N° de commande
+			</h3>
+			<h3 class="user">
+				Client
+			</h3>
+			<h3 class="date">
+				Date
+			</h3>
+			<h3 class="price">
+				Prix total
+			</h3>
+			<h3 class="status">
+				Statut
+			</h3>
+			<h3 class="send">
+				Envoyée ?
+			</h3>
+			<div class="search">
+				Rechercher
+			</div>
+		</div>
+		{% for order in orders %}
+			<a href="{{ path('admin_products_modify', {'id': order.id }) }}" class="element order">
+
+				<span class="data number">
+					{{ order.orderNumber }}
+				</span>
+				<span class="data user">
+					{{ order.user }}
+				</span>
+				<span class="data date">
+					{{ order.date }} €
+				</span>
+				<span class="data price">
+					{{ order.price }} €
+				</span>
+				<span class="data status">
+					{{ order.status }}
+				</span>
+				<span class="data send">
+					{{ order.send }}
+				</span>
+
+				<span class="btns dflex">
+					<button class="btn action">
+						<i class="fas fa-edit"></i> Modifier
+					</button>
+				</span>
+			</a>
+		{% endfor %}
+	</section>
+
+	{% include 'includes/_pagination.html.twig' with {'link': 'admin_orders' } %}
+{% endblock %}
+

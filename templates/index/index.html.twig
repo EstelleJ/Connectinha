@@ -34,14 +34,21 @@
 		<div class="bloc-favourites">
 			{% for favourite in favourites %}
 				<a href="{{ path('product_details', {'slug': favourite.slug, 'id': favourite.id }) }}" class="favourite">
+					{% if favourite.specialOffer|length > 0 %}
+						<span class="offer">
+							- {{ favourite.specialOffer.offer }} %
+						</span>
+					{% endif %}
 					<span class="bloc-img">
 						<img src="{{ asset('products/'~ favourite.image ~'')|imagine_filter('productImagesThumbnails') }}"
 						     alt="{{ favourite.altImg }}" title="{{ favourite.nameImg }}">
 					</span>
 
 					<span class="title-h3 amatic">{{ favourite.name }}</span>
-					<span class="title-h4">{{ favourite.price }} €</span>
-
+					<span class="title-h4 {% if favourite.specialOffer|length > 0 %}underline{% endif %}">{{ favourite.price }} €</span>
+					{% if favourite.specialOffer|length > 0 %}
+						<span class="title-offer">{{ favourite.price - (favourite.price * (favourite.specialOffer.offer / 100)) }} €</span>
+					{% endif %}
 					<span class="btns">
 						<button class="btn-add-cart">
 							<i class="far fa-eye"></i> Découvrir en détails

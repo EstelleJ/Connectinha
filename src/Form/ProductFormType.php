@@ -79,6 +79,9 @@ class ProductFormType extends AbstractType {
 								'Non' => false
 						]
 				])
+				->add('specialOffer', null, [
+						'label' => 'Promotion'
+				])
 				->add('weight', IntegerType::class, [
 						'label' => 'Poids en grammes'
 				])

@@ -148,6 +148,16 @@ body {
 		position: relative;
 		padding-bottom: 6rem;
 
+		.offer {
+			position: absolute;
+			z-index: 3;
+			top: 1rem;
+			right: -1rem;
+			padding: 0.5rem 1.2rem;
+			background-color: @bg-dark-blue-connectinha;
+			color: @tc-white;
+		}
+
 		span {
 			display: block;
 		}
@@ -175,6 +185,19 @@ body {
 			margin-bottom: 15px;
 			font-family: "Amatic SC", cursive;
 			line-height: 1;
+		}
+
+		.title-h4 {
+			font-size: 2rem;
+
+			&.underline {
+				font-size: 1.5rem;
+				text-decoration: line-through;
+			}
+		}
+
+		.title-offer {
+			font-size: 2rem;
 		}
 
 
@@ -226,11 +249,21 @@ body {
 				h2 {
 					font-size: 8rem;
 					.dflex();
+					align-items: center;
 					justify-content: center;
 					margin-bottom: 2rem;
 
 					.tc-grey {
 						margin-left: 3rem;
+					}
+
+					.title-offer {
+						font-size: 8rem;
+					}
+
+					.underline {
+						font-size: 3rem;
+						text-decoration: line-through;
 					}
 				}
 

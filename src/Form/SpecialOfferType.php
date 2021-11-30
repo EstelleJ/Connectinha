@@ -21,9 +21,6 @@ class SpecialOfferType extends AbstractType
             ->add('offer', NumberType::class, [
             		'label' => 'Taux en pourcentage %'
             ])
-		        ->add('products', null, [
-		        		'label' => 'Produits concernés'
-		        ])
 		        ->add('submit', SubmitType::class, [
 				        'label' => 'Sauvegarder',
 		        ]);

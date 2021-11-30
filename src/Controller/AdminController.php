@@ -348,7 +348,7 @@ class AdminController extends AbstractController {
 
 		$orders = $this->getDoctrine()->getRepository(Orders::class)->findBy([], ['id' => 'DESC'], $nbElements, $offset);
 
-		return $this->render('admin/commandes.html.twig', [
+		return $this->render('admin/orders.html.twig', [
 				'orders'          => $orders,
 				'arrayPagination' => $arrayPagination,
 				'currentPage'     => $page,

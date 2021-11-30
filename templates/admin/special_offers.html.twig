@@ -25,7 +25,7 @@
 			</h2>
 		</div>
 		<div class="btns dflex">
-			<a href="{{ path('admin_category_add') }}" class="btn">
+			<a href="{{ path('admin_special_offers_add') }}" class="btn">
 				<i class="fas fa-plus"></i> Ajouter une promotion
 			</a>
 		</div>
@@ -47,7 +47,7 @@
 			</div>
 		</div>
 		{% for offer in offers %}
-			<a href="{{ path('admin_category_modify', {'id': offer.id }) }}" class="element offer">
+			<a href="{{ path('admin_special_offers_modify', {'id': offer.id }) }}" class="element offer">
 				<span class="data title">{{ offer.title }}</span>
 				<span class="data percent">
 					{{ offer.offer }} %

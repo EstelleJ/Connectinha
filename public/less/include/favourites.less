@@ -57,6 +57,16 @@
 			position: relative;
 			padding-bottom: 6rem;
 
+			.offer {
+				position: absolute;
+				z-index: 3;
+				top: 1rem;
+				right: -1rem;
+				padding: 0.5rem 1.2rem;
+				background-color: @bg-dark-blue-connectinha;
+				color: @tc-white;
+			}
+
 			span {
 				display: block;
 			}
@@ -80,6 +90,16 @@
 			}
 
 			.title-h4 {
+				font-size: 2rem;
+				padding-left: 1rem;
+
+				&.underline {
+					font-size: 1.5rem;
+					text-decoration: line-through;
+				}
+			}
+
+			.title-offer {
 				font-size: 2rem;
 				padding-left: 1rem;
 			}
