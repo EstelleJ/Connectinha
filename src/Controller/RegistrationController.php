@@ -39,7 +39,7 @@ class RegistrationController extends AbstractController
                 )
             );
 
-            $user->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
+            $user->setRoles(['ROLE_USER']);
             $user->setActive(1);
             $user->setClient($client);
 
