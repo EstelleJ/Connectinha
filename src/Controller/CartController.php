@@ -19,8 +19,6 @@ class CartController extends AbstractController
     {
 	      $products = $request->request->get('cart');
 
-	      dump($products);
-
         return $this->render('cart/index.html.twig', [
             'controller_name' => 'CartController',
         ]);

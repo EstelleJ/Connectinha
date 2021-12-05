@@ -19,4 +19,29 @@ export default class WebComponent extends HTMLElement {
 					return html;
 				});
 	}
+
+
+	ajax(method, url, formData) {
+
+		let init = {
+			method: method,
+			body  : formData,
+		}
+
+		return fetch(url, init)
+				.then(function(response) {
+					if (response.ok) {
+						return response.text();
+					}
+					else {
+						throw new Error('erreur !');
+					}
+				})
+				.then(function(response) {
+					return JSON.parse(response);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+	}
 }

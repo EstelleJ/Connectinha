@@ -1,11 +1,12 @@
 <div class="cart-row">
-	<p class="item-name name"></p>
-	<p class="item-unit-price unitPrice"></p>
+	<p class="item-name name">{{ name }}</p>
+	<p class="item-unit-price unitPrice">{{ price }} €</p>
 	<label class="quantity">
-		<input type="number" class="item-quantity">
+		<input type="number" class="item-quantity" value="{{ quantity }}">
 	</label>
 	<label class="totalPrice">
-		<input type="number" disabled class="item-price">
+		<input type="number" disabled class="item-price" value="{{ totalPrice }}">
+		€
 	</label>
 	<button type="button" class="item-delete">
 		<i class="fas fa-trash"></i>
