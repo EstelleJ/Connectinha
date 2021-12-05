@@ -1,8 +1,8 @@
 <div class="cart-row">
 	<p class="item-name name">{{ name }}</p>
-	<p class="item-unit-price unitPrice">{{ price }} €</p>
+	<p class="item-unit-price" data-price="{{ price }}">{{ price }} €</p>
 	<label class="quantity">
-		<input type="number" class="item-quantity" value="{{ quantity }}">
+		<input type="number" class="item-quantity" value="{{ quantity }}" min="1">
 	</label>
 	<label class="totalPrice">
 		<input type="number" disabled class="item-price" value="{{ totalPrice }}">

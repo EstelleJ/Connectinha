@@ -3,15 +3,15 @@ import {ajax} from '../tools/functions.js';
 // ============================================================================
 // Variables
 // ============================================================================
-const cartTable = document.getElementById('cart-table');
-
+const cartTable  = document.getElementById('cart-table');
 let cartProducts = [];
+
 
 // ============================================================================
 // Functions
 // ============================================================================
 function addCartRow(product) {
-	let row = document.createElement('cart-row');
+	let row             = document.createElement('cart-row');
 	row.dataset.product = JSON.stringify(product);
 	cartTable.appendChild(row);
 }

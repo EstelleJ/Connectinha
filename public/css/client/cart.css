@@ -172,7 +172,7 @@
   border: none;
   background-color: #f7f7f7;
 }
-#cart .unitPrice,
+#cart .item-unit-price,
 #cart .totalPrice {
   width: 20%;
 }
