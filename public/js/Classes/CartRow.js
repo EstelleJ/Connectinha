@@ -16,6 +16,7 @@ export default class CartRow extends WebComponent {
 		let html = await this.fetchHtml(this.templatesUrl + this.template);
 		const productData = JSON.parse(this.dataset.product);
 
+
 		let product = await this.getProductFromBackEnd();
 		html = html.replaceAll('{{ name }}', product.name);
 		html = html.replaceAll('{{ price }}', product.price);
@@ -38,14 +39,19 @@ export default class CartRow extends WebComponent {
 		let formData = new FormData();
 		formData.append('id', productId);
 
-		const product = await this.ajax('POST', '/ajax/get-product/', formData);
-
-		console.log(product);
-		return product;
+		return await this.ajax('POST', '/ajax/get-product/', formData);
 	}
 
 
 	deleteRow() {
+		const productData = JSON.parse(this.dataset.product);
+		let storageCart = JSON.parse(localStorage.getItem('products'));
+
+		const indexOfProduct = storageCart.indexOf(productData);
+		storageCart.splice(indexOfProduct);
+
+		localStorage.setItem('products', JSON.stringify(storageCart));
+
 		this.remove();
 	}
 }
