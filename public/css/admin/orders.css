@@ -57,18 +57,27 @@
   font-size: 2.2rem;
   width: 20%;
 }
-.table .title {
-  width: 25%;
+.table .number {
+  width: 12%;
 }
-.table .percent {
+.table .user {
   width: 15%;
 }
-.table .products {
-  width: 35%;
+.table .date {
+  width: 10%;
+}
+.table .price {
+  width: 10%;
+}
+.table .status {
+  width: 12%;
+}
+.table .send {
+  width: 10%;
 }
 .table .search,
 .table .btns {
-  width: 25%;
+  width: 20%;
 }
 .table .btns {
   margin: 0;

@@ -13,6 +13,7 @@ use App\Entity\ProductSubcategory;
 use App\Entity\Services;
 use App\Entity\ServicesContent;
 use App\Entity\ShippingCost;
+use App\Entity\SpecialOffer;
 use App\Entity\Tva;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -262,13 +263,13 @@ class AjaxController extends AbstractController {
 	 * @param Request $request
 	 * @return Response
 	 */
-	#[Route('/ajax/delete/offer', name: 'ajax_delete_offer')]
+	#[Route('/ajax/delete/special-offers', name: 'ajax_delete_offer')]
 	public function deleteOffer(Request $request): Response {
 
 		$offer_id = $request->request->get('ajax-offer-id');
 		$entityManager = $this->getDoctrine()->getManager();
 
-		$content = $this->getDoctrine()->getRepository(DiscountTicket::class)->find($offer_id);
+		$content = $this->getDoctrine()->getRepository(SpecialOffer::class)->find($offer_id);
 
 		$entityManager->remove($content);
 		$entityManager->flush();

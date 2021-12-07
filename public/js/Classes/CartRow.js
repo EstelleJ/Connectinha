@@ -30,7 +30,8 @@ export default class CartRow extends WebComponent {
 		// Event listeners
 		this.querySelector('.item-delete').addEventListener('click', this.deleteRow.bind(this));
 		this.querySelector('.item-quantity').addEventListener('input', this.updateTotalPrices.bind(this));
-
+		this.querySelector('.less').addEventListener('click', this.lessQuantity.bind(this));
+		this.querySelector('.more').addEventListener('click', this.moreQuantity.bind(this));
 	}
 
 
@@ -58,6 +59,19 @@ export default class CartRow extends WebComponent {
 		this.updateTotalPrices();
 	}
 
+	lessQuantity() {
+		let quantity  = parseInt(this.querySelector('.item-quantity').value);
+		this.querySelector('.item-quantity').value = quantity - 1;
+
+		this.updateTotalPrices();
+	}
+
+	moreQuantity() {
+		let quantity  = parseInt(this.querySelector('.item-quantity').value);
+		this.querySelector('.item-quantity').value = quantity + 1;
+
+		this.updateTotalPrices();
+	}
 
 	updateTotalPrices() {
 		const domTotalPrice = document.getElementById('cart-total-price');

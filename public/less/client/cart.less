@@ -40,12 +40,13 @@
 
 			input {
 				width: 90%;
-				border: 1px solid deeppink;
+				border: 1px solid #b0b0b0;
 			}
 
 			.totalPrice {
 				width: 16%;
 			}
+
 		}
 
 	}
@@ -73,7 +74,7 @@
 	}
 
 	.element {
-		padding: 1rem 2rem;
+		padding: 1rem 0rem;
 	}
 
 	.name {
@@ -92,23 +93,28 @@
 			align-items: center;
 			justify-content: center;
 			background: transparent;
-			background-color: darken(@bg-lightgrey-connectinha, 15%);
-			transition: 0.3s background-color;
-
-			&:hover {
-				background-color: darken(@bg-lightgrey-connectinha, 30%);
-				transition: 0.3s background-color;
-			}
+			background-color: @bg-light-blue-connectinha;
+			color: @tc-dark-blue-connectinha;
+			font-size: 2rem;
 		}
 
 		input {
-			width: calc(100% - 6rem);
+			width: calc(100% - 8rem) !important;
 			border: none;
 			background-color: @bg-lightgrey-connectinha;
+			height: 3rem;
+		}
+
+		input[type=number]::-webkit-inner-spin-button,
+		input[type=number]::-webkit-outer-spin-button
+		{
+			-webkit-appearance: none;
+			margin: 0;
 		}
 	}
 
 	.item-unit-price,
+	.unitPrice,
 	.totalPrice {
 		width: 20%;
 	}
@@ -175,6 +181,14 @@
 			&:hover {
 				background-color: lighten(@bg-dark-blue-connectinha, 30%);
 				transition: 0.3s background-color;
+			}
+
+			&.save {
+				background-color: #0b795c;
+				&:hover {
+					background-color: #11a17a;
+					transition: 0.3s background-color;
+				}
 			}
 		}
 

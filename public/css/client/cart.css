@@ -116,7 +116,7 @@
 }
 #cart .cart .cart-row input {
   width: 90%;
-  border: 1px solid deeppink;
+  border: 1px solid #b0b0b0;
 }
 #cart .cart .cart-row .totalPrice {
   width: 16%;
@@ -141,7 +141,7 @@
   padding: 2rem 0;
 }
 #cart .element {
-  padding: 1rem 2rem;
+  padding: 1rem 0rem;
 }
 #cart .name {
   width: 40%;
@@ -160,19 +160,23 @@
   align-items: center;
   justify-content: center;
   background: transparent;
-  background-color: #d1d1d1;
-  transition: 0.3s background-color;
-}
-#cart .quantity button:hover {
-  background-color: #ababab;
-  transition: 0.3s background-color;
+  background-color: #6ba7bb;
+  color: #042b40;
+  font-size: 2rem;
 }
 #cart .quantity input {
-  width: calc(100% - 6rem);
+  width: calc(100% - 8rem) !important;
   border: none;
   background-color: #f7f7f7;
+  height: 3rem;
+}
+#cart .quantity input[type=number]::-webkit-inner-spin-button,
+#cart .quantity input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 #cart .item-unit-price,
+#cart .unitPrice,
 #cart .totalPrice {
   width: 20%;
 }
@@ -228,5 +232,12 @@
 }
 #cart .confirm .btn:hover {
   background-color: #0d8cd0;
+  transition: 0.3s background-color;
+}
+#cart .confirm .btn.save {
+  background-color: #0b795c;
+}
+#cart .confirm .btn.save:hover {
+  background-color: #11a17a;
   transition: 0.3s background-color;
 }
