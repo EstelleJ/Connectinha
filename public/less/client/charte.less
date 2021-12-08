@@ -1,0 +1,81 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+@import "../include/banner.less";
+@import "../include/favourites.less";
+
+/* ---------------- INDICATION UX ---------------- */
+/* ----------------------------------------------- */
+
+.menu {
+	.accueil {
+		&::after {
+			content: "";
+			display: block;
+			width: 3rem;
+			height: 0.2rem;
+			background-color: @bg-dark-blue-connectinha;
+			position: absolute;
+			bottom: 0;
+			left: calc(50% - 1.5rem);
+		}
+	}
+}
+
+#charter {
+	margin: -12rem auto 0 auto;
+	position: relative;
+	z-index: 10;
+	
+	&::after,
+	&::before {
+		content: "";
+		display: inline-block;
+		height: 50rem;
+		position: absolute;
+		z-index: -1;
+		top: 0rem;
+	}
+
+	&::after {
+		content: "";
+		display: block;
+		width: 30rem;
+		height: 50rem;
+		background: url('../../images/illustrations/une-question-illustration-herbe-gauche.png') no-repeat;
+		background-size: contain;
+		position: absolute;
+	}
+
+	&::before {
+		content: "";
+		display: inline-block;
+		width: 30rem;
+		height: 50rem;
+		background: url('../../images/illustrations/une-question-illustration-herbe-droite.png') no-repeat;
+		background-size: contain;
+		position: absolute;
+		right: 0;
+	}
+
+	.content {
+		width: 60%;
+		margin: auto;
+	}
+
+	p {
+		font-size: 3rem;
+		margin-bottom: 3rem;
+		line-height: 1;
+		font-weight: bold;
+	}
+
+	ol {
+		li {
+			list-style: initial;
+			list-style-type: decimal;
+			margin-bottom: 2rem;
+			font-size: 1.8rem;
+			color: @tc-blue-connectinha;
+		}
+	}
+}

@@ -57,6 +57,29 @@
   font-size: 2.2rem;
   width: 20%;
 }
+#banner {
+  height: 55rem;
+  width: 100%;
+  background: url('../../images/produits/bandeau-page-ville-nuit-etoilee-bleu-violet-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#banner h1 {
+  font-size: 6rem;
+  margin-top: -5rem;
+}
+#banner h1 span {
+  display: block;
+}
+#banner h1 .rougeScript {
+  font-size: 8rem;
+}
+#banner h1 .amatic {
+  margin-top: -1rem;
+}
 #favourite {
   position: relative;
 }
@@ -173,149 +196,13 @@
   bottom: 0;
   left: calc(50% - 1.5rem);
 }
-#home {
-  height: 110vh;
-  background: url('../../images/index/bandeau-accueil-elodie-ortiz-montagnes-forets-bleu-violet.jpg') no-repeat center center;
-  background-size: cover;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-}
-#home span {
-  display: block;
-}
-#home .rougeScript {
-  font-size: 15rem;
-}
-#home .amatic {
-  font-size: 10rem;
-  margin-top: -3rem;
-  margin-bottom: 2rem;
-}
-#home .content {
-  margin-top: -18rem;
-}
-#home .btns {
-  justify-content: center;
-}
-#presentation {
-  position: relative;
-  margin-top: 8rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-#presentation .bloc-background {
-  height: 80rem;
-  background-color: orange;
-  width: 25%;
-  position: relative;
-  background: url('../../images/index/presentation-fond-nature-nuit-etoilee-elodie-ortiz-connectinha.jpg');
-  background-size: cover;
-}
-#presentation .bloc-background .picture {
-  width: 50rem;
-  height: 65rem;
-  border: 1.5rem solid #fff;
-  position: absolute;
-  top: 7rem;
-  right: -20rem;
-  background-color: orange;
-}
-#presentation .bloc-background .picture img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-#presentation .bloc-text {
-  width: 65%;
-  padding: 0 18rem;
-  text-align: center;
-}
-#presentation .bloc-text h2 {
-  font-size: 8rem;
-  margin-bottom: 5rem;
-}
-#presentation .bloc-text h3 {
-  font-size: 4rem;
-  margin: 6rem 0 4rem 0;
-}
-#presentation .bloc-text .btn {
-  margin: 4rem auto;
-}
-#presentation .bloc-text .quote {
-  color: #4498b4;
-  margin-top: 1rem;
-  font-size: 2rem;
-}
-#services {
-  margin: 8rem 0 0 0;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding-bottom: 0;
-}
-#services .bloc {
-  width: 33.3333%;
-  height: 35rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-}
-#services .bloc img {
-  width: 100%;
-  height: 80%;
-  object-fit: contain;
-}
-#services .bloc h2 {
-  font-size: 6rem;
-  font-family: "Playfair Display", serif;
-  font-weight: 700;
-  color: #41687f;
-  text-transform: capitalize;
-  text-align: center;
-  line-height: 1;
-}
-#services .bloc.magnetisme {
-  background: url('../../images/index/le-magnetisme-elodie-ortiz.jpg') no-repeat center center;
-  background-size: cover;
-}
-#services .bloc.cartomancie {
-  background: url('../../images/index/la-cartomancie-elodie-ortiz.jpg') no-repeat center center;
-  background-size: cover;
-}
-#services .bloc.mediumnite {
-  background: url('../../images/index/la-mediumnite-elodie-ortiz.jpg') no-repeat center center;
-  background-size: cover;
-}
 #charter {
-  padding: 10rem 0;
-  background: url('../../images/index/background-connectinha-bleu-et-violet.jpg') no-repeat center center;
-  background-size: cover;
-  margin-bottom: 3rem;
-}
-#charter h2 {
-  font-size: 8rem;
-  text-align: center;
-}
-#charter p {
-  text-align: center;
-  color: #fff;
-}
-#charter .bloc-btn .btn {
-  margin: 2rem auto;
-}
-#question {
-  padding: 5rem 0;
+  margin: -12rem auto 0 auto;
   position: relative;
-  margin-bottom: 10rem;
+  z-index: 10;
 }
-#question::after,
-#question::before {
+#charter::after,
+#charter::before {
   content: "";
   display: inline-block;
   height: 50rem;
@@ -323,7 +210,7 @@
   z-index: -1;
   top: 0rem;
 }
-#question::after {
+#charter::after {
   content: "";
   display: block;
   width: 30rem;
@@ -332,7 +219,7 @@
   background-size: contain;
   position: absolute;
 }
-#question::before {
+#charter::before {
   content: "";
   display: inline-block;
   width: 30rem;
@@ -342,16 +229,20 @@
   position: absolute;
   right: 0;
 }
-#question h2 {
-  font-size: 6rem;
-  margin-bottom: 5rem;
-}
-#question .content {
+#charter .content {
   width: 60%;
   margin: auto;
-  text-align: center;
 }
-#question .content .btns {
-  justify-content: center;
-  margin-top: 5rem;
+#charter p {
+  font-size: 3rem;
+  margin-bottom: 3rem;
+  line-height: 1;
+  font-weight: bold;
+}
+#charter ol li {
+  list-style: initial;
+  list-style-type: decimal;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+  color: #4498b4;
 }

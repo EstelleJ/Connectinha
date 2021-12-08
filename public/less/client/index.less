@@ -113,9 +113,10 @@
 
 
 #services {
-	margin: 8rem 0;
+	margin: 8rem 0 0 0;
 	.dflex();
 	align-items: center;
+	padding-bottom: 0;
 
 	.bloc {
 		width: 33.3333%;
@@ -153,6 +154,29 @@
 		&.mediumnite {
 			background: url('../../images/index/la-mediumnite-elodie-ortiz.jpg') no-repeat center center;
 			background-size: cover;
+		}
+	}
+}
+
+#charter {
+	padding: 10rem 0;
+	background: url('../../images/index/background-connectinha-bleu-et-violet.jpg') no-repeat center center;
+	background-size: cover;
+	margin-bottom: 3rem;
+
+	h2 {
+		font-size: 8rem;
+		text-align: center;
+	}
+
+	p {
+		text-align: center;
+		color: @tc-white;
+	}
+
+	.bloc-btn {
+		.btn {
+			margin: 2rem auto;
 		}
 	}
 }
