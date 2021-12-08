@@ -99,6 +99,22 @@
   font-size: 8rem;
   text-align: center;
 }
+#rdv .discovery,
+#rdv .purification {
+  width: 60%;
+  margin: 6rem auto;
+  text-align: center;
+}
+#rdv .discovery strong,
+#rdv .purification strong {
+  color: #af5ce2;
+}
+#rdv .discovery h3,
+#rdv .purification h3 {
+  color: #af5ce2;
+  font-size: 5rem;
+  margin-top: 3rem;
+}
 #rdv .service {
   width: 80%;
   margin: 3rem auto;
