@@ -22,6 +22,16 @@ class Cart
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $productArray = [];
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="carts")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +45,30 @@ class Cart
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getProductArray(): ?array
+    {
+        return $this->productArray;
+    }
+
+    public function setProductArray(array $productArray): self
+    {
+        $this->productArray = $productArray;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }
