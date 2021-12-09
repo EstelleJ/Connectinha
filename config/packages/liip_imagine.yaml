@@ -59,7 +59,7 @@ liip_imagine:
       quality: 100
       filters:
         downscale:
-          max: [ 250, 160 ]
+          max: [ 600, 600 ]
 
     servicesThumbnails:
       quality: 100

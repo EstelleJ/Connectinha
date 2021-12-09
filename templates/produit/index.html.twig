@@ -78,7 +78,7 @@
 						</span>
 					{% endif %}
 					<span class="bloc-img">
-						<img src="{{ asset('products/'~ favourite.image ~'') }}"
+						<img src="{{ asset('products/'~ favourite.image ~'')|imagine_filter('productImagesThumbnails') }}"
 						     alt="{{ favourite.altImg }}" title="{{ favourite.nameImg }}">
 					</span>
 
@@ -130,7 +130,7 @@
 						{% endif %}
 
 						<span class="bloc-img">
-							<img src="{{ asset('products/'~ product.image ~'') }}"
+							<img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}"
 							     alt="{{ product.altImg }}" title="{{ product.nameImg }}">
 						</span>
 
