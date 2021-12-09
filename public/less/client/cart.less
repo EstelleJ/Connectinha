@@ -25,16 +25,42 @@
 		.cart-row {
 			width: 100%;
 			.dflex();
+			align-items: center;
 			position: relative;
 			margin: 1rem 0;
+			padding: 0.8rem 1rem;
+
+			.item-name {
+				line-height: 1;
+			}
+
+			.mantra {
+				font-size: 1.4rem;
+			}
 
 			.item-delete {
 				position: absolute;
 				right: 0;
-				top: 0.2rem;
+				top: 1.2rem;
+				.dflex();
+				.full-center();
+				width: 3.2rem;
+				height: 3.2rem;
 				background: transparent;
+				background-color: @bg-mediumgrey;
+				box-shadow: 0px 2px 2px rgba(23,23,23,0.2);
+				border-radius: 3.2rem;
+				transition: 0.3s background-color;
+
+				&:hover {
+					background-color: darken(@bg-mediumgrey, 15%);
+					transition: 0.3s background-color;
+				}
+
 				i {
-					color: @tc-red;
+					color: @tc-delete;
+					font-size: 1.1rem;
+					margin: 0;
 				}
 			}
 
@@ -127,9 +153,10 @@
 		padding: 3rem 4rem;
 		color: @tc-white;
 
-		h3 {
+		h3, label {
 			font-size: 1.6rem;
 			text-transform: uppercase;
+			display: block;
 		}
 
 		p {
@@ -139,8 +166,8 @@
 		.line {
 			margin-bottom: 2rem;
 
-			h3 {
-				margin-bottom: 0.5rem;
+			h3, label {
+				margin-bottom: 0.8rem;
 				i {
 					margin-right: 1rem;
 				}

@@ -11,13 +11,18 @@ const addCartButton = document.getElementById("addCart");
 // ============================================================================
 async function addCart() {
 
+	document.getElementById('modal').classList.add('active');
+	setTimeout(function() {
+		document.getElementById('modal').classList.remove('active');
+	}, 3000);
+
 	// On vérifie si le select mantra exist, pour ajouter ou non un mantra.
 	// La valeur sera null si il n'y a pas de mantras à choisir sur ce produit
 	let mantraSelectTag = document.getElementById('mantraSelect');
 	console.log(mantraSelectTag);
 	let mantraSelected = null;
 
-	if(mantraSelectTag !== null){
+	if (mantraSelectTag !== null) {
 		console.log('hello');
 		mantraSelected = mantraSelectTag.value;
 	}

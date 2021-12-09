@@ -18,9 +18,11 @@ export default class CartRow extends WebComponent {
 
 		let product = await this.getProductFromBackEnd();
 		html        = html.replaceAll('{{ name }}', product.name);
+		html        = html.replaceAll('{{ mantra }}', productData.mantra);
 		html        = html.replaceAll('{{ price }}', parseFloat(product.price).toFixed(2));
 		html        = html.replaceAll('{{ quantity }}', productData.quantity);
 		html        = html.replaceAll('{{ totalPrice }}', (product.price * productData.quantity).toFixed(2));
+
 
 		template.innerHTML = html;
 		this.appendChild(template.content);

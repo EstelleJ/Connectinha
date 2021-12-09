@@ -1,0 +1,66 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+}
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #042b40;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+#modal {
+  position: fixed;
+  display: inline-block;
+  padding: 5rem 4rem;
+  border-radius: 3rem;
+  background-color: #fff;
+}
