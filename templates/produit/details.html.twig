@@ -30,7 +30,7 @@
                         </a>
                     </div>
                     <div class="bloc-img">
-                      <img src="{{ asset('products/'~ product.image ~'') }}">
+                      <img src="{{ asset('products/'~ product.image ~'')|imagine_filter('productImagesThumbnails') }}">
                     </div>
 
                     <div class="bloc-text">
