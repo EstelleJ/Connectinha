@@ -299,4 +299,26 @@ class AjaxController extends AbstractController {
 		return new JsonResponse($responseProduct);
 	}
 
+
+	// ------------------- SAVE CART --------------------- //
+	// --------------------------------------------------- //
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/save-cart/', name: 'ajax_save_cart')]
+	public function saveCart(Request $request): Response {
+
+		$productId = $request->request->get('id');
+
+		$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+		$responseProduct = [
+				'name' => $product->getName(),
+				'price' => $product->getPrice(),
+		];
+		return new JsonResponse($responseProduct);
+	}
+
 }

@@ -263,6 +263,7 @@
   transition: 0.3s background-color;
 }
 #cart .confirm .btn.save {
+  background: transparent;
   background-color: #0b795c;
 }
 #cart .confirm .btn.save:hover {
