@@ -19,15 +19,14 @@ async function addCart() {
 	// On vérifie si le select mantra exist, pour ajouter ou non un mantra.
 	// La valeur sera null si il n'y a pas de mantras à choisir sur ce produit
 	let mantraSelectTag = document.getElementById('mantraSelect');
-	console.log(mantraSelectTag);
+	// console.log(mantraSelectTag);
 	let mantraSelected = null;
 
 	if (mantraSelectTag !== null) {
-		console.log('hello');
 		mantraSelected = mantraSelectTag.value;
 	}
 
-	console.log(mantraSelected);
+	// console.log(mantraSelected);
 
 	let quantitySelected = document.getElementById('number').value;
 

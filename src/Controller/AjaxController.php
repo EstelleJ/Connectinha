@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Cart;
 use App\Entity\Customer;
 use App\Entity\DiscountTicket;
 use App\Entity\MantraProducts;
@@ -15,6 +16,7 @@ use App\Entity\ServicesContent;
 use App\Entity\ShippingCost;
 use App\Entity\SpecialOffer;
 use App\Entity\Tva;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -310,15 +312,25 @@ class AjaxController extends AbstractController {
 	#[Route('/ajax/save-cart/', name: 'ajax_save_cart')]
 	public function saveCart(Request $request): Response {
 
-		$productId = $request->request->get('id');
+		$arrayProducts = $request->request->get('ajax-array-products');
+		$totalPrice = $request->request->get('ajax-cart-price');
 
-		$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+		$user = $this->getDoctrine()->getRepository(User::class)->find(6);
 
-		$responseProduct = [
-				'name' => $product->getName(),
-				'price' => $product->getPrice(),
-		];
-		return new JsonResponse($responseProduct);
+		// dump($arrayProducts);
+
+		$cart = new Cart();
+
+		$cart->setDate(new \DateTime('now'));
+		$cart->setProductArray([$arrayProducts]);
+		$cart->setUser($user);
+		$cart->setPrice($totalPrice);
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($cart);
+		$entityManager->flush();
+
+		return new JsonResponse('ok');
 	}
 
 }

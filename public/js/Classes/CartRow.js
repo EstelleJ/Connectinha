@@ -65,16 +65,12 @@ export default class CartRow extends WebComponent {
 		let quantity  = parseInt(this.querySelector('.item-quantity').value);
 		this.querySelector('.item-quantity').value = quantity - 1;
 
-		console.log(quantity);
-
 		this.updateTotalPrices();
 	}
 
 	moreQuantity() {
 		let quantity  = parseInt(this.querySelector('.item-quantity').value);
 		this.querySelector('.item-quantity').value = quantity + 1;
-
-		console.log(quantity);
 
 		this.updateTotalPrices();
 	}

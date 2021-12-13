@@ -60,6 +60,11 @@ class Customer
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="string", length=14, nullable=true)
+     */
+    private $phone;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -180,6 +185,18 @@ class Customer
                 $order->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }

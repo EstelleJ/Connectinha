@@ -26,23 +26,84 @@
                 <span class="amatic uppercase">Bienvenue dans votre espace client</span>
             </h1>
 
-            <div class="bloc-user">
-                <h2>Vos informations personnelles</h2>
+            <div class="content">
+                <div class="column">
+                    <div class="bloc-user">
+                        <h2>Vos informations personnelles</h2>
 
-                <h3>{{ user.firstName }} {{ user.name }}</h3>
+                        <h3>{{ user.firstName }} {{ user.name }}</h3>
 
-                <div class="btns">
-                    <p>{{ user.email }}</p>
+                        <p>{{ user.email }}</p>
+                        <p>06 60 60 06 06</p>
 
-                    <a href="" class="btn">
-                        <i class="far fa-user"></i> Modifier votre profil
-                    </a>
+                    </div>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="{{ path('profile') }}" class="btn">
+                                    <i class="fas fa-home"></i> Tableau de bord
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="btn">
+                                    <i class="fas fa-user"></i> Modifier vos informations personnelles
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="btn delete">
+                                    <i class="fas fa-trash"></i> Supprimer votre profil
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fas fa-shopping-cart"></i> Votre panier sauvegardé
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class="fas fa-shipping-fast"></i> Vos commandes
+                                </a>
+                            </li>
 
-                    <a href="" class="btn delete">
-                        <i class="fas fa-trash"></i> Supprimer votre profil
-                    </a>
+                        </ul>
+                    </nav>
                 </div>
+
+                <div class="elements">
+                    <h2>Votre dernière commande</h2>
+                    <div class="order">
+                        <h3>Commande n°A046589995</h3>
+                        <p>du 16 novembre 2021</p>
+
+                        <div class="products">
+                            <div class="product">
+                                <h4>Lorem ipsum dolor sit amet blahu lopmsuedi - 9,90 €</h4>
+                                <p>Set amer tuis doqoiudz</p>
+                            </div>
+                            <div class="product">
+                                <h4>Lorem ipsum dolor sit amet blahu lopmsuedi - 9,90 €</h4>
+                                <p>Set amer tuis doqoiudz</p>
+                            </div>
+                            <div class="product">
+                                <h4>Lorem ipsum dolor sit amet blahu lopmsuedi - 9,90 €</h4>
+                                <p>Set amer tuis doqoiudz</p>
+                            </div>
+                            <div class="plus">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <h4>Total de la commande : 38 €</h4>
+
+                        <div class="btns">
+                            <a href="" class="bg-blue tc-white btn">Voir le détail de la commande</a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
         </div>
     </section>
 {% endblock %}
