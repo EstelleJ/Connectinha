@@ -347,6 +347,8 @@ class AjaxController extends AbstractController {
 
 		$shippingCosts = $this->getDoctrine()->getRepository(ShippingCost::class)->findAll();
 
+		$shippingPrice = 0;
+
 		foreach($shippingCosts as $cost) {
 			if($totalWeight > $cost->getMin() && $totalWeight < $cost->getMax()) {
 				$shippingPrice = $cost->getPrice();

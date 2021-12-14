@@ -38,7 +38,7 @@ export default class WebComponent extends HTMLElement {
 					}
 				})
 				.then(function(response) {
-					return JSON.parse(response);
+					return JSON.parse(response.toString());
 				})
 				.catch((error) => {
 					console.log(error);

@@ -17,10 +17,10 @@ export default class CartRow extends WebComponent {
 		const productData = JSON.parse(this.dataset.product);
 
 		let product = await this.getProductFromBackEnd();
-		let mantra = '';
-		let price   = '';
-		let discount = '';
-		let priceBeforeDiscount = '';
+		let mantra;
+		let price;
+		let discount;
+		let priceBeforeDiscount;
 
 		/* Mantra ou pas */
 		if (productData.mantra !== null) {
@@ -47,7 +47,7 @@ export default class CartRow extends WebComponent {
 		}
 
 		/* Promotion */
-		if(productData.discount !== 'null') {
+		if (productData.discount !== 'null') {
 			discount = '-' + productData.discount + '%';
 		}
 		else {
@@ -67,6 +67,7 @@ export default class CartRow extends WebComponent {
 		this.appendChild(template.content);
 
 		this.updateTotalPrices();
+		this.getShippingCost().then();
 
 		// Event listeners
 		this.querySelector('.item-delete').addEventListener('click', this.deleteRow.bind(this));
@@ -101,14 +102,18 @@ export default class CartRow extends WebComponent {
 	}
 
 	lessQuantity() {
-		let quantity                               = parseInt(this.querySelector('.item-quantity').value);
-		this.querySelector('.item-quantity').value = quantity - 1;
+		let quantity = parseInt(this.querySelector('.item-quantity').value);
 
-		this.updateTotalPrices();
+		if (quantity > 1) {
+			this.querySelector('.item-quantity').value = quantity - 1;
+
+			this.updateTotalPrices();
+		}
 	}
 
 	moreQuantity() {
-		let quantity                               = parseInt(this.querySelector('.item-quantity').value);
+		let quantity = parseInt(this.querySelector('.item-quantity').value);
+
 		this.querySelector('.item-quantity').value = quantity + 1;
 
 		this.updateTotalPrices();
@@ -131,6 +136,35 @@ export default class CartRow extends WebComponent {
 		}
 
 		domTotalPrice.innerHTML = totalPrice.toFixed(2) + ' € TTC';
+
+		this.getShippingCost().then();
+	}
+
+	async getShippingCost() {
+		const cartRows     = document.getElementsByTagName("cart-row");
+		const shippingCost = document.getElementById('shipping-cost');
+
+		let totalWeight = 0;
+
+		for (let product of cartRows) {
+			let dataset  = JSON.parse(product.dataset.product);
+			let weight   = dataset.weight;
+			let quantity = 1;
+			if (!!product.querySelector('.item-quantity')) {
+				parseInt(quantity = product.querySelector('.item-quantity').value);
+			}
+
+			totalWeight += parseFloat(weight) * quantity;
+		}
+		console.log(totalWeight);
+
+		let formData = new FormData();
+		formData.append('ajax-total-weight', totalWeight.toString());
+
+		const response = await this.ajax('POST', '/ajax/get-shipping-cost/', formData);
+
+		shippingCost.innerHTML = response.toString();
+		console.log(response);
 	}
 
 }
