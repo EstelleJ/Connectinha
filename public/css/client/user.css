@@ -201,6 +201,9 @@
   /* ------------- INDEX ------------- */
   /* --------------- SAVED CART -------------- */
 }
+#profile .content .elements .btn {
+  font-size: 1.4rem !important;
+}
 #profile .content .elements .order {
   background-color: #fff;
   width: 100%;
@@ -250,11 +253,43 @@
   border-radius: 0.4rem;
   background-color: #042b40;
 }
-#profile .content .elements .order .btn {
-  font-size: 1.4rem !important;
-}
 #profile .content .elements .product-saved {
   padding: 1rem 2rem;
   background-color: #fff;
   margin-bottom: 1rem;
+  display: block;
+  color: #333;
+}
+#profile .content .elements .product-saved .title {
+  margin-bottom: 0.6rem;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  font-size: 1.6rem;
+}
+#profile .content .elements .product-saved .price {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  display: inline-block;
+  font-weight: bold;
+}
+#profile .content .elements .product-saved .priceBeforeDiscount {
+  font-size: 1.2rem;
+  text-decoration: line-through;
+}
+#profile .content .elements .product-saved .discount {
+  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  background-color: #8ebccb;
+  color: #333;
+  margin-left: 1.5rem;
+}
+#profile .content .elements .product-saved .mantra {
+  display: block;
+  width: 100%;
+}
+#profile .content .elements .product-saved .quantity {
+  display: block;
+  width: 100%;
+  font-weight: bold;
 }

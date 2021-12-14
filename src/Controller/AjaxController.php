@@ -333,4 +333,27 @@ class AjaxController extends AbstractController {
 		return new JsonResponse('ok');
 	}
 
+	// ------------------- GET SHIPPING COST --------------------- //
+	// ----------------------------------------------------------- //
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/get-shipping-cost/', name: 'ajax_get_shipping_cost')]
+	public function getShippingCost(Request $request): Response {
+
+		$totalWeight = $request->request->get('ajax-total-weight');
+
+		$shippingCosts = $this->getDoctrine()->getRepository(ShippingCost::class)->findAll();
+
+		foreach($shippingCosts as $cost) {
+			if($totalWeight > $cost->getMin() && $totalWeight < $cost->getMax()) {
+				$shippingPrice = $cost->getPrice();
+			}
+		}
+
+		return new JsonResponse($shippingPrice);
+	}
+
 }

@@ -8,7 +8,8 @@
 
 {% block javascripts %}
 	<script src="{{ asset('js/cart/display-cart.js') }}" type="module"></script>
-	<script src="{{ asset('js/cart/ajax-cart-form.js') }}" type="module"></script>
+	<script src="{{ asset('js/cart/ajax-get-shipping-cost.js') }}" type="module"></script>
+	<script src="{{ asset('js/cart/ajax-saved-cart.js') }}" type="module"></script>
 {% endblock %}
 
 {% block body %}
@@ -40,7 +41,10 @@
 				<div class="confirm">
 					<div class="line">
 						<h3><i class="fas fa-shipping-fast"></i> Frais de port</h3>
-						<p>7,40 €</p>
+						<p>
+							<span id="shipping-cost"></span>
+							€
+						</p>
 					</div>
 
 					<div class="line">

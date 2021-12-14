@@ -45,10 +45,32 @@
                     <h2>Votre panier sauvegardé</h2>
 
                     {% for product in saved_products %}
-                    <a href="{{ path('product_details', {'slug': 'test', 'id': product.id}) }}" class="product-saved">
-                        <h3>{{ product.id }}</h3>
+                    <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved">
+                        <span class="title">
+                            {{ product.title }}
+                        </span>
+                        {% if product.mantra == 'null' %}
+                        {% else %}
+                            <span class="mantra">{{ product.mantra }}</span>
+                        {% endif %}
+                        {% if product.discount == 'null' %}
+                            <span class="price">Prix : {{ product.price }} €</span>
+                        {% else %}
+                            <span class="price">Prix : {{ product.price - (product.price * (product.discount / 100)) }} €</span>
+                            <span class="priceBeforeDiscount">{{ product.price }} €</span>
+                            <span class="discount">- {{ product.discount }} %</span>
+                        {% endif %}
+
+
+                        <span class="quantity">Quantité : {{ product.quantity }}</span>
                     </a>
                     {% endfor %}
+
+                    <div class="btns">
+                        <a href="{{ path('cart') }}" class="bg-blue tc-white btn">
+                            <i class="fas fa-shopping-cart"></i> Voir le panier
+                        </a>
+                    </div>
                 </div>
 
             </div>
