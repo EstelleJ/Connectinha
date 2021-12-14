@@ -22,12 +22,15 @@ async function getCart(e) {
 		let dataset = JSON.parse(product.dataset.product);
 
 		let productId = dataset.id;
+		let title     = dataset.title;
+		let slug      = dataset.slug;
+		let discount  = dataset.discount;
 		let mantraSelected = dataset.mantra;
 		let price     = dataset.price;
 		let weight    = dataset.weight;
 
 		let quantitySelected = product.querySelector('.item-quantity');
-		arrayProducts.push(new CartProduct(productId, mantraSelected, parseInt(quantitySelected.value), price, weight));
+		arrayProducts.push(new CartProduct(productId, title, slug, discount, mantraSelected, parseInt(quantitySelected.value), price, weight));
 
 		let priceQuantity = dataset.price * dataset.quantity;
 

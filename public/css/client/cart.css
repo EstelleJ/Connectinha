@@ -107,8 +107,18 @@
   margin: 1rem 0;
   padding: 0.8rem 1rem;
 }
+#cart .cart .cart-row .discount {
+  color: #af5ce2;
+  font-size: 1.6rem;
+  margin-left: 1rem;
+  font-weight: bold;
+}
 #cart .cart .cart-row .item-name {
   line-height: 1;
+}
+#cart .cart .cart-row .item-unit-price span {
+  font-size: 1.3rem;
+  text-decoration: line-through;
 }
 #cart .cart .cart-row .mantra {
   font-size: 1.4rem;

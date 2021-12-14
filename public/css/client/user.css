@@ -198,6 +198,8 @@
 #profile .content .elements {
   padding: 4rem 6rem;
   width: 70%;
+  /* ------------- INDEX ------------- */
+  /* --------------- SAVED CART -------------- */
 }
 #profile .content .elements .order {
   background-color: #fff;
@@ -207,6 +209,12 @@
 #profile .content .elements .order h3 {
   color: #4498b4;
   font-size: 1.6rem;
+}
+#profile .content .elements .order h3 span {
+  color: #af5ce2;
+}
+#profile .content .elements .order h3 span i {
+  margin-right: 0.8rem;
 }
 #profile .content .elements .order p {
   font-size: 1.4rem;
@@ -244,4 +252,9 @@
 }
 #profile .content .elements .order .btn {
   font-size: 1.4rem !important;
+}
+#profile .content .elements .product-saved {
+  padding: 1rem 2rem;
+  background-color: #fff;
+  margin-bottom: 1rem;
 }

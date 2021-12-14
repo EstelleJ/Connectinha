@@ -20,7 +20,7 @@ async function addCart() {
 	// La valeur sera null si il n'y a pas de mantras à choisir sur ce produit
 	let mantraSelectTag = document.getElementById('mantraSelect');
 	// console.log(mantraSelectTag);
-	let mantraSelected = null;
+	let mantraSelected  = null;
 
 	if (mantraSelectTag !== null) {
 		mantraSelected = mantraSelectTag.value;
@@ -31,12 +31,15 @@ async function addCart() {
 	let quantitySelected = document.getElementById('number').value;
 
 	let productId = this.dataset.id;
+	let title     = this.dataset.title;
+	let slug      = this.dataset.slug;
+	let discount  = this.dataset.discount;
 	let price     = this.dataset.price;
 	let weight    = this.dataset.weight;
 
 	let arrayProducts = [];
 
-	let currentProduct = new CartProduct(productId, mantraSelected, parseInt(quantitySelected), price, weight);
+	let currentProduct = new CartProduct(productId, title, slug, discount, mantraSelected, parseInt(quantitySelected), price, weight);
 
 	let localStorageItems = localStorage.getItem('products');
 

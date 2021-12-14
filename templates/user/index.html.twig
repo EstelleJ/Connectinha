@@ -37,42 +37,14 @@
                         <p>06 60 60 06 06</p>
 
                     </div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <a href="{{ path('profile') }}" class="btn">
-                                    <i class="fas fa-home"></i> Tableau de bord
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="btn">
-                                    <i class="fas fa-user"></i> Modifier vos informations personnelles
-                                </a>
-                            </li>
-                            <li>
-                                <a href="" class="btn delete">
-                                    <i class="fas fa-trash"></i> Supprimer votre profil
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fas fa-shopping-cart"></i> Votre panier sauvegardé
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class="fas fa-shipping-fast"></i> Vos commandes
-                                </a>
-                            </li>
 
-                        </ul>
-                    </nav>
+                    {% include 'includes/_user_cart_saved.html.twig' %}
                 </div>
 
                 <div class="elements">
                     <h2>Votre dernière commande</h2>
                     <div class="order">
-                        <h3>Commande n°A046589995</h3>
+                        <h3>Commande n°A046589995 - <span><i class="fas fa-box"></i>Envoyée</span></h3>
                         <p>du 16 novembre 2021</p>
 
                         <div class="products">
@@ -97,7 +69,9 @@
                         <h4>Total de la commande : 38 €</h4>
 
                         <div class="btns">
-                            <a href="" class="bg-blue tc-white btn">Voir le détail de la commande</a>
+                            <a href="" class="bg-blue tc-white btn">
+                                <i class="fas fa-plus"></i> Voir le détail de la commande
+                            </a>
                         </div>
                     </div>
                 </div>

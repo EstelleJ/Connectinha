@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="btns">
-                                <button id="addCart" data-id="{{ product.id }}" data-mantra="mantra" data-quantity="quantity" data-weight="{{ product.weight }}" data-price="{{ product.price }}">
+                                <button id="addCart" data-id="{{ product.id }}" data-title="{{ product.name }}" data-slug="{{ product.slug }}" data-discount="{% if product.specialOffer|length > 0 %}{{ product.specialOffer.offer }}{% else %}null{% endif %}" data-weight="{{ product.weight }}" data-price="{{ product.price }}">
                                     <i class="fas fa-shopping-cart"></i> Ajouter au panier
                                 </button>
                             </div>

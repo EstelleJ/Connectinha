@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre espace client{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/client/user.css') }}">
+{% endblock %}
+
+{% block body %}
+    <section id="banner">
+        <div class="container">
+
+        </div>
+    </section>
+
+    <section id="profile">
+        <div class="container">
+            <h1>
+                <span class="rougeScript tc-blue">
+                    Bonjour {{ user.firstName }} {{ user.name }},
+                </span>
+                <span class="amatic uppercase">Bienvenue dans votre espace client</span>
+            </h1>
+
+            <div class="content">
+                <div class="column">
+                    <div class="bloc-user">
+                        <h2>Vos informations personnelles</h2>
+
+                        <h3>{{ user.firstName }} {{ user.name }}</h3>
+
+                        <p>{{ user.email }}</p>
+                        <p>06 60 60 06 06</p>
+
+                    </div>
+
+                    {% include 'includes/_user_cart_saved.html.twig' %}
+                </div>
+
+                <div class="elements">
+                    <h2>Votre panier sauvegardé</h2>
+
+                    {% for product in saved_products %}
+                    <a href="{{ path('product_details', {'slug': 'test', 'id': product.id}) }}" class="product-saved">
+                        <h3>{{ product.id }}</h3>
+                    </a>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

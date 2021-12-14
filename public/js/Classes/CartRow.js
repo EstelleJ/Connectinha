@@ -17,11 +17,50 @@ export default class CartRow extends WebComponent {
 		const productData = JSON.parse(this.dataset.product);
 
 		let product = await this.getProductFromBackEnd();
-		html        = html.replaceAll('{{ name }}', product.name);
-		html        = html.replaceAll('{{ mantra }}', productData.mantra);
-		html        = html.replaceAll('{{ price }}', parseFloat(product.price).toFixed(2));
-		html        = html.replaceAll('{{ quantity }}', productData.quantity);
-		html        = html.replaceAll('{{ totalPrice }}', (product.price * productData.quantity).toFixed(2));
+		let mantra = '';
+		let price   = '';
+		let discount = '';
+		let priceBeforeDiscount = '';
+
+		/* Mantra ou pas */
+		if (productData.mantra !== null) {
+			mantra = productData.mantra;
+		}
+		else {
+			mantra = '';
+		}
+
+		/* Prix de base ou prix après promotion */
+		if (productData.discount !== 'null') {
+			price = product.price - (product.price * (productData.discount / 100));
+		}
+		else {
+			price = product.price;
+		}
+
+		/* Prix avant promotion */
+		if (productData.discount !== 'null') {
+			priceBeforeDiscount = parseFloat(product.price).toFixed(2) + '€';
+		}
+		else {
+			priceBeforeDiscount = '';
+		}
+
+		/* Promotion */
+		if(productData.discount !== 'null') {
+			discount = '-' + productData.discount + '%';
+		}
+		else {
+			discount = '';
+		}
+
+		html = html.replaceAll('{{ name }}', product.name);
+		html = html.replaceAll('{{ mantra }}', mantra);
+		html = html.replaceAll('{{ price }}', parseFloat(price).toFixed(2));
+		html = html.replaceAll('{{ priceBeforeDiscount }}', priceBeforeDiscount);
+		html = html.replaceAll('{{ discount }}', discount);
+		html = html.replaceAll('{{ quantity }}', productData.quantity);
+		html = html.replaceAll('{{ totalPrice }}', (product.price * productData.quantity).toFixed(2));
 
 
 		template.innerHTML = html;
@@ -62,14 +101,14 @@ export default class CartRow extends WebComponent {
 	}
 
 	lessQuantity() {
-		let quantity  = parseInt(this.querySelector('.item-quantity').value);
+		let quantity                               = parseInt(this.querySelector('.item-quantity').value);
 		this.querySelector('.item-quantity').value = quantity - 1;
 
 		this.updateTotalPrices();
 	}
 
 	moreQuantity() {
-		let quantity  = parseInt(this.querySelector('.item-quantity').value);
+		let quantity                               = parseInt(this.querySelector('.item-quantity').value);
 		this.querySelector('.item-quantity').value = quantity + 1;
 
 		this.updateTotalPrices();

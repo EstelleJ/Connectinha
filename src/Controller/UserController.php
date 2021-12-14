@@ -15,7 +15,7 @@ class UserController extends AbstractController {
 		$user = $this->getUser();
 
 		return $this->render('user/index.html.twig', [
-				'user' => $user
+				'user' => $user,
 		]);
 	}
 
@@ -23,9 +23,18 @@ class UserController extends AbstractController {
 	public function cartSaved(): Response {
 
 		$user = $this->getUser();
+		$cart = $this->getDoctrine()->getRepository(Cart::class)->findOneBy(['user' => $user], ['id' => 'DESC']);
+
+		$array_cart = $cart->getProductArray();
+		$json_cart = implode(",", $array_cart);
+
+		$saved_products = json_decode($json_cart);
+		dump(json_decode($json_cart));
 
 		return $this->render('user/cart.html.twig', [
-				'user' => $user
+				'user'           => $user,
+				'cart'           => $cart,
+				'saved_products' => $saved_products,
 		]);
 	}
 
