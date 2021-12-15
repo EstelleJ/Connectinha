@@ -358,4 +358,40 @@ class AjaxController extends AbstractController {
 		return new JsonResponse($shippingPrice);
 	}
 
+	// ------------------- GET DISCOUNT TICKET --------------------- //
+	// ----------------------------------------------------------- //
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/get-discount-ticket/', name: 'ajax_get_discount')]
+	public function getDiscountTicket(Request $request): Response {
+
+		$discountTicket = $request->request->get('ajax-discount-ticket');
+		$totalPrice = $request->request->get('ajax-total-price');
+
+		$discountTickets = $this->getDoctrine()->getRepository(DiscountTicket::class)->findAll();
+
+		$discount = 0;
+
+		foreach($discountTickets as $ticket) {
+			if($discountTicket === $ticket->getCode()) {
+
+				if($ticket->getAmount() !== null && $ticket->getPercent() === null){
+					$discount = $totalPrice - $ticket->getAmount();
+				}
+				elseif($ticket->getPercent() !== null && $ticket->getAmount() === null){
+					$discount = $totalPrice - ($totalPrice * ($ticket->getPercent() / 100));
+				}
+				elseif($ticket->getAmount() !== null && $ticket->getPercent() !== null){
+					$discountPercent = $totalPrice - ($totalPrice * ($ticket->getPercent() / 100));
+					$discount = $discountPercent - $ticket->getAmount();
+				}
+			}
+		}
+
+		return new JsonResponse($discount);
+	}
+
 }

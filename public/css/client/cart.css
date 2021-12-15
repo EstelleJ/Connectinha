@@ -240,6 +240,14 @@
 #cart .confirm .line label i {
   margin-right: 1rem;
 }
+#cart .confirm #addTicket {
+  background: transparent;
+  background-color: #0a6ba0;
+}
+#cart .confirm #addTicket:hover {
+  background-color: #0d8cd0;
+  transition: 0.3s background-color;
+}
 #cart .confirm .total {
   border-top: 1px solid #fff;
   padding: 3rem 0 1rem 0;
