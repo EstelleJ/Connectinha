@@ -74,7 +74,6 @@ export default class CartRow extends WebComponent {
 		this.querySelector('.item-quantity').addEventListener('input', this.updateTotalPrices.bind(this));
 		this.querySelector('.less').addEventListener('click', this.lessQuantity.bind(this));
 		this.querySelector('.more').addEventListener('click', this.moreQuantity.bind(this));
-		document.getElementById('addTicket').addEventListener('click', this.getDiscountTicket.bind(this));
 	}
 
 
@@ -157,7 +156,6 @@ export default class CartRow extends WebComponent {
 
 			totalWeight += parseFloat(weight) * quantity;
 		}
-		console.log(totalWeight);
 
 		let formData = new FormData();
 		formData.append('ajax-total-weight', totalWeight.toString());
@@ -165,32 +163,6 @@ export default class CartRow extends WebComponent {
 		const response = await this.ajax('POST', '/ajax/get-shipping-cost/', formData);
 
 		shippingCost.innerHTML = response.toString();
-		console.log(response);
-	}
-
-	async getDiscountTicket() {
-
-		const ticketInput = document.getElementById('discountTicket');
-		const domTotalPrice = document.getElementById('cart-total-price').innerHTML;
-		const ticketCode = document.getElementById('ticketCode');
-
-		let discountTicket = ticketInput.value;
-
-		let totalPrice = domTotalPrice.split(' ')[0];
-
-		console.log(discountTicket);
-		console.log(totalPrice);
-
-		if(discountTicket.length !== 0){
-			let formData = new FormData();
-			formData.append('ajax-discount-ticket', discountTicket.toString());
-			formData.append('ajax-total-price', domTotalPrice.toString());
-
-			const response = await this.ajax('POST', '/ajax/get-discount-ticket/', formData);
-			ticketCode.innerHTML = response.toString();
-		}
-
-
 	}
 
 }

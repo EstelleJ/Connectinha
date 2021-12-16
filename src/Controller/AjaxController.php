@@ -26,7 +26,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class AjaxController extends AbstractController {
 
 
-
 	// ------------------- DELETES --------------------- //
 	// ------------------------------------------------- //
 
@@ -295,8 +294,8 @@ class AjaxController extends AbstractController {
 		$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
 
 		$responseProduct = [
-			'name' => $product->getName(),
-			'price' => $product->getPrice(),
+				'name'  => $product->getName(),
+				'price' => $product->getPrice(),
 		];
 		return new JsonResponse($responseProduct);
 	}
@@ -349,8 +348,8 @@ class AjaxController extends AbstractController {
 
 		$shippingPrice = 0;
 
-		foreach($shippingCosts as $cost) {
-			if($totalWeight > $cost->getMin() && $totalWeight < $cost->getMax()) {
+		foreach ($shippingCosts as $cost) {
+			if ($totalWeight > $cost->getMin() && $totalWeight < $cost->getMax()) {
 				$shippingPrice = $cost->getPrice();
 			}
 		}
@@ -371,29 +370,41 @@ class AjaxController extends AbstractController {
 		$discountTicket = $request->request->get('ajax-discount-ticket');
 		$totalPrice = $request->request->get('ajax-total-price');
 
-		$discountTickets = $this->getDoctrine()->getRepository(DiscountTicket::class)->findAll();
+		$ticket = $this->getDoctrine()->getRepository(DiscountTicket::class)->findOneBy(['code' => $discountTicket]);
 
+		$price = $totalPrice;
 		$discount = 0;
 
-		foreach($discountTickets as $ticket) {
-			if($ticket->getCode() === $discountTicket) {
-				if($ticket->getAmount() !== null && $ticket->getPercent() === null){
-					$discount = (float)$totalPrice - (float)$ticket->getAmount();
+		if ($ticket == null) {
+			$discount = 'invalid';
+		}
+		else {
+
+			if ($ticket->getCode() === $discountTicket) {
+				if ($ticket->getAmount() !== null && $ticket->getPercent() === null) {
+					$price = (float)$totalPrice - (float)$ticket->getAmount();
+					$discount = $ticket->getAmount() . '€';
 				}
-				elseif($ticket->getPercent() !== null && $ticket->getAmount() === null){
-					$discount = (float)$totalPrice - ((float)$totalPrice * ((float)$ticket->getPercent() / 100));
+				elseif ($ticket->getPercent() !== null && $ticket->getAmount() === null) {
+					$price = (float)$totalPrice - ((float)$totalPrice * ((float)$ticket->getPercent() / 100));
+					$discount = $ticket->getPercent() . '%';
 				}
-				elseif($ticket->getAmount() !== null && $ticket->getPercent() !== null){
+				elseif ($ticket->getAmount() !== null && $ticket->getPercent() !== null) {
 					$discountPercent = (float)$totalPrice - ((float)$totalPrice * ((float)$ticket->getPercent() / 100));
-					$discount = $discountPercent - (float)$ticket->getAmount();
+					$price = $discountPercent - (float)$ticket->getAmount();
+					$discount = $ticket->getPercent() . '%, plus ' . $ticket->getAmount() . '€ supplémentaires';
 				}
 			}
 			else {
-				$discount = "Votre bon n'est pas valide";
+				$discount = 'invalid';
 			}
+
 		}
 
-		return new JsonResponse($discount);
+		return new JsonResponse([
+				                        'price'    => $price,
+				                        'discount' => $discount,
+		                        ]);
 	}
 
 }
