@@ -181,7 +181,7 @@ export default class CartRow extends WebComponent {
 		console.log(discountTicket);
 		console.log(totalPrice);
 
-		if(!discountTicket){
+		if(discountTicket.length !== 0){
 			let formData = new FormData();
 			formData.append('ajax-discount-ticket', discountTicket.toString());
 			formData.append('ajax-total-price', domTotalPrice.toString());

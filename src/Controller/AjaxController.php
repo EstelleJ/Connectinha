@@ -376,18 +376,20 @@ class AjaxController extends AbstractController {
 		$discount = 0;
 
 		foreach($discountTickets as $ticket) {
-			if($discountTicket === $ticket->getCode()) {
-
+			if($ticket->getCode() === $discountTicket) {
 				if($ticket->getAmount() !== null && $ticket->getPercent() === null){
-					$discount = $totalPrice - $ticket->getAmount();
+					$discount = (float)$totalPrice - (float)$ticket->getAmount();
 				}
 				elseif($ticket->getPercent() !== null && $ticket->getAmount() === null){
-					$discount = $totalPrice - ($totalPrice * ($ticket->getPercent() / 100));
+					$discount = (float)$totalPrice - ((float)$totalPrice * ((float)$ticket->getPercent() / 100));
 				}
 				elseif($ticket->getAmount() !== null && $ticket->getPercent() !== null){
-					$discountPercent = $totalPrice - ($totalPrice * ($ticket->getPercent() / 100));
-					$discount = $discountPercent - $ticket->getAmount();
+					$discountPercent = (float)$totalPrice - ((float)$totalPrice * ((float)$ticket->getPercent() / 100));
+					$discount = $discountPercent - (float)$ticket->getAmount();
 				}
+			}
+			else {
+				$discount = "Votre bon n'est pas valide";
 			}
 		}
 
