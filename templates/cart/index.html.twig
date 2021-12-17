@@ -67,12 +67,14 @@
 						{# <p class="ht">220 € HT</p> #}
 					</div>
 
-					<a href="" class="btn">
+					<a href="{{ path('order') }}" class="btn">
 						<i class="fas fa-shopping-cart"></i> Confirmer
 					</a>
-					<button class="btn save" id="save-btn">
-						<i class="fas fa-check"></i> Sauvegarder le panier
-					</button>
+					{% if app.user %}
+						<button class="btn save" id="save-btn">
+							<i class="fas fa-check"></i> Sauvegarder le panier
+						</button>
+					{% endif %}
 				</div>
 			</div>
 
