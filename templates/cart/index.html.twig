@@ -8,8 +8,11 @@
 
 {% block javascripts %}
 	<script src="{{ asset('js/cart/display-cart.js') }}" type="module"></script>
+	{% if app.user %}
 	<script src="{{ asset('js/cart/ajax-saved-cart.js') }}" type="module"></script>
+	{% endif %}
 	<script src="{{ asset('js/cart/ajax-get-discount-ticket.js') }}" type="module"></script>
+	<script src="{{ asset('js/order/ajax-new-order.js') }}" type="module"></script>
 {% endblock %}
 
 {% block body %}
@@ -66,10 +69,16 @@
 						<p id="cart-total-price" class="ttc"></p>
 						{# <p class="ht">220 € HT</p> #}
 					</div>
+					{% if app.user %}
+						<a href="{{ path('order_details') }}" class="btn" id="confirm-btn">
+							<i class="fas fa-shopping-cart"></i> Confirmer
+						</a>
+					{% else %}
+						<a href="{{ path('order') }}" class="btn" id="confirm-btn">
+							<i class="fas fa-shopping-cart"></i> Confirmer
+						</a>
+					{% endif %}
 
-					<a href="{{ path('order') }}" class="btn">
-						<i class="fas fa-shopping-cart"></i> Confirmer
-					</a>
 					{% if app.user %}
 						<button class="btn save" id="save-btn">
 							<i class="fas fa-check"></i> Sauvegarder le panier

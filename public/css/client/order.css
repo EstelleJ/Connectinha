@@ -1,0 +1,239 @@
+/* -------- TEXT COLORS ------- */
+/* -------- ALERT COLORS ------- */
+/* -------- BACKGROUND COLORS ------- */
+/* ----------- BACKGROUND COLORS MAQUETTE ----------- */
+/* ----------- TEXT COLORS MAQUETTE ----------- */
+.success-gradient {
+  background: #d4e9d5;
+  background: linear-gradient(90deg, #d4e9d5 0%, #eefbf1 100%);
+}
+.gradient-blue-violet {
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+}
+.hover-gradient-blue-violet {
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
+}
+.dflex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.full-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.delete-overlay {
+  background-color: rgba(180, 60, 60, 0.74);
+}
+.delete-overlay i {
+  color: #fff;
+  font-size: 3rem;
+}
+/* ------------------- PRODUITS ADMIN ---------------- */
+/* --------------------------------------------------- */
+.mixin-categorie {
+  margin-right: 2.2rem;
+  color: #042b40;
+  font-weight: bold;
+  font-size: 1.4rem;
+  width: 15%;
+  display: block;
+}
+.mixin-titre {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1ch;
+  margin-right: 2rem;
+  width: 50%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.mixin-prix {
+  display: block;
+  font-size: 2.2rem;
+  width: 20%;
+}
+#banner {
+  height: 55rem;
+  width: 100%;
+  background: url('../../images/produits/bandeau-page-ville-nuit-etoilee-bleu-violet-elodie-ortiz-connectinha.jpg') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+#banner h1 {
+  font-size: 6rem;
+  margin-top: -5rem;
+}
+#banner h1 span {
+  display: block;
+}
+#banner h1 .rougeScript {
+  font-size: 8rem;
+}
+#banner h1 .amatic {
+  margin-top: -1rem;
+}
+#logged {
+  margin-top: -10rem;
+}
+#logged h2 {
+  font-size: 6rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#logged .dflex {
+  width: 70%;
+  margin: auto;
+  justify-content: space-between;
+}
+#logged .choice {
+  width: 48%;
+  padding: 3rem 5rem;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(23, 23, 23, 0.3);
+  text-align: center;
+}
+#logged .choice .icon {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+#logged .choice .icon i {
+  color: #af5ce2;
+  font-size: 7rem;
+}
+#logged .choice h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+#logged .choice p {
+  margin-bottom: 1rem;
+  height: 9rem;
+}
+#logged .choice .btns {
+  justify-content: center;
+}
+#order {
+  margin: -10rem auto 0 auto;
+  width: 70%;
+}
+#order h2 {
+  font-size: 6rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#order h3 {
+  width: 100%;
+  font-weight: bold;
+  font-size: 2.3rem;
+  margin-bottom: 2rem;
+}
+#order .order {
+  padding: 3rem 5rem;
+  box-shadow: 0 0 8px rgba(23, 23, 23, 0.3);
+}
+#order .order .totalPrice {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #82629a;
+}
+#order .order .product {
+  margin-bottom: 2rem;
+}
+#order .order .product h4 {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+#order .order .product p {
+  font-size: 1.4rem;
+}
+#order .order .product .mantra {
+  margin-bottom: 0.8rem;
+}
+#order form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 1rem;
+  margin-top: 3rem;
+  border-top: 2px solid #e3e3e3;
+}
+#order form .bloc-title {
+  height: 8rem;
+}
+#order form .same {
+  position: relative;
+  margin-bottom: 2rem;
+  display: block;
+}
+#order form .same input {
+  position: absolute;
+  right: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+}
+#order form label {
+  margin-bottom: 0.5rem;
+  display: block;
+}
+#order form textarea {
+  width: 100%;
+  min-height: 5rem;
+  padding: 0.8rem 1.6rem;
+}
+#order form .invoicing_adress,
+#order form .delivery_adress {
+  width: 48%;
+  margin-top: 3rem;
+}
+#order form .invoicing_adress h4,
+#order form .delivery_adress h4 {
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin-bottom: 1.5rem;
+}
+#order form .invoicing_adress h5,
+#order form .delivery_adress h5 {
+  font-weight: bold;
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+#order form .bloc {
+  margin: 1rem 0 3.5rem 0;
+}
+#order form .bloc .dflex {
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+#order form .bloc .city {
+  width: 63%;
+}
+#order form .bloc .zipcode {
+  width: 35%;
+}
+#order form .bloc .name,
+#order form .bloc .firstname {
+  width: 49%;
+}
+#order form .bloc .row {
+  margin-bottom: 1rem;
+}
+#order .btns {
+  justify-content: center;
+}
+#order .btns .btn {
+  background: transparent;
+  background-color: #042b40;
+  transition: 0.3s background-color;
+}
+#order .btns .btn:hover {
+  background-color: #074b70;
+  transition: 0.3s background-color;
+}

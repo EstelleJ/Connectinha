@@ -1,0 +1,198 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Passez votre commande{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/order/ajax-get-order.js') }}" type="module"></script>
+	<script src="{{ asset('js/order/ajax-update-order.js') }}" type="module"></script>
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Panier</span>
+			<span class="amatic tc-white uppercase">Récapitulatif de votre commande</span>
+		</h1>
+	</section>
+
+	<section id="order">
+		<div class="container">
+			<h2 class="tc-blue amatic">Confirmez-vous votre commande ?</h2>
+
+			<div class="order">
+				<h3><i class="fas fa-box"></i> Récapitulatif de votre commande</h3>
+
+				<div class="product">
+					<h4>Le nom du produit</h4>
+					<p class="mantra">Mantra</p>
+					<p>Quantité : 3</p>
+					<p>Prix à l'unité : 12 €</p>
+					<p>Prix total : 36 €</p>
+				</div>
+
+				<p class="totalPrice">Prix total de votre commande : 76 €</p>
+
+				{{ form_start(form) }}
+				<div class="delivery_adress">
+					<h4><i class="fas fa-shipping-fast"></i> Livraison</h4>
+
+					<div class="bloc">
+						<div class="bloc-title">
+							<h5>Coordonnées du destinataire</h5>
+						</div>
+
+
+						<div class="dflex">
+							<div class="name">
+								{{ form_label(form.name) }}
+								{{ form_widget(form.name) }}
+							</div>
+
+							<div class="firstname">
+								{{ form_label(form.firstname) }}
+								{{ form_widget(form.firstname) }}
+							</div>
+						</div>
+
+
+						<div class="row">
+							{{ form_label(form.email) }}
+							{{ form_widget(form.email) }}
+						</div>
+
+						<div class="row">
+							{{ form_label(form.phone) }}
+							{{ form_widget(form.phone) }}
+						</div>
+
+					</div>
+
+					<div class="bloc">
+						<h5>Adresse du destinataire</h5>
+
+						<div class="row">
+							{{ form_label(form.delivery_adress) }}
+							{{ form_widget(form.delivery_adress) }}
+						</div>
+
+						<div class="row">
+							{{ form_label(form.delivery_building) }}
+							{{ form_widget(form.delivery_building) }}
+						</div>
+
+						<div class="row">
+							{{ form_label(form.delivery_apartment) }}
+							{{ form_widget(form.delivery_apartment) }}
+						</div>
+
+						<div class="dflex">
+							<div class="city">
+								{{ form_label(form.delivery_city) }}
+								{{ form_widget(form.delivery_city) }}
+							</div>
+							<div class="zipcode">
+								{{ form_label(form.delivery_zipcode) }}
+								{{ form_widget(form.delivery_zipcode) }}
+							</div>
+						</div>
+
+						<div class="row">
+							{{ form_label(form.delivery_country) }}
+							{{ form_widget(form.delivery_country) }}
+						</div>
+
+					</div>
+
+				</div>
+
+				<div class="invoicing_adress">
+					<h4><i class="fas fa-credit-card"></i> Facturation</h4>
+
+					<div class="bloc">
+						<div class="bloc-title">
+							<h5>Coordonnées pour la facture</h5>
+
+							<label class="same" for="same">
+								Les informations sont les mêmes que celles du destinataire ?
+								<input type="checkbox" name="same" id="same">
+							</label>
+						</div>
+
+
+
+						<div class="dflex">
+							<div class="name">
+								{{ form_label(form.invoicing_name) }}
+								{{ form_widget(form.invoicing_name) }}
+							</div>
+
+							<div class="firstname">
+								{{ form_label(form.invoicing_firstname) }}
+								{{ form_widget(form.invoicing_firstname) }}
+							</div>
+						</div>
+
+						<div class="row">
+							{{ form_label(form.invoicing_email) }}
+							{{ form_widget(form.invoicing_email) }}
+						</div>
+
+						<div class="row">
+							{{ form_label(form.invoicing_phone) }}
+							{{ form_widget(form.invoicing_phone) }}
+						</div>
+
+					</div>
+
+					<div class="bloc">
+						<h5>Adresse pour la facture</h5>
+
+
+						<div class="row">
+							{{ form_label(form.invoicing_adress) }}
+							{{ form_widget(form.invoicing_adress) }}
+						</div>
+
+						<div class="row">
+							{{ form_label(form.invoicing_building) }}
+							{{ form_widget(form.invoicing_building) }}
+						</div>
+
+						<div class="row">
+							{{ form_label(form.invoicing_apartment) }}
+							{{ form_widget(form.invoicing_apartment) }}
+						</div>
+
+						<div class="dflex">
+							<div class="city">
+								{{ form_label(form.invoicing_city) }}
+								{{ form_widget(form.invoicing_city) }}
+							</div>
+							<div class="zipcode">
+								{{ form_label(form.invoicing_zipcode) }}
+								{{ form_widget(form.invoicing_zipcode) }}
+							</div>
+						</div>
+
+						<div class="row">
+							{{ form_label(form.invoicing_country) }}
+							{{ form_widget(form.invoicing_country) }}
+						</div>
+
+					</div>
+
+
+				</div>
+
+				<div class="btns">
+					<button type="submit" id="submit" class="btn round bg-blue tc-white">Passer au paiement</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</section>
+{% endblock %}

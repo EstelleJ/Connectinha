@@ -275,6 +275,7 @@
   font-size: 1.8rem;
 }
 #cart .confirm .btn {
+  background: transparent;
   background-color: #0a6ba0;
   transition: 0.3s background-color;
   display: inline-block;

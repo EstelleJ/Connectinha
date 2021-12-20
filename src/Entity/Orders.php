@@ -53,42 +53,42 @@ class Orders
     private $price;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $delivery_adress;
 
     /**
-     * @ORM\Column(type="string", length=8)
+     * @ORM\Column(type="string", length=8, nullable=true)
      */
     private $zipcode;
 
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     private $invoicing_adress;
 
     /**
-     * @ORM\Column(type="string", length=8)
+     * @ORM\Column(type="string", length=8, nullable=true)
      */
     private $invoicing_zipcode;
 
     /**
-     * @ORM\Column(type="string", length=72)
+     * @ORM\Column(type="string", length=72, nullable=true)
      */
     private $delivery_city;
 
     /**
-     * @ORM\Column(type="string", length=72)
+     * @ORM\Column(type="string", length=72, nullable=true)
      */
     private $invoicing_city;
 
     /**
-     * @ORM\Column(type="string", length=36)
+     * @ORM\Column(type="string", length=36, nullable=true)
      */
     private $country;
 
     /**
-     * @ORM\Column(type="string", length=36)
+     * @ORM\Column(type="string", length=36, nullable=true)
      */
     private $invoicing_country;
 
@@ -113,12 +113,12 @@ class Orders
     private $invoicing_hamlet;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $delivery_phone_number;
 
     /**
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $invoicing_phone_number;
 
@@ -141,6 +141,46 @@ class Orders
      * @ORM\Column(type="string", length=72, nullable=true)
      */
     private $invoicing_apartment;
+
+    /**
+     * @ORM\Column(type="array")
+     */
+    private $productArray = [];
+
+    /**
+     * @ORM\Column(type="string", length=25, nullable=true)
+     */
+    private $discountTicket;
+
+    /**
+     * @ORM\Column(type="string", length=72, nullable=true)
+     */
+    private $customer_name;
+
+    /**
+     * @ORM\Column(type="string", length=72, nullable=true)
+     */
+    private $customer_firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $customer_email;
+
+    /**
+     * @ORM\Column(type="string", length=72, nullable=true)
+     */
+    private $invoicing_name;
+
+    /**
+     * @ORM\Column(type="string", length=72, nullable=true)
+     */
+    private $invoicing_firstname;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $invoicing_email;
 
     public function getId(): ?int
     {
@@ -443,6 +483,102 @@ class Orders
     public function setInvoicingApartment(?string $invoicing_apartment): self
     {
         $this->invoicing_apartment = $invoicing_apartment;
+
+        return $this;
+    }
+
+    public function getProductArray(): ?array
+    {
+        return $this->productArray;
+    }
+
+    public function setProductArray(array $productArray): self
+    {
+        $this->productArray = $productArray;
+
+        return $this;
+    }
+
+    public function getDiscountTicket(): ?string
+    {
+        return $this->discountTicket;
+    }
+
+    public function setDiscountTicket(?string $discountTicket): self
+    {
+        $this->discountTicket = $discountTicket;
+
+        return $this;
+    }
+
+    public function getCustomerName(): ?string
+    {
+        return $this->customer_name;
+    }
+
+    public function setCustomerName(string $customer_name): self
+    {
+        $this->customer_name = $customer_name;
+
+        return $this;
+    }
+
+    public function getCustomerFirstname(): ?string
+    {
+        return $this->customer_firstname;
+    }
+
+    public function setCustomerFirstname(string $customer_firstname): self
+    {
+        $this->customer_firstname = $customer_firstname;
+
+        return $this;
+    }
+
+    public function getCustomerEmail(): ?string
+    {
+        return $this->customer_email;
+    }
+
+    public function setCustomerEmail(?string $customer_email): self
+    {
+        $this->customer_email = $customer_email;
+
+        return $this;
+    }
+
+    public function getInvoicingName(): ?string
+    {
+        return $this->invoicing_name;
+    }
+
+    public function setInvoicingName(?string $invoicing_name): self
+    {
+        $this->invoicing_name = $invoicing_name;
+
+        return $this;
+    }
+
+    public function getInvoicingFirstname(): ?string
+    {
+        return $this->invoicing_firstname;
+    }
+
+    public function setInvoicingFirstname(?string $invoicing_firstname): self
+    {
+        $this->invoicing_firstname = $invoicing_firstname;
+
+        return $this;
+    }
+
+    public function getInvoicingEmail(): ?string
+    {
+        return $this->invoicing_email;
+    }
+
+    public function setInvoicingEmail(?string $invoicing_email): self
+    {
+        $this->invoicing_email = $invoicing_email;
 
         return $this;
     }

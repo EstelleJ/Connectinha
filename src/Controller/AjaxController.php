@@ -6,6 +6,7 @@ use App\Entity\Cart;
 use App\Entity\Customer;
 use App\Entity\DiscountTicket;
 use App\Entity\MantraProducts;
+use App\Entity\Orders;
 use App\Entity\PaymentMethod;
 use App\Entity\Product;
 use App\Entity\ProductCategory;
@@ -314,7 +315,7 @@ class AjaxController extends AbstractController {
 		$arrayProducts = $request->request->get('ajax-array-products');
 		$totalPrice = $request->request->get('ajax-cart-price');
 
-		$user = $this->getDoctrine()->getRepository(User::class)->find(6);
+		$user = $this->getUser();
 
 		// dump($arrayProducts);
 
@@ -406,5 +407,173 @@ class AjaxController extends AbstractController {
 				                        'discount' => $discount,
 		                        ]);
 	}
+
+	// ------------------- NEW ORDER --------------------- //
+	// --------------------------------------------------- //
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/new-order/', name: 'ajax_new_order')]
+	public function newOrder(Request $request): Response {
+
+		$arrayProducts = $request->request->get('ajax-array-products');
+		$totalPrice = $request->request->get('ajax-cart-price');
+		$discountTicket = $request->request->get('ajax-discount-ticket');
+
+		$ticket = $this->getDoctrine()->getRepository(DiscountTicket::class)->findOneBy(['code' => $discountTicket]);
+
+		$price = $totalPrice;
+		$discount = 0;
+
+		if ($ticket == null) {
+			$discount = 0;
+		}
+		else {
+
+			if ($ticket->getCode() === $discountTicket) {
+				if ($ticket->getAmount() !== null && $ticket->getPercent() === null) {
+					$price = (float)$totalPrice - (float)$ticket->getAmount();
+					$discount = $ticket->getAmount() . '€';
+				}
+				elseif ($ticket->getPercent() !== null && $ticket->getAmount() === null) {
+					$price = (float)$totalPrice - ((float)$totalPrice * ((float)$ticket->getPercent() / 100));
+				}
+				elseif ($ticket->getAmount() !== null && $ticket->getPercent() !== null) {
+					$discountPercent = (float)$totalPrice - ((float)$totalPrice * ((float)$ticket->getPercent() / 100));
+					$price = $discountPercent - (float)$ticket->getAmount();
+				}
+			}
+			else {
+				$discount = 0;
+			}
+
+		}
+
+		$order = new Orders();
+
+		$number = 'C' . rand(1, 100) . '-' . rand(12735, 265478);
+
+		$order->setOrderNumber($number);
+		$order->setDate(new \DateTime('now'));
+		$order->setStatus('Non finalisée');
+		$order->setSend('Non enregistrée');
+		$order->setProductArray([$arrayProducts]);
+		$order->setPrice($price);
+		$order->setDiscountTicket($discountTicket);
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($order);
+		$entityManager->flush();
+
+		return new JsonResponse($number);
+	}
+
+
+	// ------------------- NEW ORDER --------------------- //
+	// --------------------------------------------------- //
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/get-order/', name: 'ajax_get_order')]
+	public function getOrder(Request $request): Response {
+
+		$orderNumber = $request->request->get('ajax-order-number');
+
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber], ['id' => 'DESC']);
+
+		$discount = 0;
+
+		if ($order->getDiscountTicket()) {
+			$discountTicket = $this->getDoctrine()->getRepository(DiscountTicket::class)->findOneBy(['code' => $order->getDiscountTicket()]);
+			if ($discountTicket->getCode()) {
+				if ($discountTicket->getAmount() !== null && $discountTicket->getPercent() === null) {
+					$discount = $discountTicket->getAmount() . '€';
+				}
+				elseif ($discountTicket->getPercent() !== null && $discountTicket->getAmount() === null) {
+					$discount = $discountTicket->getPercent() / 100 . '%';
+				}
+				elseif ($discountTicket->getAmount() !== null && $discountTicket->getPercent() !== null) {
+					$discount = $discountTicket->getPercent() . '%, plus ' . $discountTicket->getAmount() . '€ supplémentaires';
+				}
+			}
+			else {
+				$discount = 0;
+			}
+		}
+
+		return new JsonResponse([
+				                        'products' => $order->getProductArray(),
+				                        'ticket'   => $order->getDiscountTicket(),
+				                        'discount' => $discount,
+				                        'price'    => $order->getPrice(),
+		                        ]);
+	}
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/update-order/', name: 'ajax_update_order')]
+	public function updateOrder(Request $request): Response {
+
+		$orderNumber = $request->request->get('ajax-order-number');
+
+		$deliveryName = $request->request->get('ajax-delivery-name');
+		$deliveryFirstname = $request->request->get('ajax-delivery-firstname');
+		$deliveryEmail = $request->request->get('ajax-delivery-email');
+		$deliveryPhone = $request->request->get('ajax-delivery-phone');
+		$deliveryAdress = $request->request->get('ajax-delivery-adress');
+		$deliveryBuilding = $request->request->get('ajax-delivery-building');
+		$deliveryApartment = $request->request->get('ajax-delivery-apartment');
+		$deliveryCity = $request->request->get('ajax-delivery-city');
+		$deliveryZipcode = $request->request->get('ajax-delivery-zipcode');
+		$deliveryCountry = $request->request->get('ajax-delivery-country');
+
+		$invoicingName = $request->request->get('ajax-invoicing-name');
+		$invoicingFirstname = $request->request->get('ajax-invoicing-firstname');
+		$invoicingEmail = $request->request->get('ajax-invoicing-email');
+		$invoicingPhone = $request->request->get('ajax-invoicing-phone');
+		$invoicingAdress = $request->request->get('ajax-invoicing-adress');
+		$invoicingBuilding = $request->request->get('ajax-invoicing-building');
+		$invoicingApartment = $request->request->get('ajax-invoicing-apartment');
+		$invoicingCity = $request->request->get('ajax-invoicing-city');
+		$invoicingZipcode = $request->request->get('ajax-invoicing-zipcode');
+		$invoicingCountry = $request->request->get('ajax-invoicing-country');
+
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
+
+		$order->setDeliveryAdress($deliveryAdress);
+		$order->setDeliveryZipcode($deliveryZipcode);
+		$order->setDeliveryCity($deliveryCity);
+		$order->setCountry($deliveryCountry);
+		$order->setDeliveryPhoneNumber($deliveryPhone);
+		$order->setDeliveryBuilding($deliveryBuilding);
+		$order->setDeliveryApartment($deliveryApartment);
+		$order->setCustomerName($deliveryName);
+		$order->setCustomerFirstname($deliveryFirstname);
+		$order->setCustomerEmail($deliveryEmail);
+
+		$order->setInvoicingAdress($invoicingAdress);
+		$order->setInvoicingZipcode($invoicingZipcode);
+		$order->setInvoicingCity($invoicingCity);
+		$order->setInvoicingCountry($invoicingCountry);
+		$order->setInvoicingPhoneNumber($invoicingPhone);
+		$order->setInvoicingBuilding($invoicingBuilding);
+		$order->setInvoicingApartment($invoicingApartment);
+		$order->setInvoicingName($invoicingName);
+		$order->setInvoicingFirstname($invoicingFirstname);
+		$order->setInvoicingEmail($invoicingEmail);
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($order);
+		$entityManager->flush();
+
+		return new JsonResponse('ok');
+	}
+
 
 }
