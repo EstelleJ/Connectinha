@@ -146,6 +146,10 @@
 }
 #order .order .product {
   margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #eff1f2;
+  padding: 2rem 3rem;
 }
 #order .order .product h4 {
   font-size: 1.6rem;
@@ -156,6 +160,16 @@
 }
 #order .order .product .mantra {
   margin-bottom: 0.8rem;
+}
+#order .order .product .info {
+  width: 60%;
+}
+#order .order .product .details {
+  width: 40%;
+}
+#order .order .product .details .total {
+  font-weight: bold;
+  font-size: 1.6rem;
 }
 #order form {
   display: flex;
@@ -171,7 +185,8 @@
 #order form .same {
   position: relative;
   margin-bottom: 2rem;
-  display: block;
+  display: inline-block;
+  padding-right: 3rem;
 }
 #order form .same input {
   position: absolute;

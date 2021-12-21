@@ -26,15 +26,11 @@
 			<div class="order">
 				<h3><i class="fas fa-box"></i> Récapitulatif de votre commande</h3>
 
-				<div class="product">
-					<h4>Le nom du produit</h4>
-					<p class="mantra">Mantra</p>
-					<p>Quantité : 3</p>
-					<p>Prix à l'unité : 12 €</p>
-					<p>Prix total : 36 €</p>
+				<div id="allProducts">
+
 				</div>
 
-				<p class="totalPrice">Prix total de votre commande : 76 €</p>
+				<p class="totalPrice">Prix total de votre commande : <span id="totalPriceDOM">76</span> €</p>
 
 				{{ form_start(form) }}
 				<div class="delivery_adress">
@@ -189,7 +185,7 @@
 				</div>
 
 				<div class="btns">
-					<button type="submit" id="submit" class="btn round bg-blue tc-white">Passer au paiement</button>
+					<button id="submit" class="btn round bg-blue tc-white">Passer au paiement</button>
 				</div>
 				{{ form_end(form) }}
 			</div>

@@ -79,6 +79,10 @@
 
 		.product {
 			margin-bottom: 2rem;
+			.dflex();
+			background-color: lighten(@bg-lightgrey, 3%);
+			padding: 2rem 3rem;
+
 			h4 {
 				font-size: 1.6rem;
 				font-weight: bold;
@@ -88,6 +92,18 @@
 			}
 			.mantra {
 				margin-bottom: 0.8rem;
+			}
+
+			.info {
+				width: 60%;
+			}
+			.details {
+				width: 40%;
+
+				.total {
+					font-weight: bold;
+					font-size: 1.6rem;
+				}
 			}
 		}
 	}
@@ -106,7 +122,9 @@
 		.same {
 			position: relative;
 			margin-bottom: 2rem;
-			display: block;
+			display: inline-block;
+			padding-right: 3rem;
+
 			input {
 				position: absolute;
 				right: 0;

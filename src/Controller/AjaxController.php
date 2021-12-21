@@ -547,7 +547,7 @@ class AjaxController extends AbstractController {
 		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
 
 		$order->setDeliveryAdress($deliveryAdress);
-		$order->setDeliveryZipcode($deliveryZipcode);
+		$order->setZipcode($deliveryZipcode);
 		$order->setDeliveryCity($deliveryCity);
 		$order->setCountry($deliveryCountry);
 		$order->setDeliveryPhoneNumber($deliveryPhone);

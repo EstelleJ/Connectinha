@@ -7,6 +7,7 @@ const orderNumber = localStorage.getItem('order');
 const submitButton = document.getElementById('submit');
 const inputDuplicate = document.getElementById('same');
 
+
 // ============================================================================
 // Functions
 // ============================================================================
@@ -38,7 +39,8 @@ function duplicate() {
 
 }
 
-async function updateOrder() {
+async function updateOrder(e) {
+	e.preventDefault();
 
 	let deliveryName = document.getElementById('form_name').value;
 	let deliveryFirstname = document.getElementById('form_firstname').value;
@@ -64,6 +66,7 @@ async function updateOrder() {
 
 
 	let formData = new FormData();
+	formData.append('ajax-order-number', orderNumber);
 	formData.append('ajax-delivery-name', deliveryName);
 	formData.append('ajax-delivery-firstname', deliveryFirstname);
 	formData.append('ajax-delivery-email', deliveryEmail);
