@@ -1,0 +1,49 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Modifier - Commande{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin/orders.css') }}">
+{% endblock %}
+
+{% block body %}
+	<h1 class="a-center">Modifier la commande n°{{ order.orderNumber }}</h1>
+
+	<div class="dflex orders">
+
+		<h2>
+			<i class="fas fa-layer-group"></i> Récapitulatif de la commande
+		</h2>
+
+		<div class="large-bloc">
+			<h3>Date d'enregistrement de la commande : {{ order.date|format_datetime('full', 'none', locale='fr') }}</h3>
+
+			<p>
+				Client qui a passé la commande :
+				{% if order.user|length > 0 %}
+					{{ order.user }}
+					{% else %}
+					Client non connecté
+				{% endif %}
+			</p>
+
+			<p>Nom pour la facture : {{ order.invoicingFirstname }} {{ order.invoicingName }}</p>
+			<p>Prix : {{ order.price }} €</p>
+
+			<div class="delivery">
+				<h3>Informations destinataire </h3>
+				<p>Nom du destinataire : {{ order.customerFirstname }} {{ order.customerName }}</p>
+				<p>Adresse : {{ order.deliveryAdress }}</p>
+				<p>Ville : {{ order.deliveryCity }}</p>
+				<p>Code postal : {{ order.zipcode }}</p>
+			</div>
+
+
+			<div class="status">
+				<h3>Statut : {{ order.status }}</h3>
+				<h3>Envoyé : {{ order.send }}</h3>
+			</div>
+		</div>
+
+	</div>
+{% endblock %}

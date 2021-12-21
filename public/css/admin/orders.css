@@ -85,3 +85,7 @@
 .table .delete {
   position: relative;
 }
+.orders {
+  padding: 2.5rem 4rem;
+  background-color: #fff;
+}

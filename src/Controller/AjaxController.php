@@ -568,6 +568,8 @@ class AjaxController extends AbstractController {
 		$order->setInvoicingFirstname($invoicingFirstname);
 		$order->setInvoicingEmail($invoicingEmail);
 
+		$order->setStatus('Non finalisée - arrêt avant paiement');
+
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->persist($order);
 		$entityManager->flush();

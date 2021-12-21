@@ -52,16 +52,16 @@
 			</div>
 		</div>
 		{% for order in orders %}
-			<a href="{{ path('admin_products_modify', {'id': order.id }) }}" class="element order">
+			<a href="{{ path('admin_orders_modify', {'id': order.id }) }}" class="element order">
 
 				<span class="data number">
 					{{ order.orderNumber }}
 				</span>
 				<span class="data user">
-					{{ order.user }}
+					{{ order.invoicingFirstname }} {{ order.invoicingName }}
 				</span>
 				<span class="data date">
-					{{ order.date }} €
+					{{ order.date|format_datetime('full', 'none', locale='fr') }}
 				</span>
 				<span class="data price">
 					{{ order.price }} €
