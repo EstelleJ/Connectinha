@@ -252,3 +252,45 @@
   background-color: #074b70;
   transition: 0.3s background-color;
 }
+/* --------------- CHOICES ---------------- */
+#choices {
+  margin-top: -10rem;
+}
+#choices h2 {
+  font-size: 6rem;
+  text-align: center;
+}
+#choices .dflex {
+  justify-content: center;
+}
+#choices .dflex .choice {
+  padding: 3rem 5rem;
+  margin: 3rem 1rem;
+  background-color: #fff;
+  transition: 0.3s background-color;
+  box-shadow: 0 0 5px rgba(23, 23, 23, 0.3);
+  width: 48%;
+  font-size: 3rem;
+  text-align: center;
+}
+#choices .dflex .choice i {
+  margin-right: 1rem;
+}
+#choices .dflex .choice:hover {
+  background-color: #e7e9eb;
+  transition: 0.3s background-color;
+}
+#payment {
+  margin-top: -10rem;
+}
+#payment h2 {
+  font-size: 6rem;
+  text-align: center;
+}
+#payment p {
+  text-align: center;
+}
+#payment .btns {
+  justify-content: center;
+  margin-top: 3rem;
+}

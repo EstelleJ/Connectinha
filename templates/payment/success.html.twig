@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande enregistrée - Passez votre commande{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/order/ajax-get-order.js') }}" type="module"></script>
+	<script src="{{ asset('js/order/ajax-update-order.js') }}" type="module"></script>
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Merci</span>
+			<span class="amatic tc-white uppercase">Votre commande est bien enregistrée !</span>
+		</h1>
+	</section>
+
+	<section id="payment">
+		<div class="container">
+			<h2 class="amatic tc-blue">Merci pour votre commande !</h2>
+			<p>
+				Vous recevrez un mail de confirmation de votre commande, avec un recapitulatif de vos produits.
+			</p>
+			<div class="btns">
+				<a href="{{ path('contact') }}" class="btn round bg-blue tc-white">
+					<i class="fas fa-paper-plane"></i> Pour toutes questions, n'hésitez pas à nous contacter
+				</a>
+			</div>
+		</div>
+	</section>
+{% endblock %}

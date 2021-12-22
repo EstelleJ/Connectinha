@@ -575,6 +575,7 @@ class AjaxController extends AbstractController {
 		$entityManager->flush();
 
 		return new JsonResponse('ok');
+
 	}
 
 

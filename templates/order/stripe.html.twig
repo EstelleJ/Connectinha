@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Passez votre commande{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/order/ajax-get-order.js') }}" type="module"></script>
+	<script src="{{ asset('js/order/ajax-update-order.js') }}" type="module"></script>
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Panier</span>
+			<span class="amatic tc-white uppercase">Choisissez votre méthode de paiement</span>
+		</h1>
+	</section>
+
+	<section id="choices">
+		<div class="container">
+			<form action="/panier/commande/paiement-par-carte/checkout/" method="POST">
+				<button type="submit">Checkout</button>
+			</form>
+		</div>
+	</section>
+{% endblock %}
