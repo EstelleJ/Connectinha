@@ -437,8 +437,26 @@ class AjaxController extends AbstractController {
 	public function newOrder(Request $request): Response {
 
 		$arrayProducts = $request->request->get('ajax-array-products');
-		$totalPrice = $request->request->get('ajax-cart-price');
+		$totalPrice = 0;
 		$discountTicket = $request->request->get('ajax-discount-ticket');
+
+		// WIP Calculate totalprice
+		foreach(json_decode($arrayProducts) as $product) {
+
+			$productId = $product->id;
+
+			$productDB = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+			$promo = 0;
+			if($productDB->getSpecialOffer()){
+				$promo = $productDB->getSpecialOffer()->getOffer();
+			}
+
+			$priceUnit = $product->price - ($product->price * $promo / 100);
+			$quantity = $product->quantity;
+
+			$totalPrice += $priceUnit * $quantity;
+		}
 
 		$ticket = $this->getDoctrine()->getRepository(DiscountTicket::class)->findOneBy(['code' => $discountTicket]);
 

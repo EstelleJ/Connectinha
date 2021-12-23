@@ -34,9 +34,17 @@ function displayProducts() {
 			mantra = product.mantra;
 		}
 
-		let getPrice = parseInt(product.price);
+		let getPrice = parseFloat(product.price);
+
+		if(product.discount !== 'null'){
+			getPrice = parseFloat(product.price) - (parseFloat(product.price) * (parseInt(product.discount) / 100));
+		}
+
 		let getQuantity = parseInt(product.quantity);
 		let price = getPrice.toFixed(2);
+
+		console.log(getPrice);
+
 		let totalPrice = (getQuantity * price).toFixed(2);
 
 		allProductsDOM.innerHTML +=
