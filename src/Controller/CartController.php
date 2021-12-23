@@ -22,8 +22,6 @@ class CartController extends AbstractController
 
 	      $cart = $this->getDoctrine()->getRepository(Cart::class)->findAll();
 
-	      dump($cart);
-
         return $this->render('cart/index.html.twig', [
             'cart' => $cart
         ]);

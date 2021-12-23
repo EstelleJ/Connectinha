@@ -291,12 +291,30 @@ class AjaxController extends AbstractController {
 	public function getProduct(Request $request): Response {
 
 		$productId = $request->request->get('id');
+		$mantraCart = $request->request->get('mantra');
 
 		$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+		$discount = 'null';
+		$mantraSelected = null;
+
+		if($product->getSpecialOffer() !== null){
+			$discount = $product->getSpecialOffer()->getOffer();
+		}
+
+		if($product->getMantraProducts() !== null){
+			foreach($product->getMantraProducts() as $mantra){
+				if($mantraCart === $mantra->getMantra()){
+					$mantraSelected = $mantra->getMantra();
+				}
+			}
+		}
 
 		$responseProduct = [
 				'name'  => $product->getName(),
 				'price' => $product->getPrice(),
+				'discount' => $discount,
+				'mantra' => $mantraSelected
 		];
 		return new JsonResponse($responseProduct);
 	}

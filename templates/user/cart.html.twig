@@ -44,25 +44,30 @@
                 <div class="elements">
                     <h2>Votre panier sauvegardé</h2>
 
-                    {% for product in saved_products %}
+                    {% for product in arrayProducts %}
                     <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved">
                         <span class="title">
-                            {{ product.title }}
+                            {{ product.name }}
                         </span>
-                        {% if product.mantra == 'null' %}
-                        {% else %}
-                            <span class="mantra">{{ product.mantra }}</span>
-                        {% endif %}
-                        {% if product.discount == 'null' %}
+
+                        {% for mantra in product.mantraProducts %}
+                            {% if mantra == mantraSelected %}
+                                <span class="mantra">
+                                    {{ mantraSelected }}
+                                </span>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if product.specialOffer == null %}
                             <span class="price">Prix : {{ product.price }} €</span>
                         {% else %}
-                            <span class="price">Prix : {{ product.price - (product.price * (product.discount / 100)) }} €</span>
+                            <span class="price">Prix : {{ product.price - (product.price * (product.specialOffer.offer / 100)) }} €</span>
                             <span class="priceBeforeDiscount">{{ product.price }} €</span>
-                            <span class="discount">- {{ product.discount }} %</span>
+                            <span class="discount">- {{ product.specialOffer.offer }} %</span>
                         {% endif %}
 
 
-                        <span class="quantity">Quantité : {{ product.quantity }}</span>
+                        <span class="quantity">Quantité : {{ quantity }}</span>
                     </a>
                     {% endfor %}
 

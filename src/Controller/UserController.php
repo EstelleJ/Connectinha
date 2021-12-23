@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cart;
+use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -29,12 +30,35 @@ class UserController extends AbstractController {
 		$json_cart = implode(",", $array_cart);
 
 		$saved_products = json_decode($json_cart);
-		dump(json_decode($json_cart));
+
+		$arrayProducts = [];
+
+		$mantraSelected = null;
+
+		foreach ($saved_products as $cartProduct) {
+
+			$productId = $cartProduct->id;
+			$quantity = $cartProduct->quantity;
+			$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+			array_push($arrayProducts, $product);
+
+			dump($saved_products);
+
+			if($cartProduct->id == $product->getId()){
+				$mantraSelected = $cartProduct->mantra;
+			}
+
+		}
+
+		dump($arrayProducts);
 
 		return $this->render('user/cart.html.twig', [
 				'user'           => $user,
 				'cart'           => $cart,
-				'saved_products' => $saved_products,
+				'arrayProducts'  => $arrayProducts,
+				'mantraSelected' => $mantraSelected,
+				'quantity'       => $quantity,
 		]);
 	}
 

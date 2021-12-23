@@ -23,23 +23,23 @@ export default class CartRow extends WebComponent {
 		let priceBeforeDiscount;
 
 		/* Mantra ou pas */
-		if (productData.mantra !== null) {
-			mantra = productData.mantra;
+		if (product.mantra !== null) {
+			mantra = product.mantra;
 		}
 		else {
 			mantra = '';
 		}
 
 		/* Prix de base ou prix après promotion */
-		if (productData.discount !== 'null') {
-			price = product.price - (product.price * (productData.discount / 100));
+		if (product.discount !== 'null') {
+			price = product.price - (product.price * (product.discount / 100));
 		}
 		else {
 			price = product.price;
 		}
 
 		/* Prix avant promotion */
-		if (productData.discount !== 'null') {
+		if (product.discount !== 'null') {
 			priceBeforeDiscount = parseFloat(product.price).toFixed(2) + '€';
 		}
 		else {
@@ -47,8 +47,8 @@ export default class CartRow extends WebComponent {
 		}
 
 		/* Promotion */
-		if (productData.discount !== 'null') {
-			discount = '-' + productData.discount + '%';
+		if (product.discount !== 'null') {
+			discount = '-' + product.discount + '%';
 		}
 		else {
 			discount = '';
@@ -80,9 +80,11 @@ export default class CartRow extends WebComponent {
 	async getProductFromBackEnd() {
 		const productData = JSON.parse(this.dataset.product);
 		const productId   = productData.id;
+		const mantra = productData.mantra;
 
 		let formData = new FormData();
 		formData.append('id', productId);
+		formData.append('mantra', mantra);
 
 		return await this.ajax('POST', '/ajax/get-product/', formData);
 	}
