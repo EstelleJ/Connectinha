@@ -33,6 +33,9 @@ class OrderController extends AbstractController {
 
 		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
 		$user = $this->getUser();
+
+		// TODO: Initiliaze variables as empty strings and replace their value if user is connected
+
 		$customerId = $order->getUser();
 
 		$customer = $this->getDoctrine()->getRepository(Customer::class)->find($customerId);

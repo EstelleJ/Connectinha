@@ -18,6 +18,7 @@ use App\Entity\ShippingCost;
 use App\Entity\SpecialOffer;
 use App\Entity\Tva;
 use App\Entity\User;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -298,23 +299,23 @@ class AjaxController extends AbstractController {
 		$discount = 'null';
 		$mantraSelected = null;
 
-		if($product->getSpecialOffer() !== null){
+		if ($product->getSpecialOffer() !== null) {
 			$discount = $product->getSpecialOffer()->getOffer();
 		}
 
-		if($product->getMantraProducts() !== null){
-			foreach($product->getMantraProducts() as $mantra){
-				if($mantraCart === $mantra->getMantra()){
+		if ($product->getMantraProducts() !== null) {
+			foreach ($product->getMantraProducts() as $mantra) {
+				if ($mantraCart === $mantra->getMantra()) {
 					$mantraSelected = $mantra->getMantra();
 				}
 			}
 		}
 
 		$responseProduct = [
-				'name'  => $product->getName(),
-				'price' => $product->getPrice(),
+				'name'     => $product->getName(),
+				'price'    => $product->getPrice(),
 				'discount' => $discount,
-				'mantra' => $mantraSelected
+				'mantra'   => $mantraSelected,
 		];
 		return new JsonResponse($responseProduct);
 	}
@@ -339,7 +340,7 @@ class AjaxController extends AbstractController {
 
 		$cart = new Cart();
 
-		$cart->setDate(new \DateTime('now'));
+		$cart->setDate(new DateTime('now'));
 		$cart->setProductArray([$arrayProducts]);
 		$cart->setUser($user);
 		$cart->setPrice($totalPrice);
@@ -442,17 +443,20 @@ class AjaxController extends AbstractController {
 
 		$user = $this->getUser();
 
-		$customer = $user->getCustomer();
+		$customer = null;
+		if ($user) {
+			$customer = $user->getCustomer();
+		}
 
 		// WIP Calculate totalprice
-		foreach(json_decode($arrayProducts) as $product) {
+		foreach (json_decode($arrayProducts) as $product) {
 
 			$productId = $product->id;
 
 			$productDB = $this->getDoctrine()->getRepository(Product::class)->find($productId);
 
 			$promo = 0;
-			if($productDB->getSpecialOffer()){
+			if ($productDB->getSpecialOffer()) {
 				$promo = $productDB->getSpecialOffer()->getOffer();
 			}
 
@@ -465,17 +469,12 @@ class AjaxController extends AbstractController {
 		$ticket = $this->getDoctrine()->getRepository(DiscountTicket::class)->findOneBy(['code' => $discountTicket]);
 
 		$price = $totalPrice;
-		$discount = 0;
 
-		if ($ticket == null) {
-			$discount = 0;
-		}
-		else {
+		if ($ticket !== null) {
 
 			if ($ticket->getCode() === $discountTicket) {
 				if ($ticket->getAmount() !== null && $ticket->getPercent() === null) {
 					$price = (float)$totalPrice - (float)$ticket->getAmount();
-					$discount = $ticket->getAmount() . '€';
 				}
 				elseif ($ticket->getPercent() !== null && $ticket->getAmount() === null) {
 					$price = (float)$totalPrice - ((float)$totalPrice * ((float)$ticket->getPercent() / 100));
@@ -485,10 +484,6 @@ class AjaxController extends AbstractController {
 					$price = $discountPercent - (float)$ticket->getAmount();
 				}
 			}
-			else {
-				$discount = 0;
-			}
-
 		}
 
 		$order = new Orders();
@@ -496,7 +491,7 @@ class AjaxController extends AbstractController {
 		$number = uniqid('C-');
 
 		$order->setOrderNumber($number);
-		$order->setDate(new \DateTime('now'));
+		$order->setDate(new DateTime('now'));
 		$order->setStatus('Non finalisée');
 		$order->setSend('Non enregistrée');
 		$order->setProductArray([$arrayProducts]);
@@ -508,7 +503,10 @@ class AjaxController extends AbstractController {
 		$entityManager->persist($order);
 		$entityManager->flush();
 
-		return new JsonResponse($number);
+		return new JsonResponse([
+				                        'orderNumber' => $number,
+				                        'customer'    => $customer,
+		                        ]);
 	}
 
 

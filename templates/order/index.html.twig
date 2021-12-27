@@ -3,56 +3,56 @@
 {% block title %}Passez votre commande{% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
 {% endblock %}
 
 {% block javascripts %}
-
+	<script type="module" src="{{ asset('js/order/order-details.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-    <section id="banner">
-        <h1>
-            <span class="rougeScript tc-white">Panier</span>
-            <span class="amatic tc-white uppercase">Comment enregistrer votre commande ?</span>
-        </h1>
-    </section>
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Panier</span>
+			<span class="amatic tc-white uppercase">Comment enregistrer votre commande ?</span>
+		</h1>
+	</section>
 
-    <section id="logged">
-        <h2 class="tc-blue amatic">Pour continuer votre commande, souhaitez-vous vous identifier...</h2>
-        <div class="dflex">
-            <div class="choice">
-                <div class="icon">
-                    <i class="fas fa-users"></i>
-                </div>
+	<section id="logged">
+		<h2 class="tc-blue amatic">Pour continuer votre commande, souhaitez-vous vous identifier...</h2>
+		<div class="dflex">
+			<div class="choice">
+				<div class="icon">
+					<i class="fas fa-users"></i>
+				</div>
 
-                <h3>En tant que client invité</h3>
-                <p>
-                    Un court formulaire est disponible pour nous transmettre les informations de commande.
-                </p>
+				<h3>En tant que client invité</h3>
+				<p>
+					Un court formulaire est disponible pour nous transmettre les informations de commande.
+				</p>
 
-                <div class="btns">
-                    <a class="btn round bg-blue tc-white" id="orderDetails">
-                        Remplir les informations
-                    </a>
-                </div>
-            </div>
+				<div class="btns">
+					<a class="btn round bg-blue tc-white" id="order-details" href="">
+						Remplir les informations
+					</a>
+				</div>
+			</div>
 
-            <div class="choice">
-                <div class="icon">
-                    <i class="fas fa-user-check"></i>
-                </div>
-                <h3>En vous connectant à votre espace client</h3>
-                <p>
-                    Vous êtes déjà client ? Connectez-vous pour poursuivre votre commande.
-                </p>
+			<div class="choice">
+				<div class="icon">
+					<i class="fas fa-user-check"></i>
+				</div>
+				<h3>En vous connectant à votre espace client</h3>
+				<p>
+					Vous êtes déjà client ? Connectez-vous pour poursuivre votre commande.
+				</p>
 
-                <div class="btns">
-                    <a href="{{ path('app_login') }}" class="btn round bg-blue tc-white">
-                        Je me connecte
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+				<div class="btns">
+					<a href="{{ path('app_login') }}" class="btn round bg-blue tc-white">
+						Je me connecte
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
