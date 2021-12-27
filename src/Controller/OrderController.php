@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Customer;
 use App\Entity\Orders;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
@@ -27,40 +28,50 @@ class OrderController extends AbstractController {
 		]);
 	}
 
-	#[Route('/panier/commande/recapitulatif/', name: 'order_details')]
-	public function details(Request $request): Response {
+	#[Route('/panier/commande/recapitulatif-{orderNumber}/', name: 'order_details')]
+	public function details(Request $request, $orderNumber): Response {
 
-		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => 'C33-177847']);
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
+		$user = $this->getUser();
+		$customerId = $order->getUser();
+
+		$customer = $this->getDoctrine()->getRepository(Customer::class)->find($customerId);
+
 
 		$form = $this->createFormBuilder()
 				->add('name', TextType::class, [
 						'label' => 'Nom *',
 						'attr'  => [
 								'placeholder' => 'Nom du destinataire',
+								'value'       => $user->getName(),
 						],
 				])
 				->add('firstname', TextType::class, [
 						'label' => 'Prénom *',
 						'attr'  => [
 								'placeholder' => 'Prénom du destinataire',
+								'value'       => $user->getFirstName(),
 						],
 				])
 				->add('email', EmailType::class, [
 						'label' => 'Email *',
 						'attr'  => [
 								'placeholder' => 'Email du destinataire',
+								'value'       => $user->getEmail(),
 						],
 				])
 				->add('phone', TelType::class, [
 						'label' => 'Numéro de téléphone *',
 						'attr'  => [
 								'placeholder' => 'Téléphone du destinataire',
+								'value'       => $customer->getPhone(),
 						],
 				])
 				->add('delivery_adress', TextareaType::class, [
 						'label' => 'Adresse de livraison *',
 						'attr'  => [
 								'placeholder' => 'N° et nom de la rue du destinataire',
+								'value'       => $customer->getStreetNb() . ' ' . $customer->getStreetName() . ' ' . $customer->getStreetName2(),
 						],
 				])
 				->add('delivery_building', TextType::class, [
@@ -68,6 +79,7 @@ class OrderController extends AbstractController {
 						'attr'     =>
 								[
 										'placeholder' => 'Bâtiment',
+										'value'       => $customer->getBuilding(),
 								],
 						'required' => false,
 				])
@@ -76,6 +88,7 @@ class OrderController extends AbstractController {
 						'attr'     =>
 								[
 										'placeholder' => "n° d'appartement",
+										'value'       => $customer->getApartment(),
 								],
 						'required' => false,
 				])
@@ -84,6 +97,7 @@ class OrderController extends AbstractController {
 						'attr'  =>
 								[
 										'placeholder' => 'Code postal',
+										'value'       => $customer->getZipcode(),
 								],
 				])
 				->add('delivery_city', TextType::class, [
@@ -91,6 +105,7 @@ class OrderController extends AbstractController {
 						'attr'  =>
 								[
 										'placeholder' => 'Ville',
+										'value'       => $customer->getCity(),
 								],
 				])
 				->add('delivery_country', CountryType::class, [
@@ -98,6 +113,7 @@ class OrderController extends AbstractController {
 						'attr'  =>
 								[
 										'placeholder' => 'Pays',
+										'value'       => $customer->getCountry(),
 								],
 				])
 				/* Facturation */

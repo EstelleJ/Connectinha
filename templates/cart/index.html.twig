@@ -16,6 +16,14 @@
 {% endblock %}
 
 {% block body %}
+	<section id="content-modal">
+		<div class="modal">
+			<h4>
+				<span><i class="fas fa-shopping-cart"></i></span>
+				Votre panier est sauvegardé !
+			</h4>
+		</div>
+	</section>
 	<section id="banner">
 		<h1>
 			<span class="rougeScript tc-white">Panier</span>
@@ -69,15 +77,10 @@
 						<p id="cart-total-price" class="ttc"></p>
 						{# <p class="ht">220 € HT</p> #}
 					</div>
-					{% if app.user %}
-						<a href="{{ path('order_details') }}" class="btn" id="confirm-btn">
-							<i class="fas fa-shopping-cart"></i> Confirmer
-						</a>
-					{% else %}
-						<a href="{{ path('order') }}" class="btn" id="confirm-btn">
-							<i class="fas fa-shopping-cart"></i> Confirmer
-						</a>
-					{% endif %}
+
+					<a href="{{ path('order') }}" class="btn" id="confirm-btn">
+						<i class="fas fa-shopping-cart"></i> Confirmer
+					</a>
 
 					{% if app.user %}
 						<button class="btn save" id="save-btn">

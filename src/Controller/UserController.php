@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cart;
+use App\Entity\Orders;
 use App\Entity\Product;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,9 +15,40 @@ class UserController extends AbstractController {
 	public function index(): Response {
 
 		$user = $this->getUser();
+		$customer = $user->getCustomer();
+
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['user' => $customer], ['id' => 'DESC']);
+		$array_cart = $order->getProductArray();
+		$json_cart = implode(",", $array_cart);
+
+		$saved_products = json_decode($json_cart);
+
+		$arrayProducts = [];
+
+		// WIP Mantra
+		$mantraSelected = null;
+
+		foreach ($saved_products as $cartProduct) {
+
+			$productId = $cartProduct->id;
+			$quantity = $cartProduct->quantity;
+			$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+			array_push($arrayProducts, $product);
+
+			dump($saved_products);
+
+			if($cartProduct->id == $product->getId()){
+				$mantraSelected = $cartProduct->mantra;
+			}
+
+		}
 
 		return $this->render('user/index.html.twig', [
 				'user' => $user,
+				'order' => $order,
+				'arrayProducts' => $arrayProducts,
+				// 'mantraSelected' => $mantraSelected,
 		]);
 	}
 
@@ -33,6 +65,7 @@ class UserController extends AbstractController {
 
 		$arrayProducts = [];
 
+		// WIP Mantra
 		$mantraSelected = null;
 
 		foreach ($saved_products as $cartProduct) {
@@ -57,7 +90,7 @@ class UserController extends AbstractController {
 				'user'           => $user,
 				'cart'           => $cart,
 				'arrayProducts'  => $arrayProducts,
-				'mantraSelected' => $mantraSelected,
+				//'mantraSelected' => $mantraSelected,
 				'quantity'       => $quantity,
 		]);
 	}

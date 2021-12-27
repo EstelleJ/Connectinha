@@ -34,7 +34,7 @@
                         <h3>{{ user.firstName }} {{ user.name }}</h3>
 
                         <p>{{ user.email }}</p>
-                        <p>06 60 60 06 06</p>
+                        <p>{{ user.customer.phone }}</p>
 
                     </div>
 
@@ -42,30 +42,31 @@
                 </div>
 
                 <div class="elements">
+                    {% if order %}
                     <h2>Votre dernière commande</h2>
-                    <div class="order">
-                        <h3>Commande n°A046589995 - <span><i class="fas fa-box"></i>Envoyée</span></h3>
-                        <p>du 16 novembre 2021</p>
 
+                    <div class="order">
+                        <h3>Commande n°{{ order.orderNumber }} - <span><i class="fas fa-box"></i>{{ order.status }}</span></h3>
+                        <p>du {{ order.date|date('d m Y') }}</p>
+
+                        {% for product in arrayProducts %}
                         <div class="products">
                             <div class="product">
-                                <h4>Lorem ipsum dolor sit amet blahu lopmsuedi - 9,90 €</h4>
-                                <p>Set amer tuis doqoiudz</p>
+                                <h4>{{ product.name }} - 9,90 €</h4>
+                                {% for mantra in product.mantraProducts %}
+                                    {% if mantra == mantraSelected %}
+                                        <p>{{ mantraSelected }}</p>
+                                    {% endif %}
+                                {% endfor %}
                             </div>
-                            <div class="product">
-                                <h4>Lorem ipsum dolor sit amet blahu lopmsuedi - 9,90 €</h4>
-                                <p>Set amer tuis doqoiudz</p>
-                            </div>
-                            <div class="product">
-                                <h4>Lorem ipsum dolor sit amet blahu lopmsuedi - 9,90 €</h4>
-                                <p>Set amer tuis doqoiudz</p>
-                            </div>
+
                             <div class="plus">
                                 <span></span>
                                 <span></span>
                                 <span></span>
                             </div>
                         </div>
+                        {% endfor %}
                         <h4>Total de la commande : 38 €</h4>
 
                         <div class="btns">
@@ -74,6 +75,9 @@
                             </a>
                         </div>
                     </div>
+                    {% else %}
+                        <h2>Vous n'avez pas encore de commande</h2>
+                    {% endif %}
                 </div>
 
             </div>

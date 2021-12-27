@@ -6,6 +6,7 @@ import CartProduct from '../Classes/CartProduct.js';
 // ============================================================================
 const cartRows = document.getElementsByTagName("cart-row");
 const saveButton = document.getElementById("save-btn");
+const modal = document.getElementById('content-modal');
 
 
 // ============================================================================
@@ -49,8 +50,14 @@ async function getCart(e) {
 	formData.append('ajax-cart-price', cartPrice);
 
 	const response = await ajax('POST', '/ajax/save-cart/', formData);
+
 	if (response === 'ok') {
-		alert('panier sauvegardé');
+
+		modal.classList.add('active');
+		setTimeout(function() {
+			modal.classList.remove('active');
+		}, 3000);
+
 	}
 
 }

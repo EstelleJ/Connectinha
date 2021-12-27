@@ -440,6 +440,10 @@ class AjaxController extends AbstractController {
 		$totalPrice = 0;
 		$discountTicket = $request->request->get('ajax-discount-ticket');
 
+		$user = $this->getUser();
+
+		$customer = $user->getCustomer();
+
 		// WIP Calculate totalprice
 		foreach(json_decode($arrayProducts) as $product) {
 
@@ -489,7 +493,7 @@ class AjaxController extends AbstractController {
 
 		$order = new Orders();
 
-		$number = 'C' . rand(1, 100) . '-' . rand(12735, 265478);
+		$number = uniqid('C-');
 
 		$order->setOrderNumber($number);
 		$order->setDate(new \DateTime('now'));
@@ -498,6 +502,7 @@ class AjaxController extends AbstractController {
 		$order->setProductArray([$arrayProducts]);
 		$order->setPrice($price);
 		$order->setDiscountTicket($discountTicket);
+		$order->setUser($customer);
 
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->persist($order);
@@ -612,6 +617,22 @@ class AjaxController extends AbstractController {
 
 		return new JsonResponse('ok');
 
+	}
+
+	// --------------------- REDIRECT ORDER ---------------------- //
+	// ----------------------------------------------------------- //
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/redirect-order/', name: 'ajax_redirect_order')]
+	public function redirectOrder(Request $request): Response {
+
+		$orderNumber = $request->request->get('ajax-order-number');
+		$user = $this->getUser()->getId();
+
+		return new JsonResponse($user);
 	}
 
 

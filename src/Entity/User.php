@@ -57,7 +57,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @ORM\OneToOne(targetEntity=Customer::class, mappedBy="user", cascade={"persist", "remove"})
      */
-    private $client;
+    private $customer;
 
     /**
      * @ORM\OneToMany(targetEntity=Cart::class, mappedBy="user")
@@ -194,19 +194,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getClient(): ?Customer
+    public function getCustomer(): ?Customer
     {
-        return $this->client;
+        return $this->customer;
     }
 
-    public function setClient(Customer $client): self
+    public function setCustomer(Customer $customer): self
     {
         // set the owning side of the relation if necessary
-        if ($client->getUser() !== $this) {
-            $client->setUser($this);
+        if ($customer->getUser() !== $this) {
+            $customer->setUser($this);
         }
 
-        $this->client = $client;
+        $this->customer = $customer;
 
         return $this;
     }

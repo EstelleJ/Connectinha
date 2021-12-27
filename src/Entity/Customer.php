@@ -65,6 +65,21 @@ class Customer
      */
     private $phone;
 
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private $country;
+
+    /**
+     * @ORM\Column(type="string", length=64, nullable=true)
+     */
+    private $building;
+
+    /**
+     * @ORM\Column(type="string", length=8, nullable=true)
+     */
+    private $apartment;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -197,6 +212,42 @@ class Customer
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    public function getBuilding(): ?string
+    {
+        return $this->building;
+    }
+
+    public function setBuilding(?string $building): self
+    {
+        $this->building = $building;
+
+        return $this;
+    }
+
+    public function getApartment(): ?string
+    {
+        return $this->apartment;
+    }
+
+    public function setApartment(?string $apartment): self
+    {
+        $this->apartment = $apartment;
 
         return $this;
     }

@@ -80,6 +80,41 @@
 #banner h1 .amatic {
   margin-top: -1rem;
 }
+#content-modal {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: 100;
+}
+#content-modal .modal {
+  display: inline-block;
+  background-color: #fff;
+  padding: 3rem 6rem;
+  box-shadow: 0 1px 8px rgba(23, 23, 23, 0.3);
+  text-align: center;
+}
+#content-modal .modal span {
+  display: block;
+  margin-bottom: 2rem;
+}
+#content-modal .modal span i {
+  font-size: 6rem;
+  color: #82629a;
+}
+#content-modal .modal h4 {
+  font-size: 3rem;
+}
+#content-modal.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 #cart {
   width: 80%;
   margin: -10rem auto 3rem auto;

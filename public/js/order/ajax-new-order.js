@@ -57,7 +57,7 @@ async function getOrder(e) {
 
 	localStorage.setItem('order', response);
 
-	// window.location.href = '/panier/commande-'+response+'/';
+	// window.location.href = '/panier/commande/recapitulatif-'+response+'/';
 
 }
 
