@@ -448,7 +448,8 @@ class AjaxController extends AbstractController {
 			$customer = $user->getCustomer();
 		}
 
-		// WIP Calculate totalprice
+		$totalWeight = 0;
+
 		foreach (json_decode($arrayProducts) as $product) {
 
 			$productId = $product->id;
@@ -462,13 +463,26 @@ class AjaxController extends AbstractController {
 
 			$priceUnit = $product->price - ($product->price * $promo / 100);
 			$quantity = $product->quantity;
+			$weight = $productDB->weight();
+
+			$totalWeight += $weight * $quantity;
 
 			$totalPrice += $priceUnit * $quantity;
 		}
 
+		$shippingCosts = $this->getDoctrine()->getRepository(ShippingCost::class)->findAll();
+
+		$shippingPrice = 0;
+
+		foreach ($shippingCosts as $cost) {
+			if ($totalWeight > $cost->getMin() && $totalWeight < $cost->getMax()) {
+				$shippingPrice = $cost->getPrice();
+			}
+		}
+
 		$ticket = $this->getDoctrine()->getRepository(DiscountTicket::class)->findOneBy(['code' => $discountTicket]);
 
-		$price = $totalPrice;
+		$price = $totalPrice + $shippingPrice;
 
 		if ($ticket !== null) {
 

@@ -17,7 +17,6 @@ async function getOrder(e) {
 	let arrayProducts = [];
 	let cartPrice     = 0;
 
-	// Modifier le totalPrice pour qu'il soit calculé en PHP
 	let totalPrice = domTotalPrice.innerHTML.split(' ')[0];
 
 	const discountTicket = document.getElementById('discountTicket').value;

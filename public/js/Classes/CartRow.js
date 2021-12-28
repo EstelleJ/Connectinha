@@ -139,12 +139,13 @@ export default class CartRow extends WebComponent {
 
 		domTotalPrice.innerHTML = totalPrice.toFixed(2) + ' € TTC';
 
-		this.getShippingCost().then();
+		this.getShippingCost(totalPrice).then();
 	}
 
-	async getShippingCost() {
+	async getShippingCost(totalPrice) {
 		const cartRows     = document.getElementsByTagName("cart-row");
 		const shippingCost = document.getElementById('shipping-cost');
+		const domTotalPrice = document.getElementById('cart-total-price');
 
 		let totalWeight = 0;
 
@@ -165,6 +166,14 @@ export default class CartRow extends WebComponent {
 		const response = await this.ajax('POST', '/ajax/get-shipping-cost/', formData);
 
 		shippingCost.innerHTML = response.toString();
+
+		const totalPriceWithShippingCost = parseFloat(response.toString()) + parseFloat(totalPrice.toFixed(2));
+
+		console.log('response = ' + response.toString());
+		console.log('totalPrice = ' + parseFloat(totalPrice));
+		console.log('totalPriceWithShippingCost = ' + totalPriceWithShippingCost);
+
+		domTotalPrice.innerHTML = totalPriceWithShippingCost + ' € TTC';
 	}
 
 }
