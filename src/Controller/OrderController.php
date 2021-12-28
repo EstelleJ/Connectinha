@@ -36,9 +36,33 @@ class OrderController extends AbstractController {
 
 		// TODO: Initiliaze variables as empty strings and replace their value if user is connected
 
-		$customerId = $order->getUser();
+		$name = '';
+		$firstname = '';
+		$email = '';
+		$phone = '';
+		$delivery_adress = '';
+		$delivery_building = '';
+		$delivery_apartment = '';
+		$delivery_zipcode = '';
+		$delivery_city = '';
+		$delivery_country = '';
 
-		$customer = $this->getDoctrine()->getRepository(Customer::class)->find($customerId);
+		if($user) {
+			$customerId = $order->getUser();
+
+			$customer = $this->getDoctrine()->getRepository(Customer::class)->find($customerId);
+
+			$name = $user->getName();
+			$firstname = $user->getFirstName();
+			$email = $user->getEmail();
+			$phone = $customer->getPhone();
+			$delivery_adress = $customer->getStreetNb() . ' ' . $customer->getStreetName() . ' ' . $customer->getStreetName2();
+			$delivery_building = $customer->getBuilding();
+			$delivery_apartment = $customer->getApartment();
+			$delivery_zipcode = $customer->getZipcode();
+			$delivery_city = $customer->getCity();
+			$delivery_country = $customer->getCountry();
+		}
 
 
 		$form = $this->createFormBuilder()
@@ -46,35 +70,35 @@ class OrderController extends AbstractController {
 						'label' => 'Nom *',
 						'attr'  => [
 								'placeholder' => 'Nom du destinataire',
-								'value'       => $user->getName(),
+								'value'       => $name,
 						],
 				])
 				->add('firstname', TextType::class, [
 						'label' => 'Prénom *',
 						'attr'  => [
 								'placeholder' => 'Prénom du destinataire',
-								'value'       => $user->getFirstName(),
+								'value'       => $firstname,
 						],
 				])
 				->add('email', EmailType::class, [
 						'label' => 'Email *',
 						'attr'  => [
 								'placeholder' => 'Email du destinataire',
-								'value'       => $user->getEmail(),
+								'value'       => $email,
 						],
 				])
 				->add('phone', TelType::class, [
 						'label' => 'Numéro de téléphone *',
 						'attr'  => [
 								'placeholder' => 'Téléphone du destinataire',
-								'value'       => $customer->getPhone(),
+								'value'       => $phone,
 						],
 				])
 				->add('delivery_adress', TextareaType::class, [
 						'label' => 'Adresse de livraison *',
 						'attr'  => [
 								'placeholder' => 'N° et nom de la rue du destinataire',
-								'value'       => $customer->getStreetNb() . ' ' . $customer->getStreetName() . ' ' . $customer->getStreetName2(),
+								'value'       => $delivery_adress,
 						],
 				])
 				->add('delivery_building', TextType::class, [
@@ -82,7 +106,7 @@ class OrderController extends AbstractController {
 						'attr'     =>
 								[
 										'placeholder' => 'Bâtiment',
-										'value'       => $customer->getBuilding(),
+										'value'       => $delivery_building,
 								],
 						'required' => false,
 				])
@@ -91,7 +115,7 @@ class OrderController extends AbstractController {
 						'attr'     =>
 								[
 										'placeholder' => "n° d'appartement",
-										'value'       => $customer->getApartment(),
+										'value'       => $delivery_apartment,
 								],
 						'required' => false,
 				])
@@ -100,7 +124,7 @@ class OrderController extends AbstractController {
 						'attr'  =>
 								[
 										'placeholder' => 'Code postal',
-										'value'       => $customer->getZipcode(),
+										'value'       => $delivery_zipcode,
 								],
 				])
 				->add('delivery_city', TextType::class, [
@@ -108,7 +132,7 @@ class OrderController extends AbstractController {
 						'attr'  =>
 								[
 										'placeholder' => 'Ville',
-										'value'       => $customer->getCity(),
+										'value'       => $delivery_city,
 								],
 				])
 				->add('delivery_country', CountryType::class, [
@@ -116,7 +140,7 @@ class OrderController extends AbstractController {
 						'attr'  =>
 								[
 										'placeholder' => 'Pays',
-										'value'       => $customer->getCountry(),
+										'value'       => $delivery_country,
 								],
 				])
 				/* Facturation */
