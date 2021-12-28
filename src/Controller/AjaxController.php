@@ -388,7 +388,40 @@ class AjaxController extends AbstractController {
 	public function getDiscountTicket(Request $request): Response {
 
 		$discountTicket = $request->request->get('ajax-discount-ticket');
-		$totalPrice = $request->request->get('ajax-total-price');
+		$arrayProducts = $request->request->get('ajax-array-products');
+
+		$totalWeight = 0;
+		$totalPrice = 0;
+
+		foreach (json_decode($arrayProducts) as $product) {
+
+			$productId = $product->id;
+
+			$productDB = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+			$promo = 0;
+			if ($productDB->getSpecialOffer()) {
+				$promo = $productDB->getSpecialOffer()->getOffer();
+			}
+
+			$priceUnit = $product->price - ($product->price * $promo / 100);
+			$quantity = $product->quantity;
+			$weight = $productDB->getWeight();
+
+			$totalWeight += $weight * $quantity;
+
+			$totalPrice += $priceUnit * $quantity;
+		}
+
+		$shippingCosts = $this->getDoctrine()->getRepository(ShippingCost::class)->findAll();
+
+		$shippingPrice = 0;
+
+		foreach ($shippingCosts as $cost) {
+			if ($totalWeight > $cost->getMin() && $totalWeight < $cost->getMax()) {
+				$shippingPrice = $cost->getPrice();
+			}
+		}
 
 		$ticket = $this->getDoctrine()->getRepository(DiscountTicket::class)->findOneBy(['code' => $discountTicket]);
 
@@ -420,6 +453,8 @@ class AjaxController extends AbstractController {
 			}
 
 		}
+
+		$price = $price + $shippingPrice;
 
 		return new JsonResponse([
 				                        'price'    => $price,
@@ -463,7 +498,7 @@ class AjaxController extends AbstractController {
 
 			$priceUnit = $product->price - ($product->price * $promo / 100);
 			$quantity = $product->quantity;
-			$weight = $productDB->weight();
+			$weight = $productDB->getWeight();
 
 			$totalWeight += $weight * $quantity;
 
@@ -482,7 +517,8 @@ class AjaxController extends AbstractController {
 
 		$ticket = $this->getDoctrine()->getRepository(DiscountTicket::class)->findOneBy(['code' => $discountTicket]);
 
-		$price = $totalPrice + $shippingPrice;
+		$price = $totalPrice;
+		$bug = 0;
 
 		if ($ticket !== null) {
 
@@ -499,6 +535,8 @@ class AjaxController extends AbstractController {
 				}
 			}
 		}
+
+		$price = $price + $shippingPrice;
 
 		$order = new Orders();
 
@@ -518,8 +556,8 @@ class AjaxController extends AbstractController {
 		$entityManager->flush();
 
 		return new JsonResponse([
-				                        'orderNumber' => $number,
-				                        'customer'    => $customer,
+				                        'orderNumber'   => $number,
+				                        'customer'      => $customer,
 		                        ]);
 	}
 

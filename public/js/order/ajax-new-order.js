@@ -58,12 +58,14 @@ async function getOrder(e) {
 
 	const customer = response.customer;
 
-	if (customer !== null) {
-		window.location.href = '/panier/commande/recapitulatif-' + response.orderNumber + '/';
-	}
-	else {
-		window.location.href = '/panier/commande/';
-	}
+	console.log(response);
+
+	// if (customer !== null) {
+	// 	window.location.href = '/panier/commande/recapitulatif-' + response.orderNumber + '/';
+	// }
+	// else {
+	// 	window.location.href = '/panier/commande/';
+	// }
 }
 
 

@@ -67,7 +67,7 @@ export default class CartRow extends WebComponent {
 		this.appendChild(template.content);
 
 		this.updateTotalPrices();
-		this.getShippingCost().then();
+		// this.getShippingCost().then();
 
 		// Event listeners
 		this.querySelector('.item-delete').addEventListener('click', this.deleteRow.bind(this));
