@@ -44,32 +44,39 @@
                 <div class="elements">
                     <h2>Votre panier sauvegardé</h2>
 
-                    {% for product in arrayProducts %}
-                    <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved">
-                        <span class="title">
-                            {{ product.name }}
-                        </span>
+                    <div class="order">
+                        {% for product in savedProducts %}
+                        <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved">
+                            <span class="title">
+                                {{ product.title }} - <span
 
-                        {% for mantra in product.mantraProducts %}
-                            {% if mantra == mantraSelected %}
-                                <span class="mantra">
-                                    {{ mantraSelected }}
-                                </span>
-                            {% endif %}
+                                {% for productDB in arrayProducts %}
+                                    {% if product.id == productDB.id %}
+                                        {% if productDB.specialOffer %}
+                                            class="priceBeforeDiscount"
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                    >{{ product.price }} €</span>
+
+                                {% for productDB in arrayProducts %}
+                                    {% if product.id == productDB.id %}
+                                        {% if productDB.specialOffer %}
+                                            <span class="discount">{{ productDB.price - (productDB.price * (productDB.specialOffer.offer / 100)) }} €</span>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            </span>
+
+                            <span class="mantra">
+                                {{ product.mantra }}
+                            </span>
+
+                            <span class="quantity">Quantité : {{ quantity }}</span>
+                        </a>
                         {% endfor %}
-
-                        {% if product.specialOffer == null %}
-                            <span class="price">Prix : {{ product.price }} €</span>
-                        {% else %}
-                            <span class="price">Prix : {{ product.price - (product.price * (product.specialOffer.offer / 100)) }} €</span>
-                            <span class="priceBeforeDiscount">{{ product.price }} €</span>
-                            <span class="discount">- {{ product.specialOffer.offer }} %</span>
-                        {% endif %}
-
-
-                        <span class="quantity">Quantité : {{ quantity }}</span>
-                    </a>
-                    {% endfor %}
+                    </div>
 
                     <div class="btns">
                         <a href="{{ path('cart') }}" class="bg-blue tc-white btn">

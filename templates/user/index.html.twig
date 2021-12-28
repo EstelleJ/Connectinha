@@ -49,31 +49,45 @@
                         <h3>Commande n°{{ order.orderNumber }} - <span><i class="fas fa-box"></i>{{ order.status }}</span></h3>
                         <p>du {{ order.date|date('d m Y') }}</p>
 
-                        {% for product in arrayProducts %}
+
                         <div class="products">
-                            <div class="product">
-                                <h4>{{ product.name }} - 9,90 €</h4>
-                                {% for mantra in product.mantraProducts %}
-                                    {% if mantra == mantraSelected %}
-                                        <p>{{ mantraSelected }}</p>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                            {% for product in savedProducts %}
+                            <div class="product-saved">
+                                <h4>{{ product.title }} - <span
 
-                            <div class="plus">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </div>
-                        {% endfor %}
-                        <h4>Total de la commande : 38 €</h4>
+                                        {% for productDB in arrayProducts %}
+                                            {% if product.id == productDB.id %}
+                                                {% if productDB.specialOffer %}
+                                                    class="priceBeforeDiscount"
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
 
-                        <div class="btns">
-                            <a href="" class="bg-blue tc-white btn">
-                                <i class="fas fa-plus"></i> Voir le détail de la commande
-                            </a>
+                                    >{{ product.price }} €</span>
+
+                                    {% for productDB in arrayProducts %}
+                                        {% if product.id == productDB.id %}
+                                            {% if productDB.specialOffer %}
+                                                <span class="discount">{{ productDB.price - (productDB.price * (productDB.specialOffer.offer / 100)) }} €</span>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    </h4>
+
+                                <p>{{ product.mantra }}</p>
+                            </div>
+                            {% endfor %}
                         </div>
+
+
+                        <h4>Frais de livraison : {{ order.shippingCost }} €</h4>
+                        <h4>Total de la commande : {{ order.price }} €</h4>
+
+{#                        <div class="btns">#}
+{#                            <a href="" class="bg-blue tc-white btn">#}
+{#                                <i class="fas fa-plus"></i> Voir le détail de la commande#}
+{#                            </a>#}
+{#                        </div>#}
                     </div>
                     {% else %}
                         <h2>Vous n'avez pas encore de commande</h2>

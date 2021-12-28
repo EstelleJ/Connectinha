@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre espace client{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/user.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<div class="container">
+
+		</div>
+	</section>
+
+	<section id="profile">
+		<div class="container">
+			<h1>
+          <span class="rougeScript tc-blue">
+              Bonjour {{ user.firstName }} {{ user.name }},
+          </span>
+					<span class="amatic uppercase">Bienvenue dans votre espace client</span>
+			</h1>
+
+			<div class="content">
+				<div class="column">
+					<div class="bloc-user">
+						<h2>Vos informations personnelles</h2>
+
+						<h3>{{ user.firstName }} {{ user.name }}</h3>
+
+						<p>{{ user.email }}</p>
+						<p>{{ user.customer.phone }}</p>
+
+					</div>
+
+					{% include 'includes/_user_cart_saved.html.twig' %}
+				</div>
+
+				<div class="elements">
+					<h2>Modifier vos informations personnelles</h2>
+					{{ form_start(form) }}
+
+					{{ form_end(form) }}
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+{% endblock %}

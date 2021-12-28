@@ -200,6 +200,7 @@
   width: 70%;
   /* ------------- INDEX ------------- */
   /* --------------- SAVED CART -------------- */
+  /* -------------------- FORM ------------------- */
 }
 #profile .content .elements .btn {
   font-size: 1.4rem !important;
@@ -254,8 +255,7 @@
   background-color: #042b40;
 }
 #profile .content .elements .product-saved {
-  padding: 1rem 2rem;
-  background-color: #fff;
+  padding: 1rem 0;
   margin-bottom: 1rem;
   display: block;
   color: #333;
@@ -280,8 +280,9 @@
 #profile .content .elements .product-saved .discount {
   display: inline-block;
   padding: 0.5rem 1.2rem;
-  background-color: #8ebccb;
   color: #333;
+  font-weight: bold;
+  color: #4498b4;
   margin-left: 1.5rem;
 }
 #profile .content .elements .product-saved .mantra {
@@ -292,4 +293,20 @@
   display: block;
   width: 100%;
   font-weight: bold;
+}
+#profile .content .elements form label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+#profile .content .elements form input,
+#profile .content .elements form textarea,
+#profile .content .elements form select {
+  width: 100%;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+#profile .content .elements form button {
+  display: inline-block;
+  padding: 1rem 4rem;
+  color: #fff;
 }
