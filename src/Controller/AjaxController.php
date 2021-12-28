@@ -550,14 +550,15 @@ class AjaxController extends AbstractController {
 		$order->setPrice($price);
 		$order->setDiscountTicket($discountTicket);
 		$order->setUser($customer);
+		$order->setShippingCost($shippingPrice);
 
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->persist($order);
 		$entityManager->flush();
 
 		return new JsonResponse([
-				                        'orderNumber'   => $number,
-				                        'customer'      => $customer,
+				                        'orderNumber' => $number,
+				                        'customer'    => $customer,
 		                        ]);
 	}
 
@@ -597,10 +598,11 @@ class AjaxController extends AbstractController {
 		}
 
 		return new JsonResponse([
-				                        'products' => $order->getProductArray(),
-				                        'ticket'   => $order->getDiscountTicket(),
-				                        'discount' => $discount,
-				                        'price'    => $order->getPrice(),
+				                        'products'     => $order->getProductArray(),
+				                        'ticket'       => $order->getDiscountTicket(),
+				                        'discount'     => $discount,
+				                        'price'        => $order->getPrice(),
+				                        'shippingCost' => $order->getShippingCost(),
 		                        ]);
 	}
 

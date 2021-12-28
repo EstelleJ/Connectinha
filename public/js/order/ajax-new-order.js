@@ -60,12 +60,12 @@ async function getOrder(e) {
 
 	console.log(response);
 
-	// if (customer !== null) {
-	// 	window.location.href = '/panier/commande/recapitulatif-' + response.orderNumber + '/';
-	// }
-	// else {
-	// 	window.location.href = '/panier/commande/';
-	// }
+	if (customer !== null) {
+		window.location.href = '/panier/commande/recapitulatif-' + response.orderNumber + '/';
+	}
+	else {
+		window.location.href = '/panier/commande/';
+	}
 }
 
 

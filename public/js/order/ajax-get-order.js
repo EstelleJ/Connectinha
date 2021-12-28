@@ -7,6 +7,7 @@ import {ajax} from '../tools/functions.js';
 const orderNumber = localStorage.getItem('order');
 const allProductsDOM = document.getElementById('allProducts');
 const totalPriceDOM = document.getElementById('totalPriceDOM');
+const totalShippingCostDOM = document.getElementById('totalShippingCost');
 
 console.log(orderNumber);
 
@@ -65,5 +66,6 @@ function displayProducts() {
 	}
 
 	totalPriceDOM.innerHTML = response.price;
+	totalShippingCostDOM.innerHTML = response.shippingCost;
 
 }

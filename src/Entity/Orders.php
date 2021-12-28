@@ -182,6 +182,11 @@ class Orders
      */
     private $invoicing_email;
 
+    /**
+     * @ORM\Column(type="decimal", precision=5, scale=2)
+     */
+    private $shipping_cost;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -579,6 +584,18 @@ class Orders
     public function setInvoicingEmail(?string $invoicing_email): self
     {
         $this->invoicing_email = $invoicing_email;
+
+        return $this;
+    }
+
+    public function getShippingCost(): ?string
+    {
+        return $this->shipping_cost;
+    }
+
+    public function setShippingCost(string $shipping_cost): self
+    {
+        $this->shipping_cost = $shipping_cost;
 
         return $this;
     }
