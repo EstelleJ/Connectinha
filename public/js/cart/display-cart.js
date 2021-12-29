@@ -7,6 +7,8 @@ const cartTable  = document.getElementById('cart-table');
 let cartProducts = [];
 
 
+console.log('coucou');
+
 // ============================================================================
 // Functions
 // ============================================================================

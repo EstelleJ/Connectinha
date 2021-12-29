@@ -687,5 +687,27 @@ class AjaxController extends AbstractController {
 		return new JsonResponse($user);
 	}
 
+	// ----------------------- DELETE USER ----------------------- //
+	// ----------------------------------------------------------- //
+
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	#[Route('/ajax/delete-user/', name: 'ajax_delete_user')]
+	public function deleteUser(Request $request): Response {
+
+		$user = $this->getUser();
+
+		$tva = $this->getDoctrine()->getRepository(Tva::class)->find($user);
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->remove($tva);
+		$entityManager->flush();
+
+		return new JsonResponse('ok');
+
+	}
+
 
 }

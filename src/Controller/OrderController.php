@@ -54,7 +54,7 @@ class OrderController extends AbstractController {
 
 			$name = $user->getName();
 			$firstname = $user->getFirstName();
-			$email = $user->getEmail();
+			$email = $customer->getEmail();
 			$phone = $customer->getPhone();
 			$delivery_adress = $customer->getStreetNb() . ' ' . $customer->getStreetName() . ' ' . $customer->getStreetName2();
 			$delivery_building = $customer->getBuilding();

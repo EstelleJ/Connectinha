@@ -304,6 +304,11 @@
   width: 100%;
   display: block;
   margin-bottom: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  color: #042b40;
+}
+#profile .content .elements form ::placeholder {
+  color: #042b40;
 }
 #profile .content .elements form button {
   display: inline-block;

@@ -6,9 +6,11 @@ use App\Entity\Cart;
 use App\Entity\Customer;
 use App\Entity\Orders;
 use App\Entity\Product;
+use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -16,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserController extends AbstractController {
 
@@ -26,27 +29,29 @@ class UserController extends AbstractController {
 		$customer = $user->getCustomer();
 
 		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['user' => $customer], ['id' => 'DESC']);
-		$array_cart = $order->getProductArray();
-		$json_cart = implode(",", $array_cart);
-
-		$saved_products = json_decode($json_cart);
 
 		$arrayProducts = [];
+		$saved_products = '';
 
-		// WIP Mantra
-		$mantraSelected = null;
+		if($order !== null){
+			$array_cart = $order->getProductArray();
+			$json_cart = implode(",", $array_cart);
 
-		foreach ($saved_products as $cartProduct) {
+			$saved_products = json_decode($json_cart);
 
-			$productId = $cartProduct->id;
-			$quantity = $cartProduct->quantity;
-			$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+			foreach ($saved_products as $cartProduct) {
 
-			array_push($arrayProducts, $product);
+				$productId = $cartProduct->id;
+				$quantity = $cartProduct->quantity;
+				$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
 
+				array_push($arrayProducts, $product);
+
+			}
+
+			dump($saved_products);
 		}
 
-		dump($saved_products);
 
 		return $this->render('user/index.html.twig', [
 				'user'          => $user,
@@ -91,37 +96,39 @@ class UserController extends AbstractController {
 	}
 
 	#[Route('/votre-espace-client/modifier-vos-informations/', name: 'profile_modify')]
-	public function modifyProfile(Request $request): Response {
+	public function modifyProfile(Request $request, UserPasswordEncoderInterface $passwordEncoder): Response {
 
 		$user = $this->getUser();
+
 		$customerId = $user->getCustomer()->getId();
-
-		dump($user);
-		// AJOUTER EMAIL DANS CUSTOMER POUR NE PAS PERDRE LA CONNEXION A LA MODIFICATION
-
 		$customer = $this->getDoctrine()->getRepository(Customer::class)->find($customerId);
 
+		dump($customer->getStreetNb());
 		$form = $this->createFormBuilder()
+				->add('password', PasswordType::class, [
+						'label' => 'Mot de passe',
+						'required' => false
+				])
 				->add('name', TextType::class, [
 						'label' => 'Votre nom *',
-						'attr' => [
+						'attr'  => [
 								'placeholder' => 'Nom',
-								'value' => $user->getName()
-						]
+								'value'       => $user->getName(),
+						],
 				])
 				->add('firstname', TextType::class, [
 						'label' => 'Votre prénom *',
-						'attr' => [
+						'attr'  => [
 								'placeholder' => 'Prénom',
-								'value' => $user->getFirstName()
-						]
+								'value'       => $user->getFirstName(),
+						],
 				])
 				->add('email', EmailType::class, [
-						'label' => 'Votre email *',
-						'attr' => [
+						'label' => 'Votre email de contact, ce mail vous permettra de recevoir les mails*',
+						'attr'  => [
 								'placeholder' => 'Email',
-								'value' => $user->getEmail()
-						]
+								'value'       => $user->getEmail(),
+						],
 				])
 				->add('phone', TelType::class, [
 						'label' => 'Numéro de téléphone *',
@@ -130,27 +137,28 @@ class UserController extends AbstractController {
 								'value'       => $customer->getPhone(),
 						],
 				])
-				->add('delivery_adress_nb', TextareaType::class, [
+				->add('delivery_adress_nb', TextType::class, [
 						'label' => 'N° de rue *',
 						'attr'  => [
 								'placeholder' => 'N° et nom de la rue du destinataire',
 								'value'       => $customer->getStreetNb(),
 						],
 				])
-				->add('delivery_adress_street_name', TextareaType::class, [
-						'label' => 'Nom de la rue *',
-						'attr'  => [
-								'placeholder' => 'N° et nom de la rue du destinataire',
-								'value'       => $customer->getStreetName()
+				->add('delivery_adress_street_name', TextType::class, [
+						'label'    => 'Nom de la rue *',
+						'attr'     => [
+								'placeholder' => $customer->getStreetName(),
+								'value'       => $customer->getStreetName(),
 						],
+						'required' => false,
 				])
-				->add('delivery_adress_street_name_2', TextareaType::class, [
-						'label' => 'Nom de la rue',
-						'attr'  => [
-								'placeholder' => 'N° et nom de la rue du destinataire',
+				->add('delivery_adress_street_name_2', TextType::class, [
+						'label'    => 'Nom de la rue',
+						'attr'     => [
+								'placeholder' => $customer->getStreetName2(),
 								'value'       => $customer->getStreetName2(),
 						],
-						'required' => false
+						'required' => false,
 				])
 				->add('delivery_building', TextType::class, [
 						'label'    => 'Bâtiment de livraison',
@@ -187,27 +195,36 @@ class UserController extends AbstractController {
 								],
 				])
 				->add('delivery_country', CountryType::class, [
-						'label' => 'Pays de livraison *',
-						'attr'  =>
+						'label'             => 'Pays de livraison *',
+						'attr'              =>
 								[
 										'placeholder' => 'Pays',
 										'value'       => $customer->getCountry(),
 								],
+						'preferred_choices' => [$customer->getCountry()],
 				])
 				->add('submit', SubmitType::class, [
-						'label' => 'Modifier'
+						'label' => 'Modifier',
 				])
-
 				->getForm();
 
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
+			if($form->get('password')->getData() !== null){
+				$user->setPassword(
+						$passwordEncoder->encodePassword(
+								$user,
+								$form->get('password')->getData()
+						)
+				);
+			}
+
 			$user->setName($form->get('name')->getData());
 			$user->setFirstName($form->get('firstname')->getData());
-			$user->setEmail($form->get('email')->getData());
 
+			$customer->setEmail($form->get('email')->getData());
 			$customer->setPhone($form->get('phone')->getData());
 			$customer->setStreetNb($form->get('delivery_adress_nb')->getData());
 			$customer->setStreetName($form->get('delivery_adress_street_name')->getData());
@@ -227,7 +244,7 @@ class UserController extends AbstractController {
 
 		return $this->render('user/modify.html.twig', [
 				'form' => $form->createView(),
-				'user' => $user
+				'user' => $user,
 		]);
 	}
 

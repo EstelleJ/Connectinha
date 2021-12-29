@@ -6,6 +6,10 @@
 
 {% endblock %}
 
+{% block javascripts %}
+	<script src="{{ asset('js/user/ajax-user-delete.js') }}" type="module"></script>
+{% endblock %}
+
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/client/user.css') }}">
 {% endblock %}
@@ -42,8 +46,17 @@
 				</div>
 
 				<div class="elements">
-					<h2>Modifier vos informations personnelles</h2>
 					{{ form_start(form) }}
+					<div class="userId">
+						<h2>Modifier vos informations de connexion</h2>
+
+						<p>Email de connexion : {{ user.email }}</p>
+						{{ form_row(form.password) }}
+					</div>
+
+
+					<h2>Modifier vos informations personnelles</h2>
+
 
 					{{ form_end(form) }}
 				</div>

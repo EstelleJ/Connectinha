@@ -80,6 +80,11 @@ class Customer
      */
     private $apartment;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
@@ -248,6 +253,18 @@ class Customer
     public function setApartment(?string $apartment): self
     {
         $this->apartment = $apartment;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(?string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
