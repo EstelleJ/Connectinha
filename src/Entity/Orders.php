@@ -98,7 +98,7 @@ class Orders
     private $delivery_message;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
+     * @ORM\Column(type="text", nullable=true)
      */
     private $delivery_delay;
 
@@ -384,12 +384,12 @@ class Orders
         return $this;
     }
 
-    public function getDeliveryDelay(): ?int
+    public function getDeliveryDelay(): ?string
     {
         return $this->delivery_delay;
     }
 
-    public function setDeliveryDelay(?int $delivery_delay): self
+    public function setDeliveryDelay(string $delivery_delay): self
     {
         $this->delivery_delay = $delivery_delay;
 

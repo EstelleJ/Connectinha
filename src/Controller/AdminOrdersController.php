@@ -56,6 +56,8 @@ class AdminOrdersController extends AbstractController
 
 	      if ($form->isSubmitted() && $form->isValid()) {
 		      $order->setSend($form->get('send')->getData());
+		      $order->setDeliveryMessage($form->get('message')->getData());
+		      $order->setDeliveryDelay($form->get('delay')->getData());
 
 		      $entityManager = $this->getDoctrine()->getManager();
 		      $entityManager->persist($order);
