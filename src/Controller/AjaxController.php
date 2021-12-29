@@ -667,7 +667,7 @@ class AjaxController extends AbstractController {
 		$entityManager->persist($order);
 		$entityManager->flush();
 
-		return new JsonResponse('ok');
+		return new JsonResponse($orderNumber);
 
 	}
 

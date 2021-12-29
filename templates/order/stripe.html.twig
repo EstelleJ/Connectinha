@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Passez votre commande{% endblock %}
+{% block title %}Réglement par carte - Passez votre commande{% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
@@ -21,7 +21,7 @@
 
 	<section id="choices">
 		<div class="container">
-			<form action="/panier/commande/paiement-par-carte/checkout/" method="POST">
+			<form action="/panier/commande/paiement-par-carte/checkout-{{ orderNumber }}/" method="POST">
 				<button type="submit">Checkout</button>
 			</form>
 		</div>

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Customer;
 use App\Entity\Orders;
+use App\Entity\PaymentMethod;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,8 +35,6 @@ class OrderController extends AbstractController {
 		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
 		$user = $this->getUser();
 
-		// TODO: Initiliaze variables as empty strings and replace their value if user is connected
-
 		$name = '';
 		$firstname = '';
 		$email = '';
@@ -47,7 +46,7 @@ class OrderController extends AbstractController {
 		$delivery_city = '';
 		$delivery_country = '';
 
-		if($user) {
+		if ($user) {
 			$customerId = $order->getUser();
 
 			$customer = $this->getDoctrine()->getRepository(Customer::class)->find($customerId);
@@ -97,7 +96,7 @@ class OrderController extends AbstractController {
 				->add('delivery_adress', TextareaType::class, [
 						'label' => 'Adresse de livraison *',
 						'attr'  => [
-								'placeholder' => 'N° et nom de la rue du destinataire',
+								'placeholder' => $delivery_adress,
 								'value'       => $delivery_adress,
 						],
 				])
@@ -136,12 +135,13 @@ class OrderController extends AbstractController {
 								],
 				])
 				->add('delivery_country', CountryType::class, [
-						'label' => 'Pays de livraison *',
-						'attr'  =>
+						'label'             => 'Pays de livraison *',
+						'attr'              =>
 								[
 										'placeholder' => 'Pays',
 										'value'       => $delivery_country,
 								],
+						'preferred_choices' => [$delivery_country],
 				])
 				/* Facturation */
 
@@ -176,7 +176,7 @@ class OrderController extends AbstractController {
 				->add('invoicing_adress', TextareaType::class, [
 						'label' => 'Adresse de facturation *',
 						'attr'  => [
-								'placeholder' => 'N° et nom de la rue pour la facture',
+								'placeholder' => $delivery_adress,
 						],
 				])
 				->add('invoicing_building', TextType::class, [
@@ -225,56 +225,138 @@ class OrderController extends AbstractController {
 		]);
 	}
 
-	#[Route('/panier/commande/choisissez-votre-methode-de-paiement/', name: 'order_method_choice')]
-	public function method(): Response {
+	#[Route('/panier/commande/choisissez-votre-methode-de-paiement-{orderNumber}/', name: 'order_method_choice')]
+	public function method($orderNumber): Response {
+
+		$paymentMethods = $this->getDoctrine()->getRepository(PaymentMethod::class)->findAll();
 
 		return $this->render('order/choice.html.twig', [
-
+				'paymentMethods' => $paymentMethods,
+				'orderNumber'    => $orderNumber,
 		]);
 	}
 
-	#[Route('/panier/commande/paiement-par-carte/', name: 'order_payment_stripe')]
-	public function stripe(): Response {
+
+	#[Route('/panier/commande/paiement-par-carte-{orderNumber}-{id}/', name: 'order_payment_stripe', requirements: ['orderNumber' => '[a-zA-Z0-9\-_]+'])]
+	public function stripePayment($orderNumber, $id): Response {
+
+		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->find($id);
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
 
 		return $this->render('order/stripe.html.twig', [
+				'orderNumber' => $orderNumber,
+		]);
+	}
+
+	#[Route('/panier/commande/reglement-sur-place-{orderNumber}-{id}/', name: 'order_money_payment', requirements: ['orderNumber' => '[a-zA-Z0-9\-_]+'])]
+	public function moneyPayment($orderNumber, $id): Response {
+
+		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->find($id);
+
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
+
+		$order->setStatus('Enregistrée - Règlement sur place');
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($order);
+		$entityManager->flush();
+
+		return $this->render('order/money.html.twig', [
 
 		]);
 	}
 
-	#[Route('/panier/commande/paiement-par-carte/checkout/', name: 'order_payment_stripe_checkout')]
-	public function checkout($stripeSK): Response {
+	#[Route('/panier/commande/paiement-par-carte/checkout-{orderNumber}/', name: 'order_payment_stripe_checkout')]
+	public function checkout($stripeSK, $orderNumber): Response {
+
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
+
+		$price = $order->getPrice() * 100;
+
+		$array_products = $order->getProductArray();
+		$json_cart = implode(",", $array_products);
+		$saved_products = json_decode($json_cart);
+
+		$items = [];
+
+		foreach($saved_products as $product){
+
+			if($product->discount == null){
+				$discount = 0;
+			}else {
+				$discount = $product->discount;
+			}
+
+			$unitPrice = ($product->price - ($product->price * (int)$discount / 100)) * 100;
+
+			$array = [
+					'price_data' => [
+							'currency'     => 'eur',
+							'product_data' => [
+									'name' => $product->title,
+							],
+							'unit_amount'  => $unitPrice,
+					],
+					'quantity'   => $product->quantity,
+			];
+
+			array_push($items, $array);
+		}
+
+		$shippingCost = [
+				'price_data' => [
+						'currency'     => 'eur',
+						'product_data' => [
+								'name' => 'Frais de livraison',
+						],
+						'unit_amount'  => $order->getShippingCost() * 100,
+				],
+				'quantity'   => 1,
+		];
+
+		array_push($items, $shippingCost);
 
 		Stripe::setApiKey($stripeSK);
 
 		$session = Session::create([
-				                           'line_items'  => [[
-						                           'price_data' => [
-								                           'currency'     => 'eur',
-								                           'product_data' => [
-										                           'name' => 'T-shirt',
-								                           ],
-								                           'unit_amount'  => 2000,
-						                           ],
-						                           'quantity'   => 1,
-				                           ]],
+				                           'line_items'  => [
+				                           		$items,
+				                           ],
 				                           'mode'        => 'payment',
-				                           'success_url' => $this->generateUrl('success_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
-				                           'cancel_url'  => $this->generateUrl('cancel_url', [], UrlGeneratorInterface::ABSOLUTE_URL),
+				                           'success_url' => $this->generateUrl('success_url', ['orderNumber' => $orderNumber], UrlGeneratorInterface::ABSOLUTE_URL),
+				                           'cancel_url'  => $this->generateUrl('cancel_url', ['orderNumber' => $orderNumber], UrlGeneratorInterface::ABSOLUTE_URL),
 		                           ]);
 
 		return $this->redirect($session->url, 303);
 	}
 
-	#[Route('/panier/stripe/success/', name: 'success_url')]
-	public function success(): Response {
+	#[Route('/panier/stripe/success-{orderNumber}/', name: 'success_url')]
+	public function success($orderNumber): Response {
+
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
+
+		$order->setStatus('Enregistrée - Paiement acceptée');
+		$order->setSend('Commande enregistrée');
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($order);
+		$entityManager->flush();
 
 		return $this->render('payment/success.html.twig', [
 
 		]);
 	}
 
-	#[Route('/panier/stripe/cancel/', name: 'cancel_url')]
-	public function cancel(): Response {
+	#[Route('/panier/stripe/cancel-{orderNumber}/', name: 'cancel_url')]
+	public function cancel($orderNumber): Response {
+
+		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
+
+		$order->setStatus('Enregistrée - Problème durant le paiement');
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($order);
+		$entityManager->flush();
 
 		return $this->render('payment/cancel.html.twig', [
 

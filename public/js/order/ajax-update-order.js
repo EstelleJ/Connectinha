@@ -91,7 +91,7 @@ async function updateOrder(e) {
 
 	const response = await ajax('POST', '/ajax/update-order/', formData);
 
-	window.location.href = '/panier/commande/choisissez-votre-methode-de-paiement/';
+	window.location.href = '/panier/commande/choisissez-votre-methode-de-paiement-'+response+'/';
 }
 
 // ============================================================================

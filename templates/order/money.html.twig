@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réglement sur place - Passez votre commande{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Panier</span>
+			<span class="amatic tc-white uppercase">Choisissez votre méthode de paiement</span>
+		</h1>
+	</section>
+
+	<section id="choices">
+		<div class="container">
+			<div class="method">
+				<h2 class="tc-blue amatic">Vous souhaitez régler sur place</h2>
+				<p>Vous pouvez récupérer votre commande dès qu'elle sera prête, vous recevrez un mail pour vous confirmer sa disponibilité.</p>
+
+				<p class="ref">Référence de votre commande : </p>
+
+				<p class="thanks">
+					Merci pour votre commande,<br>
+					pensez à noter la référence de votre commande.<br>
+
+					<span>À bientôt !</span>
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -45,4 +45,86 @@
 .orders {
 	padding: 2.5rem 4rem;
 	background-color: @bg-white;
+
+	.large-bloc {
+		width: 100%;
+	}
+
+	.date {
+		color: @tc-light-purple-connectinha;
+	}
+
+	.delivery,
+	.invoicing{
+		margin: 2rem 0;
+
+		h3 {
+			font-size: 2rem;
+			font-weight: bold;
+		}
+	}
+
+	.allProducts {
+		margin-top: 3rem;
+		background-color: @bg-lightgrey;
+		padding: 2rem 3rem;
+
+		.title {
+			display: flex;
+			flex-wrap: wrap;
+
+			h4 {
+				font-weight: bold;
+				font-size: 1.6rem;
+			}
+		}
+
+		.productTitle {
+			width: 40%;
+		}
+		.productQuantity {
+			width: 20%;
+		}
+		.productPrice {
+			width: 30%;
+		}
+
+		.product {
+			padding: 1.5rem 0;
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+	}
+
+	.details {
+		margin: 3rem 0;
+		p {
+			font-weight: bold;
+			font-size: 1.6rem;
+			color: @tc-blue-connectinha;
+		}
+	}
+
+	.status {
+
+		label {
+			margin: 1.5rem 0;
+		}
+
+		button {
+			margin-top: 2rem;
+			padding: 1rem 4rem;
+			background-color: @bg-blue-connectinha;
+			transition: 0.3s background-color;
+			color: @tc-white;
+
+			&:hover {
+				cursor: pointer;
+				background-color: lighten(@bg-blue-connectinha, 10%);
+				transition: 0.3s background-color;
+			}
+		}
+	}
+
 }

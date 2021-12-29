@@ -16,19 +16,20 @@
 		</h2>
 
 		<div class="large-bloc">
-			<h3>Date d'enregistrement de la commande : {{ order.date|format_datetime('full', 'none', locale='fr') }}</h3>
+			<h3>Date d'enregistrement de la commande :
+				<span class="date">
+					{{ order.date|format_datetime('full', 'none', locale='fr') }}
+				</span>
+			</h3>
 
 			<p>
 				Client qui a passé la commande :
 				{% if order.user|length > 0 %}
-					{{ order.user }}
+					{{ order.customerFirstname }} {{ order.customerName }}
 					{% else %}
 					Client non connecté
 				{% endif %}
 			</p>
-
-			<p>Nom pour la facture : {{ order.invoicingFirstname }} {{ order.invoicingName }}</p>
-			<p>Prix : {{ order.price }} €</p>
 
 			<div class="delivery">
 				<h3>Informations destinataire </h3>
@@ -36,12 +37,50 @@
 				<p>Adresse : {{ order.deliveryAdress }}</p>
 				<p>Ville : {{ order.deliveryCity }}</p>
 				<p>Code postal : {{ order.zipcode }}</p>
+				<p>Pays : {{ order.country }}</p>
 			</div>
 
+			<div class="invoicing">
+				<h3>Informations pour la facture</h3>
+				<p>Nom : {{ order.invoicingFirstname }} {{ order.invoicingName }}</p>
+				<p>Adresse : {{ order.invoicingAdress }}</p>
+				<p>Ville : {{ order.invoicingCity }}</p>
+				<p>Code postal : {{ order.invoicingZipcode }}</p>
+				<p>Pays : {{ order.invoicingCountry }}</p>
+			</div>
+
+			<div class="allProducts">
+				<div class="title">
+					<h4 class="productTitle">Nom du produit</h4>
+					<h4 class="productQuantity">Quantité</h4>
+					<h4 class="productPrice">Prix unitaire</h4>
+				</div>
+				{% for product in saved_products %}
+				<div class="product">
+					<h4 class="productTitle">
+						{{ product.title }}<br>
+						{{ product.mantra }}
+					</h4>
+					<h4 class="productQuantity">
+						{{ product.quantity }}
+					</h4>
+					<h4 class="productPrice">
+						{{ product.price }} €
+					</h4>
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="details">
+				<p>Prix : {{ order.price }} €</p>
+				<p>Dont frais de livraison : {{ order.shippingCost }} €</p>
+			</div>
 
 			<div class="status">
 				<h3>Statut : {{ order.status }}</h3>
-				<h3>Envoyé : {{ order.send }}</h3>
+				{{ form_start(form) }}
+
+				{{ form_end(form) }}
 			</div>
 		</div>
 

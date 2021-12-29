@@ -89,3 +89,68 @@
   padding: 2.5rem 4rem;
   background-color: #fff;
 }
+.orders .large-bloc {
+  width: 100%;
+}
+.orders .date {
+  color: #af5ce2;
+}
+.orders .delivery,
+.orders .invoicing {
+  margin: 2rem 0;
+}
+.orders .delivery h3,
+.orders .invoicing h3 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.orders .allProducts {
+  margin-top: 3rem;
+  background-color: #e7e9eb;
+  padding: 2rem 3rem;
+}
+.orders .allProducts .title {
+  display: flex;
+  flex-wrap: wrap;
+}
+.orders .allProducts .title h4 {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.orders .allProducts .productTitle {
+  width: 40%;
+}
+.orders .allProducts .productQuantity {
+  width: 20%;
+}
+.orders .allProducts .productPrice {
+  width: 30%;
+}
+.orders .allProducts .product {
+  padding: 1.5rem 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+.orders .details {
+  margin: 3rem 0;
+}
+.orders .details p {
+  font-weight: bold;
+  font-size: 1.6rem;
+  color: #4498b4;
+}
+.orders .status label {
+  margin: 1.5rem 0;
+}
+.orders .status button {
+  margin-top: 2rem;
+  padding: 1rem 4rem;
+  background-color: #41687f;
+  transition: 0.3s background-color;
+  color: #fff;
+}
+.orders .status button:hover {
+  cursor: pointer;
+  background-color: #5284a1;
+  transition: 0.3s background-color;
+}
