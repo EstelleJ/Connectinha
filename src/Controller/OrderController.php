@@ -244,10 +244,10 @@ class OrderController extends AbstractController {
 	#[Route('/panier/commande/choisissez-votre-methode-de-paiement-{orderNumber}/', name: 'order_method_choice')]
 	public function method($orderNumber): Response {
 
-		$paymentMethods = $this->getDoctrine()->getRepository(PaymentMethod::class)->findAll();
+		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->findOneBy(['slug' => 'paiement-par-carte']);
 
 		return $this->render('order/choice.html.twig', [
-				'paymentMethods' => $paymentMethods,
+				'method' => $method,
 				'orderNumber'    => $orderNumber,
 		]);
 	}
@@ -259,9 +259,13 @@ class OrderController extends AbstractController {
 		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->find($id);
 		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
 
-		return $this->render('order/stripe.html.twig', [
-				'orderNumber' => $orderNumber,
+		return $this->redirectToRoute('order_payment_stripe_checkout', [
+				'orderNumber' => $orderNumber
 		]);
+
+		// return $this->render('order/stripe.html.twig', [
+		// 		'orderNumber' => $orderNumber,
+		// ]);
 	}
 
 	#[Route('/panier/commande/reglement-sur-place-{orderNumber}-{id}/', name: 'order_money_payment', requirements: ['orderNumber' => '[a-zA-Z0-9\-_]+'])]

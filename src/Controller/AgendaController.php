@@ -228,9 +228,13 @@ class AgendaController extends AbstractController {
 
 		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->find($id);
 
-		return $this->render('agenda/stripe.html.twig', [
-				'token' => $token,
+		return $this->redirectToRoute('agenda_payment_stripe_checkout', [
+				'token' => $token
 		]);
+
+		// return $this->render('agenda/stripe.html.twig', [
+		// 		'token' => $token,
+		// ]);
 	}
 
 	#[Route('/programmer-un-rendez-vous/paiement-par-carte/checkout-{token}/', name: 'agenda_payment_stripe_checkout')]

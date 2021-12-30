@@ -24,17 +24,9 @@
 			<h2 class="tc-blue amatic">Comment souhaitez-vous régler votre commande ?</h2>
 
 			<div class="dflex">
-				{% for method in paymentMethods %}
-					{% if method.id == 6 %}
-						<a href="{{ path('order_payment_stripe', {'id': method.id, 'orderNumber': orderNumber }) }}" class="choice">
-							<i class="fas fa-credit-card"></i> Paiement par carte
-						</a>
-					{% elseif method.id == 4 %}
-						<a href="{{ path('order_money_payment', {'id': method.id, 'orderNumber': orderNumber }) }}" class="choice">
-							<i class="fas fa-money-bill"></i> Règlement par chèque ou monnaie
-						</a>
-					{% endif %}
-				{% endfor %}
+					<a href="{{ path('order_payment_stripe', {'id': method.id, 'orderNumber': orderNumber }) }}" class="choice">
+						<i class="fas fa-credit-card"></i> {{ method.name }}
+					</a>
 			</div>
 		</div>
 	</section>
