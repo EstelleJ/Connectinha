@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrez votre rendez-vous{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Les prestations</span>
+			<span class="amatic tc-white uppercase">Choisissez votre moyen de paiement</span>
+		</h1>
+	</section>
+
+	<section id="choices">
+		<div class="container">
+			<h2 class="tc-blue amatic">Comment souhaitez-vous régler votre prestation ?</h2>
+
+			<div class="dflex">
+				{% for method in paymentMethods %}
+					{% if method.id == 6 %}
+						<a href="{{ path('agenda_payment_stripe', {'id': method.id, 'token': token }) }}" class="choice">
+							<i class="fas fa-credit-card"></i> Paiement par carte
+						</a>
+					{% elseif method.id == 4 %}
+						<a href="{{ path('agenda_confirm', {'token': token }) }}" class="choice">
+							<i class="fas fa-money-bill"></i> Règlement par chèque ou monnaie lors du rendez-vous
+						</a>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

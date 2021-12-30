@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de votre rendez-vous{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/agenda.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Les prestations</span>
+			<span class="amatic tc-white uppercase">Réserver une séance</span>
+		</h1>
+	</section>
+
+	<section id="rdv">
+		<div class="container">
+			<h2 class="amatic tc-blue">Programmer un rendez-vous</h2>
+
+			<div class="bloc-choix confirmation">
+				<h3>Votre rendez-vous a bien été réservé !</h3>
+				<p>Vous avez rendez-vous le {{ rendezvous.date|format_datetime('full', 'none', locale='fr') }} à
+					{{ rendezvous.hours.hour|format_datetime('none', 'short', locale='fr') }} pour une durée de
+					{{ rendezvous.duration }}.</p>
+				<p>Vous serez contacté par téléphone au {{ rendezvous.phoneNumber }}.</p>
+				<p class="merci rougeScript">Merci et à bientôt.</p>
+			</div>
+
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réglement par carte - Enregistrez votre rendez-vous{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<h1>
+			<span class="rougeScript tc-white">Les prestations</span>
+			<span class="amatic tc-white uppercase">Réglez par carte</span>
+		</h1>
+	</section>
+
+	<section id="choices">
+		<div class="container">
+			<form action="/programmer-un-rendez-vous/paiement-par-carte/checkout-{{ token }}/" method="POST">
+				<button type="submit">Checkout</button>
+			</form>
+		</div>
+	</section>
+{% endblock %}

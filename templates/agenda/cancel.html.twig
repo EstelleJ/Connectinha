@@ -1,21 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Erreur de commande - Passez votre commande{% endblock %}
+{% block title %}Erreur de paiement - Réservation de votre rendez-vous{% endblock %}
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/client/order.css') }}">
-{% endblock %}
-
-{% block javascripts %}
-	<script src="{{ asset('js/order/ajax-get-order.js') }}" type="module"></script>
-	<script src="{{ asset('js/order/ajax-update-order.js') }}" type="module"></script>
 {% endblock %}
 
 {% block body %}
 	<section id="banner">
 		<h1>
 			<span class="rougeScript tc-white">Oups</span>
-			<span class="amatic tc-white uppercase">Votre commande n'a malheureusement pas été enregistrée !</span>
+			<span class="amatic tc-white uppercase">Votre rendez-vous n'a malheureusement pas été réservé !</span>
 		</h1>
 	</section>
 
@@ -23,7 +18,7 @@
 		<div class="container">
 			<h2 class="amatic tc-blue">Une erreur est survenue !</h2>
 			<p>
-				Votre commande n'a malheureusement pas été enregistrée, comment puis-je vous aider ?
+				Votre rendez-vous n'a malheureusement pas été enregistré, comment puis-je vous aider ?
 			</p>
 			<div class="btns">
 				<a href="{{ path('contact') }}" class="btn round bg-blue tc-white">

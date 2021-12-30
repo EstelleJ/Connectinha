@@ -91,7 +91,13 @@ async function updateOrder(e) {
 
 	const response = await ajax('POST', '/ajax/update-order/', formData);
 
-	window.location.href = '/panier/commande/choisissez-votre-methode-de-paiement-'+response+'/';
+	if(deliveryName == "" || deliveryFirstname == "" || deliveryEmail == "" || deliveryPhone == "" || deliveryAdress == "" || deliveryCity == "" || deliveryZipcode == "" || deliveryCountry == "" || invoicingName == "" || invoicingFirstname == "" || invoicingEmail == "" || invoicingPhone == "" || invoicingAdress == "" || invoicingCity == "" || invoicingZipcode == "" || invoicingCountry == ""){
+		alert('Merci de remplir tous les champs obligatoires');
+	}else {
+		window.location.href = '/panier/commande/choisissez-votre-methode-de-paiement-'+response+'/';
+	}
+
+
 }
 
 // ============================================================================

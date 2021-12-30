@@ -66,39 +66,44 @@ class OrderController extends AbstractController {
 
 		$form = $this->createFormBuilder()
 				->add('name', TextType::class, [
-						'label' => 'Nom *',
-						'attr'  => [
+						'label'    => 'Nom *',
+						'attr'     => [
 								'placeholder' => 'Nom du destinataire',
 								'value'       => $name,
 						],
+						'required' => true,
 				])
 				->add('firstname', TextType::class, [
-						'label' => 'Prénom *',
-						'attr'  => [
+						'label'    => 'Prénom *',
+						'attr'     => [
 								'placeholder' => 'Prénom du destinataire',
 								'value'       => $firstname,
 						],
+						'required' => true,
 				])
 				->add('email', EmailType::class, [
-						'label' => 'Email *',
-						'attr'  => [
+						'label'    => 'Email *',
+						'attr'     => [
 								'placeholder' => 'Email du destinataire',
 								'value'       => $email,
 						],
+						'required' => true,
 				])
 				->add('phone', TelType::class, [
-						'label' => 'Numéro de téléphone *',
-						'attr'  => [
+						'label'    => 'Numéro de téléphone *',
+						'attr'     => [
 								'placeholder' => 'Téléphone du destinataire',
 								'value'       => $phone,
 						],
+						'required' => true,
 				])
 				->add('delivery_adress', TextareaType::class, [
-						'label' => 'Adresse de livraison *',
-						'attr'  => [
+						'label'    => 'Adresse de livraison *',
+						'attr'     => [
 								'placeholder' => $delivery_adress,
 								'value'       => $delivery_adress,
 						],
+						'required' => true,
 				])
 				->add('delivery_building', TextType::class, [
 						'label'    => 'Bâtiment de livraison',
@@ -119,20 +124,22 @@ class OrderController extends AbstractController {
 						'required' => false,
 				])
 				->add('delivery_zipcode', TextType::class, [
-						'label' => 'Code postal de livraison *',
-						'attr'  =>
+						'label'    => 'Code postal de livraison *',
+						'attr'     =>
 								[
 										'placeholder' => 'Code postal',
 										'value'       => $delivery_zipcode,
 								],
+						'required' => true,
 				])
 				->add('delivery_city', TextType::class, [
-						'label' => 'Ville de livraison *',
-						'attr'  =>
+						'label'    => 'Ville de livraison *',
+						'attr'     =>
 								[
 										'placeholder' => 'Ville',
 										'value'       => $delivery_city,
 								],
+						'required' => true,
 				])
 				->add('delivery_country', CountryType::class, [
 						'label'             => 'Pays de livraison *',
@@ -142,42 +149,48 @@ class OrderController extends AbstractController {
 										'value'       => $delivery_country,
 								],
 						'preferred_choices' => [$delivery_country],
+						'required'          => true,
 				])
 				/* Facturation */
 
 				->add('invoicing_name', TextType::class, [
-						'label' => 'Nom *',
-						'attr'  => [
+						'label'    => 'Nom *',
+						'attr'     => [
 								'placeholder' => 'Nom du destinataire',
 						],
+						'required' => true,
 
 				])
 				->add('invoicing_firstname', TextType::class, [
-						'label' => 'Prénom *',
-						'attr'  => [
+						'label'    => 'Prénom *',
+						'attr'     => [
 								'placeholder' => 'Prénom du destinataire',
 						],
+						'required' => true,
 
 				])
 				->add('invoicing_email', EmailType::class, [
-						'label' => 'Email *',
-						'attr'  => [
+						'label'    => 'Email *',
+						'attr'     => [
 								'placeholder' => 'Email du destinataire',
 						],
+						'required' => true,
 
 				])
 				->add('invoicing_phone', TelType::class, [
-						'label' => 'Numéro de téléphone *',
-						'attr'  => [
+						'label'    => 'Numéro de téléphone *',
+						'attr'     => [
 								'placeholder' => 'Téléphone du destinataire',
 						],
+						'required' => true,
 
 				])
 				->add('invoicing_adress', TextareaType::class, [
-						'label' => 'Adresse de facturation *',
-						'attr'  => [
+						'label'    => 'Adresse de facturation *',
+						'attr'     => [
 								'placeholder' => $delivery_adress,
 						],
+						'required' => true,
 				])
 				->add('invoicing_building', TextType::class, [
 						'label'    => 'Bâtiment de facturation',
@@ -196,25 +209,28 @@ class OrderController extends AbstractController {
 						'required' => false,
 				])
 				->add('invoicing_zipcode', TextType::class, [
-						'label' => 'Code postal de facturation *',
-						'attr'  =>
+						'label'    => 'Code postal de facturation *',
+						'attr'     =>
 								[
 										'placeholder' => 'Code postal',
 								],
+						'required' => true,
 				])
 				->add('invoicing_city', TextType::class, [
-						'label' => 'Ville de facturation *',
-						'attr'  =>
+						'label'    => 'Ville de facturation *',
+						'attr'     =>
 								[
 										'placeholder' => 'Ville',
 								],
+						'required' => true,
 				])
 				->add('invoicing_country', CountryType::class, [
-						'label' => 'Pays de facturation *',
-						'attr'  =>
+						'label'    => 'Pays de facturation *',
+						'attr'     =>
 								[
 										'placeholder' => 'Pays',
 								],
+						'required' => true,
 				])
 				->getForm();
 
@@ -279,11 +295,12 @@ class OrderController extends AbstractController {
 
 		$items = [];
 
-		foreach($saved_products as $product){
+		foreach ($saved_products as $product) {
 
-			if($product->discount == null){
+			if ($product->discount == null) {
 				$discount = 0;
-			}else {
+			}
+			else {
 				$discount = $product->discount;
 			}
 
@@ -320,7 +337,7 @@ class OrderController extends AbstractController {
 
 		$session = Session::create([
 				                           'line_items'  => [
-				                           		$items,
+						                           $items,
 				                           ],
 				                           'mode'        => 'payment',
 				                           'success_url' => $this->generateUrl('success_url', ['orderNumber' => $orderNumber], UrlGeneratorInterface::ABSOLUTE_URL),
