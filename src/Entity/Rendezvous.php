@@ -67,10 +67,10 @@ class Rendezvous {
 	 */
 	private $token;
 
-    /**
-     * @ORM\Column(type="string", length=64, nullable=true)
-     */
-    private $status;
+  /**
+   * @ORM\Column(type="string", length=64, nullable=true)
+   */
+  private $status;
 
 	public function getId(): ?int {
          		return $this->id;

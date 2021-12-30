@@ -30,20 +30,24 @@
 
     <section class="table">
         <div class="header-table">
-            <div class="col days">
+            <div class="col rdv-days">
                 <h2>Jour et horaire</h2>
             </div>
 
-            <div class="col customer">
+            <div class="col service-rdv">
+                <h2>Prestation</h2>
+            </div>
+
+            <div class="col rdv-customer">
                 <h2>Client</h2>
             </div>
 
-            <div class="col email">
-                <h2>Email</h2>
+            <div class="col rdv-phoneNumber">
+                <h2>Numéro de téléphone</h2>
             </div>
 
-            <div class="col phoneNumber">
-                <h2>Numéro de téléphone</h2>
+            <div class="col rdv-status">
+                <h2>Statut</h2>
             </div>
 
             <div class="col action-btns">
@@ -53,29 +57,33 @@
 
         {% for rdv in rdvs %}
             <div class="line">
-                <div class="col days">
+                <div class="col rdv-days">
                     <h3>
-                        {{ rdv.date|format_datetime(locale='fr',pattern="HH:mm") }}
+                        {{ rdv.date|format_datetime('full', 'none', locale='fr') }} à {{ rdv.hours }}
                     </h3>
                 </div>
 
-                <div class="col customer">
+                <div class="col service-rdv">
+                    <h3>{{ rdv.service }}</h3>
+                </div>
+
+                <div class="col rdv-customer">
                     <h3>{{ rdv.firstname }} {{ rdv.name }}</h3>
                 </div>
 
-                <div class="col email">
-                    <h3>{{ rdv.email }}</h3>
+                <div class="col rdv-phoneNumber">
+                    <h3>{{ rdv.phoneNumber }}</h3>
                 </div>
 
-                <div class="col phoneNumber">
-                    <h3>{{ rdv.phoneNumber }}</h3>
+                <div class="col rdv-status">
+                    <h3>{{ rdv.status }}</h3>
                 </div>
 
                 <div class="col action-btns">
                     <div class="btns">
-                        <a class="btn" href="{{ path('admin_agenda_rdvs_modify', {'id': rdv.id }) }}"><i class="fas fa-edit"></i> Modifier</a>
+                        <a class="btn" href="{{ path('admin_agenda_rdv_modify', {'id': rdv.id }) }}"><i class="fas fa-edit"></i> Modifier</a>
 
-                        <form method="post" action="{{ path('admin_agenda_days_delete', {'id': rdv.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rendez-vous ?');">
+                        <form method="post" action="{{ path('admin_agenda_rdv_delete', {'id': rdv.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce rendez-vous ?');">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ rdv.id) }}">
                             <button class="btn delete"><i class="fas fa-times"></i> Supprimer</button>
                         </form>

@@ -57,6 +57,8 @@ class AdminAgendaController extends AbstractController {
 		$form = $this->createForm(RendezvousType::class, $rdv);
 		$form->handleRequest($request);
 
+		$status = '';
+
 		if ($form->isSubmitted() && $form->isValid()) {
 
 			$entityManager = $this->getDoctrine()->getManager();
@@ -72,12 +74,15 @@ class AdminAgendaController extends AbstractController {
 				'rdv'  => $rdv,
 				'form' => $form,
 				'rdvs' => $rdvs,
+				'status' => $status
 		]);
 	}
 
 	#[Route('/agenda/voir-les-rendez-vous/modifier-{id}/', name: 'admin_agenda_rdv_modify', methods: ['GET', 'POST'])]
 	public function agenda_rdvs_modify(Request $request, $id, AdminService $adminService): Response {
 		$rdv = $this->getDoctrine()->getRepository(Rendezvous::class)->find($id);
+
+		$status = $rdv->getStatus();
 
 		$form = $this->createForm(RendezvousType::class, $rdv);
 		$form->handleRequest($request);
@@ -99,10 +104,11 @@ class AdminAgendaController extends AbstractController {
 				'rdv'  => $rdv,
 				'form' => $form,
 				'rdvs' => $rdvs,
+				'status' => $status
 		]);
 	}
 
-	#[Route('/agenda/voir-les-rendez-vous/delete-{id}/', name: 'admin_agenda_days_delete', methods: ['POST'])]
+	#[Route('/agenda/voir-les-rendez-vous/delete-{id}/', name: 'admin_agenda_rdv_delete', methods: ['POST'])]
 	public function agenda_rdvs_delete(Request $request, Rendezvous $rdv): Response {
 		if ($this->isCsrfTokenValid('delete' . $rdv->getId(), $request->request->get('_token'))) {
 			$entityManager = $this->getDoctrine()->getManager();

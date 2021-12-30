@@ -4,11 +4,14 @@ namespace App\Controller;
 
 use App\Entity\Days;
 use App\Entity\Hours;
+use App\Entity\PaymentMethod;
 use App\Entity\Rendezvous;
 use App\Entity\Services;
 use App\Entity\Unavailable;
 use App\Service\ToolsService;
 use DateTime;
+use Stripe\Checkout\Session;
+use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -16,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AgendaController extends AbstractController {
 
@@ -80,6 +84,24 @@ class AgendaController extends AbstractController {
 		// ========================================================================
 		// Form
 		// ========================================================================
+
+		$user = $this->getUser();
+
+		$name = '';
+		$firstname = '';
+		$email = '';
+		$phone = '';
+
+		if($user !== null){
+
+			$customer = $user->getCustomer();
+
+			$name = $user->getName();
+			$firstname = $user->getFirstName();
+			$email = $customer->getEmail();
+			$phone = $customer->getPhone();
+		}
+
 		$duration = $service->getDuration();
 
 		$rendezvous = new Rendezvous();
@@ -91,15 +113,27 @@ class AgendaController extends AbstractController {
 		$form = $this->createFormBuilder($rendezvous)
 				->add('name', TextType::class, [
 						'label' => 'Nom',
+						'attr' => [
+								'value' => $name
+						]
 				])
 				->add('firstname', TextType::class, [
 						'label' => 'Prénom',
+						'attr' => [
+								'value' => $firstname
+						]
 				])
 				->add('email', EmailType::class, [
 						'label' => 'Adresse Email',
+						'attr' => [
+								'value' => $email
+						]
 				])
 				->add('phoneNumber', TelType::class, [
 						'label' => 'Numéro de téléphone',
+						'attr' => [
+								'value' => $phone
+						]
 				])
 				->getForm();
 
@@ -132,11 +166,13 @@ class AgendaController extends AbstractController {
 					         ]);
 
 			if (empty($duplicate_rendezvous)) {
+				$rendezvous->setStatus('Non réglée - Abandonnée avant paiement');
+
 				$entityManager = $this->getDoctrine()->getManager();
 				$entityManager->persist($rendezvous);
 				$entityManager->flush();
 
-				return $this->redirectToRoute('agenda_confirm', [
+				return $this->redirectToRoute('agenda_method_choice', [
 						'token' => $rendezvous->getToken(),
 				]);
 			}
@@ -163,8 +199,105 @@ class AgendaController extends AbstractController {
 		$rendezvous = $this->getDoctrine()->getRepository(Rendezvous::class)->findOneBy([
 				                                                                                'token' => $token,
 		                                                                                ]);
+
+		$rendezvous->setStatus('Enregistrée - Paiement sur place');
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($rendezvous);
+		$entityManager->flush();
+
 		return $this->render('agenda/confirmation.html.twig', [
 				'rendezvous' => $rendezvous,
+		]);
+	}
+
+	/* STRIPE RENDEZ-VOUS */
+	#[Route('/programmer-un-rendez-vous/choisissez-votre-methode-de-paiement-{token}/', name: 'agenda_method_choice', requirements: ['token' => '[a-zA-Z0-9\-_.]+'])]
+	public function method($token): Response {
+
+		$paymentMethods = $this->getDoctrine()->getRepository(PaymentMethod::class)->findAll();
+
+		return $this->render('agenda/method.html.twig', [
+				'paymentMethods' => $paymentMethods,
+				'token'    => $token,
+		]);
+	}
+
+	#[Route('/programmer-un-rendez-vous/paiement-par-carte-{token}-{id}/', name: 'agenda_payment_stripe', requirements: ['token' => '[a-zA-Z0-9\-_.]+'])]
+	public function stripePayment($token, $id): Response {
+
+		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->find($id);
+
+		return $this->render('agenda/stripe.html.twig', [
+				'token' => $token,
+		]);
+	}
+
+	#[Route('/programmer-un-rendez-vous/paiement-par-carte/checkout-{token}/', name: 'agenda_payment_stripe_checkout')]
+	public function checkout($stripeSK, $token): Response {
+
+		$rendezvous = $this->getDoctrine()->getRepository(Rendezvous::class)->findOneBy([
+				                                                                                'token' => $token,
+		                                                                                ]);
+		$service = $rendezvous->getService();
+		$date = $rendezvous->getDate();
+		$title = 'Rendez-vous pour une prestation de : '.$service->getTitle().' le '.$date->format('d-M-Y');
+
+		$price = $service->getPrice() * 100;
+
+		Stripe::setApiKey($stripeSK);
+
+		$session = Session::create([
+				                           'line_items'  => [[
+						                           'price_data' => [
+								                           'currency'     => 'eur',
+								                           'product_data' => [
+										                           'name' => $title,
+								                           ],
+								                           'unit_amount'  => $price,
+						                           ],
+						                           'quantity'   => 1,
+				                           ]],
+				                           'mode'        => 'payment',
+				                           'success_url' => $this->generateUrl('agenda_success_url', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL),
+				                           'cancel_url'  => $this->generateUrl('agenda_cancel_url', ['token' => $token], UrlGeneratorInterface::ABSOLUTE_URL),
+		                           ]);
+
+		return $this->redirect($session->url, 303);
+	}
+
+	#[Route('/programmer-un-rendez-vous/stripe/success-{token}/', name: 'agenda_success_url')]
+	public function success($token): Response {
+
+		$rendezvous = $this->getDoctrine()->getRepository(Rendezvous::class)->findOneBy([
+				                                                                                'token' => $token,
+		                                                                                ]);
+		$rendezvous->setStatus('Enregistrée - Paiement acceptée par carte bancaire');
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($rendezvous);
+		$entityManager->flush();
+
+		return $this->render('agenda/success.html.twig', [
+			'rendezvous' => $rendezvous
+		]);
+	}
+
+	#[Route('/programmer-un-rendez-vous/stripe/cancel-{token}/', name: 'agenda_cancel_url')]
+	public function cancel($token): Response {
+
+		$rendezvous = $this->getDoctrine()->getRepository(Rendezvous::class)->findOneBy([
+				                                                                                'token' => $token,
+		                                                                                ]);
+
+		$rendezvous->setStatus('Non Enregistrée - Problème durant le paiement');
+
+		$entityManager = $this->getDoctrine()->getManager();
+		$entityManager->persist($rendezvous);
+		$entityManager->flush();
+
+		return $this->render('agenda/cancel.html.twig', [
+
 		]);
 	}
 
