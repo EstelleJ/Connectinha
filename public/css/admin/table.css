@@ -83,6 +83,7 @@
   /* ----------- Horaires ------------- */
   /* --------------- Distance ---------------- */
   /* --------------- Services --------------- */
+  /* ----------------- Rendez-vous ----------------- */
 }
 .table .header-table {
   display: flex;
@@ -182,6 +183,21 @@
 }
 .table .method {
   width: 10%;
+}
+.table .rdv-days {
+  width: 20%;
+}
+.table .service-rdv {
+  width: 15%;
+}
+.table .rdv-customer {
+  width: 10%;
+}
+.table .rdv-phoneNumber {
+  width: 10%;
+}
+.table .rdv-status {
+  width: 15%;
 }
 .form {
   background-color: #fff;

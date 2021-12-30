@@ -132,5 +132,8 @@
   margin-right: 10px;
   color: #41687f;
 }
+.element .paiement {
+  margin-left: 1rem;
+}
 /* --------------- MEDIAQUERIES --------------- */
 /* -------------------------------------------- */
