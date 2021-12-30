@@ -64,9 +64,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $carts;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Rendezvous::class, mappedBy="user")
+     */
+    private $rendezvouses;
+
     public function __construct()
     {
         $this->carts = new ArrayCollection();
+        $this->rendezvouses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -235,6 +241,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($cart->getUser() === $this) {
                 $cart->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rendezvous[]
+     */
+    public function getRendezvouses(): Collection
+    {
+        return $this->rendezvouses;
+    }
+
+    public function addRendezvouse(Rendezvous $rendezvouse): self
+    {
+        if (!$this->rendezvouses->contains($rendezvouse)) {
+            $this->rendezvouses[] = $rendezvouse;
+            $rendezvouse->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRendezvouse(Rendezvous $rendezvouse): self
+    {
+        if ($this->rendezvouses->removeElement($rendezvouse)) {
+            // set the owning side to null (unless already changed)
+            if ($rendezvouse->getUser() === $this) {
+                $rendezvouse->setUser(null);
             }
         }
 

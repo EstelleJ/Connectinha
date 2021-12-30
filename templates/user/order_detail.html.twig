@@ -46,8 +46,8 @@
                 </div>
 
                 <div class="elements">
-                    {% if order %}
-                    <h2>Votre dernière commande</h2>
+
+                    <h2>Détail de votre commande</h2>
 
                     <div class="order">
                         <h3>Commande n°{{ order.orderNumber }} - <span><i class="fas fa-box"></i>{{ order.send }}</span></h3>
@@ -83,20 +83,52 @@
                             {% endfor %}
                         </div>
 
+                        <div class="details">
+                            <div>
+                                <h3>Informations de livraison</h3>
+
+                                <p>{{ order.customerFirstname }} {{ order.customerName }}</p>
+                                <p>{{ order.customerEmail }}</p>
+                                <p>{{ order.deliveryPhoneNumber }}</p>
+
+                                <p>{{ order.deliveryAdress }}</p>
+                                <p>{{ order.deliveryBuilding }}</p>
+                                <p>{{ order.deliveryApartment }}</p>
+                                <p>{{ order.zipcode }}</p>
+                                <p>{{ order.deliveryCity }}</p>
+                                <p>{{ order.country }}</p>
+                            </div>
+
+                            <div>
+                                <h3>Informations de facturation</h3>
+
+                                <p>{{ order.invoicingFirstname }} {{ order.invoicingName }}</p>
+                                <p>{{ order.invoicingEmail }}</p>
+                                <p>{{ order.invoicingPhoneNumber }}</p>
+
+                                <p>{{ order.invoicingAdress }}</p>
+                                <p>{{ order.invoicingBuilding }}</p>
+                                <p>{{ order.invoicingApartment }}</p>
+                                <p>{{ order.invoicingZipcode }}</p>
+                                <p>{{ order.invoicingCity }}</p>
+                                <p>{{ order.invoicingCountry }}</p>
+                            </div>
+                        </div>
 
                         <h4>Frais de livraison : {{ order.shippingCost }} €</h4>
                         <h4>Total de la commande : {{ order.price }} €</h4>
 
+                        {% if order.deliveryMessage|length > 0 %}
+                        <div class="message">
+                            <h3>Message lié à l'état de commande</h3>
+                            <p>
+                                {{ order.deliveryMessage }}
+                            </p>
+                        </div>
+                        {% endif %}
+
                     </div>
 
-                    <div class="btns orders">
-                        <a href="{{ path('profile_order_details', {'id': order.id}) }}" class="btn round bg-blue tc-white">
-                            <i class="fas fa-list"></i> Voir le détail
-                        </a>
-                    </div>
-                    {% else %}
-                        <h2>Vous n'avez pas encore de commande</h2>
-                    {% endif %}
                 </div>
 
             </div>

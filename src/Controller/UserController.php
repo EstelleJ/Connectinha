@@ -33,7 +33,7 @@ class UserController extends AbstractController {
 		$arrayProducts = [];
 		$saved_products = '';
 
-		if($order !== null){
+		if ($order !== null) {
 			$array_cart = $order->getProductArray();
 			$json_cart = implode(",", $array_cart);
 
@@ -106,8 +106,8 @@ class UserController extends AbstractController {
 		dump($customer->getStreetNb());
 		$form = $this->createFormBuilder()
 				->add('password', PasswordType::class, [
-						'label' => 'Mot de passe',
-						'required' => false
+						'label'    => 'Mot de passe',
+						'required' => false,
 				])
 				->add('name', TextType::class, [
 						'label' => 'Votre nom *',
@@ -212,7 +212,7 @@ class UserController extends AbstractController {
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
-			if($form->get('password')->getData() !== null){
+			if ($form->get('password')->getData() !== null) {
 				$user->setPassword(
 						$passwordEncoder->encodePassword(
 								$user,
@@ -247,5 +247,68 @@ class UserController extends AbstractController {
 				'user' => $user,
 		]);
 	}
+
+	#[Route('/votre-espace-client/vos-commande/', name: 'profile_orders')]
+	public function userOrders(): Response {
+
+		$user = $this->getUser();
+		$customer = $user->getCustomer();
+
+		$orders = $this->getDoctrine()->getRepository(Orders::class)->findBy(['user' => $customer], ['id' => 'DESC']);
+
+		return $this->render('user/orders.html.twig', [
+				'user'   => $user,
+				'orders' => $orders,
+		]);
+	}
+
+	#[Route('/votre-espace-client/vos-commande-{id}/', name: 'profile_order_details')]
+	public function orderDetails($id): Response {
+
+		$user = $this->getUser();
+		$customer = $user->getCustomer();
+
+		$order = $this->getDoctrine()->getRepository(Orders::class)->find($id);
+
+		$arrayProducts = [];
+		$saved_products = '';
+
+		if ($order !== null) {
+			$array_cart = $order->getProductArray();
+			$json_cart = implode(",", $array_cart);
+
+			$saved_products = json_decode($json_cart);
+
+			foreach ($saved_products as $cartProduct) {
+
+				$productId = $cartProduct->id;
+				$quantity = $cartProduct->quantity;
+				$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+				array_push($arrayProducts, $product);
+
+			}
+
+			dump($saved_products);
+		}
+
+		return $this->render('user/order_detail.html.twig', [
+				'user'   => $user,
+				'order' => $order,
+				'arrayProducts' => $arrayProducts,
+				'savedProducts' => $saved_products,
+		]);
+	}
+
+	#[Route('/votre-espace-client/vos-rendez-vous/', name: 'profile_rdv')]
+	public function userRendezvous(): Response {
+
+		$user = $this->getUser();
+
+		return $this->render('user/rdvs.html.twig', [
+				'user'   => $user,
+		]);
+	}
+
 
 }

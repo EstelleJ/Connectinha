@@ -8,6 +8,7 @@ use App\Entity\PaymentMethod;
 use App\Entity\Rendezvous;
 use App\Entity\Services;
 use App\Entity\Unavailable;
+use App\Entity\User;
 use App\Service\ToolsService;
 use DateTime;
 use Stripe\Checkout\Session;
@@ -86,11 +87,14 @@ class AgendaController extends AbstractController {
 		// ========================================================================
 
 		$user = $this->getUser();
+		$userId = $user->getId();
+		$userLogged = $this->getDoctrine()->getRepository(User::class)->find($userId);
 
 		$name = '';
 		$firstname = '';
 		$email = '';
 		$phone = '';
+		$rendezvousUser = null;
 
 		if($user !== null){
 
@@ -100,6 +104,8 @@ class AgendaController extends AbstractController {
 			$firstname = $user->getFirstName();
 			$email = $customer->getEmail();
 			$phone = $customer->getPhone();
+
+			$rendezvousUser = $userLogged;
 		}
 
 		$duration = $service->getDuration();
@@ -167,6 +173,7 @@ class AgendaController extends AbstractController {
 
 			if (empty($duplicate_rendezvous)) {
 				$rendezvous->setStatus('Non réglée - Abandonnée avant paiement');
+				$rendezvous->setUser($rendezvousUser);
 
 				$entityManager = $this->getDoctrine()->getManager();
 				$entityManager->persist($rendezvous);

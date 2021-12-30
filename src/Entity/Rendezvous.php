@@ -72,109 +72,114 @@ class Rendezvous {
    */
   private $status;
 
+  /**
+   * @ORM\ManyToOne(targetEntity=User::class, inversedBy="rendezvouses")
+   */
+  private $user;
+
 	public function getId(): ?int {
-         		return $this->id;
-         	}
+                  		return $this->id;
+                  	}
 
 	public function getDate(): ?\DateTimeInterface {
-         		return $this->date;
-         	}
+                  		return $this->date;
+                  	}
 
 	public function setDate(\DateTimeInterface $date): self {
-         		$this->date = $date;
-         
-         		return $this;
-         	}
+                  		$this->date = $date;
+                  
+                  		return $this;
+                  	}
 
 	public function getDuration(): ?Duration {
-         		return $this->duration;
-         	}
+                  		return $this->duration;
+                  	}
 
 	public function setDuration(?Duration $duration): self {
-         		$this->duration = $duration;
-         
-         		return $this;
-         	}
+                  		$this->duration = $duration;
+                  
+                  		return $this;
+                  	}
 
 	public function getDay(): ?Days {
-         		return $this->day;
-         	}
+                  		return $this->day;
+                  	}
 
 	public function setDay(?Days $day): self {
-         		$this->day = $day;
-         
-         		return $this;
-         	}
+                  		$this->day = $day;
+                  
+                  		return $this;
+                  	}
 
 	public function getHours(): ?Hours {
-         		return $this->hours;
-         	}
+                  		return $this->hours;
+                  	}
 
 	public function setHours(?Hours $hours): self {
-         		$this->hours = $hours;
-         
-         		return $this;
-         	}
+                  		$this->hours = $hours;
+                  
+                  		return $this;
+                  	}
 
 	public function getService(): ?Services {
-         		return $this->service;
-         	}
+                  		return $this->service;
+                  	}
 
 	public function setService(?Services $service): self {
-         		$this->service = $service;
-         
-         		return $this;
-         	}
+                  		$this->service = $service;
+                  
+                  		return $this;
+                  	}
 
 	public function getName(): ?string {
-         		return $this->name;
-         	}
+                  		return $this->name;
+                  	}
 
 	public function setName(string $name): self {
-         		$this->name = $name;
-         
-         		return $this;
-         	}
+                  		$this->name = $name;
+                  
+                  		return $this;
+                  	}
 
 	public function getFirstname(): ?string {
-         		return $this->firstname;
-         	}
+                  		return $this->firstname;
+                  	}
 
 	public function setFirstname(string $firstname): self {
-         		$this->firstname = $firstname;
-         
-         		return $this;
-         	}
+                  		$this->firstname = $firstname;
+                  
+                  		return $this;
+                  	}
 
 	public function getEmail(): ?string {
-         		return $this->email;
-         	}
+                  		return $this->email;
+                  	}
 
 	public function setEmail(string $email): self {
-         		$this->email = $email;
-         
-         		return $this;
-         	}
+                  		$this->email = $email;
+                  
+                  		return $this;
+                  	}
 
 	public function getPhoneNumber(): ?string {
-         		return $this->phoneNumber;
-         	}
+                  		return $this->phoneNumber;
+                  	}
 
 	public function setPhoneNumber(string $phoneNumber): self {
-         		$this->phoneNumber = $phoneNumber;
-         
-         		return $this;
-         	}
+                  		$this->phoneNumber = $phoneNumber;
+                  
+                  		return $this;
+                  	}
 
 	public function getToken(): ?string {
-         		return $this->token;
-         	}
+                  		return $this->token;
+                  	}
 
 	public function setToken(string $token): self {
-         		$this->token = $token;
-         
-         		return $this;
-         	}
+                  		$this->token = $token;
+                  
+                  		return $this;
+                  	}
 
     public function getStatus(): ?string
     {
@@ -184,6 +189,18 @@ class Rendezvous {
     public function setStatus(?string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

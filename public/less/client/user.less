@@ -150,8 +150,13 @@
 				font-size: 1.4rem !important;
 			}
 
+			.orders {
+				justify-content: center;
+			}
+
 			/* ------------- INDEX ------------- */
-			.order {
+			.order,
+			.user-order {
 				background-color: @bg-white;
 				width: 100%;
 				padding: 2rem 3rem;
@@ -205,12 +210,39 @@
 						margin-bottom: 1rem;
 					}
 
-
 				}
 
 
+				/* -------------- DETAILS DE COMMANDE ---------------- */
+
+				.details {
+					padding: 3rem 0;
+					border-top: 1px solid #d3d3d3;
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+
+					div {
+						width: 48%;
+					}
+				}
+
+				/* -------------- MESSAGE LIVRAISON -------------- */
+
+				.message {
+					padding: 3rem 0;
+					border-top: 1px solid #d3d3d3;
+				}
+
 			}
 
+			/* --------------- USER ORDERS ------------- */
+
+			.user-order {
+				background-color: @bg-white;
+				padding: 1.8rem 2.5rem;
+				margin-bottom: 1rem;
+			}
 
 			/* --------------- SAVED CART -------------- */
 

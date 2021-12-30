@@ -199,60 +199,100 @@
   padding: 4rem 6rem;
   width: 70%;
   /* ------------- INDEX ------------- */
+  /* --------------- USER ORDERS ------------- */
   /* --------------- SAVED CART -------------- */
   /* -------------------- FORM ------------------- */
 }
 #profile .content .elements .btn {
   font-size: 1.4rem !important;
 }
-#profile .content .elements .order {
+#profile .content .elements .orders {
+  justify-content: center;
+}
+#profile .content .elements .order,
+#profile .content .elements .user-order {
   background-color: #fff;
   width: 100%;
   padding: 2rem 3rem;
+  /* -------------- DETAILS DE COMMANDE ---------------- */
+  /* -------------- MESSAGE LIVRAISON -------------- */
 }
-#profile .content .elements .order h3 {
+#profile .content .elements .order h3,
+#profile .content .elements .user-order h3 {
   color: #4498b4;
   font-size: 1.6rem;
 }
-#profile .content .elements .order h3 span {
+#profile .content .elements .order h3 span,
+#profile .content .elements .user-order h3 span {
   color: #af5ce2;
 }
-#profile .content .elements .order h3 span i {
+#profile .content .elements .order h3 span i,
+#profile .content .elements .user-order h3 span i {
   margin-right: 0.8rem;
 }
-#profile .content .elements .order p {
+#profile .content .elements .order p,
+#profile .content .elements .user-order p {
   font-size: 1.4rem;
 }
-#profile .content .elements .order h4 {
+#profile .content .elements .order h4,
+#profile .content .elements .user-order h4 {
   font-size: 1.8rem;
   font-weight: bold;
 }
-#profile .content .elements .order .products {
+#profile .content .elements .order .products,
+#profile .content .elements .user-order .products {
   margin-top: 2rem;
   padding-top: 2rem;
   border-top: 1px solid #333;
 }
-#profile .content .elements .order .products .product {
+#profile .content .elements .order .products .product,
+#profile .content .elements .user-order .products .product {
   margin-bottom: 1rem;
   padding: 0.8rem 0;
 }
-#profile .content .elements .order .products .product h4 {
+#profile .content .elements .order .products .product h4,
+#profile .content .elements .user-order .products .product h4 {
   font-size: 1.5rem;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
-#profile .content .elements .order .products .product p {
+#profile .content .elements .order .products .product p,
+#profile .content .elements .user-order .products .product p {
   font-size: 1.4rem;
 }
-#profile .content .elements .order .products .plus {
+#profile .content .elements .order .products .plus,
+#profile .content .elements .user-order .products .plus {
   margin-bottom: 1rem;
 }
-#profile .content .elements .order .products .plus span {
+#profile .content .elements .order .products .plus span,
+#profile .content .elements .user-order .products .plus span {
   display: inline-block;
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 0.4rem;
   background-color: #042b40;
+}
+#profile .content .elements .order .details,
+#profile .content .elements .user-order .details {
+  padding: 3rem 0;
+  border-top: 1px solid #d3d3d3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#profile .content .elements .order .details div,
+#profile .content .elements .user-order .details div {
+  width: 48%;
+}
+#profile .content .elements .order .message,
+#profile .content .elements .user-order .message {
+  padding: 3rem 0;
+  border-top: 1px solid #d3d3d3;
+}
+#profile .content .elements .user-order {
+  background-color: #fff;
+  padding: 1.8rem 2.5rem;
+  margin-bottom: 1rem;
 }
 #profile .content .elements .product-saved {
   padding: 1rem 0;

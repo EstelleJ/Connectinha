@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre espace client{% endblock %}
+
+{% block description %}
+
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('js/user/ajax-user-delete.js') }}" type="module"></script>
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/client/user.css') }}">
+{% endblock %}
+
+{% block body %}
+	<section id="banner">
+		<div class="container">
+
+		</div>
+	</section>
+
+	<section id="profile">
+		<div class="container">
+			<h1>
+                <span class="rougeScript tc-blue">
+                    Bonjour {{ user.firstName }} {{ user.name }},
+                </span>
+				<span class="amatic uppercase">Bienvenue dans votre espace client</span>
+			</h1>
+
+			<div class="content">
+				<div class="column">
+					<div class="bloc-user">
+						<h2>Vos informations personnelles</h2>
+
+						<h3>{{ user.firstName }} {{ user.name }}</h3>
+
+						<p>{{ user.email }}</p>
+						<p>{{ user.customer.phone }}</p>
+
+					</div>
+
+					{% include 'includes/_user_cart_saved.html.twig' %}
+				</div>
+
+				<div class="elements">
+					{% if orders|length > 0 %}
+						<h2>Vos dernières commandes</h2>
+
+						{% for order in orders %}
+							<div class="user-order">
+								<h3>Commande n°{{ order.orderNumber }} - <span><i class="fas fa-box"></i>{{ order.send }}</span></h3>
+								<p>du {{ order.date|date('d/m/Y') }}</p>
+
+								<h4>Frais de livraison : {{ order.shippingCost }} €</h4>
+								<h4>Total de la commande : {{ order.price }} €</h4>
+
+								<div class="btns orders">
+									<a href="{{ path('profile_order_details', {'id': order.id}) }}" class="btn round bg-blue tc-white">
+										<i class="fas fa-list"></i> Voir le détail
+									</a>
+								</div>
+							</div>
+						{% endfor %}
+
+					{% else %}
+						<h2>Vous n'avez pas encore de commande</h2>
+
+					{% endif %}
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+{% endblock %}
