@@ -49,7 +49,6 @@ class UserController extends AbstractController {
 
 			}
 
-			dump($saved_products);
 		}
 
 
