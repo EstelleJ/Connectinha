@@ -9,6 +9,7 @@ use App\Entity\Rendezvous;
 use App\Entity\Services;
 use App\Entity\Unavailable;
 use App\Entity\User;
+use App\Service\MailJetService;
 use App\Service\ToolsService;
 use DateTime;
 use Stripe\Checkout\Session;
@@ -96,7 +97,7 @@ class AgendaController extends AbstractController {
 		$phone = '';
 		$rendezvousUser = null;
 
-		if($user !== null){
+		if ($user !== null) {
 
 			$customer = $user->getCustomer();
 
@@ -119,27 +120,27 @@ class AgendaController extends AbstractController {
 		$form = $this->createFormBuilder($rendezvous)
 				->add('name', TextType::class, [
 						'label' => 'Nom',
-						'attr' => [
-								'value' => $name
-						]
+						'attr'  => [
+								'value' => $name,
+						],
 				])
 				->add('firstname', TextType::class, [
 						'label' => 'Prénom',
-						'attr' => [
-								'value' => $firstname
-						]
+						'attr'  => [
+								'value' => $firstname,
+						],
 				])
 				->add('email', EmailType::class, [
 						'label' => 'Adresse Email',
-						'attr' => [
-								'value' => $email
-						]
+						'attr'  => [
+								'value' => $email,
+						],
 				])
 				->add('phoneNumber', TelType::class, [
 						'label' => 'Numéro de téléphone',
-						'attr' => [
-								'value' => $phone
-						]
+						'attr'  => [
+								'value' => $phone,
+						],
 				])
 				->getForm();
 
@@ -226,7 +227,7 @@ class AgendaController extends AbstractController {
 
 		return $this->render('agenda/method.html.twig', [
 				'paymentMethods' => $paymentMethods,
-				'token'    => $token,
+				'token'          => $token,
 		]);
 	}
 
@@ -236,7 +237,7 @@ class AgendaController extends AbstractController {
 		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->find($id);
 
 		return $this->redirectToRoute('agenda_payment_stripe_checkout', [
-				'token' => $token
+				'token' => $token,
 		]);
 
 		// return $this->render('agenda/stripe.html.twig', [
@@ -252,7 +253,7 @@ class AgendaController extends AbstractController {
 		                                                                                ]);
 		$service = $rendezvous->getService();
 		$date = $rendezvous->getDate();
-		$title = 'Rendez-vous pour une prestation de : '.$service->getTitle().' le '.$date->format('d-M-Y');
+		$title = 'Rendez-vous pour une prestation de : ' . $service->getTitle() . ' le ' . $date->format('d-M-Y');
 
 		$price = $service->getPrice() * 100;
 
@@ -278,7 +279,7 @@ class AgendaController extends AbstractController {
 	}
 
 	#[Route('/programmer-un-rendez-vous/stripe/success-{token}/', name: 'agenda_success_url')]
-	public function success($token): Response {
+	public function success($token, Request $request, MailJetService $mailJetService): Response {
 
 		$rendezvous = $this->getDoctrine()->getRepository(Rendezvous::class)->findOneBy([
 				                                                                                'token' => $token,
@@ -289,8 +290,26 @@ class AgendaController extends AbstractController {
 		$entityManager->persist($rendezvous);
 		$entityManager->flush();
 
+
+		$mailTo = $rendezvous->getEmail();
+		$subject = "Confirmation de votre rendez-vous avec Elodie Ortiz";
+		$templateId = 3465668;
+		$firstName = $rendezvous->getFirstname() . ' ' . $rendezvous->getName();
+
+		$service = $rendezvous->getService()->getTitle();
+		$name = $rendezvous->getName();
+		$user_firstName = $rendezvous->getFirstname();
+
+		$variables = [
+				'name'           => $name,
+				'user_firstName' => $user_firstName,
+				'service'        => $service,
+		];
+
+		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
+
 		return $this->render('agenda/success.html.twig', [
-			'rendezvous' => $rendezvous
+				'rendezvous' => $rendezvous,
 		]);
 	}
 

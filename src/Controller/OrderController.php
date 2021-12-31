@@ -435,7 +435,7 @@ class OrderController extends AbstractController {
 				'invoicingCity'      => $invoicingCity,
 				'invoicingZipcode'   => $invoicingZipcode,
 				'invoicingCountry'   => $invoicingCountry,
-				'products'           => $items,
+				// 'products'           => $items,
 		];
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
