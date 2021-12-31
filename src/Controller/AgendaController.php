@@ -334,6 +334,8 @@ class AgendaController extends AbstractController {
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
 
+		dump($response->getStatus());
+
 		if($response->getStatus() == 200) {
 			return $this->redirectToRoute('agenda_confirm_mail', [
 					'token' => $token
