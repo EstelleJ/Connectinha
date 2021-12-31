@@ -205,7 +205,7 @@ class AgendaController extends AbstractController {
 
 
 	#[Route('/programmer-un-rendez-vous/confirmation-{token}/', name: 'agenda_confirm')]
-	public function confirm(Request $request, $token): Response {
+	public function confirm(Request $request, $token, MailJetService $mailJetService): Response {
 
 		$rendezvous = $this->getDoctrine()->getRepository(Rendezvous::class)->findOneBy([
 				                                                                                'token' => $token,
@@ -216,6 +216,23 @@ class AgendaController extends AbstractController {
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->persist($rendezvous);
 		$entityManager->flush();
+
+		$mailTo = $rendezvous->getEmail();
+		$subject = "Confirmation de votre rendez-vous avec Elodie Ortiz";
+		$templateId = 3465668;
+		$firstName = $rendezvous->getFirstname() . ' ' . $rendezvous->getName();
+
+		$service = $rendezvous->getService()->getTitle();
+		$name = $rendezvous->getName();
+		$user_firstName = $rendezvous->getFirstname();
+
+		$variables = [
+				'name'           => $name,
+				'user_firstName' => $user_firstName,
+				'service'        => $service,
+		];
+
+		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
 
 		return $this->render('agenda/confirmation.html.twig', [
 				'rendezvous' => $rendezvous,
