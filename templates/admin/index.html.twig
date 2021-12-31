@@ -50,30 +50,21 @@
 		<div class="bloc commandes">
 			<h2><i class="fas fa-shopping-cart"></i> Les dernières commandes</h2>
 
-			<a href="" class="element commande">
-				<span class="numero">n°10254</span>
-				<span class="client">Mme Dupont Emilie</span>
-				<span class="prix">13,20€</span>
+			{% for order in orders %}
+				<a href="{{ path('admin_orders_modify', {'id': order.id }) }}" class="element commande">
+					<span class="numero">n°{{ order.orderNumber }}</span>
+					<span class="client">{{ order.invoicingFirstname }} {{ order.invoicingName }}</span>
+					<span class="prix">{{ order.price }}€</span>
 
-				<button class="btn facture">
-					<i class="fas fa-euro-sign"></i> Facture
-				</button>
-			</a>
+	{#				<button class="btn facture">#}
+	{#					<i class="fas fa-euro-sign"></i> Facture#}
+	{#				</button>#}
+				</a>
+			{% endfor %}
 
-			<a href="" class="element commande">
-				<span class="numero">n°10254</span>
-				<span class="client">Mme Dupont Emilie</span>
-				<span class="prix">13,20€</span>
-			</a>
-
-			<a href="" class="element commande">
-				<span class="numero">n°10254</span>
-				<span class="client">Mme Dupont Emilie</span>
-				<span class="prix">13,20€</span>
-			</a>
 
 			<div class="dflex btns">
-				<a href="" class="btn">
+				<a href="{{ path('admin_orders', {'page': 1}) }}" class="btn">
 					<i class="fas fa-list-ul"></i> Liste
 				</a>
 			</div>

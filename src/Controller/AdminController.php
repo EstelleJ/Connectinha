@@ -37,9 +37,12 @@ class AdminController extends AbstractController {
 	#[Route('/admin/', name: 'admin')]
 	public function index(): Response {
 		$products = $this->getDoctrine()->getRepository(Product::class)->findBy([], ['id' => 'DESC'], 3);
+		$orders = $this->getDoctrine()->getRepository(Orders::class)->findBy([], ['id' => 'DESC'], 3);
+
 
 		return $this->render('admin/index.html.twig', [
 				'products' => $products,
+				'orders' => $orders
 		]);
 	}
 
