@@ -89,7 +89,7 @@ class AgendaController extends AbstractController {
 
 		$user = $this->getUser();
 
-		if($user !== null){
+		if ($user !== null) {
 			$userId = $user->getId();
 			$userLogged = $this->getDoctrine()->getRepository(User::class)->find($userId);
 		}
@@ -223,6 +223,8 @@ class AgendaController extends AbstractController {
 		$firstName = $rendezvous->getFirstname() . ' ' . $rendezvous->getName();
 
 		$service = $rendezvous->getService()->getTitle();
+		$dateRDV = $rendezvous->getDate();
+		$date = $dateRDV->format('d, M, Y');
 		$name = $rendezvous->getName();
 		$user_firstName = $rendezvous->getFirstname();
 
@@ -230,6 +232,7 @@ class AgendaController extends AbstractController {
 				'name'           => $name,
 				'user_firstName' => $user_firstName,
 				'service'        => $service,
+				'date'           => $date,
 		];
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
@@ -317,6 +320,8 @@ class AgendaController extends AbstractController {
 		$firstName = $rendezvous->getFirstname() . ' ' . $rendezvous->getName();
 
 		$service = $rendezvous->getService()->getTitle();
+		$dateRDV = $rendezvous->getDate();
+		$date = $dateRDV->format('d, M, Y');
 		$name = $rendezvous->getName();
 		$user_firstName = $rendezvous->getFirstname();
 
@@ -324,6 +329,7 @@ class AgendaController extends AbstractController {
 				'name'           => $name,
 				'user_firstName' => $user_firstName,
 				'service'        => $service,
+				'date'           => $date,
 		];
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
