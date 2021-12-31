@@ -353,7 +353,7 @@ class OrderController extends AbstractController {
 	}
 
 	#[Route('/panier/stripe/success-{orderNumber}/', name: 'success_url')]
-	public function success($orderNumber, Request $request, MailJetService $mailJetService): Response {
+	public function success($orderNumber, MailJetService $mailJetService): Response {
 
 		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
 
