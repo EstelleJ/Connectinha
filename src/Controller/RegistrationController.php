@@ -6,56 +6,73 @@ use App\Entity\Customer;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Service\AdminService;
+use App\Service\MailJetService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-class RegistrationController extends AbstractController
-{
-    #[Route('/inscription/', name: 'app_register')]
-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, AdminService $adminService): Response
-    {
-        $user = new User();
-        $client = new Customer();
-        $form = $this->createForm(RegistrationFormType::class, $user);
-        $form->handleRequest($request);
+class RegistrationController extends AbstractController {
 
-        if ($form->isSubmitted() && $form->isValid()) {
+	#[Route('/inscription/', name: 'app_register')]
+	public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, AdminService $adminService, MailJetService $mailJetService): Response {
+		$user = new User();
+		$client = new Customer();
+		$form = $this->createForm(RegistrationFormType::class, $user);
+		$form->handleRequest($request);
 
-		        $user = $form->getData();
+		if ($form->isSubmitted() && $form->isValid()) {
 
-		        $name = $user->getName() .'-'. $user->getFirstName();
+			$user = $form->getData();
 
-		        // Appel de la fonction slug définie dans le service AdminService //
-		        $slug = $adminService->slugify($name);
+			$name = $user->getName() . '-' . $user->getFirstName();
 
-            // encode the plain password
-            $user->setPassword(
-                $passwordEncoder->encodePassword(
-                    $user,
-                    $form->get('plainPassword')->getData()
-                )
-            );
+			// Appel de la fonction slug définie dans le service AdminService //
+			$slug = $adminService->slugify($name);
 
-            $user->setRoles(['ROLE_USER']);
-            $user->setActive(1);
-            $user->setCustomer($client);
+			// encode the plain password
+			$user->setPassword(
+					$passwordEncoder->encodePassword(
+							$user,
+							$form->get('plainPassword')->getData()
+					)
+			);
 
-            $client->setSlug($slug);
+			$user->setRoles(['ROLE_USER']);
+			$user->setActive(1);
+			$user->setCustomer($client);
 
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($user);
-	          $entityManager->persist($client);
-            $entityManager->flush();
-            // do anything else you need here, like send an email
+			$client->setSlug($slug);
 
-            return $this->redirectToRoute('app_login');
-        }
+			$entityManager = $this->getDoctrine()->getManager();
+			$entityManager->persist($user);
+			$entityManager->persist($client);
+			$entityManager->flush();
+			// do anything else you need here, like send an email
 
-        return $this->render('registration/register.html.twig', [
-            'registrationForm' => $form->createView(),
-        ]);
-    }
+			$mailTo = $form->get('email')->getData();
+			$firstName = $form->get('firstName')->getData() . ' ' . $form->get('name')->getData();
+			$templateId = 3465625;
+			$subject = "Votre inscription sur le site connectinha.fr";
+
+			$name = $form->get('name')->getData();
+			$user_firstName = $form->get('firstName')->getData();
+			$email = $form->get('email')->getData();
+
+			$variables = [
+					'name'           => $name,
+					'user_firstName' => $user_firstName,
+					'email'          => $email,
+			];
+
+			$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
+
+			return $this->redirectToRoute('app_login');
+		}
+
+		return $this->render('registration/register.html.twig', [
+				'registrationForm' => $form->createView(),
+		]);
+	}
 }
