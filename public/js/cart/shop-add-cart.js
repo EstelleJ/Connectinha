@@ -4,12 +4,14 @@ import CartProduct from '../Classes/CartProduct.js';
 // Variables
 // ============================================================================
 const addCartButton = document.getElementById("addCart");
-
+const productNameModal = document.getElementById('productName');
 
 // ============================================================================
 // Functions
 // ============================================================================
 async function addCart() {
+
+	productNameModal.innerHTML = this.dataset.title;
 
 	document.getElementById('modal').classList.add('active');
 	setTimeout(function() {
