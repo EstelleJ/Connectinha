@@ -440,6 +440,18 @@ class OrderController extends AbstractController {
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
 
+		if($response->getStatus() == 200) {
+			return $this->redirectToRoute('confirm_mail_success_url');
+		}
+
+		return $this->render('payment/success.html.twig', [
+
+		]);
+	}
+
+	#[Route('/panier/stripe/mail/success-confirm-{orderNumber}/', name: 'confirm_mail_success_url')]
+	public function successMail($orderNumber, MailJetService $mailJetService): Response {
+
 		return $this->render('payment/success.html.twig', [
 
 		]);
