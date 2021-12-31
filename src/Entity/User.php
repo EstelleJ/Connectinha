@@ -60,7 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $customer;
 
     /**
-     * @ORM\OneToMany(targetEntity=Cart::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Cart::class, mappedBy="user", cascade={"persist", "remove"})
      */
     private $carts;
 

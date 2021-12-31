@@ -57,7 +57,7 @@ class Customer
     private $slug;
 
     /**
-     * @ORM\OneToMany(targetEntity=Orders::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Orders::class, mappedBy="user", cascade={"persist", "remove"})
      */
     private $orders;
 

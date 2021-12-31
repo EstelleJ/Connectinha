@@ -66,25 +66,28 @@ class UserController extends AbstractController {
 
 		$user = $this->getUser();
 		$cart = $this->getDoctrine()->getRepository(Cart::class)->findOneBy(['user' => $user], ['id' => 'DESC']);
-
-		$array_cart = $cart->getProductArray();
-		$json_cart = implode(",", $array_cart);
-
-		$saved_products = json_decode($json_cart);
-
 		$arrayProducts = [];
+		$quantity = 0;
+		$saved_products = '';
 
-		foreach ($saved_products as $cartProduct) {
+		if($cart !== null){
+			$array_cart = $cart->getProductArray();
+			$json_cart = implode(",", $array_cart);
 
-			$productId = $cartProduct->id;
-			$quantity = $cartProduct->quantity;
-			$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+			$saved_products = json_decode($json_cart);
 
-			array_push($arrayProducts, $product);
 
+			foreach ($saved_products as $cartProduct) {
+
+				$productId = $cartProduct->id;
+				$quantity = $cartProduct->quantity;
+				$product = $this->getDoctrine()->getRepository(Product::class)->find($productId);
+
+				array_push($arrayProducts, $product);
+
+			}
 		}
 
-		dump($arrayProducts);
 
 		return $this->render('user/cart.html.twig', [
 				'user'          => $user,

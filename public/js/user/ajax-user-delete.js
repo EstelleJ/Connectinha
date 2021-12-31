@@ -15,7 +15,7 @@ async function deleteUser(e) {
 
 	let formData = new FormData();
 
-	const response = await ajax('POST', '/ajax/save-cart/', formData);
+	const response = await ajax('POST', '/ajax/delete-user/', formData);
 
 	if (response === 'ok') {
 

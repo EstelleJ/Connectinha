@@ -698,11 +698,14 @@ class AjaxController extends AbstractController {
 	public function deleteUser(Request $request): Response {
 
 		$user = $this->getUser();
+		$customer = $user->getCustomer();
 
-		$tva = $this->getDoctrine()->getRepository(Tva::class)->find($user);
+		$user = $this->getDoctrine()->getRepository(User::class)->find($user);
+		$customer = $this->getDoctrine()->getRepository(Customer::class)->find($customer);
 
 		$entityManager = $this->getDoctrine()->getManager();
-		$entityManager->remove($tva);
+		$entityManager->remove($customer);
+		$entityManager->remove($user);
 		$entityManager->flush();
 
 		return new JsonResponse('ok');

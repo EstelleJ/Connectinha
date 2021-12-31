@@ -46,47 +46,52 @@
                 </div>
 
                 <div class="elements">
-                    <h2>Votre panier sauvegardé</h2>
+                    {% if cart|length > 0 %}
+                        <h2>Votre panier sauvegardé</h2>
 
-                    <div class="order">
-                        {% for product in savedProducts %}
-                        <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved">
-                            <span class="title">
-                                {{ product.title }} - <span
+                        <div class="order">
+                            {% for product in savedProducts %}
+                            <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved">
+                                <span class="title">
+                                    {{ product.title }} - <span
 
-                                {% for productDB in arrayProducts %}
-                                    {% if product.id == productDB.id %}
-                                        {% if productDB.specialOffer %}
-                                            class="priceBeforeDiscount"
+                                    {% for productDB in arrayProducts %}
+                                        {% if product.id == productDB.id %}
+                                            {% if productDB.specialOffer %}
+                                                class="priceBeforeDiscount"
+                                            {% endif %}
                                         {% endif %}
-                                    {% endif %}
-                                {% endfor %}
+                                    {% endfor %}
 
-                                    >{{ product.price }} €</span>
+                                        >{{ product.price }} €</span>
 
-                                {% for productDB in arrayProducts %}
-                                    {% if product.id == productDB.id %}
-                                        {% if productDB.specialOffer %}
-                                            <span class="discount">{{ productDB.price - (productDB.price * (productDB.specialOffer.offer / 100)) }} €</span>
+                                    {% for productDB in arrayProducts %}
+                                        {% if product.id == productDB.id %}
+                                            {% if productDB.specialOffer %}
+                                                <span class="discount">{{ productDB.price - (productDB.price * (productDB.specialOffer.offer / 100)) }} €</span>
+                                            {% endif %}
                                         {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                            </span>
+                                    {% endfor %}
+                                </span>
 
-                            <span class="mantra">
-                                {{ product.mantra }}
-                            </span>
+                                <span class="mantra">
+                                    {{ product.mantra }}
+                                </span>
 
-                            <span class="quantity">Quantité : {{ quantity }}</span>
-                        </a>
-                        {% endfor %}
-                    </div>
+                                <span class="quantity">Quantité : {{ quantity }}</span>
+                            </a>
+                            {% endfor %}
+                        </div>
 
-                    <div class="btns">
-                        <a href="{{ path('cart') }}" class="bg-blue tc-white btn">
-                            <i class="fas fa-shopping-cart"></i> Voir le panier
-                        </a>
-                    </div>
+                        <div class="btns">
+                            <a href="{{ path('cart') }}" class="bg-blue tc-white btn">
+                                <i class="fas fa-shopping-cart"></i> Remplacer le panier actuel
+                            </a>
+
+                        </div>
+                    {% else %}
+                        <h2>Nous n'avez pas encore sauvegardé de panier.</h2>
+                    {% endif %}
                 </div>
 
             </div>
