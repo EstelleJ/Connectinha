@@ -88,8 +88,11 @@ class AgendaController extends AbstractController {
 		// ========================================================================
 
 		$user = $this->getUser();
-		$userId = $user->getId();
-		$userLogged = $this->getDoctrine()->getRepository(User::class)->find($userId);
+
+		if($user !== null){
+			$userId = $user->getId();
+			$userLogged = $this->getDoctrine()->getRepository(User::class)->find($userId);
+		}
 
 		$name = '';
 		$firstname = '';
