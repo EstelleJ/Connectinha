@@ -35,6 +35,7 @@
 				<h3>Informations destinataire </h3>
 				<p>Nom du destinataire : {{ order.customerFirstname }} {{ order.customerName }}</p>
 				<p>Email du destinataire : {{ order.customerEmail }}</p>
+				<p>Numéro de téléphone du destinataire : {{ order.deliveryPhoneNumber }}</p>
 				<p>Adresse : {{ order.deliveryAdress }}</p>
 				<p>Ville : {{ order.deliveryCity }}</p>
 				<p>Code postal : {{ order.zipcode }}</p>
@@ -45,6 +46,7 @@
 				<h3>Informations pour la facture</h3>
 				<p>Nom : {{ order.invoicingFirstname }} {{ order.invoicingName }}</p>
 				<p>Email pour la facture : {{ order.invoicingEmail }}</p>
+				<p>Numéro de téléphone pour la facture : {{ order.invoicingPhoneNumber }}</p>
 				<p>Adresse : {{ order.invoicingAdress }}</p>
 				<p>Ville : {{ order.invoicingCity }}</p>
 				<p>Code postal : {{ order.invoicingZipcode }}</p>
