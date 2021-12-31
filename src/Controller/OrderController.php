@@ -440,6 +440,8 @@ class OrderController extends AbstractController {
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
 
+		dump($response->getStatus());
+
 		if($response->getStatus() == 200) {
 			return $this->redirectToRoute('confirm_mail_success_url');
 		}
