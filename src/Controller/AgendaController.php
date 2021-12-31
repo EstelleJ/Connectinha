@@ -237,6 +237,12 @@ class AgendaController extends AbstractController {
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
 
+		if($response->getStatus() == 200) {
+			return $this->redirectToRoute('agenda_mail_confirm', [
+					'token' => $token
+			]);
+		}
+
 		return $this->render('agenda/confirmation.html.twig', [
 				'rendezvous' => $rendezvous,
 		]);
@@ -337,7 +343,7 @@ class AgendaController extends AbstractController {
 		dump($response->getStatus());
 
 		if($response->getStatus() == 200) {
-			return $this->redirectToRoute('agenda_confirm_mail', [
+			return $this->redirectToRoute('agenda_mail_confirm', [
 					'token' => $token
 			]);
 		}
@@ -347,7 +353,7 @@ class AgendaController extends AbstractController {
 		]);
 	}
 
-	#[Route('/programmer-un-rendez-vous/mail-confirmation-{token}/', name: 'agenda_confirm_mail')]
+	#[Route('/programmer-un-rendez-vous/mail-confirmation-{token}/', name: 'agenda_mail_confirm')]
 	public function confirmMail($token, Request $request): Response {
 
 		$rendezvous = $this->getDoctrine()->getRepository(Rendezvous::class)->findOneBy([
