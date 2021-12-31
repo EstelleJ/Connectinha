@@ -20,13 +20,13 @@ class MailJetService {
 	 */
 	public function send($mailTo, $firstName, $subject, $templateId, array $variables) {
 
-		$mj = new \Mailjet\Client('1b8c9998d2789abccf2c0cb0e15e6b4c','83a9a0d98ebe5ce522cf73ffc9568521', true, ['version' => 'v3.1']);
+		$mj = new \Mailjet\Client('4df62701ad677c66f54e9019fa42306a','b4ea54dd7ec0d36b08e064307e8374ca', true, ['version' => 'v3.1']);
 		$body = [
 				'Messages' => [
 						[
 								'From'             => [
-										'Email' => "contact@mindcursus.fr",
-										'Name'  => "Mindcursus",
+										'Email' => "contact@connectinha.fr",
+										'Name'  => "Connectinha",
 								],
 								'To'               => [
 										[

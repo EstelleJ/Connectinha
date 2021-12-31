@@ -73,7 +73,7 @@ class ContactController extends AbstractController {
 			// Envoi d'un mail d'inscription via MailJet
 			$mailTo = 'contact@connectinha.fr';
 			$subject = "Vous avez reçu un message";
-			$templateId = 3312132;
+			$templateId = 3349330;
 			$firstName = "Formulaire de contact Connectinha";
 			$name = $form->get('name')->getData();
 			$user_firstName = $form->get('firstname')->getData();
