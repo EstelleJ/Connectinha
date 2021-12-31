@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Customer;
 use App\Entity\Orders;
 use App\Entity\PaymentMethod;
+use App\Service\MailJetService;
 use Stripe\Checkout\Session;
 use Stripe\Stripe;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -247,8 +248,8 @@ class OrderController extends AbstractController {
 		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->findOneBy(['slug' => 'paiement-par-carte']);
 
 		return $this->render('order/choice.html.twig', [
-				'method' => $method,
-				'orderNumber'    => $orderNumber,
+				'method'      => $method,
+				'orderNumber' => $orderNumber,
 		]);
 	}
 
@@ -260,7 +261,7 @@ class OrderController extends AbstractController {
 		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
 
 		return $this->redirectToRoute('order_payment_stripe_checkout', [
-				'orderNumber' => $orderNumber
+				'orderNumber' => $orderNumber,
 		]);
 
 		// return $this->render('order/stripe.html.twig', [
@@ -352,7 +353,7 @@ class OrderController extends AbstractController {
 	}
 
 	#[Route('/panier/stripe/success-{orderNumber}/', name: 'success_url')]
-	public function success($orderNumber): Response {
+	public function success($orderNumber, MailJetService $mailJetService): Response {
 
 		$order = $this->getDoctrine()->getRepository(Orders::class)->findOneBy(['orderNumber' => $orderNumber]);
 
@@ -362,6 +363,82 @@ class OrderController extends AbstractController {
 		$entityManager = $this->getDoctrine()->getManager();
 		$entityManager->persist($order);
 		$entityManager->flush();
+
+
+		/* ---------- PRODUCTS ---------- */
+
+		$array_products = $order->getProductArray();
+		$json_cart = implode(",", $array_products);
+		$saved_products = json_decode($json_cart);
+
+		$items = [];
+
+		foreach ($saved_products as $product) {
+
+			if ($product->discount == null) {
+				$discount = 0;
+			}
+			else {
+				$discount = $product->discount;
+			}
+
+			$unitPrice = ($product->price - ($product->price * (int)$discount / 100));
+
+			$productLine = 'Nom du produit :' . $product->title . ' , Quantité : ' . $product->quantity . ' Prix :' . $unitPrice;
+
+			array_push($items, $productLine);
+		}
+
+
+		/* -------- MAILJET -------- */
+
+		$mailTo = $order->getCustomerEmail();
+		$subject = "Confirmation de votre commande sur le site connectinha.fr";
+		$templateId = 3465486;
+		$firstName = $order->getCustomerFirstname() . ' ' . $order->getCustomerName();
+		$name = $order->getCustomerName();
+		$invoicingName = $order->getInvoicingName();
+		$invoicingFirstname = $order->getInvoicingFirstname();
+
+		$user_firstName = $order->getCustomerFirstname();
+		$sendBy = 'contact@connectinha.fr';
+		$phone = $order->getDeliveryPhoneNumber();
+		$invoicingPhone = $order->getInvoicingPhoneNumber();
+		$order_shippingCost = $order->getShippingCost();
+		$order_totalPrice = $order->getPrice();
+		$deliveryAdress = $order->getDeliveryAdress();
+		$deliveryCity = $order->getDeliveryCity();
+		$deliveryZipcode = $order->getZipcode();
+		$deliveryCountry = $order->getCountry();
+
+		$invoicingAdress = $order->getInvoicingAdress();
+		$invoicingCity = $order->getInvoicingCity();
+		$invoicingZipcode = $order->getInvoicingZipcode();
+		$invoicingCountry = $order->getInvoicingCountry();
+
+		$variables = [
+				'name'               => $name,
+				'user_firstName'     => $user_firstName,
+				'invoicingName'      => $invoicingName,
+				'invoicingFirstname' => $invoicingFirstname,
+				'sendBy'             => $sendBy,
+				'phone'              => $phone,
+				'invoicingPhone'     => $invoicingPhone,
+				'order_shippingCost' => $order_shippingCost,
+				'order_totalPrice'   => $order_totalPrice,
+				'orderNumber'        => $orderNumber,
+				'deliveryAdress'     => $deliveryAdress,
+				'deliveryCity'       => $deliveryCity,
+				'deliveryZipcode'    => $deliveryZipcode,
+				'deliveryCountry'    => $deliveryCountry,
+				'invoicingAdress'    => $invoicingAdress,
+				'invoicingCity'      => $invoicingCity,
+				'invoicingZipcode'   => $invoicingZipcode,
+				'invoicingCountry'   => $invoicingCountry,
+				'products'           => $items,
+		];
+
+		$mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
 
 		return $this->render('payment/success.html.twig', [
 
