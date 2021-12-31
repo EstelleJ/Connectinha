@@ -8,6 +8,7 @@
 
 {% block javascripts %}
     <script src="{{ asset('js/user/ajax-user-delete.js') }}" type="module"></script>
+    <script src="{{ asset('js/user/user-replace-cart.js') }}" type="module"></script>
 {% endblock %}
 
 {% block stylesheets %}
@@ -15,6 +16,17 @@
 {% endblock %}
 
 {% block body %}
+    <section id="modal">
+        <div class="content">
+            <h4>
+                <span>
+                    <i class="fas fa-shopping-cart"></i>
+                </span>
+                Votre panier a bien été remplacé !
+            </h4>
+        </div>
+    </section>
+
     <section id="banner">
         <div class="container">
 
@@ -51,7 +63,7 @@
 
                         <div class="order">
                             {% for product in savedProducts %}
-                            <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved">
+                            <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved" data-id="{{ product.id }}" data-title="{{ product.title }}" data-slug="{{ product.slug }}" data-discount="{{ product.discount }}" data-price="{{ product.price }}" data-weight="{{ product.weight }}" data-quantity="{{ quantity }}" data-mantra="{{ product.mantra }}">
                                 <span class="title">
                                     {{ product.title }} - <span
 
@@ -84,10 +96,9 @@
                         </div>
 
                         <div class="btns">
-                            <a href="{{ path('cart') }}" class="bg-blue tc-white btn">
-                                <i class="fas fa-shopping-cart"></i> Remplacer le panier actuel
-                            </a>
-
+                            <button id="replaceButton" class="bg-blue tc-white btn">
+                                <i class="fas fa-shopping-cart"></i> Remplacer le panier existant par celui-ci
+                            </button>
                         </div>
                     {% else %}
                         <h2>Nous n'avez pas encore sauvegardé de panier.</h2>

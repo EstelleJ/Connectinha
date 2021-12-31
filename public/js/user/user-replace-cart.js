@@ -3,67 +3,65 @@ import CartProduct from '../Classes/CartProduct.js';
 // ============================================================================
 // Variables
 // ============================================================================
-const addCartButton = document.getElementById("addCart");
-
+const replaceButton = document.getElementById("replaceButton");
+const products = document.getElementsByClassName("product-saved");
 
 // ============================================================================
 // Functions
 // ============================================================================
-async function addCart() {
+async function replaceCart() {
 
 	document.getElementById('modal').classList.add('active');
 	setTimeout(function() {
 		document.getElementById('modal').classList.remove('active');
 	}, 3000);
 
-	// On vérifie si le select mantra exist, pour ajouter ou non un mantra.
-	// La valeur sera null si il n'y a pas de mantras à choisir sur ce produit
-	let mantraSelectTag = document.getElementById('mantraSelect');
-	// console.log(mantraSelectTag);
-	let mantraSelected  = null;
+	localStorage.removeItem('products');
 
-	if (mantraSelectTag !== null) {
-		mantraSelected = mantraSelectTag.value;
-	}
+	for(let product of products){
 
-	// console.log(mantraSelected);
+			// On vérifie si le select mantra exist, pour ajouter ou non un mantra.
+			// La valeur sera null si il n'y a pas de mantras à choisir sur ce produit
+			let mantra = product.dataset.mantra;
 
-	let quantitySelected = document.getElementById('number').value;
+			let quantitySelected = product.dataset.quantity;
 
-	let productId = this.dataset.id;
-	let title     = this.dataset.title;
-	let slug      = this.dataset.slug;
-	let discount  = this.dataset.discount;
-	let price     = this.dataset.price;
-	let weight    = this.dataset.weight;
+			let productId = product.dataset.id;
+			let title     = product.dataset.title;
+			let slug      = product.dataset.slug;
+			let discount  = product.dataset.discount;
+			let price     = product.dataset.price;
+			let weight    = product.dataset.weight;
 
-	let arrayProducts = [];
+			let arrayProducts = [];
 
-	let currentProduct = new CartProduct(productId, title, slug, discount, mantraSelected, parseInt(quantitySelected), price, weight);
+			let currentProduct = new CartProduct(productId, title, slug, discount, mantra, parseInt(quantitySelected), price, weight);
 
-	let localStorageItems = localStorage.getItem('products');
+			let localStorageItems = localStorage.getItem('products');
 
-	if (!!localStorageItems) {
-		let cart = JSON.parse(localStorageItems);
+			if (!!localStorageItems) {
+				let cart = JSON.parse(localStorageItems);
 
-		let found = false;
-		for (const item of cart) {
-			if (item.id === currentProduct.id && item.mantra === currentProduct.mantra) {
-				item.quantity += currentProduct.quantity;
-				found = true;
-				break;
+				let found = false;
+				for (const item of cart) {
+					if (item.id === currentProduct.id && item.mantra === currentProduct.mantra) {
+						item.quantity += currentProduct.quantity;
+						found = true;
+						break;
+					}
+				}
+
+				if (!found) {
+					cart.push(currentProduct);
+				}
+
+				localStorage.setItem('products', JSON.stringify(cart));
 			}
-		}
+			else {
+				arrayProducts.push(currentProduct);
+				localStorage.setItem('products', JSON.stringify(arrayProducts));
+			}
 
-		if (!found) {
-			cart.push(currentProduct);
-		}
-
-		localStorage.setItem('products', JSON.stringify(cart));
-	}
-	else {
-		arrayProducts.push(currentProduct);
-		localStorage.setItem('products', JSON.stringify(arrayProducts));
 	}
 }
 
@@ -71,4 +69,4 @@ async function addCart() {
 // ============================================================================
 // Event listeners
 // ============================================================================
-addCartButton.addEventListener('click', addCart);
+replaceButton.addEventListener('click', replaceCart);
