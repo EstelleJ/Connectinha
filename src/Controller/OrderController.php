@@ -384,11 +384,12 @@ class OrderController extends AbstractController {
 
 			$unitPrice = ($product->price - ($product->price * (int)$discount / 100));
 
-			$productLine = 'Nom du produit :' . $product->title . ' , Quantité : ' . $product->quantity . ' Prix :' . $unitPrice;
+			$productLine = 'Nom du produit :' . $product->title . ' , Quantité : ' . $product->quantity . ', Prix :' . $unitPrice . '€';
 
 			array_push($items, $productLine);
 		}
 
+		$allProducts = implode("\r\n", $items);
 
 		/* -------- MAILJET -------- */
 
@@ -435,12 +436,12 @@ class OrderController extends AbstractController {
 				'invoicingCity'      => $invoicingCity,
 				'invoicingZipcode'   => $invoicingZipcode,
 				'invoicingCountry'   => $invoicingCountry,
-				// 'products'           => $items,
+				'allProducts'        => $allProducts,
 		];
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
 
-		if($response->getStatus() == 200) {
+		if ($response->getStatus() == 200) {
 			return $this->redirectToRoute('confirm_mail_success_url');
 		}
 
