@@ -107,14 +107,21 @@
 			.btns {
 				position: absolute;
 				bottom: 0;
-			}
-
-			button {
 				color: @tc-white;
 				margin-top: 1.5rem;
 				width: 100%;
 				padding: 1rem 2rem;
+				.gradient-blue-violet();
+				font-family: "Playfair Display", serif;
+				font-size: 1.8rem;
+				text-align: center;
+
+				&:hover {
+					cursor: pointer;
+					.hover-gradient-blue-violet();
+				}
 			}
+
 		}
 	}
 

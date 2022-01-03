@@ -561,12 +561,20 @@
 #favourite .bloc-favourites .favourite .btns {
   position: absolute;
   bottom: 0;
-}
-#favourite .bloc-favourites .favourite button {
   color: #fff;
   margin-top: 1.5rem;
   width: 100%;
   padding: 1rem 2rem;
+  background: #042b40;
+  background: linear-gradient(90deg, #52235b 0%, #042b40 100%);
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  text-align: center;
+}
+#favourite .bloc-favourites .favourite .btns:hover {
+  cursor: pointer;
+  background: ligthen(#042b40, 10%);
+  background: linear-gradient(90deg, #733180 0%, #074b70 100%);
 }
 #favourite .btns {
   justify-content: center;
