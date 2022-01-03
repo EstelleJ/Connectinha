@@ -15,6 +15,17 @@
 	{% endblock %}
 	<link rel="stylesheet" href="{{ asset('css/front/styles.css') }}">
 	<script type="module" src="{{ asset('js/global.js') }}"></script>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-3Y1XS1L77H"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', 'G-3Y1XS1L77H');
+	</script>
+
 	{% block javascripts %}
 		{# {{ encore_entry_script_tags('app') }} #}
 	{% endblock %}
