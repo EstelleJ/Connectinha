@@ -102,24 +102,31 @@
 						</a>
 					</li>
 				</ul>
-				<ul class="menu">
+				<div class="menu">
 					<h3 class="bold">Contactez-moi</h3>
-					<li>
+					<ul>
+
+						<li>
 							<i class="fas fa-mobile-alt"></i> 06 83 14 92 77
-					</li>
-					<li>
-						<a href="{{ path('contact') }}" title="Envoyez un mail">
-							<i class="fas fa-envelope"></i> Envoyez un mail
-						</a>
-					</li>
-				</ul>
-				<ul class="reseaux">
+						</li>
+						<li>
+							<a href="{{ path('contact') }}" title="Envoyez un mail">
+								<i class="fas fa-envelope"></i> Envoyez un mail
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="reseaux">
 					<h3 class="bold">Rejoignez-moi sur les réseaux</h3>
+					<ul>
 
-					{{ render(controller("App\\Controller\\IndexController::reseaux")) }}
+
+						{{ render(controller("App\\Controller\\IndexController::reseaux")) }}
 
 
-				</ul>
+					</ul>
+				</div>
+
 			</nav>
 		</div>
 	</div>

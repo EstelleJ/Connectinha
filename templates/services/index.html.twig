@@ -70,7 +70,8 @@
 			<div class="service">
           <div class="bloc-img">
               <img
-                  src="{{ asset('services/'~ service.image ~'')|imagine_filter('servicesThumbnails') }}">
+                  src="{{ asset('services/'~ service.image ~'')|imagine_filter('servicesThumbnails') }}"
+              alt="{{ service.title }}">
           </div>
 					<div class="bloc-text">
               <h3 class="title">{{ service.title }}</h3>
@@ -92,7 +93,8 @@
 
 								<div class="bloc-img">
 									<img
-											src="{{ asset('services/'~ content.image ~'')|imagine_filter('servicesThumbnails') }}">
+											src="{{ asset('services/'~ content.image ~'')|imagine_filter('servicesThumbnails') }}"
+									alt="{{ content.title }}">
 								</div>
 								<div class="bloc-text">
 									<h3>{{ content.title }}</h3>

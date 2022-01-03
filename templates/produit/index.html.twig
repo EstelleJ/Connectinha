@@ -126,7 +126,7 @@
 			{% if products|length > 0 %}
 				{% for product in products %}
 
-					<a href="{{ path('product_details', {'slug': product.slug, 'id': product.id }) }}" class="product" title="Les bougies {{ favourite.name }}, apportent calme, bien-être et sont issus de produits naturels">
+					<a href="{{ path('product_details', {'slug': product.slug, 'id': product.id }) }}" class="product" title="Les bougies {{ product.name }}, apportent calme, bien-être et sont issus de produits naturels">
 						{% if product.specialOffer|length > 0 %}
 							<span class="offer">
 							- {{ product.specialOffer.offer }} %
@@ -171,7 +171,7 @@
 
 	<section id="creations">
 		<div class="bloc-img">
-			<img src="{{ asset('images/produits/a-propos-des-creations-elodie-ortiz-connectinha.jpg') }}">
+			<img src="{{ asset('images/produits/a-propos-des-creations-elodie-ortiz-connectinha.jpg') }}" alt="Bougies blanches et bleus de différentes tailles">
 		</div>
 
 		<div class="bloc-text">
