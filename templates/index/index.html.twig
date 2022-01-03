@@ -3,7 +3,7 @@
 {% block title %}Accueil{% endblock %}
 
 {% block description %}
-
+	Elodie Ortiz, magnétiseuse énergéticienne vous invite à découvrir ses services. Séance de soins énergétiques en Seine-et-Marne, département 77 autour de Jablines, soins de longues ou courtes durées, magnétisme et cartomancie. Découvrez aussi les bougies réalisées artisanalement avec des produits naturels.
 {% endblock %}
 
 {% block stylesheets %}
@@ -33,7 +33,7 @@
 
 		<div class="bloc-favourites">
 			{% for favourite in favourites %}
-				<a href="{{ path('product_details', {'slug': favourite.slug, 'id': favourite.id }) }}" class="favourite">
+				<a href="{{ path('product_details', {'slug': favourite.slug, 'id': favourite.id }) }}" class="favourite" title="Découvrez {{ favourite.name }} pour un moment de bien-être">
 					{% if favourite.specialOffer|length > 0 %}
 						<span class="offer">
 							- {{ favourite.specialOffer.offer }} %
@@ -60,14 +60,14 @@
 		</div>
 
 		<div class="btns">
-			<a href="{{ path('products', {'page': '1'}) }}" class="btn round bg-blue tc-white">Découvrir plus</a>
+			<a href="{{ path('products', {'page': '1'}) }}" class="btn round bg-blue tc-white" title="Découvrir toutes les bougies, réalisées à la main avec des produits naturels">Découvrir plus</a>
 		</div>
 	</section>
 
 	<section id="presentation">
 		<div class="bloc-background">
 			<div class="picture">
-				<img src="{{ asset('images/index/photo-elodie.jpg') }}" alt="Photo de portrait d'Elodie Ortiz, votre magnétiseuse">
+				<img src="{{ asset('images/index/photo-elodie.jpg') }}" alt="Photo de portrait d'Elodie Ortiz, votre magnétiseuse énergéticienne, à Jablines et alentours en Seine-et-Marne, département 77">
 			</div>
 		</div>
 
@@ -96,7 +96,7 @@
 				<p class="quote">{{ content.citationText }}</p>
 
 				<div class="bloc-btn btns">
-					<a href="{{ path('services') }}" class="btn round bg-blue tc-white">Mes services</a>
+					<a href="{{ path('services') }}" class="btn round bg-blue tc-white" title="Les services proposés par Elodie Ortiz, magnétiseuse énergéticienne en région parisienne">Mes services</a>
 				</div>
 			</div>
 
@@ -148,7 +148,7 @@
 			</p>
 
 			<div class="btns">
-				<a href="{{ path('contact') }}" class="btn bg-blue round tc-white">
+				<a href="{{ path('contact') }}" title="Contactez Elodie Ortiz, Connectinha, pour plus d'informations sur ses activités et services de Cartomancie, Magnétisme et Soins énergétiques sur place ou à distance" class="btn bg-blue round tc-white">
 					Contactez-moi
 				</a>
 			</div>

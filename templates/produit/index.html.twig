@@ -3,7 +3,7 @@
 {% block title %}Boutique - Votre bien-être tout simplement{% endblock %}
 
 {% block description %}
-
+	Découvrez les bougies réalisées 100% à la main par Elodie Ortiz. Chaque bougie est réalisée avec des produits naturels, et vous invite à vous détendre et apporte de la sérénité.
 {% endblock %}
 
 {% block stylesheets %}
@@ -75,7 +75,7 @@
 		<div class="bloc-favourites">
 
 			{% for favourite in favourites %}
-				<a href="{{ path('product_details', {'slug': favourite.slug, 'id': favourite.id }) }}" class="favourite">
+				<a href="{{ path('product_details', {'slug': favourite.slug, 'id': favourite.id }) }}" class="favourite" title="Découvrez les détails de {{ favourite.name }}, réalisés à la main avec des produits naturels">
 					{% if favourite.specialOffer|length > 0 %}
 						<span class="offer">
 							- {{ favourite.specialOffer.offer }} %
@@ -126,7 +126,7 @@
 			{% if products|length > 0 %}
 				{% for product in products %}
 
-					<a href="{{ path('product_details', {'slug': product.slug, 'id': product.id }) }}" class="product">
+					<a href="{{ path('product_details', {'slug': product.slug, 'id': product.id }) }}" class="product" title="Les bougies {{ favourite.name }}, apportent calme, bien-être et sont issus de produits naturels">
 						{% if product.specialOffer|length > 0 %}
 							<span class="offer">
 							- {{ product.specialOffer.offer }} %

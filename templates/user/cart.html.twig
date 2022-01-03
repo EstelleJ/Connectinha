@@ -63,7 +63,7 @@
 
                         <div class="order">
                             {% for product in savedProducts %}
-                            <a href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved" data-id="{{ product.id }}" data-title="{{ product.title }}" data-slug="{{ product.slug }}" data-discount="{{ product.discount }}" data-price="{{ product.price }}" data-weight="{{ product.weight }}" data-quantity="{{ quantity }}" data-mantra="{{ product.mantra }}">
+                            <a title="Découvrez les détails de {{ product.title }} pour en savoir plus sur sa fabrication" href="{{ path('product_details', {'slug': product.slug, 'id': product.id}) }}" class="product-saved" data-id="{{ product.id }}" data-title="{{ product.title }}" data-slug="{{ product.slug }}" data-discount="{{ product.discount }}" data-price="{{ product.price }}" data-weight="{{ product.weight }}" data-quantity="{{ quantity }}" data-mantra="{{ product.mantra }}">
                                 <span class="title">
                                     {{ product.title }} - <span
 
@@ -96,7 +96,7 @@
                         </div>
 
                         <div class="btns">
-                            <button id="replaceButton" class="bg-blue tc-white btn">
+                            <button id="replaceButton" class="bg-blue tc-white btn" title="En cliquant sur ce bouton vous remplacerez votre panier actuel par celui-ci">
                                 <i class="fas fa-shopping-cart"></i> Remplacer le panier existant par celui-ci
                             </button>
                         </div>

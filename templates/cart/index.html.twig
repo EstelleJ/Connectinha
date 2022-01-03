@@ -2,6 +2,10 @@
 
 {% block title %}Panier{% endblock %}
 
+{% block description %}
+	Retrouvez vos bougies, 100% fait-mains, par Elodie Ortiz votre magnétiseuse et professionnelle en soin énergétiques.
+{% endblock %}
+
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/client/cart.css') }}">
 {% endblock %}
@@ -78,7 +82,7 @@
 						<p>Frais de livraison inclus</p>
 					</div>
 
-					<a href="{{ path('order') }}" class="btn" id="confirm-btn">
+					<a href="{{ path('order') }}" class="btn" id="confirm-btn" title="Confirmer votre commande en passant aux étapes suivantes">
 						<i class="fas fa-shopping-cart"></i> Confirmer
 					</a>
 

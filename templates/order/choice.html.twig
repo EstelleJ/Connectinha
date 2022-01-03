@@ -24,7 +24,7 @@
 			<h2 class="tc-blue amatic">Comment souhaitez-vous régler votre commande ?</h2>
 
 			<div class="dflex">
-					<a href="{{ path('order_payment_stripe', {'id': method.id, 'orderNumber': orderNumber }) }}" class="choice">
+					<a href="{{ path('order_payment_stripe', {'id': method.id, 'orderNumber': orderNumber }) }}" title="Payez par {{ method.name }}" class="choice">
 						<i class="fas fa-credit-card"></i> {{ method.name }}
 					</a>
 			</div>

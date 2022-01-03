@@ -3,7 +3,7 @@
 {% block title %}{{ product.name }} - Boutique - Votre bien-être tout simplement{% endblock %}
 
 {% block description %}
-
+    {{ product.name }} est un très bon choix. Sérénité et paix sont au rendez-vous. Laissez-vous emporter par l'énergie positive et profiter d'un instant de détente. Découvrez les bougies dans un soin énergétique et magnétisme en Seine-et-Marne à Jablines et alentours.
 {% endblock %}
 
 {% block stylesheets %}
@@ -21,7 +21,7 @@
         </h3>
 
         <div class="btns">
-            <a href="{{ path('cart') }}" class="btn round bg-blue tc-white">
+            <a href="{{ path('cart') }}" class="btn round bg-blue tc-white" title="Retrouvez votre panier">
                 <i class="fas fa-shopping-cart"></i>Voir votre panier
             </a>
         </div>
@@ -42,7 +42,7 @@
 
                 <div class="product unique">
                     <div class="return">
-                        <a href="{{ path('products', {'page': '1'}) }}" class="tc-blue bold">
+                        <a href="{{ path('products', {'page': '1'}) }}" class="tc-blue bold" title="Aller à la boutique et découvrez les autres bougies et pack de bougies pour un moment de bien-être et de sérénité">
                             <i class="fas fa-angle-left"></i> Retour à la boutique
                         </a>
                     </div>

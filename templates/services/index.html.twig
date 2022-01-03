@@ -3,7 +3,7 @@
 {% block title %}Mes services{% endblock %}
 
 {% block description %}
-
+	Magnétisme, soins énergétiques, cartomancie, découvrez les prestations proposés par Elodie Ortiz. Votre énergéticienne à Jablines et alentours, département de la Seine-et-Marne 77. Soins à distance disponibles.
 {% endblock %}
 
 {% block stylesheets %}
@@ -100,8 +100,8 @@
 										{{ content.text }}
 									</p>
 									<div class="btns">
-										<a class="btn" href="{{ content.link }}" target="_blank">Lien à découvrir</a>
-										<a class="btn" href="" target="_blank" download="{{ asset('services/'~ content.pdf ~'') }}">PDF à découvrir</a>
+										<a class="btn" href="{{ content.link }}" target="_blank" title="Découvrez ce lien">Lien à découvrir</a>
+										<a class="btn" href="" target="_blank" title="Découvrez le PDF pour en savoir plus sur {{ content.title }}" download="{{ asset('services/'~ content.pdf ~'') }}">PDF à découvrir</a>
 									</div>
 
 								</div>
