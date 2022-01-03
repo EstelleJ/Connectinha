@@ -1,4 +1,5 @@
 import WebComponent from './WebComponent.js';
+import CartProduct from './CartProduct.js';
 
 export default class CartRow extends WebComponent {
 
@@ -103,6 +104,36 @@ export default class CartRow extends WebComponent {
 		this.updateTotalPrices();
 	}
 
+	addCart(newQuantity) {
+
+		let dataset = JSON.parse(this.dataset.product);
+
+		let arrayProducts = [];
+
+		let currentProduct = new CartProduct(dataset.id, dataset.title, dataset.slug, dataset.discount, dataset.mantra, newQuantity, dataset.price, dataset.weight);
+
+		let localStorageItems = localStorage.getItem('products');
+
+		if (!!localStorageItems) {
+			let cart = JSON.parse(localStorageItems);
+
+			let found = false;
+			for (const item of cart) {
+				if (item.id === currentProduct.id && item.mantra === currentProduct.mantra && item.discount === currentProduct.discount) {
+					item.quantity = newQuantity;
+					found = true;
+					break;
+				}
+			}
+
+			if (!found) {
+				cart.push(currentProduct);
+			}
+
+			localStorage.setItem('products', JSON.stringify(cart));
+		}
+	}
+
 	lessQuantity() {
 		let quantity = parseInt(this.querySelector('.item-quantity').value);
 
@@ -111,6 +142,10 @@ export default class CartRow extends WebComponent {
 
 			this.updateTotalPrices();
 		}
+
+		let newQuantity = quantity - 1;
+
+		this.addCart(newQuantity);
 	}
 
 	moreQuantity() {
@@ -119,6 +154,10 @@ export default class CartRow extends WebComponent {
 		this.querySelector('.item-quantity').value = quantity + 1;
 
 		this.updateTotalPrices();
+
+		let newQuantity = quantity + 1;
+
+		this.addCart(newQuantity);
 	}
 
 	updateTotalPrices() {
@@ -168,10 +207,6 @@ export default class CartRow extends WebComponent {
 		shippingCost.innerHTML = response.toString();
 
 		const totalPriceWithShippingCost = parseFloat(response.toString()) + parseFloat(totalPrice.toFixed(2));
-
-		console.log('response = ' + response.toString());
-		console.log('totalPrice = ' + parseFloat(totalPrice));
-		console.log('totalPriceWithShippingCost = ' + totalPriceWithShippingCost);
 
 		domTotalPrice.innerHTML = totalPriceWithShippingCost + ' € TTC';
 	}
