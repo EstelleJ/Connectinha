@@ -216,14 +216,29 @@
 
 }
 
-/* --------------- MEDIAQUERIES --------------- */
-/* -------------------------------------------- */
 
-@media screen and (max-width: 1600px) {
+/* -------------------------------------------------------- */
+/*                        RESPONSIVE                        */
+/* -------------------------------------------------------- */
 
-}
+@media screen and (max-width: 1200px) {
 
-@media screen and (max-width: 1149px) {
+	#rdv {
+		.bloc-services {
+			padding: 2rem 3rem;
+		}
+
+		.service {
+			.bloc-img {
+				width: 80%;
+				margin: auto;
+			}
+
+			.bloc-text {
+				width: 100%;
+			}
+		}
+	}
 
 }
 
@@ -235,21 +250,30 @@
 	}
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 800px) {
 	#rdv{
+		.service {
+			width: 80%;
+			margin: 2rem auto;
+		}
+
 		.bloc-choix {
 			padding: 20px 15px;
 		}
 
-		h2 {
-			font-size: 1.8rem;
-		}
 	}
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 550px) {
 	#rdv {
-		margin-bottom: 150px;
+		h2 {
+			font-size: 4.5rem;
+		}
+
+		.service {
+			width: 100%;
+			padding: 0;
+		}
 	}
 }
 

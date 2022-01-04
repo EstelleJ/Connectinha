@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>{% block title %}{% endblock %} - Bienvenue sur votre administration</title>
 	{# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
@@ -18,6 +19,7 @@
 	{% endblock %}
 	<script type="module" src="{{ asset('js/global.js') }}"></script>
 	<script src="https://kit.fontawesome.com/e10814a45c.js" crossorigin="anonymous"></script>
+	<script src="{{ asset('js/burger.js') }}"></script>
 </head>
 <body>
 <div class="dflex">

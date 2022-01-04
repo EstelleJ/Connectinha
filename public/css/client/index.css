@@ -107,6 +107,7 @@
   color: #333;
   position: relative;
   padding-bottom: 6rem;
+  background-color: #fff;
 }
 #favourite .bloc-favourites .favourite .offer {
   position: absolute;
@@ -231,7 +232,6 @@
   position: absolute;
   top: 7rem;
   right: -20rem;
-  background-color: orange;
 }
 #presentation .bloc-background .picture img {
   width: 100%;
@@ -362,4 +362,154 @@
 #question .content .btns {
   justify-content: center;
   margin-top: 5rem;
+}
+/* -------------------------------------------------------- */
+/*                        RESPONSIVE                        */
+/* -------------------------------------------------------- */
+@media screen and (max-width: 1200px) {
+  #home {
+    height: 80vh;
+  }
+  #home .rougeScript {
+    font-size: 12rem;
+  }
+  #home .amatic {
+    font-size: 8rem;
+    margin-bottom: 0;
+  }
+  /* ----------- FAVOURITE ------------ */
+  #favourite .bloc-favourites .favourite {
+    width: 40%;
+  }
+  /* ----------- PRESENTATION ------------ */
+  #presentation .bloc-text {
+    width: 60%;
+    padding: 0 8rem;
+  }
+  #presentation .bloc-background {
+    height: 68rem;
+    width: 40%;
+  }
+  #presentation .bloc-background .picture {
+    width: 40rem;
+    height: 55rem;
+    right: -6rem;
+  }
+  /* ---------- SERVICES ---------- */
+  #services .bloc img {
+    width: 80%;
+  }
+  #services .bloc h2 {
+    font-size: 4rem;
+  }
+  /* ---------- CHARTER ---------- */
+  #charter h2 {
+    font-size: 6rem;
+  }
+  /* ------------ QUESTION ------------ */
+  #question .content {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 990px) {
+  /* ----------- FAVOURITE ------------ */
+  #favourite {
+    margin-top: -6rem;
+    z-index: 10;
+  }
+  #favourite .bloc-favourites {
+    width: 90%;
+  }
+  #favourite .bloc-favourites .favourite {
+    width: 42%;
+  }
+  /* ----------- PRESENTATION ------------ */
+  #presentation .bloc-text {
+    width: 100%;
+    padding: 7rem 8rem 0 8rem;
+  }
+  #presentation .bloc-background {
+    height: 70rem;
+    width: 45%;
+  }
+  #presentation .bloc-background .picture {
+    width: 45rem;
+    height: 58rem;
+    right: -25rem;
+  }
+  /* ---------- SERVICES ---------- */
+  #services {
+    margin: 0;
+  }
+  /* ---------- CHARTER ---------- */
+  #charter {
+    padding: 5rem 8rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  h2 {
+    font-size: 5.5rem !important;
+  }
+  #home {
+    height: 60vh;
+  }
+  #home .content {
+    margin-top: -13rem;
+  }
+  #home .btns {
+    margin-top: -3rem;
+  }
+  #home .rougeScript {
+    font-size: 8rem;
+  }
+  #home .amatic {
+    font-size: 5rem;
+  }
+  #favourite .bloc-favourites .favourite {
+    width: 75%;
+  }
+  #services .bloc {
+    width: 50%;
+  }
+  #services .bloc h2 {
+    font-size: 3.5rem !important;
+  }
+}
+@media screen and (max-width: 520px) {
+  h2 {
+    font-size: 4rem !important;
+  }
+  #favourite .bloc-favourites .favourite {
+    width: 100%;
+  }
+  #presentation .bloc-text {
+    padding: 3rem 4rem;
+  }
+  #presentation .bloc-background {
+    height: 55rem;
+    width: 70%;
+  }
+  #presentation .bloc-background .picture {
+    width: 25rem;
+    height: 40rem;
+    right: -8rem;
+  }
+  #charter {
+    padding: 3rem 4rem;
+  }
+  #question {
+    margin-bottom: 0;
+  }
+  #question .content {
+    width: 95%;
+    padding: 3rem 4rem;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: auto;
+    box-shadow: 0 0 5px rgba(23, 23, 23, 0.3);
+  }
+}
+@media screen and (max-width: 400px) {
+  #services .bloc {
+    width: 100%;
+  }
 }

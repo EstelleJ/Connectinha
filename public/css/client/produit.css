@@ -274,6 +274,18 @@
 #banner h1 .amatic {
   margin-top: -1rem;
 }
+@media screen and (max-width: 580px) {
+  #banner h1 {
+    padding: 0 2rem;
+    margin-top: -15rem;
+  }
+  #banner h1 .rougeScript {
+    font-size: 6rem;
+  }
+  #banner h1 .amatic {
+    font-size: 5rem;
+  }
+}
 #favourite {
   position: relative;
 }
@@ -518,6 +530,7 @@
   color: #333;
   position: relative;
   padding-bottom: 6rem;
+  background-color: #fff;
 }
 #favourite .bloc-favourites .favourite .offer {
   position: absolute;

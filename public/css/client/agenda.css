@@ -80,6 +80,18 @@
 #banner h1 .amatic {
   margin-top: -1rem;
 }
+@media screen and (max-width: 580px) {
+  #banner h1 {
+    padding: 0 2rem;
+    margin-top: -15rem;
+  }
+  #banner h1 .rougeScript {
+    font-size: 6rem;
+  }
+  #banner h1 .amatic {
+    font-size: 5rem;
+  }
+}
 /* ---------------- INDICATION UX ---------------- */
 /* ----------------------------------------------- */
 .menu .rdv::after {
@@ -253,23 +265,41 @@
   font-size: 5rem;
   color: #af5ce2;
 }
-/* --------------- MEDIAQUERIES --------------- */
-/* -------------------------------------------- */
+/* -------------------------------------------------------- */
+/*                        RESPONSIVE                        */
+/* -------------------------------------------------------- */
+@media screen and (max-width: 1200px) {
+  #rdv .bloc-services {
+    padding: 2rem 3rem;
+  }
+  #rdv .service .bloc-img {
+    width: 80%;
+    margin: auto;
+  }
+  #rdv .service .bloc-text {
+    width: 100%;
+  }
+}
 @media screen and (max-width: 990px) {
   #rdv .bloc-choix {
     width: 90%;
   }
 }
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 800px) {
+  #rdv .service {
+    width: 80%;
+    margin: 2rem auto;
+  }
   #rdv .bloc-choix {
     padding: 20px 15px;
   }
-  #rdv h2 {
-    font-size: 1.8rem;
-  }
 }
-@media screen and (max-width: 520px) {
-  #rdv {
-    margin-bottom: 150px;
+@media screen and (max-width: 550px) {
+  #rdv h2 {
+    font-size: 4.5rem;
+  }
+  #rdv .service {
+    width: 100%;
+    padding: 0;
   }
 }

@@ -80,6 +80,18 @@
 #banner h1 .amatic {
   margin-top: -1rem;
 }
+@media screen and (max-width: 580px) {
+  #banner h1 {
+    padding: 0 2rem;
+    margin-top: -15rem;
+  }
+  #banner h1 .rougeScript {
+    font-size: 6rem;
+  }
+  #banner h1 .amatic {
+    font-size: 5rem;
+  }
+}
 #modal {
   display: none;
   position: fixed;
