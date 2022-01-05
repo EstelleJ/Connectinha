@@ -284,7 +284,41 @@
 /*                      RESPONSIVE                         */
 /* ------------------------------------------------------- */
 
+@media screen and (max-width: 1300px) {
+
+	#logged {
+		padding: 3rem 5rem;
+		.dflex {
+			width: 100%;
+		}
+
+		.choice {
+			.btns {
+				.btn.round {
+					min-width: auto;
+					width: 100%;
+				}
+			}
+		}
+	}
+
+
+	#order {
+		width: 90%;
+		padding: 4rem 2rem 10rem 2rem;
+	}
+}
+
 @media screen and (max-width: 1000px) {
+
+	#logged {
+		padding: 4rem 5rem 8rem 5rem;
+
+		.choice {
+			width: 100%;
+			margin-bottom: 2rem;
+		}
+	}
 
 	#choices {
 		padding: 2rem 3rem;
@@ -296,9 +330,46 @@
 		}
 	}
 
+	#order {
+		form {
+			.invoicing_adress,
+			.delivery_adress {
+				width: 100%;
+			}
+		}
+
+		.order {
+			.product {
+				.info,
+				.details {
+					width: 100%;
+				}
+
+			}
+		}
+	}
+
 }
 
+
+@media screen and (max-width: 800px) {
+
+	#order {
+		width: 100%;
+		margin-top: -15rem;
+	}
+
+}
+
+
 @media screen and (max-width: 650px) {
+
+	#logged {
+		margin-top: -15rem;
+		h2 {
+			font-size: 4rem;
+		}
+	}
 
 	#choices {
 		padding: 2rem 3rem;
@@ -316,9 +387,22 @@
 		}
 	}
 
+	#order {
+		.order {
+			padding: 2rem 3rem;
+		}
+	}
+
 }
 
 @media screen and (max-width: 450px) {
+
+	#logged {
+		padding: 4rem 1.5rem 8rem 1.5rem;
+		.choice {
+			padding: 1.5rem 2rem;
+		}
+	}
 
 	#choices {
 		padding: 1rem 1rem 12rem 2rem;
@@ -326,6 +410,31 @@
 		.dflex {
 			.choice {
 				padding: 2rem 3rem;
+			}
+		}
+	}
+
+	#order {
+		padding: 4rem 0.8rem 10rem 0.8rem;
+
+		form {
+			.bloc {
+				.name,
+				.firstname,
+				.city,
+				.zipcode {
+					width: 100%;
+				}
+			}
+
+			.bloc-title {
+				margin-bottom: 3rem;
+			}
+		}
+
+		.btns {
+			.btn {
+
 			}
 		}
 	}

@@ -781,4 +781,7 @@ footer .footer-bottom nav ul li a:hover {
   .btns .btn.round {
     min-width: 20rem;
   }
+  .btns .btn {
+    padding: 1.2rem 2rem;
+  }
 }
