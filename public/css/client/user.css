@@ -133,7 +133,6 @@
 }
 #banner {
   height: 35rem;
-  background-color: #41687f;
 }
 #banner h1 {
   font-weight: bold;
@@ -405,4 +404,50 @@
   display: inline-block;
   padding: 1rem 4rem;
   color: #fff;
+}
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1300px) {
+  #profile .content {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 950px) {
+  #profile h1 {
+    font-size: 6rem;
+  }
+  #profile .content .column,
+  #profile .content .elements {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 750px) {
+  #profile {
+    margin-top: -8rem;
+  }
+  #profile .content .elements {
+    padding: 2rem 3rem;
+  }
+  #profile .content .elements .order h4,
+  #profile .content .elements .user-order h4 {
+    text-align: center;
+  }
+  #profile .content .elements .order .details div,
+  #profile .content .elements .user-order .details div {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 520px) {
+  #profile h1 {
+    font-size: 4rem;
+  }
+  #profile .content .elements {
+    padding: 2rem 1rem;
+  }
+  #profile .content .elements .order {
+    padding: 1rem 1rem;
+  }
 }

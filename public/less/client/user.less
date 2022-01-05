@@ -41,7 +41,6 @@
 
 #banner {
 	height: 35rem;
-	background-color: @bg-blue;
 
 	h1 {
 		font-weight: bold;
@@ -356,6 +355,90 @@
 
 			}
 
+		}
+	}
+
+}
+
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+
+@media screen and (max-width: 1300px) {
+
+	#profile {
+		.content {
+			width: 100%;
+		}
+	}
+
+}
+
+@media screen and (max-width: 950px) {
+
+	#profile {
+
+		h1 {
+			font-size: 6rem;
+		}
+
+		.content {
+			.column,
+			.elements {
+				width: 100%;
+			}
+		}
+	}
+
+}
+
+
+@media screen and (max-width: 750px) {
+
+	#profile {
+		margin-top: -8rem;
+
+		.content {
+			.elements {
+				padding: 2rem 3rem;
+
+				.order,
+				.user-order {
+					h4 {
+						text-align: center;
+					}
+
+					.details {
+						div {
+							width: 100%;
+							text-align: center;
+							margin-bottom: 1rem;
+						}
+					}
+				}
+
+			}
+		}
+
+	}
+
+}
+
+@media screen and (max-width: 520px) {
+
+	#profile {
+		h1 {
+			font-size: 4rem;
+		}
+
+		.content {
+			.elements {
+				padding: 2rem 1rem;
+
+				.order {
+					padding: 1rem 1rem;
+				}
+			}
 		}
 	}
 
