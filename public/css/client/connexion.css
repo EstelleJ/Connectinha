@@ -113,3 +113,27 @@ body {
   color: #8d24cd;
   transition: 0.3s color;
 }
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 900px) {
+  #login .bloc-form {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 775px) {
+  #login {
+    padding: 6rem 2rem;
+  }
+  #login .bloc-form .bloc {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 470px) {
+  #login {
+    padding: 10rem 1rem;
+  }
+  #login .bloc-form {
+    width: 100%;
+  }
+}

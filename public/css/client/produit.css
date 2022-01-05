@@ -274,9 +274,13 @@
 #banner h1 .amatic {
   margin-top: -1rem;
 }
-@media screen and (max-width: 580px) {
+@media screen and (max-width: 1200px) {
   #banner h1 {
     padding: 0 2rem;
+  }
+}
+@media screen and (max-width: 580px) {
+  #banner h1 {
     margin-top: -15rem;
   }
   #banner h1 .rougeScript {
@@ -2471,4 +2475,319 @@ body {
 }
 #creations .bloc-text p {
   text-align: center;
+}
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1500px) {
+  /* ----------- SLIDER ------------ */
+  #slider .container .column .bloc-text .amatic {
+    font-size: 4rem;
+  }
+  #slider .container .column .shipping {
+    height: 29rem;
+  }
+  #slider .container .column .shipping .bloc-img {
+    height: 29rem;
+  }
+  #slider .container .slider {
+    height: 56rem;
+  }
+  #slider .container .slider .bloc-title h2 {
+    font-size: 8rem;
+  }
+  /* ------------- PLUS ------------- */
+  #plus .bloc h2 {
+    font-size: 7rem;
+  }
+  #plus .bloc h2 .amatic {
+    font-size: 10rem;
+  }
+  /* ------------- PRODUITS ------------ */
+  .dflex .product {
+    width: 30%;
+  }
+  #favourite .bloc-favourites {
+    width: 80%;
+  }
+  #favourite .bloc-favourites .favourite {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 1200px) {
+  #creations .bloc-text {
+    padding: 0 6rem;
+  }
+  #creations .bloc-text h2 {
+    margin-bottom: 2rem;
+  }
+  #creations .bloc-img {
+    height: 55rem;
+  }
+  /* --------------- PRODUIT UNIQUE ----------------- */
+  .dflex .product.unique .bloc-img {
+    height: 40rem;
+  }
+  .dflex .product.unique .bloc-text h2 {
+    font-size: 6rem;
+  }
+  .dflex .product.unique .bloc-text h2 .title-offer {
+    font-size: 6rem;
+  }
+  .dflex .product.unique .bloc-text .bloc-btn .quantity {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  .dflex .product.unique .bloc-text .bloc-btn .btns {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 990px) {
+  #modal {
+    width: 28rem;
+    left: 2rem;
+    padding: 5rem 2rem;
+  }
+  #slider .container .slider {
+    width: 58%;
+    height: 41rem;
+  }
+  #slider .container .slider .bloc-title h2 {
+    font-size: 7rem;
+  }
+  #slider .container .slider .bloc-title h2::after,
+  #slider .container .slider .bloc-title h2::before {
+    width: 80px;
+    height: 130px;
+  }
+  #slider .container .slider .bloc-title h2::after {
+    right: -40px;
+  }
+  #slider .container .slider .bloc-title h2::before {
+    left: -40px;
+  }
+  #slider .container .column {
+    width: 41%;
+  }
+  #slider .container .column .handmade {
+    margin-bottom: 1rem;
+    height: 20rem;
+  }
+  #slider .container .column .handmade .bloc-img {
+    height: 20rem;
+  }
+  #slider .container .column .handmade .bloc-text {
+    height: 20rem;
+  }
+  #slider .container .column .shipping {
+    height: 20rem;
+  }
+  #slider .container .column .shipping .bloc-img {
+    height: 20rem;
+  }
+  #slider .container .column .shipping .bloc-text {
+    height: 20rem;
+  }
+  #slider .container .column .bloc-text {
+    font-size: 1.8rem;
+  }
+  /* ----------- CREATIONS ----------- */
+  #creations .bloc-text {
+    padding: 0 6rem;
+  }
+  #creations .bloc-text h2 {
+    margin-bottom: 2rem;
+    font-size: 6rem;
+    line-height: 1.1;
+  }
+  #creations .bloc-img {
+    height: 55rem;
+  }
+  /* ------------- PRODUITS ------------ */
+  .dflex .product {
+    width: 42%;
+  }
+  #products {
+    width: 100%;
+  }
+  #favourite .bloc-favourites {
+    width: 100%;
+  }
+  #favourite .bloc-favourites .favourite {
+    width: 42%;
+  }
+  /* -------------- PLUS -------------- */
+  #plus .bloc {
+    width: 49%;
+    height: 25rem;
+    padding: 2rem 4rem;
+  }
+  #plus .bloc h2 {
+    font-size: 4.5rem;
+  }
+  #plus .bloc h2 .amatic {
+    font-size: 7rem;
+  }
+  /* ------------- CREATIONS -------------- */
+  #creations .bloc-text h3 {
+    font-size: 3.8rem;
+    line-height: 1;
+  }
+  /* --------------- PRODUIT UNIQUE ----------------- */
+  .dflex .product.unique .bloc-img {
+    width: 80%;
+    height: 50rem;
+    margin: 2rem auto;
+  }
+  .dflex .product.unique .bloc-text {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 750px) {
+  #modal {
+    width: 55rem;
+    left: 10rem;
+    padding: 5rem 2rem;
+  }
+  #slider {
+    margin-top: -8rem;
+  }
+  #slider .container .column {
+    width: 100%;
+  }
+  #slider .container .column .handmade {
+    height: 25rem;
+  }
+  #slider .container .column .handmade .bloc-img {
+    height: 25rem;
+  }
+  #slider .container .column .handmade .bloc-text {
+    height: 25rem;
+  }
+  #slider .container .column .shipping {
+    height: 28rem;
+  }
+  #slider .container .column .shipping .bloc-img {
+    height: 28rem;
+  }
+  #slider .container .column .shipping .bloc-text {
+    height: 28rem;
+  }
+  #slider .container .column .bloc-text {
+    font-size: 3rem;
+  }
+  #slider .container .column .bloc-text .amatic {
+    font-size: 6rem;
+  }
+  #slider .container .slider {
+    width: 100%;
+    height: 30rem;
+    margin-bottom: 1rem;
+  }
+  /* ----------- PLUS ------------- */
+  #plus .bloc {
+    width: 100%;
+    margin-bottom: 2rem;
+    height: 30rem;
+  }
+  #plus .bloc h2 {
+    font-size: 6rem;
+  }
+  /* ----------- CREATIONS ----------- */
+  #creations .bloc-img {
+    width: 100%;
+  }
+  #creations .bloc-text {
+    width: 100%;
+    padding: 6rem 4rem;
+  }
+  /* --------------- PRODUIT UNIQUE ----------------- */
+  .dflex .product.unique {
+    width: 100%;
+  }
+  .dflex .product.unique .offer {
+    top: 8rem;
+    right: 2rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  #modal {
+    width: 30rem;
+    left: 10rem;
+    padding: 5rem 2rem;
+  }
+  /* ------------- PRODUITS ------------ */
+  .dflex .product {
+    width: 80%;
+  }
+  #favourite .bloc-favourites .favourite {
+    width: 80%;
+  }
+  /* --------------- PRODUIT UNIQUE ----------------- */
+  .dflex .product.unique {
+    padding: 3rem 1rem;
+  }
+  .dflex .product.unique .bloc-img {
+    height: 35rem;
+  }
+}
+@media screen and (max-width: 470px) {
+  #modal {
+    width: 40rem;
+    left: 3rem;
+    padding: 5rem 2rem;
+  }
+  /* ------------- SLIDER ------------ */
+  #slider .container .slider .bloc-title h2 {
+    font-size: 5rem;
+  }
+  #slider .container .column .bloc-text {
+    width: 100%;
+  }
+  #slider .container .column .bloc-text .amatic {
+    font-size: 4rem;
+  }
+  #slider .container .column .bloc-img {
+    width: 100%;
+  }
+  #slider .container .column .handmade,
+  #slider .container .column .shipping {
+    height: auto;
+  }
+  h2 {
+    font-size: 6rem !important;
+    line-height: 1;
+  }
+  /* ------------- PLUS -------------- */
+  #plus .bloc h2 {
+    font-size: 4rem !important;
+  }
+  #plus .bloc h2 .amatic {
+    font-size: 5rem;
+    margin-bottom: 0.8rem;
+  }
+  /* ------------- PRODUITS ------------ */
+  .dflex .product {
+    width: 95%;
+  }
+  #favourite .bloc-favourites .favourite {
+    width: 95%;
+  }
+  /* ------------ CREATIONS ------------ */
+  #creations .bloc-img {
+    height: 40rem;
+  }
+  #creations .bloc-text {
+    padding: 6rem 3rem 15rem 3rem;
+  }
+  /* --------------- PRODUIT UNIQUE ----------------- */
+  .dflex .product.unique .bloc-img {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 350px) {
+  #modal {
+    width: 30rem;
+    left: 1rem;
+  }
 }

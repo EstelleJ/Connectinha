@@ -235,13 +235,13 @@ class AgendaController extends AbstractController {
 				'date'           => $date,
 		];
 
-		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
-
-		if($response->getStatus() == 200) {
-			return $this->redirectToRoute('agenda_mail_confirm', [
-					'token' => $token
-			]);
-		}
+		// $response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
+		//
+		// if($response->getStatus() == 200) {
+		// 	return $this->redirectToRoute('agenda_mail_confirm', [
+		// 			'token' => $token
+		// 	]);
+		// }
 
 		return $this->render('agenda/confirmation.html.twig', [
 				'rendezvous' => $rendezvous,
