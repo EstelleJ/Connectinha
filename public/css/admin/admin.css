@@ -353,6 +353,8 @@ h3 {
 }
 .container {
   padding: 3rem 2rem;
+  height: 100vh;
+  overflow-y: scroll;
 }
 .a-center {
   text-align: center;
@@ -486,6 +488,9 @@ header {
   background: #18718a;
   background: linear-gradient(172deg, #042b40 0%, #52235b 100%);
   color: #e7e9eb;
+}
+header #burger {
+  display: none;
 }
 header li:hover {
   background-color: #1c8294;
@@ -768,4 +773,86 @@ footer p {
 }
 footer p a {
   color: #e7e9eb;
+}
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1600px) {
+  .bloc-actions .number h2 .texte {
+    width: calc(100% - 8rem);
+    padding-left: 1rem;
+  }
+}
+@media screen and (max-width: 1300px) {
+  header {
+    width: 5rem;
+    position: relative;
+  }
+  header .container {
+    display: none;
+  }
+  header #burger {
+    position: absolute;
+    left: 1rem;
+    top: 2rem;
+    display: block;
+  }
+  header #burger span {
+    display: block;
+    width: 3rem;
+    height: 0.4rem;
+    border-radius: 0.3rem;
+    margin-bottom: 0.8rem;
+    background-color: #fff;
+  }
+  header.active {
+    width: 100vw;
+    position: absolute;
+    z-index: 100;
+  }
+  header.active .container {
+    display: block;
+  }
+  header.active a {
+    text-align: center;
+  }
+  header.active a i {
+    position: relative;
+  }
+  .contenu {
+    width: calc(100% - 5rem);
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 650px) {
+  .btns {
+    width: 100%;
+    display: block;
+  }
+  .btns .btn {
+    width: 100%;
+    display: block;
+  }
+  .element {
+    display: block;
+    padding: 1rem 1.5rem;
+  }
+  .element * {
+    display: block !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin-bottom: 1rem;
+  }
+  .element .btn,
+  .element .btn-actif {
+    padding: 0.8rem 1.2rem !important;
+  }
+  .element .btn.delete {
+    margin: 0;
+  }
+}
+@media screen and (max-width: 520px) {
+  h2 {
+    font-size: 1.8rem;
+  }
 }

@@ -244,3 +244,22 @@ form p {
   color: #fff;
   font-size: 3rem;
 }
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1300px) {
+  .dflex {
+    align-items: start;
+  }
+}
+@media screen and (max-width: 920px) {
+  .contents form .bloc-left,
+  .contents form .bloc-right {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 450px) {
+  .contents form {
+    padding: 3rem 1rem;
+  }
+}

@@ -19,11 +19,17 @@
 	{% endblock %}
 	<script type="module" src="{{ asset('js/global.js') }}"></script>
 	<script src="https://kit.fontawesome.com/e10814a45c.js" crossorigin="anonymous"></script>
-	<script src="{{ asset('js/burger.js') }}"></script>
+
 </head>
 <body>
 <div class="dflex">
-	<header>
+	<header id="header">
+		<div id="burger">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+
 		<div class="container">
 			<div class="logo">
 				<a href="{{ path('admin') }}">
@@ -137,5 +143,7 @@
 <footer>
 	<p>Réalisé par <a href="">EILEA</a> - {{ "now"|date('Y') }}</p>
 </footer>
+
+<script src="{{ asset('js/burger.js') }}"></script>
 </body>
 </html>

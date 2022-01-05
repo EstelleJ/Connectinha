@@ -128,3 +128,44 @@
 .users {
   width: 45%;
 }
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1800px) {
+  .products .produit .titre {
+    width: 35%;
+  }
+  .commandes .commande .numero {
+    width: 25%;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .products .produit .titre {
+    width: 35%;
+  }
+  .products .produit .delete {
+    position: relative;
+  }
+  .commandes .commande .numero {
+    width: 100%;
+  }
+  .commandes .commande .client {
+    width: 60%;
+  }
+}
+@media screen and (max-width: 990px) {
+  .products {
+    width: 100%;
+  }
+  .products .produit .delete {
+    right: -4.5rem;
+  }
+  .commandes {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 880px) {
+  .products .produit .delete {
+    right: initial;
+  }
+}
