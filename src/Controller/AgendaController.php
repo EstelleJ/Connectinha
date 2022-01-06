@@ -56,23 +56,32 @@ class AgendaController extends AbstractController {
 			$rendezvouses = $this->getDoctrine()->getRepository(Rendezvous::class)->findBy(['date' => $date]);
 			$taken_rdv = [];
 			foreach ($rendezvouses as $rendezvous) {
-				array_push($taken_rdv, date('Y-m-d', $date->getTimestamp()) . ' ' . $rendezvous->getHours());
+				$time = $rendezvous->getHours()->getHour();
+				$strTime = $time->format('H:i');
+				array_push($taken_rdv, date('Y-m-d', $date->getTimestamp()) . ' ' . $strTime);
 			}
+
+			dump($taken_rdv);
+
 			$rdv_weekday = date('l', $date->getTimestamp());
 			$rdv_weekday = $tools->translateWeekday($rdv_weekday);
 			$weekday = $this->getDoctrine()->getRepository(Days::class)->findOneBy(['slug' => $rdv_weekday]);
 			$hours = $weekday->getHours();
 
 			$available_hours = [];
+
 			foreach ($hours as $hour) {
 				// Only add horaires to available horaires if the duree matches the one from the prestation
+				$hour_time = $hour->getHour();
+				$hour_strTime = $hour_time->format('H:i');
 				if ($hour->getDuration()->getServices()->contains($service)) {
-					array_push($available_hours, date('Y-m-d', $date->getTimestamp()) . ' ' . $hour);
+					array_push($available_hours, date('Y-m-d', $date->getTimestamp()) . ' ' . $hour_strTime);
 				}
 			}
 
 			$hours_left = $available_hours; // array containing the dates and horaires left available for the day
 			foreach ($available_hours as $hour) {
+
 				if (in_array($hour, $taken_rdv)) {
 					array_splice($hours_left, array_search($hour, $hours_left), 1);
 				}
@@ -200,6 +209,7 @@ class AgendaController extends AbstractController {
 				'hours'     => $displayed_hours,
 				'form'      => $form->createView(),
 				'error'     => $error,
+				'service'   => $service,
 		]);
 	}
 
@@ -342,9 +352,9 @@ class AgendaController extends AbstractController {
 
 		dump($response->getStatus());
 
-		if($response->getStatus() == 200) {
+		if ($response->getStatus() == 200) {
 			return $this->redirectToRoute('agenda_mail_confirm', [
-					'token' => $token
+					'token' => $token,
 			]);
 		}
 
@@ -457,8 +467,13 @@ class AgendaController extends AbstractController {
 			if (!in_array($rendezvous->getDate(), $dates)) {
 				array_push($dates, $rendezvous->getDate());
 			}
-			array_push($all_taken_rdv, date('Y-m-d', $rendezvous->getDate()->getTimestamp()) . ' ' . $rendezvous->getHours());
+			$time = $rendezvous->getHours()->getHour();
+			$strTime = $time->format('H:i');
+			array_push($all_taken_rdv, date('Y-m-d', $rendezvous->getDate()->getTimestamp()) . ' ' . $strTime);
 		}
+
+		dump($all_taken_rdv);
+
 		foreach ($dates as $date) {
 			$available_hours = []; // array containing the date and horaire of the day
 			$rdv_weekday = date('l', $date->getTimestamp());
@@ -468,9 +483,15 @@ class AgendaController extends AbstractController {
 			foreach ($hours as $hour) {
 				// Only add horaires to available horaires if the duree matches the one from the prestation
 				if ($hour->getDuration()->getServices()->contains($service)) {
-					array_push($available_hours, date('Y-m-d', $date->getTimestamp()) . ' ' . $hour);
+					$hour_time = $hour->getHour();
+					$hour_strTime = $hour_time->format('H:i');
+
+					array_push($available_hours, date('Y-m-d', $date->getTimestamp()) . ' ' . $hour_strTime);
 				}
 			}
+
+			dump($available_hours);
+
 			$hours_left = $available_hours; // array containing the dates and horaires left available for the day
 			foreach ($available_hours as $hour) {
 				if (in_array($hour, $all_taken_rdv)) {
@@ -482,6 +503,8 @@ class AgendaController extends AbstractController {
 				array_push($disabled_dates, date('Y-m-d', $date->getTimestamp()));
 			}
 		}
+
+		dump($dates);
 
 
 		return $this->render('agenda/jours.html.twig', [

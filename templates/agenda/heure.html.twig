@@ -23,7 +23,8 @@
 			<h2 class="amatic tc-blue">Programmer un rendez-vous</h2>
 
 			<div class="bloc-choix">
-				<h3>À quelle heure êtes-vous disponible le {{ day }} {{ date }}?</h3>
+				<h3>À quelle heure êtes-vous disponible le {{ day }} {{ date }} <br>
+					pour votre rendez-vous qui durera {{ service.duration }} ?</h3>
 
 				{% if error %}
 					<div class="error">
@@ -35,7 +36,7 @@
 				<input type="hidden" name="service-id" value="{{ serviceId }}">
 				<input type="hidden" name="date" value="{{ date }}">
 
-				<label for="hour">Sélectionnez l'heure qui vous convient (la durée du rendez-vous est indiquée)</label>
+				<label for="hour">Sélectionnez l'heure qui vous convient</label>
 				<select id="hour" name="hour">
 					{% for hour in hours %}
 						<option value="{{ hour|trim() }}">{{ hour }}</option>
