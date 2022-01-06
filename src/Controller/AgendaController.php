@@ -61,8 +61,6 @@ class AgendaController extends AbstractController {
 				array_push($taken_rdv, date('Y-m-d', $date->getTimestamp()) . ' ' . $strTime);
 			}
 
-			dump($taken_rdv);
-
 			$rdv_weekday = date('l', $date->getTimestamp());
 			$rdv_weekday = $tools->translateWeekday($rdv_weekday);
 			$weekday = $this->getDoctrine()->getRepository(Days::class)->findOneBy(['slug' => $rdv_weekday]);
@@ -350,8 +348,6 @@ class AgendaController extends AbstractController {
 
 		$response = $mailJetService->send($mailTo, $firstName, $subject, $templateId, $variables);
 
-		dump($response->getStatus());
-
 		if ($response->getStatus() == 200) {
 			return $this->redirectToRoute('agenda_mail_confirm', [
 					'token' => $token,
@@ -472,8 +468,6 @@ class AgendaController extends AbstractController {
 			array_push($all_taken_rdv, date('Y-m-d', $rendezvous->getDate()->getTimestamp()) . ' ' . $strTime);
 		}
 
-		dump($all_taken_rdv);
-
 		foreach ($dates as $date) {
 			$available_hours = []; // array containing the date and horaire of the day
 			$rdv_weekday = date('l', $date->getTimestamp());
@@ -490,8 +484,6 @@ class AgendaController extends AbstractController {
 				}
 			}
 
-			dump($available_hours);
-
 			$hours_left = $available_hours; // array containing the dates and horaires left available for the day
 			foreach ($available_hours as $hour) {
 				if (in_array($hour, $all_taken_rdv)) {
@@ -503,9 +495,6 @@ class AgendaController extends AbstractController {
 				array_push($disabled_dates, date('Y-m-d', $date->getTimestamp()));
 			}
 		}
-
-		dump($dates);
-
 
 		return $this->render('agenda/jours.html.twig', [
 				'disabled_dates'    => json_encode($disabled_dates),
