@@ -129,3 +129,29 @@ form .submit-bloc {
   font-size: 2.2rem;
   width: 20%;
 }
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1300px) {
+  .dflex {
+    align-items: start;
+  }
+  form .large-bloc,
+  form .small-bloc {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .contents form .bloc-left,
+  .contents form .bloc-right {
+    width: 100%;
+  }
+  form,
+  .tvas.small {
+    width: 100%;
+  }
+  .tvas {
+    margin-top: 2rem;
+    padding: 1.8rem 1.2rem;
+  }
+}

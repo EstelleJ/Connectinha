@@ -251,7 +251,35 @@
     width: 100%;
     margin: 8px 0;
   }
-  .table .line form {
+  .delete {
+    position: relative !important;
+  }
+}
+@media screen and (max-width: 1149px) {
+  .table .header-table {
+    display: block;
+  }
+  .table .header-table .col {
+    width: 100%;
+    margin-bottom: 0.8rem;
+  }
+  .table .line {
+    display: block;
+  }
+  .table .line .col {
+    width: 100%;
+    display: block;
+    margin: 1rem 0;
+  }
+  .table .line .btns {
+    display: block;
+  }
+  .table .line .btns .btn,
+  .table .line .btns form {
+    margin: 0.8rem 0;
+  }
+  .table .line .btns .btn button,
+  .table .line .btns form button {
     width: 100%;
   }
 }
@@ -276,8 +304,15 @@
   .table .header-table h2 {
     margin-bottom: 6px;
   }
+  .table .col.hours span {
+    display: block;
+  }
   .form {
-    padding: 30px 50px;
+    padding: 2rem 3rem;
+  }
+  .bloc-right,
+  .bloc-left {
+    width: 100%;
   }
 }
 @media screen and (max-width: 767px) {
@@ -290,9 +325,21 @@
     width: 100%;
   }
 }
-@media screen and (max-width: 630px) {
+@media screen and (max-width: 650px) {
   .form {
     padding: 18px 25px;
+  }
+  .line .btns .btn,
+  .line .btns form {
+    margin: 0;
+  }
+  .line .btns form {
+    padding: 0 !important;
+  }
+}
+@media screen and (max-width: 520px) {
+  .table .line {
+    padding: 1.8rem 0rem;
   }
 }
 @media screen and (max-width: 380px) {

@@ -135,5 +135,36 @@
 .element .paiement {
   margin-left: 1rem;
 }
-/* --------------- MEDIAQUERIES --------------- */
-/* -------------------------------------------- */
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1000px) {
+  #agenda .bloc.days,
+  #agenda .bloc.rdv {
+    width: 100%;
+  }
+  #agenda .bloc.duration,
+  #agenda .bloc.invoicing {
+    width: 49%;
+  }
+  #agenda .d-flex .left,
+  #agenda .d-flex .right {
+    width: 100%;
+  }
+  #agenda .d-flex .customer,
+  #agenda .d-flex .paiement {
+    margin: 1rem 0;
+  }
+}
+@media screen and (max-width: 775px) {
+  #agenda .bloc.duration,
+  #agenda .bloc.invoicing,
+  #agenda .bloc.unavailable {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 575px) {
+  #agenda .bloc {
+    padding: 1.8rem 1.3rem;
+  }
+}

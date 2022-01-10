@@ -154,3 +154,45 @@
   background-color: #5284a1;
   transition: 0.3s background-color;
 }
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 990px) {
+  .orders .allProducts .title {
+    display: block;
+  }
+  .orders .allProducts .title h4 {
+    width: 100%;
+    margin: 0.8rem 0;
+  }
+  .orders .allProducts .product {
+    display: block;
+    border-top: 1px solid #6c6c6c;
+  }
+  .orders .allProducts .product h4 {
+    width: 100%;
+    margin: 1.2rem 0;
+  }
+  .orders .delivery,
+  .orders .invoicing {
+    line-height: 1.3;
+  }
+}
+@media screen and (max-width: 575px) {
+  .orders {
+    padding: 1.8rem 1.3rem;
+  }
+  .orders .delivery,
+  .orders .invoicing {
+    line-height: 1.5;
+  }
+  .orders .allProducts {
+    padding: 1.5rem 1.2rem;
+  }
+  .orders .allProducts .title h4 {
+    font-size: 1.3rem;
+  }
+  form {
+    padding: 0 !important;
+  }
+}

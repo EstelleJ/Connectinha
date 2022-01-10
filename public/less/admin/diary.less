@@ -97,38 +97,64 @@
 }
 
 
-/* --------------- MEDIAQUERIES --------------- */
-/* -------------------------------------------- */
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
 
-@media screen and (max-width: 1540px) {
+@media screen and (max-width: 1000px) {
+
+	#agenda {
+		.bloc {
+			&.days,
+			&.rdv {
+				width: 100%;
+			}
+
+			&.duration,
+			&.invoicing {
+				width: 49%;
+			}
+		}
+
+		.d-flex {
+			.left,
+			.right {
+				width: 100%;
+			}
+
+			.customer,
+			.paiement{
+				margin: 1rem 0;
+			}
+		}
+
+	}
+
 
 }
 
-@media screen and (max-width: 1149px) {
+@media screen and (max-width: 775px) {
 
-}
-
-@media screen and (max-width: 990px) {
-
-
-}
-
-@media screen and (max-width: 767px) {
-
-}
-
-@media screen and (max-width: 630px) {
+	#agenda {
+		.bloc {
+			&.duration,
+			&.invoicing,
+			&.unavailable {
+				width: 100%;
+			}
+		}
+	}
 
 
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 575px) {
 
-
-}
-
-@media screen and (max-width: 380px) {
-
+	#agenda {
+		.bloc {
+			padding: 1.8rem 1.3rem;
+		}
+	}
 
 
 }

@@ -52,3 +52,29 @@ form .submit-bloc {
   background-color: #fff;
   padding: 3rem 3.5rem;
 }
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1300px) {
+  form .large-bloc {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 990px) {
+  form {
+    width: 100%;
+  }
+  .categories.small {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 650px) {
+  form {
+    width: 100%;
+  }
+  .categories.small {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

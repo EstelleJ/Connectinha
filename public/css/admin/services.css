@@ -146,3 +146,41 @@ form p {
   background-color: #fff;
   padding: 3rem 3.5rem;
 }
+/* ------------------------------------------------------- */
+/*                      RESPONSIVE                         */
+/* ------------------------------------------------------- */
+@media screen and (max-width: 1300px) {
+  .dflex {
+    align-items: start;
+  }
+  form .large-bloc,
+  form .small-bloc {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .contents form .bloc-left,
+  .contents form .bloc-right {
+    width: 100%;
+  }
+  form,
+  .services.small {
+    width: 100%;
+  }
+  .services {
+    margin-top: 2rem;
+    padding: 1.8rem 1.2rem;
+  }
+}
+@media screen and (max-width: 775px) {
+  form #add-pictures {
+    position: relative;
+    width: 100%;
+    right: initial;
+    top: initial;
+    margin-bottom: 2rem;
+  }
+  form #add-pictures a {
+    margin: 0;
+  }
+}
