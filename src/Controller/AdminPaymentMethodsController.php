@@ -53,6 +53,7 @@ class AdminPaymentMethodsController extends AbstractController {
 	#[Route('/admin/moyens-de-paiement/modifier-{slug}-{id}/', name: 'admin_payment_methods_modify', requirements: ['slug' => '[a-zA-Z0-9\-_]+'])]
 	public function modify(Request $request, AdminService $adminService, $id): Response {
 
+		$methods = $this->getDoctrine()->getRepository(PaymentMethod::class)->findBy([], ['id' => 'DESC'], 3);
 		$method = $this->getDoctrine()->getRepository(PaymentMethod::class)->find($id);
 
 		$form = $this->createForm(PaymentMethodType::class, $method);

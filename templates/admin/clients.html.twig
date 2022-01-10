@@ -50,8 +50,7 @@
 			</div>
 		</div>
 		{% for customer in customers %}
-			<a href="{{ path('admin_customer_modify', {'id': customer.id }) }}"
-			   class="element customer">
+			<a class="element customer">
 				<span class="data name">
 					{{ customer.user.name }}
 				</span>
@@ -72,9 +71,9 @@
 				</span>
 
 				<span class="btns dflex">
-					<button class="btn action">
-						<i class="fas fa-edit"></i> Modifier
-					</button>
+{#					<button class="btn action">#}
+{#						<i class="fas fa-edit"></i> Modifier#}
+{#					</button>#}
 					<button class="btn delete" data-id="{{ customer.id }}">
 						<i class="fas fa-trash"></i> Supprimer
 					</button>

@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		{% for method in methods %}
-			<a href="{{ path('admin_products_modify', {'slug': method.slug, 'id': method.id }) }}" class="element method">
+			<a href="{{ path('admin_payment_methods_modify', {'slug': method.slug, 'id': method.id }) }}" class="element method">
 
 				<span class="data name">{{ method.name }}</span>
 
