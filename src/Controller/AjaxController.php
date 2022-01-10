@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Cart;
 use App\Entity\Customer;
 use App\Entity\DiscountTicket;
+use App\Entity\FreeShipping;
 use App\Entity\MantraProducts;
 use App\Entity\Orders;
 use App\Entity\PaymentMethod;
@@ -363,15 +364,23 @@ class AjaxController extends AbstractController {
 	public function getShippingCost(Request $request): Response {
 
 		$totalWeight = $request->request->get('ajax-total-weight');
+		$totalPrice = $request->request->get('ajax-total-price');
 
 		$shippingCosts = $this->getDoctrine()->getRepository(ShippingCost::class)->findAll();
 
 		$shippingPrice = 0;
 
+		$freeShipping = $this->getDoctrine()->getRepository(FreeShipping::class)->find(1);
+		$freeShippingPrice = $freeShipping->getPrice();
+
 		foreach ($shippingCosts as $cost) {
 			if ($totalWeight > $cost->getMin() && $totalWeight < $cost->getMax()) {
 				$shippingPrice = $cost->getPrice();
 			}
+		}
+
+		if($totalPrice > $freeShippingPrice) {
+			$shippingPrice = 0;
 		}
 
 		return new JsonResponse($shippingPrice);
@@ -476,6 +485,9 @@ class AjaxController extends AbstractController {
 		$totalPrice = 0;
 		$discountTicket = $request->request->get('ajax-discount-ticket');
 
+		$freeShipping = $this->getDoctrine()->getRepository(FreeShipping::class)->find(1);
+		$freeShippingPrice = $freeShipping->getPrice();
+
 		$user = $this->getUser();
 
 		$customer = null;
@@ -534,6 +546,10 @@ class AjaxController extends AbstractController {
 					$price = $discountPercent - (float)$ticket->getAmount();
 				}
 			}
+		}
+
+		if($price > $freeShippingPrice) {
+			$shippingPrice = 0;
 		}
 
 		$price = $price + $shippingPrice;

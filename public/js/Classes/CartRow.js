@@ -201,6 +201,7 @@ export default class CartRow extends WebComponent {
 
 		let formData = new FormData();
 		formData.append('ajax-total-weight', totalWeight.toString());
+		formData.append('ajax-total-price', totalPrice);
 
 		const response = await this.ajax('POST', '/ajax/get-shipping-cost/', formData);
 
