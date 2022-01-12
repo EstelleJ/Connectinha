@@ -12,7 +12,13 @@ class LegalsController extends AbstractController
     public function index(): Response
     {
         return $this->render('legals/index.html.twig', [
-            'controller_name' => 'LegalsController',
         ]);
     }
+
+	#[Route('/conditions-generales-de-vente/', name: 'cgv')]
+	public function cgv(): Response
+	{
+		return $this->render('legals/cgv.html.twig', [
+		]);
+	}
 }
