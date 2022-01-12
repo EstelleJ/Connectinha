@@ -1,0 +1,46 @@
+@import "../include/variables.less";
+@import "../include/mixins.less";
+@import "../include/banner.less";
+
+#legals {
+	padding: 0rem 10rem;
+
+	h2 {
+		font-size: 6rem;
+		color: @tc-blue-connectinha;
+		margin-bottom: 3rem;
+	}
+
+	p {
+		span {
+			color: @tc-purple;
+		}
+
+		a {
+			display: block;
+		}
+	}
+
+	h3 {
+		font-size: 4rem;
+		margin: 4rem 0;
+	}
+}
+
+/* -------------------------------------------------------- */
+/*                        RESPONSIVE                        */
+/* -------------------------------------------------------- */
+
+@media screen and (max-width: 750px) {
+	#legals {
+		padding: 0 2rem 10rem 2rem;
+
+		h2 {
+			font-size: 3rem;
+		}
+
+		h3 {
+			font-size: 2rem;
+		}
+	}
+}

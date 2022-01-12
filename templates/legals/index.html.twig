@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mentions Légales{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/client/legals.css') }}">
+{% endblock %}
+
+{% block body %}
+
+    <section id="banner">
+        <h1>
+            <span class="rougeScript tc-white">Mentions Légales</span>
+            <span class="amatic tc-white uppercase">Les informations légales du site</span>
+        </h1>
+    </section>
+
+    <section id="legals">
+        <h2>Mentions Légales</h2>
+
+        <p>
+            <span>Nom de l'entreprise :</span> Elodie Ortiz
+        </p>
+        <p>
+            <span>Email :</span> <a href="mailto:contact@connectinha.fr">contact@connectinha.fr</a>
+        </p>
+        <p>
+            <span>Directeur de la publication :</span> Elodie Ortiz
+        </p>
+
+        <h3>Réalisation</h3>
+
+        <p>
+            Estelle Jacquet - EILEA<br>
+            10 rue Jacques Prévert<br>
+            58660 Coulanges-lès-Nevers
+        </p>
+
+        <p>
+            <span>Tél. :</span> 06 58 97 48 05
+        </p>
+
+        <p>
+            <a href="https://www.linkedin.com/in/estelle-jacquet-72208a150/" target="_blank">
+                <i class="fab fa-linkedin"></i> EILEA - Communications Print et Digitale
+            </a>
+
+            <a href="https://www.facebook.com/Eilea-Communications-Print-et-Digitale-106049531492755" target="_blank">
+                <i class="fab fa-facebook-square"></i> EILEA - Communications Print et Digitale
+            </a>
+        </p>
+
+        <h3>L'hébergement</h3>
+        <p>
+            <a href="https://www.ovh.com/fr/mail/" target="_blank">
+                www.ovh.com
+            </a>
+            Le site et les informations qu'il contient sont protégés par la loi française sur la propriété intellectuelle
+            et par les conventions internationales. Le site et les éléments de son contenu ne peuvent être ni reproduits,
+            ni republiés, ni modifiés sans l'autorisation écrite préalable des ayants droits. L'utilisateur est informé
+            que lors de ses visites sur le site, un cookie peut s'installer automatiquement sur son logiciel de navigation.
+            Un cookie est un élément qui ne permet pas d'identifier l'utilisateur mais sert à enregistrer des informations
+            relatives à la navigation de celui-ci sur le site Internet. L'utilisateur pourra désactiver ce cookie par
+            l'intermédiaire des paramètres figurant au sein de son logiciel de navigation.
+        </p>
+        <p>
+            L'utilisateur dispose d'un droit d'accès, de modification, de rectification et de suppression
+            des données qui le concernent. (art. 34 de la loi "Informatique et Libertés" du 6 janvier 1978).
+            Pour l'exercer, l'utilisateur peut s'adresser auprès du Directeur de la publication visé plus haut.
+        </p>
+    </section>
+
+
+
+
+
+{% endblock %}
