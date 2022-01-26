@@ -61,6 +61,8 @@ class AdminAgendaController extends AbstractController {
 
 		if ($form->isSubmitted() && $form->isValid()) {
 
+			$rdv->setToken(uniqid('t', true));
+
 			$entityManager = $this->getDoctrine()->getManager();
 			$entityManager->persist($rdv);
 			$entityManager->flush();
