@@ -41,7 +41,7 @@ class AdminAgendaController extends AbstractController {
 
 		$arrayPagination = $paginationService->pagination($elements, $nbElements);
 
-		$rdvs = $this->getDoctrine()->getRepository(Rendezvous::class)->findBy([], ['id' => 'ASC'], $nbElements, $offset);
+		$rdvs = $this->getDoctrine()->getRepository(Rendezvous::class)->findBy([], ['date' => 'ASC'], $nbElements, $offset);
 
 		return $this->renderForm('admin/agenda/agenda_rdvs.html.twig', [
 				'rdvs'            => $rdvs,
