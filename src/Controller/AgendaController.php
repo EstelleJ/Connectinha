@@ -260,7 +260,7 @@ class AgendaController extends AbstractController {
 	#[Route('/programmer-un-rendez-vous/choisissez-votre-methode-de-paiement-{token}/', name: 'agenda_method_choice', requirements: ['token' => '[a-zA-Z0-9\-_.]+'])]
 	public function method($token): Response {
 
-		$paymentMethods = $this->getDoctrine()->getRepository(PaymentMethod::class)->findAll();
+		$paymentMethods = $this->getDoctrine()->getRepository(PaymentMethod::class)->find(6);
 
 		return $this->render('agenda/method.html.twig', [
 				'paymentMethods' => $paymentMethods,
